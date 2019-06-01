@@ -2185,7 +2185,7 @@ int32_t DRLG_L2(int32_t a1)
 				// branch -> 0x40698
 			}
 			// 0x40698
-			DRLG_L2FloodTVal(function_3c374(3));
+			DRLG_L2FloodTVal(DRLG_LXTransFix(3));
 			int32_t v49 = g27; // 0x406a4
 			if (v49 == 0) {
 				int32_t v50 = DRLG_L2PlaceMiniSet((char *)g30, 1, 1, -1, -1, 1, 0); // 0x406c8

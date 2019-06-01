@@ -1,4 +1,3 @@
-
 // Address range: 0x519d8 - 0x51bc0
 int32_t FillSolidBlockTbls(int32_t a1)
 {
