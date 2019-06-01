@@ -2440,7 +2440,7 @@ int32_t function_52b2c(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 }
 
 // Address range: 0x52b50 - 0x52bb8
-int32_t function_52b50(int32_t a1, char *a2)
+int32_t DRLG_ListTrans(int32_t a1, char *a2)
 {
 	int32_t v1 = 0;      // r31
 	int32_t result = a1; // 0x52bb4
