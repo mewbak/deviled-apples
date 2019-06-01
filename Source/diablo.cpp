@@ -2036,7 +2036,7 @@ int32_t LeftMouseUp(int32_t a1, int32_t a2, int32_t a3)
 }
 
 // Address range: 0x3593c - 0x35a9c
-int32_t function_3593c(int32_t a1)
+int32_t RightMouseDown(int32_t a1)
 {
 	// 0x3593c
 	g36 = *(int32_t *)(g23 - 0x77ac);
@@ -2254,7 +2254,7 @@ int32_t function_35a9c(int32_t a1, int32_t a2, int32_t a3)
 }
 
 // Address range: 0x35acc - 0x35b34
-int32_t function_35acc(void)
+int32_t diablo_pause_game(void)
 {
 	int32_t v1 = g10;                            // 0x35acc
 	int32_t result = *(int32_t *)(g23 - 0x77f0); // 0x35ad0
@@ -2844,7 +2844,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 												// 0x362ac
 												if (v12 == 19) {
 													// 0x362b4
-													function_35acc();
+													diablo_pause_game();
 													// branch -> 0x366f8
 												} else {
 													// 0x362bc
@@ -4309,7 +4309,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 														// 0x362ac
 														if (v12 == 19) {
 															// 0x362b4
-															function_35acc();
+															diablo_pause_game();
 															// branch -> 0x366f8
 														} else {
 															// 0x362bc
@@ -5740,7 +5740,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 											// 0x362ac
 											if (v12 == 19) {
 												// 0x362b4
-												function_35acc();
+												diablo_pause_game();
 												// branch -> 0x366f8
 											} else {
 												// 0x362bc
@@ -7200,7 +7200,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 													// 0x362ac
 													if (v12 == 19) {
 														// 0x362b4
-														function_35acc();
+														diablo_pause_game();
 														// branch -> 0x366f8
 													} else {
 														// 0x362bc
@@ -8631,7 +8631,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 										// 0x362ac
 										if (v12 == 19) {
 											// 0x362b4
-											function_35acc();
+											diablo_pause_game();
 											// branch -> 0x366f8
 										} else {
 											// 0x362bc
@@ -10091,7 +10091,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 												// 0x362ac
 												if (v12 == 19) {
 													// 0x362b4
-													function_35acc();
+													diablo_pause_game();
 													// branch -> 0x366f8
 												} else {
 													// 0x362bc
@@ -11550,7 +11550,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 													// 0x362ac
 													if (v12 == 19) {
 														// 0x362b4
-														function_35acc();
+														diablo_pause_game();
 														// branch -> 0x366f8
 													} else {
 														// 0x362bc
@@ -12018,7 +12018,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 															// 0x362ac
 															if (v12 == 19) {
 																// 0x362b4
-																function_35acc();
+																diablo_pause_game();
 																// branch -> 0x366f8
 															} else {
 																// 0x362bc
@@ -12124,7 +12124,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 												// 0x362ac
 												if (v12 == 19) {
 													// 0x362b4
-													function_35acc();
+													diablo_pause_game();
 													// branch -> 0x366f8
 												} else {
 													// 0x362bc
@@ -12259,7 +12259,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 														// 0x362ac
 														if (v12 == 19) {
 															// 0x362b4
-															function_35acc();
+															diablo_pause_game();
 															// branch -> 0x366f8
 														} else {
 															// 0x362bc
@@ -12389,7 +12389,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 													// 0x362ac
 													if (v12 == 19) {
 														// 0x362b4
-														function_35acc();
+														diablo_pause_game();
 														// branch -> 0x366f8
 													} else {
 														// 0x362bc
@@ -12524,7 +12524,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 															// 0x362ac
 															if (v12 == 19) {
 																// 0x362b4
-																function_35acc();
+																diablo_pause_game();
 																// branch -> 0x366f8
 															} else {
 																// 0x362bc
@@ -12630,7 +12630,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 												// 0x362ac
 												if (v12 == 19) {
 													// 0x362b4
-													function_35acc();
+													diablo_pause_game();
 													// branch -> 0x366f8
 												} else {
 													// 0x362bc
@@ -12765,7 +12765,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 														// 0x362ac
 														if (v12 == 19) {
 															// 0x362b4
-															function_35acc();
+															diablo_pause_game();
 															// branch -> 0x366f8
 														} else {
 															// 0x362bc
@@ -12871,7 +12871,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 											// 0x362ac
 											if (v12 == 19) {
 												// 0x362b4
-												function_35acc();
+												diablo_pause_game();
 												// branch -> 0x366f8
 											} else {
 												// 0x362bc
@@ -13006,7 +13006,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 													// 0x362ac
 													if (v12 == 19) {
 														// 0x362b4
-														function_35acc();
+														diablo_pause_game();
 														// branch -> 0x366f8
 													} else {
 														// 0x362bc
@@ -13112,7 +13112,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 										// 0x362ac
 										if (v12 == 19) {
 											// 0x362b4
-											function_35acc();
+											diablo_pause_game();
 											// branch -> 0x366f8
 										} else {
 											// 0x362bc
@@ -13247,7 +13247,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 												// 0x362ac
 												if (v12 == 19) {
 													// 0x362b4
-													function_35acc();
+													diablo_pause_game();
 													// branch -> 0x366f8
 												} else {
 													// 0x362bc
@@ -13353,7 +13353,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 									// 0x362ac
 									if (v12 == 19) {
 										// 0x362b4
-										function_35acc();
+										diablo_pause_game();
 										// branch -> 0x366f8
 									} else {
 										// 0x362bc
@@ -13488,7 +13488,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 											// 0x362ac
 											if (v12 == 19) {
 												// 0x362b4
-												function_35acc();
+												diablo_pause_game();
 												// branch -> 0x366f8
 											} else {
 												// 0x362bc
@@ -13594,7 +13594,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 								// 0x362ac
 								if (v12 == 19) {
 									// 0x362b4
-									function_35acc();
+									diablo_pause_game();
 									// branch -> 0x366f8
 								} else {
 									// 0x362bc
@@ -13729,7 +13729,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 										// 0x362ac
 										if (v12 == 19) {
 											// 0x362b4
-											function_35acc();
+											diablo_pause_game();
 											// branch -> 0x366f8
 										} else {
 											// 0x362bc
@@ -13835,7 +13835,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 							// 0x362ac
 							if (v12 == 19) {
 								// 0x362b4
-								function_35acc();
+								diablo_pause_game();
 								// branch -> 0x366f8
 							} else {
 								// 0x362bc
@@ -13970,7 +13970,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 									// 0x362ac
 									if (v12 == 19) {
 										// 0x362b4
-										function_35acc();
+										diablo_pause_game();
 										// branch -> 0x366f8
 									} else {
 										// 0x362bc
@@ -14103,7 +14103,7 @@ int32_t function_3670c(int32_t a1)
 						}
 					}
 					// 0x3679c
-					result2 = function_35acc();
+					result2 = diablo_pause_game();
 					// branch -> 0x36b80
 				} else {
 					result2 = v3;
@@ -14120,7 +14120,7 @@ int32_t function_3670c(int32_t a1)
 }
 
 // Address range: 0x36b94 - 0x36cf4
-int32_t function_36b94(int32_t a1, int32_t a2, int32_t a3)
+int32_t DisableInputWndProc(int32_t a1, int32_t a2, int32_t a3)
 {
 	// 0x36b94
 	g39 = a3;
@@ -14252,7 +14252,7 @@ int32_t function_36b94(int32_t a1, int32_t a2, int32_t a3)
 }
 
 // Address range: 0x36cf4 - 0x37128
-int32_t function_36cf4(int32_t a1, int32_t a2, char a3, int32_t a4)
+int32_t GM_Game(int32_t a1, int32_t a2, char a3, int32_t a4)
 {
 	g30 = a2;
 	int32_t v1 = *(int32_t *)(g23 - 0x76ac); // 0x36d04
@@ -14398,7 +14398,7 @@ int32_t function_36cf4(int32_t a1, int32_t a2, char a3, int32_t a4)
 				*v11 = 2;
 				int32_t v12 = g35; // 0x36fdc
 				g34 = v12;
-				function_3593c(function_eba28(v12));
+				RightMouseDown(function_eba28(v12));
 				// branch -> 0x37114
 			}
 			// 0x37114
@@ -14522,7 +14522,7 @@ int32_t function_36cf4(int32_t a1, int32_t a2, char a3, int32_t a4)
 		// 0x36dbc
 		if (a2 == 935) {
 			// 0x36e5c
-			function_35acc();
+			diablo_pause_game();
 			// branch -> 0x37100
 			// 0x37100
 			g34 = g35;
