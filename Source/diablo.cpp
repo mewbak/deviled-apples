@@ -479,7 +479,7 @@ lab_0x3494c:
 						// 0x349d0
 						if (*(int32_t *)g30 != 0) {
 						lab_0x349e0:;
-							int32_t v13 = function_92550(0); // 0x349e4
+							int32_t v13 = nthread_has_500ms_passed(0); // 0x349e4
 							g34 = v13;
 							int32_t v14; // 0x349f4
 							if (v13 == 0) {
@@ -570,7 +570,7 @@ lab_0x3494c:
 			g10 = v1;
 			return result;
 		}
-		int32_t v24 = function_92550(0); // 0x34a04
+		int32_t v24 = nthread_has_500ms_passed(0); // 0x34a04
 		g34 = v24;
 		if (v24 != 0) {
 		lab_0x34a10_2:
@@ -16119,7 +16119,7 @@ int32_t game_loop(int32_t a1)
 			return result2;
 		}
 		// 0x37e54
-		result3 = function_92550(1);
+		result3 = nthread_has_500ms_passed(1);
 		if (result3 != 0) {
 			int32_t v3 = g33;
 			g33 = v3 - 1;
