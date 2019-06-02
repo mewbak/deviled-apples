@@ -2817,9 +2817,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 							}
 						}
 						// 0x361d8
-						if (function_54224(v3) == 0) {
+						if (gmenu_presskeys(v3) == 0) {
 							// 0x361e8
-							if (function_322ec(g22) == 0) {
+							if (control_presskeys(g22) == 0) {
 								// 0x361f8
 								v4 = g23;
 								if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -5713,9 +5713,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 						// Detected a possible infinite recursion (goto support failed); quitting...
 					}
 					// 0x361d8
-					if (function_54224(v3) == 0) {
+					if (gmenu_presskeys(v3) == 0) {
 						// 0x361e8
-						if (function_322ec(g22) == 0) {
+						if (control_presskeys(g22) == 0) {
 							// 0x361f8
 							v4 = g23;
 							if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -8604,9 +8604,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 					// Detected a possible infinite recursion (goto support failed); quitting...
 				}
 				// 0x361d8
-				if (function_54224(v3) == 0) {
+				if (gmenu_presskeys(v3) == 0) {
 					// 0x361e8
-					if (function_322ec(g22) == 0) {
+					if (control_presskeys(g22) == 0) {
 						// 0x361f8
 						v4 = g23;
 						if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -11523,9 +11523,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 								// branch -> 0x361d8
 							}
 							// 0x361d8
-							if (function_54224(v3) == 0) {
+							if (gmenu_presskeys(v3) == 0) {
 								// 0x361e8
-								if (function_322ec(g22) == 0) {
+								if (control_presskeys(g22) == 0) {
 									// 0x361f8
 									v4 = g23;
 									if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -12097,9 +12097,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 							// Detected a possible infinite recursion (goto support failed); quitting...
 						}
 						// 0x361d8
-						if (function_54224(v3) == 0) {
+						if (gmenu_presskeys(v3) == 0) {
 							// 0x361e8
-							if (function_322ec(g22) == 0) {
+							if (control_presskeys(g22) == 0) {
 								// 0x361f8
 								v4 = g23;
 								if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -12362,9 +12362,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 								}
 							}
 							// 0x361d8
-							if (function_54224(v3) == 0) {
+							if (gmenu_presskeys(v3) == 0) {
 								// 0x361e8
-								if (function_322ec(g22) == 0) {
+								if (control_presskeys(g22) == 0) {
 									// 0x361f8
 									v4 = g23;
 									if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -12603,9 +12603,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 							// Detected a possible infinite recursion (goto support failed); quitting...
 						}
 						// 0x361d8
-						if (function_54224(v3) == 0) {
+						if (gmenu_presskeys(v3) == 0) {
 							// 0x361e8
-							if (function_322ec(g22) == 0) {
+							if (control_presskeys(g22) == 0) {
 								// 0x361f8
 								v4 = g23;
 								if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -12844,9 +12844,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 						// Detected a possible infinite recursion (goto support failed); quitting...
 					}
 					// 0x361d8
-					if (function_54224(v3) == 0) {
+					if (gmenu_presskeys(v3) == 0) {
 						// 0x361e8
-						if (function_322ec(g22) == 0) {
+						if (control_presskeys(g22) == 0) {
 							// 0x361f8
 							v4 = g23;
 							if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -13085,9 +13085,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 					// Detected a possible infinite recursion (goto support failed); quitting...
 				}
 				// 0x361d8
-				if (function_54224(v3) == 0) {
+				if (gmenu_presskeys(v3) == 0) {
 					// 0x361e8
-					if (function_322ec(g22) == 0) {
+					if (control_presskeys(g22) == 0) {
 						// 0x361f8
 						v4 = g23;
 						if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -13326,9 +13326,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 				// Detected a possible infinite recursion (goto support failed); quitting...
 			}
 			// 0x361d8
-			if (function_54224(v3) == 0) {
+			if (gmenu_presskeys(v3) == 0) {
 				// 0x361e8
-				if (function_322ec(g22) == 0) {
+				if (control_presskeys(g22) == 0) {
 					// 0x361f8
 					v4 = g23;
 					if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -13567,9 +13567,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 			// Detected a possible infinite recursion (goto support failed); quitting...
 		}
 		// 0x361d8
-		if (function_54224(v3) == 0) {
+		if (gmenu_presskeys(v3) == 0) {
 			// 0x361e8
-			if (function_322ec(g22) == 0) {
+			if (control_presskeys(g22) == 0) {
 				// 0x361f8
 				v4 = g23;
 				if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -13808,9 +13808,9 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 		// Detected a possible infinite recursion (goto support failed); quitting...
 	}
 	// 0x361d8
-	if (function_54224(v3) == 0) {
+	if (gmenu_presskeys(v3) == 0) {
 		// 0x361e8
-		if (function_322ec(g22) == 0) {
+		if (control_presskeys(g22) == 0) {
 			// 0x361f8
 			v4 = g23;
 			if (*(int32_t *)*(int32_t *)(v4 - 0x75cc) == 0) {
@@ -15919,7 +15919,7 @@ int32_t game_logic(int32_t a1)
 			// 0x37c8c
 			if (*(int32_t *)(g23 - 0x4f54) == 0) {
 				// 0x37c98
-				v9 = function_328d4(0);
+				v9 = CheckCursMove(0);
 				g34 = v9;
 				function_c6594(v9);
 				// branch -> 0x37ca0
@@ -15986,7 +15986,7 @@ int32_t game_logic(int32_t a1)
 		// 0x37c8c
 		if (*(int32_t *)(g23 - 0x4f54) == 0) {
 			// 0x37c98
-			v9 = function_328d4(0);
+			v9 = CheckCursMove(0);
 			g34 = v9;
 			function_c6594(v9);
 			// branch -> 0x37ca0

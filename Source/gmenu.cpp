@@ -494,7 +494,7 @@ int32_t gmenu_left_right(int32_t result)
 }
 
 // Address range: 0x54224 - 0x542f8
-int32_t function_54224(int32_t a1)
+int32_t gmenu_presskeys(int32_t a1)
 {
 	// 0x54224
 	if (*(int32_t *)(g23 - 0x4e70) == 0) {
