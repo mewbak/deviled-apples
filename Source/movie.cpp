@@ -94,20 +94,20 @@ int32_t play_movie(int32_t result, int32_t a2)
 	int32_t v4 = *(int32_t *)g35;                           // 0x87810
 	g34 = v4;
 	g33 = v3;
-	function_e9ef8(v4, 0, 0);
+	InvalidateRect(v4, 0, 0);
 	int32_t v5 = *(int32_t *)g35; // 0x87828
 	g34 = v5;
-	function_eb548(v5);
+	UpdateWindow(v5);
 	int32_t v6;
 	char *v7 = (char *)(v6 - 0x4d74); // 0x87838
 	*v7 = 1;
-	function_b591c(1);
-	function_4c0c8();
-	function_4cbd0(*(int32_t *)(g23 - 0x5cc8));
+	sound_disable_music(1);
+	sfx_stop();
+	effects_play_sound(*(int32_t *)(g23 - 0x5cc8));
 	int32_t v8 = g31; // 0x87874
 	g34 = v8;
 	int32_t v9; // bp-28
-	function_ebc68(v8, 0, 0, 0, 0, (int32_t)&v9);
+	SVidPlayBegin(v8, 0, 0, 0, 0, (int32_t)&v9);
 	int32_t v10;        // bp-56
 	int32_t v11 = &v10; // 0x878d4
 	                    // branch -> 0x87908
@@ -122,12 +122,12 @@ lab_0x87908:;
 			g34 = v12;
 			if (v12 != 0) {
 				// 0x8792c
-				function_ebc98(v12);
+				SVidPlayEnd(v12);
 				// branch -> 0x87934
 			}
 			// 0x87934
 			SetWindowProc(g33);
-			result2 = function_b591c(0);
+			result2 = sound_disable_music(0);
 			// branch -> 0x87944
 			// 0x87944
 			g10 = v1;
@@ -144,12 +144,12 @@ lab_0x87908:;
 					g34 = v12;
 					if (v12 != 0) {
 						// 0x8792c
-						function_ebc98(v12);
+						SVidPlayEnd(v12);
 						// branch -> 0x87934
 					}
 					// 0x87934
 					SetWindowProc(g33);
-					result2 = function_b591c(0);
+					result2 = sound_disable_music(0);
 					// branch -> 0x87944
 					// 0x87944
 					g10 = v1;
@@ -164,7 +164,7 @@ lab_0x87908:;
 				g34 = v14;
 				if (v14 == 0) {
 					// 0x878f8
-					if (function_ebc80(0) == 0) {
+					if (SVidPlayContinue(0) == 0) {
 						// break (via goto) -> 0x878f8
 						goto lab_0x878f8;
 					}
@@ -195,12 +195,12 @@ lab_0x87908:;
 		g34 = v12;
 		if (v12 != 0) {
 			// 0x8792c
-			function_ebc98(v12);
+			SVidPlayEnd(v12);
 			// branch -> 0x87934
 		}
 		// 0x87934
 		SetWindowProc(g33);
-		result2 = function_b591c(0);
+		result2 = sound_disable_music(0);
 		// branch -> 0x87944
 		// 0x87944
 		g10 = v1;
@@ -214,12 +214,12 @@ lab_0x878f8:
 	g34 = v12;
 	if (v12 != 0) {
 		// 0x8792c
-		function_ebc98(v12);
+		SVidPlayEnd(v12);
 		// branch -> 0x87934
 	}
 	// 0x87934
 	SetWindowProc(g33);
-	result2 = function_b591c(0);
+	result2 = sound_disable_music(0);
 	// branch -> 0x87944
 	// 0x87944
 	g10 = v1;

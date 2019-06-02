@@ -15956,7 +15956,7 @@ int32_t game_logic(int32_t a1)
 			// branch -> 0x37cec
 		}
 		// 0x37cec
-		v8 = function_4c9a0();
+		v8 = sound_update();
 		g34 = v8;
 		v13 = function_ab924(v8);
 		g34 = v13;
@@ -16023,7 +16023,7 @@ int32_t game_logic(int32_t a1)
 		// branch -> 0x37cec
 	}
 	// 0x37cec
-	v8 = function_4c9a0();
+	v8 = sound_update();
 	g34 = v8;
 	v13 = function_ab924(v8);
 	g34 = v13;
