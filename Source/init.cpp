@@ -181,7 +181,7 @@ int32_t init_test_access(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t
 	init_strip_trailing_slash(v11);
 	g34 = g32;
 	g37 = v7;
-	function_e8670();
+	strcpy();
 	function_e86d0(g32, g33);
 	int32_t v14 = g32; // 0x54cbc
 	g34 = v14;
@@ -194,7 +194,7 @@ int32_t init_test_access(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t
 			// 0x54cf8
 			g34 = g32;
 			g37 = v11;
-			function_e8670();
+			strcpy();
 			function_e86d0(g32, g33);
 			int32_t v16 = g32; // 0x54d10
 			g34 = v16;
@@ -217,7 +217,7 @@ int32_t init_test_access(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t
 				// 0x54d64
 				g34 = g32;
 				g37 = v18;
-				function_e8670();
+				strcpy();
 				// branch -> 0x54d7c
 				// 0x54d7c
 				g36 = v1;

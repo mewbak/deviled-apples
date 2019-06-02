@@ -39,7 +39,7 @@ int32_t doom_load_graphics(void)
 		// 0x37ffc
 		g34 = v2;
 		g37 = *(int32_t *)(g23 - 0x63d4);
-		function_e8670();
+		strcpy();
 		// branch -> 0x38030
 		// 0x38030
 		function_4fba8(g36, *(int32_t *)(g23 - 0x4f40));

@@ -664,7 +664,7 @@ int32_t StartGame(int32_t a1, int32_t a2)
 						int32_t v5 = run_game_loop(); // 0x34b6c
 						g34 = v5;
 						NetClose(v5);
-						g34 = function_a12a4(0, 0);
+						g34 = pfile_create_player_description(0, 0);
 						if (*(int32_t *)g35 == 0) {
 							// break -> 0x34b8c
 							break;
@@ -2288,16 +2288,16 @@ int32_t function_35b34(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 {
 	int32_t v1 = g23 - 0x2440; // 0x35b3c
 	g37 = v1;
-	function_e8670();
+	strcpy();
 	g34 = a1;
 	g37 = v1 + 80;
-	function_e8670();
+	strcpy();
 	g34 = a2;
 	g37 = v1 + 160;
-	function_e8670();
+	strcpy();
 	g34 = a3;
 	g37 = v1 + 240;
-	return function_e8670();
+	return strcpy();
 }
 
 // Address range: 0x35bac - 0x35c38
@@ -2338,7 +2338,7 @@ int32_t diablo_hotkey_msg(int32_t a1)
 		int32_t v2 = &v1; // 0x35c5c
 		g34 = v2;
 		g37 = g23 - 0x2440 + 80 * a1;
-		function_e8670();
+		strcpy();
 		result = function_8c084(-1, v2);
 		// branch -> 0x35c74
 	} else {

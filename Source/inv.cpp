@@ -24961,7 +24961,7 @@ int32_t function_5ae34(void)
 								// 0x5b0a4
 								g34 = g35;
 								g37 = g32 + 61;
-								function_e8670();
+								strcpy();
 								v13 = g32;
 								if (*(int32_t *)(v13 + 56) == 0) {
 									// 0x5b0d4
@@ -24975,7 +24975,7 @@ int32_t function_5ae34(void)
 								// 0x5b0bc
 								g34 = g35;
 								g37 = v13 + 125;
-								function_e8670();
+								strcpy();
 								function_62320(g32);
 								// branch -> 0x5b0dc
 								// 0x5b0dc
@@ -25060,7 +25060,7 @@ int32_t function_5ae34(void)
 											// 0x5b0a4
 											g34 = g35;
 											g37 = g32 + 61;
-											function_e8670();
+											strcpy();
 											v13 = g32;
 											if (*(int32_t *)(v13 + 56) == 0) {
 												// 0x5b0d4
@@ -25074,7 +25074,7 @@ int32_t function_5ae34(void)
 											// 0x5b0bc
 											g34 = g35;
 											g37 = v13 + 125;
-											function_e8670();
+											strcpy();
 											function_62320(g32);
 											// branch -> 0x5b0dc
 											// 0x5b0dc
@@ -25137,7 +25137,7 @@ int32_t function_5ae34(void)
 													// 0x5b0a4
 													g34 = g35;
 													g37 = g32 + 61;
-													function_e8670();
+													strcpy();
 													v13 = g32;
 													if (*(int32_t *)(v13 + 56) == 0) {
 														// 0x5b0d4
@@ -25151,7 +25151,7 @@ int32_t function_5ae34(void)
 													// 0x5b0bc
 													g34 = g35;
 													g37 = v13 + 125;
-													function_e8670();
+													strcpy();
 													function_62320(g32);
 													// branch -> 0x5b0dc
 													// 0x5b0dc
@@ -25205,7 +25205,7 @@ int32_t function_5ae34(void)
 											// 0x5b0a4
 											g34 = g35;
 											g37 = g32 + 61;
-											function_e8670();
+											strcpy();
 											v13 = g32;
 											if (*(int32_t *)(v13 + 56) == 0) {
 												// 0x5b0d4
@@ -25219,7 +25219,7 @@ int32_t function_5ae34(void)
 											// 0x5b0bc
 											g34 = g35;
 											g37 = v13 + 125;
-											function_e8670();
+											strcpy();
 											function_62320(g32);
 											// branch -> 0x5b0dc
 											// 0x5b0dc
@@ -25276,7 +25276,7 @@ int32_t function_5ae34(void)
 													// 0x5b0a4
 													g34 = g35;
 													g37 = g32 + 61;
-													function_e8670();
+													strcpy();
 													v13 = g32;
 													if (*(int32_t *)(v13 + 56) == 0) {
 														// 0x5b0d4
@@ -25289,7 +25289,7 @@ int32_t function_5ae34(void)
 														// 0x5b0bc
 														g34 = g35;
 														g37 = v13 + 125;
-														function_e8670();
+														strcpy();
 														function_62320(g32);
 														// branch -> 0x5b0dc
 														// 0x5b0dc
@@ -25361,7 +25361,7 @@ int32_t function_5ae34(void)
 														// 0x5b0a4
 														g34 = g35;
 														g37 = g32 + 61;
-														function_e8670();
+														strcpy();
 														v13 = g32;
 														if (*(int32_t *)(v13 + 56) == 0) {
 															// 0x5b0d4
@@ -25372,7 +25372,7 @@ int32_t function_5ae34(void)
 															// 0x5b0bc
 															g34 = g35;
 															g37 = v13 + 125;
-															function_e8670();
+															strcpy();
 															function_62320(g32);
 															// branch -> 0x5b0dc
 															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -25426,7 +25426,7 @@ int32_t function_5ae34(void)
 												// 0x5b0a4
 												g34 = g35;
 												g37 = g32 + 61;
-												function_e8670();
+												strcpy();
 												v13 = g32;
 												if (*(int32_t *)(v13 + 56) == 0) {
 													// 0x5b0d4
@@ -25437,7 +25437,7 @@ int32_t function_5ae34(void)
 													// 0x5b0bc
 													g34 = g35;
 													g37 = v13 + 125;
-													function_e8670();
+													strcpy();
 													function_62320(g32);
 													// branch -> 0x5b0dc
 													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -25496,7 +25496,7 @@ int32_t function_5ae34(void)
 													// 0x5b0a4
 													g34 = g35;
 													g37 = g32 + 61;
-													function_e8670();
+													strcpy();
 													v13 = g32;
 													if (*(int32_t *)(v13 + 56) == 0) {
 														// 0x5b0d4
@@ -25507,7 +25507,7 @@ int32_t function_5ae34(void)
 														// 0x5b0bc
 														g34 = g35;
 														g37 = v13 + 125;
-														function_e8670();
+														strcpy();
 														function_62320(g32);
 														// branch -> 0x5b0dc
 														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -25557,7 +25557,7 @@ int32_t function_5ae34(void)
 										// 0x5b0a4
 										g34 = g35;
 										g37 = g32 + 61;
-										function_e8670();
+										strcpy();
 										v13 = g32;
 										if (*(int32_t *)(v13 + 56) == 0) {
 											// 0x5b0d4
@@ -25568,7 +25568,7 @@ int32_t function_5ae34(void)
 											// 0x5b0bc
 											g34 = g35;
 											g37 = v13 + 125;
-											function_e8670();
+											strcpy();
 											function_62320(g32);
 											// branch -> 0x5b0dc
 											// Detected a possible infinite recursion (goto support failed); quitting...
@@ -25614,7 +25614,7 @@ int32_t function_5ae34(void)
 									// 0x5b0a4
 									g34 = g35;
 									g37 = g32 + 61;
-									function_e8670();
+									strcpy();
 									v13 = g32;
 									if (*(int32_t *)(v13 + 56) == 0) {
 										// 0x5b0d4
@@ -25625,7 +25625,7 @@ int32_t function_5ae34(void)
 										// 0x5b0bc
 										g34 = g35;
 										g37 = v13 + 125;
-										function_e8670();
+										strcpy();
 										function_62320(g32);
 										// branch -> 0x5b0dc
 										// Detected a possible infinite recursion (goto support failed); quitting...
@@ -25671,7 +25671,7 @@ int32_t function_5ae34(void)
 								// 0x5b0a4
 								g34 = g35;
 								g37 = g32 + 61;
-								function_e8670();
+								strcpy();
 								v13 = g32;
 								if (*(int32_t *)(v13 + 56) == 0) {
 									// 0x5b0d4
@@ -25682,7 +25682,7 @@ int32_t function_5ae34(void)
 									// 0x5b0bc
 									g34 = g35;
 									g37 = v13 + 125;
-									function_e8670();
+									strcpy();
 									function_62320(g32);
 									// branch -> 0x5b0dc
 									// Detected a possible infinite recursion (goto support failed); quitting...
@@ -25763,7 +25763,7 @@ int32_t function_5ae34(void)
 						// 0x5b0a4
 						g34 = g35;
 						g37 = g32 + 61;
-						function_e8670();
+						strcpy();
 						v13 = g32;
 						if (*(int32_t *)(v13 + 56) == 0) {
 							// 0x5b0d4
@@ -25773,7 +25773,7 @@ int32_t function_5ae34(void)
 							// 0x5b0bc
 							g34 = g35;
 							g37 = v13 + 125;
-							function_e8670();
+							strcpy();
 							function_62320(g32);
 							// branch -> 0x5b0dc
 						}
@@ -25855,7 +25855,7 @@ int32_t function_5ae34(void)
 									// 0x5b0a4
 									g34 = g35;
 									g37 = g32 + 61;
-									function_e8670();
+									strcpy();
 									v13 = g32;
 									if (*(int32_t *)(v13 + 56) == 0) {
 										// 0x5b0d4
@@ -25865,7 +25865,7 @@ int32_t function_5ae34(void)
 										// 0x5b0bc
 										g34 = g35;
 										g37 = v13 + 125;
-										function_e8670();
+										strcpy();
 										function_62320(g32);
 										// branch -> 0x5b0dc
 									}
@@ -25925,7 +25925,7 @@ int32_t function_5ae34(void)
 											// 0x5b0a4
 											g34 = g35;
 											g37 = g32 + 61;
-											function_e8670();
+											strcpy();
 											v13 = g32;
 											if (*(int32_t *)(v13 + 56) == 0) {
 												// 0x5b0d4
@@ -25935,7 +25935,7 @@ int32_t function_5ae34(void)
 												// 0x5b0bc
 												g34 = g35;
 												g37 = v13 + 125;
-												function_e8670();
+												strcpy();
 												function_62320(g32);
 												// branch -> 0x5b0dc
 											}
@@ -25986,7 +25986,7 @@ int32_t function_5ae34(void)
 									// 0x5b0a4
 									g34 = g35;
 									g37 = g32 + 61;
-									function_e8670();
+									strcpy();
 									v13 = g32;
 									if (*(int32_t *)(v13 + 56) == 0) {
 										// 0x5b0d4
@@ -25996,7 +25996,7 @@ int32_t function_5ae34(void)
 										// 0x5b0bc
 										g34 = g35;
 										g37 = v13 + 125;
-										function_e8670();
+										strcpy();
 										function_62320(g32);
 										// branch -> 0x5b0dc
 									}
@@ -26051,7 +26051,7 @@ int32_t function_5ae34(void)
 									// 0x5b0a4
 									g34 = g35;
 									g37 = g32 + 61;
-									function_e8670();
+									strcpy();
 									v13 = g32;
 									if (*(int32_t *)(v13 + 56) == 0) {
 										// 0x5b0d4
@@ -26061,7 +26061,7 @@ int32_t function_5ae34(void)
 										// 0x5b0bc
 										g34 = g35;
 										g37 = v13 + 125;
-										function_e8670();
+										strcpy();
 										function_62320(g32);
 										// branch -> 0x5b0dc
 									}
@@ -26123,7 +26123,7 @@ int32_t function_5ae34(void)
 										// 0x5b0a4
 										g34 = g35;
 										g37 = g32 + 61;
-										function_e8670();
+										strcpy();
 										v13 = g32;
 										if (*(int32_t *)(v13 + 56) == 0) {
 											// 0x5b0d4
@@ -26133,7 +26133,7 @@ int32_t function_5ae34(void)
 											// 0x5b0bc
 											g34 = g35;
 											g37 = v13 + 125;
-											function_e8670();
+											strcpy();
 											function_62320(g32);
 											// branch -> 0x5b0dc
 										}
@@ -26184,7 +26184,7 @@ int32_t function_5ae34(void)
 								// 0x5b0a4
 								g34 = g35;
 								g37 = g32 + 61;
-								function_e8670();
+								strcpy();
 								v13 = g32;
 								if (*(int32_t *)(v13 + 56) == 0) {
 									// 0x5b0d4
@@ -26194,7 +26194,7 @@ int32_t function_5ae34(void)
 									// 0x5b0bc
 									g34 = g35;
 									g37 = v13 + 125;
-									function_e8670();
+									strcpy();
 									function_62320(g32);
 									// branch -> 0x5b0dc
 								}
@@ -26249,7 +26249,7 @@ int32_t function_5ae34(void)
 									// 0x5b0a4
 									g34 = g35;
 									g37 = g32 + 61;
-									function_e8670();
+									strcpy();
 									v13 = g32;
 									if (*(int32_t *)(v13 + 56) == 0) {
 										// 0x5b0d4
@@ -26259,7 +26259,7 @@ int32_t function_5ae34(void)
 										// 0x5b0bc
 										g34 = g35;
 										g37 = v13 + 125;
-										function_e8670();
+										strcpy();
 										function_62320(g32);
 										// branch -> 0x5b0dc
 									}
@@ -26306,7 +26306,7 @@ int32_t function_5ae34(void)
 						// 0x5b0a4
 						g34 = g35;
 						g37 = g32 + 61;
-						function_e8670();
+						strcpy();
 						v13 = g32;
 						if (*(int32_t *)(v13 + 56) == 0) {
 							// 0x5b0d4
@@ -26316,7 +26316,7 @@ int32_t function_5ae34(void)
 							// 0x5b0bc
 							g34 = g35;
 							g37 = v13 + 125;
-							function_e8670();
+							strcpy();
 							function_62320(g32);
 							// branch -> 0x5b0dc
 						}
@@ -26359,7 +26359,7 @@ int32_t function_5ae34(void)
 					// 0x5b0a4
 					g34 = g35;
 					g37 = g32 + 61;
-					function_e8670();
+					strcpy();
 					v13 = g32;
 					if (*(int32_t *)(v13 + 56) == 0) {
 						// 0x5b0d4
@@ -26369,7 +26369,7 @@ int32_t function_5ae34(void)
 						// 0x5b0bc
 						g34 = g35;
 						g37 = v13 + 125;
-						function_e8670();
+						strcpy();
 						function_62320(g32);
 						// branch -> 0x5b0dc
 					}
@@ -26412,7 +26412,7 @@ int32_t function_5ae34(void)
 				// 0x5b0a4
 				g34 = g35;
 				g37 = g32 + 61;
-				function_e8670();
+				strcpy();
 				v13 = g32;
 				if (*(int32_t *)(v13 + 56) == 0) {
 					// 0x5b0d4
@@ -26422,7 +26422,7 @@ int32_t function_5ae34(void)
 					// 0x5b0bc
 					g34 = g35;
 					g37 = v13 + 125;
-					function_e8670();
+					strcpy();
 					function_62320(g32);
 					// branch -> 0x5b0dc
 				}

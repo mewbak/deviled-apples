@@ -1375,7 +1375,7 @@ int32_t DrawAutomapGame(int32_t a1)
 	int32_t v10 = &v3; // 0x2b450
 	g34 = v10;
 	g37 = *(int32_t *)(g23 - 0x659c);
-	int32_t v11 = function_e8670(); // 0x2b458
+	int32_t v11 = strcpy(); // 0x2b458
 	function_e86d0(v11, *(int32_t *)(g23 - 0x77d0));
 	PrintGameStr(8, 20, (char *)&v3, 3);
 	g35 = 35;
@@ -1384,7 +1384,7 @@ int32_t DrawAutomapGame(int32_t a1)
 		// 0x2b488
 		g34 = v10;
 		g37 = *(int32_t *)(g23 - 0x65a0);
-		function_e86d0(function_e8670(), g36);
+		function_e86d0(strcpy(), g36);
 		PrintGameStr(8, 35, (char *)&v3, 3);
 		g35 = 50;
 		v12 = 50;

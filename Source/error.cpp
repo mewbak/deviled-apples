@@ -250,7 +250,7 @@ lab_0x50e88:
 				// 0x50ec0
 				g34 = g28;
 				g37 = *(int32_t *)(g23 + 0x26c0 + 4 * (int32_t) * (char *)g33);
-				function_e8670();
+				strcpy();
 				g34 = g28;
 				g27 = *(int32_t *)(*(int32_t *)(g23 - 0x7698) + 1368) + 165;
 				int32_t v22 = CPrintString(); // 0x50eec

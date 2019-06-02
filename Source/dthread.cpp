@@ -158,7 +158,7 @@ int32_t function_4bdd8(int32_t result, char a2, int32_t a3, int32_t a4)
 	*(int32_t *)(g36 + 4) = g30;
 	*(char *)(g36 + 8) = (char)g31;
 	*(int32_t *)(g36 + 12) = g33;
-	function_eb590();
+	memcpy();
 	g34 = g35;
 	EnterCriticalSection(g35);
 	int32_t v3;

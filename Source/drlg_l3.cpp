@@ -9060,7 +9060,7 @@ int32_t LoadPreL3Dungeon(int32_t a1, int32_t a2, int32_t a3)
 				}
 				// 0x46770
 				g34 = *(int32_t *)(g23 - 0x7540);
-				function_eb590();
+				memcpy();
 				function_c9acc(v3);
 				int32_t result = MemFreeDbg(&v3); // 0x46790
 				g35 = v1;
