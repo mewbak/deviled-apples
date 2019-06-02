@@ -335,7 +335,7 @@ int32_t init_archives(int32_t a1)
 	g32 = *(int32_t *)(g23 - 0x61dc);
 	g33 = *(int32_t *)(g23 - 0x61d8);
 	g36 = *(int32_t *)(g23 - 0x7204);
-	function_e9dd8();
+	memset();
 	int32_t v2;
 	int32_t v3 = v2 + 0x3252; // 0x54ecc
 	*(int32_t *)g35 = 20;
@@ -400,7 +400,7 @@ int32_t init_create_window(int32_t a1)
 	int32_t v5 = &v4; // 0x54fc4
 	g34 = v5;
 	g37 = 48;
-	function_e9dd8();
+	memset();
 	v4 = 48;
 	g36 = 0;
 	g34 = 4;

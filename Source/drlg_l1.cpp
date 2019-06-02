@@ -1559,22 +1559,22 @@ int32_t DRLG_Init_Globals(void)
 {
 	int32_t v1 = g10; // 0x38f18
 	g34 = *(int32_t *)*(int32_t *)(g23 - 0x779c);
-	function_e9dd8();
+	memset();
 	int32_t v2;
 	g34 = *(int32_t *)*(int32_t *)(v2 - 0x7680);
-	function_e9dd8();
+	memset();
 	g34 = *(int32_t *)*(int32_t *)(v2 - 0x767c);
-	function_e9dd8();
+	memset();
 	g34 = *(int32_t *)*(int32_t *)(v2 - 0x7630);
-	function_e9dd8();
+	memset();
 	g34 = *(int32_t *)*(int32_t *)(v2 - 0x7684);
-	function_e9dd8();
+	memset();
 	g34 = *(int32_t *)*(int32_t *)(v2 - 0x768c);
-	function_e9dd8();
+	memset();
 	g34 = *(int32_t *)*(int32_t *)(v2 - 0x7594);
-	function_e9dd8();
+	memset();
 	g34 = *(int32_t *)*(int32_t *)(v2 - 0x7598);
-	function_e9dd8();
+	memset();
 	int32_t v3;     // 0x39004
 	int32_t result; // 0x39008
 	if (*(int32_t *)*(int32_t *)(v2 - 0x752c) != 0) {
@@ -1583,7 +1583,7 @@ int32_t DRLG_Init_Globals(void)
 		// 0x38ff8
 		v3 = *(int32_t *)*(int32_t *)(v2 - 0x758c);
 		g34 = v3;
-		result = function_ebab8(v3, 0x3100, 0);
+		result = memset(v3, 0x3100, 0);
 		g10 = v1;
 		return result;
 	}
@@ -1601,7 +1601,7 @@ int32_t DRLG_Init_Globals(void)
 	// 0x38ff8
 	v3 = *(int32_t *)*(int32_t *)(v2 - 0x758c);
 	g34 = v3;
-	result = function_ebab8(v3, 0x3100, v4);
+	result = memset(v3, 0x3100, v4);
 	g10 = v1;
 	return result;
 }

@@ -9,16 +9,16 @@ int32_t FillSolidBlockTbls(int32_t a1)
 	g34 = v2;
 	g33 = *(int32_t *)(g23 - 0x7230);
 	g35 = *(int32_t *)(g23 - 0x722c);
-	function_e9dd8();
+	memset();
 	g34 = g35;
-	function_e9dd8();
+	memset();
 	g34 = g33;
-	function_e9dd8();
+	memset();
 	g34 = g32;
-	function_e9dd8();
+	memset();
 	g34 = g31;
 	g37 = 2049;
-	function_e9dd8();
+	memset();
 	int32_t v3;
 	unsigned char v4 = *(char *)*(int32_t *)(v3 - 0x7794); // 0x51a50
 	int32_t v5;                                            // ctr
@@ -1681,7 +1681,7 @@ int32_t function_52494(void)
 		}
 		// 0x52524
 		g34 = *(int32_t *)v6;
-		function_e9dd8();
+		memset();
 		// branch -> 0x52538
 	}
 	// 0x52538
@@ -2129,10 +2129,10 @@ int32_t DRLG_InitTrans(int32_t a1)
 {
 	// 0x5289c
 	g34 = *(int32_t *)*(int32_t *)(g23 - 0x7588);
-	function_e9dd8();
+	memset();
 	int32_t v1;
 	g34 = *(int32_t *)(v1 - 0x7268);
-	function_e9dd8();
+	memset();
 	int32_t result = *(int32_t *)(v1 - 0x7518); // 0x528cc
 	*(char *)result = 1;
 	return result;

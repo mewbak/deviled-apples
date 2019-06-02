@@ -334,7 +334,7 @@ int32_t gamemenu_sound_music_toggle(int32_t *a1, int32_t a2, int32_t a3)
 		*(int32_t *)a2 = a2 | -0x40000000;
 		*(int32_t *)(a2 + 4) = v1;
 		gmenu_slider_steps((int32_t *)a2, 17);
-		result = function_54568((int32_t *)a2, -1600, 0, a3);
+		result = gmenu_slider_set((int32_t *)a2, -1600, 0, a3);
 		// branch -> 0x515fc
 	}
 	// 0x515fc
@@ -385,7 +385,7 @@ int32_t gamemenu_get_gamma(int32_t a1)
 	int32_t v3 = UpdateGamma(0); // 0x51704
 	int32_t v4 = g36;            // 0x5170c
 	g36 = v1;
-	return function_54568((int32_t *)v4, 30, 100, v3);
+	return gmenu_slider_set((int32_t *)v4, 30, 100, v3);
 }
 
 // Address range: 0x51730 - 0x51760

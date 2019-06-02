@@ -5,7 +5,7 @@ int32_t InitL3Dungeon(void)
 	int32_t v1 = *(int32_t *)(g23 - 0x77cc); // 0x41e48
 	int32_t v2 = v1;                         // r31
 	g34 = v1;
-	function_e9dd8();
+	memset();
 	int32_t v3;
 	int32_t v4 = *(int32_t *)(v3 - 0x7514); // 0x41e64
 	int32_t v5 = 0;                         // r6

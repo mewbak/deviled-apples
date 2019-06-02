@@ -178,10 +178,10 @@ int32_t function_46930(void)
 {
 	// 0x46930
 	g34 = *(int32_t *)(g23 - 0x72c8);
-	function_e9dd8();
+	memset();
 	int32_t v1;
 	g34 = *(int32_t *)(v1 - 0x72cc);
-	function_e9dd8();
+	memset();
 	int32_t v2 = *(int32_t *)(v1 - 0x77cc); // 0x4695c
 	int32_t v3 = 0;                         // r8
 	int32_t v4 = *(int32_t *)(v1 - 0x7514); // 0x46964

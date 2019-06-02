@@ -89,7 +89,7 @@ int32_t FreeGMenu(int32_t a1)
 }
 
 // Address range: 0x53cb8 - 0x53d44
-int32_t function_53cb8(int32_t a1)
+int32_t gmenu_init_menu(int32_t a1)
 {
 	int32_t v1 = 0; // r0
 	*(int32_t *)(g23 - 0x4e70) = 0;
@@ -234,7 +234,7 @@ int32_t gmenu_call_proc(int32_t result)
 }
 
 // Address range: 0x53ec8 - 0x53f48
-int32_t function_53ec8(int32_t result, int32_t a2, int32_t a3, int32_t a4)
+int32_t gmenu_clear_buffer(int32_t result, int32_t a2, int32_t a3, int32_t a4)
 {
 	int32_t v1 = g10;                                                  // 0x53ecc
 	int32_t v2 = *(int32_t *)(4 * a2 + *(int32_t *)(g23 - 0x7698));    // 0x53ef4
@@ -246,7 +246,7 @@ int32_t function_53ec8(int32_t result, int32_t a2, int32_t a3, int32_t a4)
 		return result;
 	}
 	g34 = v3;
-	int32_t result2 = function_ebab8(v3, a3, 205); // 0x53f14
+	int32_t result2 = memset(v3, a3, 205); // 0x53f14
 	// 0x53f2c
 	g10 = v1;
 	while (v4 != 0) {
@@ -255,7 +255,7 @@ int32_t function_53ec8(int32_t result, int32_t a2, int32_t a3, int32_t a4)
 		// 0x53f08
 		v3 -= 768;
 		g34 = v3;
-		result2 = function_ebab8(v3, a3, 205);
+		result2 = memset(v3, a3, 205);
 		// 0x53f2c
 		g10 = v1;
 		// branch -> 0x53f08
@@ -264,7 +264,7 @@ int32_t function_53ec8(int32_t result, int32_t a2, int32_t a3, int32_t a4)
 }
 
 // Address range: 0x53f48 - 0x53fa4
-int32_t function_53f48(void)
+int32_t gmenu_get_lfont(void)
 {
 	// 0x53f48
 	if (__asm_rlwinm_(g34, 0, 1, 1) != 0) {
@@ -305,7 +305,7 @@ int32_t gmenu_draw_menu_item(int32_t *a1, int32_t a2)
 	g34 = (int32_t)a1;
 	g31 = g34;
 	g32 = a2;
-	int32_t v1 = function_53f48(); // 0x53fbc
+	int32_t v1 = gmenu_get_lfont(); // 0x53fbc
 	g36 = v1;
 	if (__asm_rlwinm_(v1, 0, 1, 1) == 0) {
 		// branch -> 0x54040
@@ -320,7 +320,7 @@ int32_t gmenu_draw_menu_item(int32_t *a1, int32_t a2)
 		}
 		int32_t v5 = 256 * (v2 % 0x1000) / v4; // 0x54010
 		g33 = v5;
-		function_53ec8(g35 + 2, g32 - 12, v5 + 13, 28);
+		gmenu_clear_buffer(g35 + 2, g32 - 12, v5 + 13, 28);
 		v1 = CelDecodeOnly(g33 + g35 + 2, g32 - 12, *(int32_t *)(g23 - 0x4e68), 1, 27);
 		// branch -> 0x54040
 	}
@@ -446,7 +446,7 @@ int32_t gmenu_draw(int32_t a1)
 }
 
 // Address range: 0x54198 - 0x54224
-int32_t function_54198(int32_t result)
+int32_t gmenu_left_right(int32_t result)
 {
 	uint32_t v1 = *(int32_t *)*(int32_t *)(g23 - 0x4e78); // 0x541a8
 	if (__asm_rlwinm_(v1, 0, 1, 1) == 0) {
@@ -511,7 +511,7 @@ int32_t function_54224(int32_t a1)
 }
 
 // Address range: 0x542f8 - 0x54350
-int32_t function_542f8(int32_t *a1)
+int32_t gmenu_valid_mouse_pos(int32_t *a1)
 {
 	int32_t v1 = (int32_t)a1; // r3
 	*a1 = 282;
@@ -533,13 +533,13 @@ int32_t function_542f8(int32_t *a1)
 }
 
 // Address range: 0x54350 - 0x543e8
-int32_t function_54350(void)
+int32_t gmenu_on_mouse_move(void)
 {
 	// 0x54350
 	int32_t result;
 	if (*(char *)(g23 - 0x4e84) != 0) {
 		int32_t v1 = 0; // bp-8
-		function_542f8(&v1);
+		gmenu_valid_mouse_pos(&v1);
 		int32_t v2 = *(int32_t *)(g23 - 0x4e78); // 0x54378
 		g34 = 0;
 		v1 = v1 * __asm_rlwinm(*(int32_t *)v2, 20, 20, 31) / 256;
@@ -628,7 +628,7 @@ int32_t gmenu_left_mouse(int32_t a1)
 	}
 	// 0x544ac
 	g34 = g36;
-	int32_t v9 = function_53f48() / 2;                     // 0x544b8
+	int32_t v9 = gmenu_get_lfont() / 2;                     // 0x544b8
 	uint32_t v10 = *(int32_t *)*(int32_t *)(g23 - 0x76a8); // 0x544c0
 	if (v10 < 320 - v9) {
 		// 0x544cc
@@ -656,8 +656,8 @@ int32_t gmenu_left_mouse(int32_t a1)
 		} else {
 			// 0x54500
 			int32_t v11; // bp-24
-			*(char *)(g23 - 0x4e84) = (char)function_542f8(&v11);
-			function_54350();
+			*(char *)(g23 - 0x4e84) = (char)gmenu_valid_mouse_pos(&v11);
+			gmenu_on_mouse_move();
 			// branch -> 0x54528
 		}
 		// 0x54528
@@ -670,7 +670,7 @@ int32_t gmenu_left_mouse(int32_t a1)
 }
 
 // Address range: 0x54540 - 0x54568
-int32_t function_54540(int32_t *a1, int32_t a2)
+int32_t gmenu_enable(int32_t *a1, int32_t a2)
 {
 	int32_t result = (int32_t)a1;
 	if (a2 == 0) {
@@ -684,7 +684,7 @@ int32_t function_54540(int32_t *a1, int32_t a2)
 }
 
 // Address range: 0x54568 - 0x545b8
-int32_t function_54568(int32_t *a1, int32_t a2, int32_t a3, int32_t a4)
+int32_t gmenu_slider_set(int32_t *a1, int32_t a2, int32_t a3, int32_t a4)
 {
 	int32_t result = (int32_t)a1;
 	int32_t v1 = __asm_rlwinm(result, 20, 20, 31); // 0x5456c
