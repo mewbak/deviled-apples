@@ -71,7 +71,7 @@ lab_0x2c87c:
 }
 
 // Address range: 0x2c908 - 0x2cf34
-int32_t function_2c908(void)
+int32_t SetSpellTrans(void)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x7694); // 0x2c910
 	int32_t v2 = v1;                         // r4
@@ -985,7 +985,7 @@ int32_t function_2cf34(void)
 			}
 			// 0x2d010
 			g34 = v14;
-			function_2c908();
+			SetSpellTrans();
 			v15 = v10;
 			v16 = g23;
 			if (v15 == -1) {
@@ -1022,7 +1022,7 @@ int32_t function_2cf34(void)
 		}
 		// 0x2d010
 		g34 = v14;
-		function_2c908();
+		SetSpellTrans();
 		v15 = v10;
 		v16 = g23;
 		if (v15 == -1) {
@@ -1065,7 +1065,7 @@ int32_t function_2cf34(void)
 		}
 		// 0x2d010
 		g34 = v14;
-		function_2c908();
+		SetSpellTrans();
 		v15 = v10;
 		v16 = g23;
 		if (v15 == -1) {
@@ -1118,7 +1118,7 @@ int32_t function_2cf34(void)
 	}
 	// 0x2d010
 	g34 = v14;
-	function_2c908();
+	SetSpellTrans();
 	v15 = v10;
 	v16 = g23;
 	if (v15 == -1) {
@@ -1164,7 +1164,7 @@ int32_t DrawSpellList(void)
 		if (v2 == 2) {
 			// 0x2d140
 			g34 = 2;
-			function_2c908();
+			SetSpellTrans();
 			int32_t v9 = g28 + 0x55ec * *(int32_t *)g29 + 276; // 0x2d15c
 			g16 = *(int32_t *)(v9 + 4);
 			v3 = 44;
@@ -1175,7 +1175,7 @@ int32_t DrawSpellList(void)
 			if (v2 > 2) {
 				// 0x2d170
 				g34 = 3;
-				function_2c908();
+				SetSpellTrans();
 				int32_t v10 = g28 + 0x55ec * *(int32_t *)g29 + 0x5560; // 0x2d18c
 				g16 = *(int32_t *)(v10 + 4);
 				v3 = 45;
@@ -1188,7 +1188,7 @@ int32_t DrawSpellList(void)
 				if (v2 == 0) {
 					// 0x2d0e8
 					g34 = 0;
-					function_2c908();
+					SetSpellTrans();
 					int32_t v13 = g28 + 0x55ec * *(int32_t *)g29 + 268; // 0x2d104
 					g16 = *(int32_t *)(v13 + 4);
 					v3 = 46;
@@ -1233,7 +1233,7 @@ int32_t DrawSpellList(void)
 							int32_t v22 = v21 < 0 ? 0 : v21;
 							g22 = v22;
 							g34 = v22 < 1 ? 4 : 1;
-							function_2c908();
+							SetSpellTrans();
 							// branch -> 0x2d22c
 						}
 						// 0x2d22c
@@ -1242,7 +1242,7 @@ int32_t DrawSpellList(void)
 							if (*(int32_t *)(v4 + 24) == 0) {
 								// 0x2d24c
 								g34 = 4;
-								function_2c908();
+								SetSpellTrans();
 								// branch -> 0x2d254
 							}
 						}
@@ -2948,7 +2948,7 @@ int32_t InitControlPan(int32_t a1)
 	*(int32_t *)(g23 - 0x4fa8) = LoadFileInMem(*(int32_t *)(g23 - 0x64a8), NULL);
 	*(int32_t *)(g23 - 0x4fb0) = LoadFileInMem(*(int32_t *)(g23 - 0x64ac), NULL);
 	g34 = 0;
-	function_2c908();
+	SetSpellTrans();
 	int32_t v4 = LoadFileInMem(*(int32_t *)(g23 - 0x64b0), NULL); // 0x2e404
 	int32_t v5 = v4;                                              // bp-48
 	function_4ecc4(*(int32_t *)(g23 - 0x4fb8), 0, 143, 640, v4, 1, 640, v4);
@@ -16330,7 +16330,7 @@ int32_t RedBack(int32_t a1)
 }
 
 // Address range: 0x30dd0 - 0x30ec8
-int32_t function_30dd0(int32_t result, int32_t a2, int32_t a3, char *a4, int32_t a5)
+int32_t PrintSBookStr(int32_t result, int32_t a2, int32_t a3, char *a4, int32_t a5)
 {
 	int32_t v1 = (int32_t)a4;  // r6
 	int32_t v2 = g10;          // 0x30dd4
@@ -16521,7 +16521,7 @@ int32_t function_30dd0(int32_t result, int32_t a2, int32_t a3, char *a4, int32_t
 }
 
 // Address range: 0x30ec8 - 0x31024
-int32_t function_30ec8(int32_t a1, int32_t a2)
+int32_t GetSBookTrans(int32_t a1, int32_t a2)
 {
 	int32_t v1 = g10; // 0x30ed0
 	g32 = a2;
@@ -16657,8 +16657,8 @@ int32_t DrawSpellBook(int32_t a1)
 			// 0x310fc
 			if (g27 % 2 != 0) {
 				// 0x31128
-				g34 = function_30ec8(v8, 1);
-				function_2c908();
+				g34 = GetSBookTrans(v8, 1);
+				SetSpellTrans();
 				char v14 = *(char *)(g36 + g23 - 0x2cf8); // 0x3114c
 				DrawSpellCel(395, g33, *(int32_t *)(g23 - 0x4fd0), (int32_t)v14, 37);
 				int32_t v15 = g30 + 0x55ec * *(int32_t *)g32; // 0x31164
@@ -16670,7 +16670,7 @@ int32_t DrawSpellBook(int32_t a1)
 					if (0x1000000 * g31 / 0x1000000 == (int32_t) * (char *)(v15 + 184)) {
 						// 0x31188
 						g34 = 0;
-						function_2c908();
+						SetSpellTrans();
 						DrawSpellCel(395, g33, *(int32_t *)(g23 - 0x4fd0), 43, 37);
 						v18 = g36;
 						// branch -> 0x311a8
@@ -16679,8 +16679,8 @@ int32_t DrawSpellBook(int32_t a1)
 					}
 				}
 				int32_t v19 = *(int32_t *)(*(int32_t *)(g23 - 0x769c) + (56 * v18 | 4)); // 0x311bc
-				function_30dd0(10, g33 - 23, 0, (char *)v19, 0);
-				uint32_t v20 = 0x1000000 * function_30ec8(g36, 0); // 0x311d8
+				PrintSBookStr(10, g33 - 23, 0, (char *)v19, 0);
+				uint32_t v20 = 0x1000000 * GetSBookTrans(g36, 0); // 0x311d8
 				int32_t v21;
 				int32_t v22;
 				int32_t v23;
@@ -16702,7 +16702,7 @@ int32_t DrawSpellBook(int32_t a1)
 							// branch -> 0x312f8
 						lab_0x312f8_2:
 							// 0x312f8
-							result = function_30dd0(10, g33 - 12, 0, (char *)g35, 0);
+							result = PrintSBookStr(10, g33 - 12, 0, (char *)g35, 0);
 							// branch -> 0x31310
 						lab_0x31310_2:
 							// 0x31310
@@ -16723,10 +16723,10 @@ int32_t DrawSpellBook(int32_t a1)
 					// 0x31224
 					g34 = *(int32_t *)g32;
 					g37 = g36;
-					g31 = function_b5a18() / 64;
+					g31 = GetManaAmount() / 64;
 					int32_t v24; // bp-84
 					int32_t v25; // bp-88
-					function_6cbc0(g36, (int32_t)&v24, (int32_t)&v25);
+					GetDamageAmt(g36, (int32_t)&v24, (int32_t)&v25);
 					if (v24 == -1) {
 						// 0x31268
 						g37 = g22;
@@ -16749,7 +16749,7 @@ int32_t DrawSpellBook(int32_t a1)
 						// branch -> 0x31290
 					}
 					// 0x31290
-					function_30dd0(10, g33 - 1, 0, (char *)g35, 0);
+					PrintSBookStr(10, g33 - 1, 0, (char *)g35, 0);
 					int32_t v26 = g30 + 0x55ec * *(int32_t *)g32;                    // 0x312b4
 					char v27 = *(char *)(v26 + g36 + 193);                           // 0x312b8
 					int32_t v28 = (int32_t) * (char *)(v26 + 0x5570) + (int32_t)v27; // 0x312c8
@@ -16777,7 +16777,7 @@ int32_t DrawSpellBook(int32_t a1)
 						goto lab_0x312f8_2;
 					}
 				}
-				int32_t v31 = function_30dd0(10, g33 - 12, 0, (char *)g35, 0); // 0x3130c
+				int32_t v31 = PrintSBookStr(10, g33 - 12, 0, (char *)g35, 0); // 0x3130c
 				v21 = g29;
 				v22 = g28;
 				v23 = g33;
