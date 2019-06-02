@@ -23,7 +23,7 @@ int32_t dthread_handler(void)
 			g34 = v5;
 			if (v5 + (int32_t) "MoveWindow" == 0xffff) {
 				// 0x4bc90
-				g37 = function_29928();
+				g37 = TraceLastError();
 				app_fatal(g36);
 				// branch -> 0x4bca0
 			}
@@ -206,7 +206,7 @@ int32_t function_4be94(int32_t a1)
 	*(int32_t *)(v3 - 0x4edc) = v2;
 	if (v2 == 0) {
 		// 0x4bed4
-		g37 = function_29928();
+		g37 = TraceLastError();
 		app_fatal(*(int32_t *)(g23 - 0x62b4));
 		// branch -> 0x4bee4
 	}
@@ -220,7 +220,7 @@ int32_t function_4be94(int32_t a1)
 	int32_t result2; // 0x4bf38
 	if (v5 == 0) {
 		// 0x4bf1c
-		g37 = function_29928();
+		g37 = TraceLastError();
 		result2 = app_fatal(*(int32_t *)(g23 - 0x62bc));
 		// branch -> 0x4bf2c
 	} else {
@@ -315,7 +315,7 @@ int32_t dthread_cleanup(int32_t a1)
 		int32_t v15 = v5; // 0x4bfb8
 		if (v14 + (int32_t) "MoveWindow" == 0xffff) {
 			// 0x4bfa8
-			g37 = function_29928();
+			g37 = TraceLastError();
 			app_fatal(*(int32_t *)(g23 - 0x62c0));
 			v15 = g23;
 			// branch -> 0x4bfb8

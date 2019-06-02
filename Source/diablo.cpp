@@ -137,7 +137,7 @@ int32_t start_game(int32_t a1)
 		*(int32_t *)v21 = 1;
 		v22 = function_323d4(v21, v20);
 		v17 = function_ca930(v22);
-		function_34344(v17);
+		LoadDebugGFX(v17);
 		music_stop();
 		v18 = ShowProgress(g20);
 		v19 = function_53cb8(v18);
@@ -190,7 +190,7 @@ int32_t start_game(int32_t a1)
 		*(int32_t *)v21 = 1;
 		v22 = function_323d4(v21, v20);
 		v17 = function_ca930(v22);
-		function_34344(v17);
+		LoadDebugGFX(v17);
 		music_stop();
 		v18 = ShowProgress(g20);
 		v19 = function_53cb8(v18);
@@ -239,7 +239,7 @@ int32_t start_game(int32_t a1)
 		*(int32_t *)v21 = 1;
 		v22 = function_323d4(v21, v20);
 		v17 = function_ca930(v22);
-		function_34344(v17);
+		LoadDebugGFX(v17);
 		music_stop();
 		v18 = ShowProgress(g20);
 		v19 = function_53cb8(v18);
@@ -290,7 +290,7 @@ int32_t start_game(int32_t a1)
 	*(int32_t *)v21 = 1;
 	v22 = function_323d4(v21, v20);
 	v17 = function_ca930(v22);
-	function_34344(v17);
+	LoadDebugGFX(v17);
 	music_stop();
 	v18 = ShowProgress(g20);
 	v19 = function_53cb8(v18);
@@ -3028,7 +3028,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																					}
 																				} else {
 																					// 0x36544
-																					result = function_5498c();
+																					result = HelpScrollUp();
 																					// branch -> 0x366f8
 																				}
 																				// 0x366f8
@@ -3062,7 +3062,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																					}
 																				} else {
 																					// 0x3659c
-																					result = function_549a8();
+																					result = HelpScrollDown();
 																					// branch -> 0x366f8
 																				}
 																				// 0x366f8
@@ -3344,7 +3344,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x36544
-																														function_5498c();
+																														HelpScrollUp();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -3377,7 +3377,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x3659c
-																															function_549a8();
+																															HelpScrollDown();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -3675,7 +3675,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																													}
 																												} else {
 																													// 0x36544
-																													function_5498c();
+																													HelpScrollUp();
 																													// branch -> 0x366f8
 																												}
 																												// Detected a possible infinite recursion (goto support failed); quitting...
@@ -3708,7 +3708,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x3659c
-																														function_549a8();
+																														HelpScrollDown();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -4006,7 +4006,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																												}
 																											} else {
 																												// 0x36544
-																												function_5498c();
+																												HelpScrollUp();
 																												// branch -> 0x366f8
 																											}
 																											// Detected a possible infinite recursion (goto support failed); quitting...
@@ -4039,7 +4039,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																													}
 																												} else {
 																													// 0x3659c
-																													function_549a8();
+																													HelpScrollDown();
 																													// branch -> 0x366f8
 																												}
 																												// Detected a possible infinite recursion (goto support failed); quitting...
@@ -4472,7 +4472,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																		}
 																																	} else {
 																																		// 0x36544
-																																		function_5498c();
+																																		HelpScrollUp();
 																																		// branch -> 0x366f8
 																																	}
 																																	// Detected a possible infinite recursion (goto support failed); quitting...
@@ -4505,7 +4505,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																			}
 																																		} else {
 																																			// 0x3659c
-																																			function_549a8();
+																																			HelpScrollDown();
 																																			// branch -> 0x366f8
 																																		}
 																																		// Detected a possible infinite recursion (goto support failed); quitting...
@@ -4803,7 +4803,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																	}
 																																} else {
 																																	// 0x36544
-																																	function_5498c();
+																																	HelpScrollUp();
 																																	// branch -> 0x366f8
 																																}
 																																// Detected a possible infinite recursion (goto support failed); quitting...
@@ -4836,7 +4836,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																		}
 																																	} else {
 																																		// 0x3659c
-																																		function_549a8();
+																																		HelpScrollDown();
 																																		// branch -> 0x366f8
 																																	}
 																																	// Detected a possible infinite recursion (goto support failed); quitting...
@@ -5134,7 +5134,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																}
 																															} else {
 																																// 0x36544
-																																function_5498c();
+																																HelpScrollUp();
 																																// branch -> 0x366f8
 																															}
 																															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -5167,7 +5167,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																	}
 																																} else {
 																																	// 0x3659c
-																																	function_549a8();
+																																	HelpScrollDown();
 																																	// branch -> 0x366f8
 																																}
 																																// Detected a possible infinite recursion (goto support failed); quitting...
@@ -5465,7 +5465,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x36544
-																															function_5498c();
+																															HelpScrollUp();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -5498,7 +5498,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																}
 																															} else {
 																																// 0x3659c
-																																function_549a8();
+																																HelpScrollDown();
 																																// branch -> 0x366f8
 																															}
 																															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -5903,7 +5903,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x36544
-																															function_5498c();
+																															HelpScrollUp();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -5936,7 +5936,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																}
 																															} else {
 																																// 0x3659c
-																																function_549a8();
+																																HelpScrollDown();
 																																// branch -> 0x366f8
 																															}
 																															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -6234,7 +6234,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x36544
-																														function_5498c();
+																														HelpScrollUp();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -6267,7 +6267,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x3659c
-																															function_549a8();
+																															HelpScrollDown();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -6565,7 +6565,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																													}
 																												} else {
 																													// 0x36544
-																													function_5498c();
+																													HelpScrollUp();
 																													// branch -> 0x366f8
 																												}
 																												// Detected a possible infinite recursion (goto support failed); quitting...
@@ -6598,7 +6598,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x3659c
-																														function_549a8();
+																														HelpScrollDown();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -6896,7 +6896,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																												}
 																											} else {
 																												// 0x36544
-																												function_5498c();
+																												HelpScrollUp();
 																												// branch -> 0x366f8
 																											}
 																											// Detected a possible infinite recursion (goto support failed); quitting...
@@ -6929,7 +6929,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																													}
 																												} else {
 																													// 0x3659c
-																													function_549a8();
+																													HelpScrollDown();
 																													// branch -> 0x366f8
 																												}
 																												// Detected a possible infinite recursion (goto support failed); quitting...
@@ -7363,7 +7363,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																	}
 																																} else {
 																																	// 0x36544
-																																	function_5498c();
+																																	HelpScrollUp();
 																																	// branch -> 0x366f8
 																																}
 																																// Detected a possible infinite recursion (goto support failed); quitting...
@@ -7396,7 +7396,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																		}
 																																	} else {
 																																		// 0x3659c
-																																		function_549a8();
+																																		HelpScrollDown();
 																																		// branch -> 0x366f8
 																																	}
 																																	// Detected a possible infinite recursion (goto support failed); quitting...
@@ -7694,7 +7694,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																}
 																															} else {
 																																// 0x36544
-																																function_5498c();
+																																HelpScrollUp();
 																																// branch -> 0x366f8
 																															}
 																															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -7727,7 +7727,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																	}
 																																} else {
 																																	// 0x3659c
-																																	function_549a8();
+																																	HelpScrollDown();
 																																	// branch -> 0x366f8
 																																}
 																																// Detected a possible infinite recursion (goto support failed); quitting...
@@ -8025,7 +8025,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x36544
-																															function_5498c();
+																															HelpScrollUp();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -8058,7 +8058,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																}
 																															} else {
 																																// 0x3659c
-																																function_549a8();
+																																HelpScrollDown();
 																																// branch -> 0x366f8
 																															}
 																															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -8356,7 +8356,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x36544
-																														function_5498c();
+																														HelpScrollUp();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -8389,7 +8389,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x3659c
-																															function_549a8();
+																															HelpScrollDown();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -8794,7 +8794,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x36544
-																														function_5498c();
+																														HelpScrollUp();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -8827,7 +8827,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x3659c
-																															function_549a8();
+																															HelpScrollDown();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -9125,7 +9125,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																													}
 																												} else {
 																													// 0x36544
-																													function_5498c();
+																													HelpScrollUp();
 																													// branch -> 0x366f8
 																												}
 																												// Detected a possible infinite recursion (goto support failed); quitting...
@@ -9158,7 +9158,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x3659c
-																														function_549a8();
+																														HelpScrollDown();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -9456,7 +9456,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																												}
 																											} else {
 																												// 0x36544
-																												function_5498c();
+																												HelpScrollUp();
 																												// branch -> 0x366f8
 																											}
 																											// Detected a possible infinite recursion (goto support failed); quitting...
@@ -9489,7 +9489,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																													}
 																												} else {
 																													// 0x3659c
-																													function_549a8();
+																													HelpScrollDown();
 																													// branch -> 0x366f8
 																												}
 																												// Detected a possible infinite recursion (goto support failed); quitting...
@@ -9787,7 +9787,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																											}
 																										} else {
 																											// 0x36544
-																											function_5498c();
+																											HelpScrollUp();
 																											// branch -> 0x366f8
 																										}
 																										// Detected a possible infinite recursion (goto support failed); quitting...
@@ -9820,7 +9820,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																												}
 																											} else {
 																												// 0x3659c
-																												function_549a8();
+																												HelpScrollDown();
 																												// branch -> 0x366f8
 																											}
 																											// Detected a possible infinite recursion (goto support failed); quitting...
@@ -10254,7 +10254,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																}
 																															} else {
 																																// 0x36544
-																																function_5498c();
+																																HelpScrollUp();
 																																// branch -> 0x366f8
 																															}
 																															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -10287,7 +10287,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																	}
 																																} else {
 																																	// 0x3659c
-																																	function_549a8();
+																																	HelpScrollDown();
 																																	// branch -> 0x366f8
 																																}
 																																// Detected a possible infinite recursion (goto support failed); quitting...
@@ -10585,7 +10585,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x36544
-																															function_5498c();
+																															HelpScrollUp();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -10618,7 +10618,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																}
 																															} else {
 																																// 0x3659c
-																																function_549a8();
+																																HelpScrollDown();
 																																// branch -> 0x366f8
 																															}
 																															// Detected a possible infinite recursion (goto support failed); quitting...
@@ -10916,7 +10916,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x36544
-																														function_5498c();
+																														HelpScrollUp();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -10949,7 +10949,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																															}
 																														} else {
 																															// 0x3659c
-																															function_549a8();
+																															HelpScrollDown();
 																															// branch -> 0x366f8
 																														}
 																														// Detected a possible infinite recursion (goto support failed); quitting...
@@ -11247,7 +11247,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																													}
 																												} else {
 																													// 0x36544
-																													function_5498c();
+																													HelpScrollUp();
 																													// branch -> 0x366f8
 																												}
 																												// Detected a possible infinite recursion (goto support failed); quitting...
@@ -11280,7 +11280,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																														}
 																													} else {
 																														// 0x3659c
-																														function_549a8();
+																														HelpScrollDown();
 																														// branch -> 0x366f8
 																													}
 																													// Detected a possible infinite recursion (goto support failed); quitting...
@@ -11708,7 +11708,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																	}
 																																} else {
 																																	// 0x36544
-																																	function_5498c();
+																																	HelpScrollUp();
 																																	// branch -> 0x366f8
 																																}
 																																// Detected a possible infinite recursion (goto support failed); quitting...
@@ -11741,7 +11741,7 @@ int32_t PressKey(int32_t a1, int32_t a2, int32_t a3)
 																																		}
 																																	} else {
 																																		// 0x3659c
-																																		function_549a8();
+																																		HelpScrollDown();
 																																		// branch -> 0x366f8
 																																	}
 																																	// Detected a possible infinite recursion (goto support failed); quitting...
