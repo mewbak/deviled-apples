@@ -1149,7 +1149,7 @@ int32_t DrawSpellList(void)
 	g28 = *(int32_t *)(g23 - 0x77a8);
 	*(int32_t *)*(int32_t *)(g23 - 0x76a0) = -1;
 	*(char *)g20 = (char)0;
-	function_2dc1c();
+	ClearPanel();
 	g25 = 0;
 	int32_t v2 = 0; // 0x2d0dc
 	// branch -> 0x2d0c0
@@ -1431,7 +1431,7 @@ int32_t DrawSpellList(void)
 												// branch -> 0x2d51c
 											}
 											// 0x2d51c
-											function_2dbac(g35, 1);
+											AddPanelString(g35, 1);
 											// branch -> 0x2d588
 										} else {
 											// 0x2d2d8
@@ -1457,7 +1457,7 @@ int32_t DrawSpellList(void)
 														// branch -> 0x2d57c
 													}
 													// 0x2d57c
-													function_2dbac(g35, 1);
+													AddPanelString(g35, 1);
 													// branch -> 0x2d588
 												}
 											} else {
@@ -1479,7 +1479,7 @@ int32_t DrawSpellList(void)
 															// 0x2d340
 															g37 = *(int32_t *)(g23 - 0x647c);
 															sprintf();
-															function_2dbac(g35, 1);
+															AddPanelString(g35, 1);
 															// branch -> 0x2d358
 														}
 														int32_t v55 = g22; // 0x2d358
@@ -1496,7 +1496,7 @@ int32_t DrawSpellList(void)
 															// branch -> 0x2d380
 														}
 														// 0x2d380
-														function_2dbac(g35, 1);
+														AddPanelString(g35, 1);
 														// branch -> 0x2d588
 													}
 												}
@@ -1517,7 +1517,7 @@ int32_t DrawSpellList(void)
 															g38 = g36 + 5;
 															g37 = g26;
 															sprintf();
-															function_2dbac(g35, 1);
+															AddPanelString(g35, 1);
 															v57 = g33;
 															v58 = g36;
 															// branch -> 0x2d5fc
@@ -1680,7 +1680,7 @@ int32_t function_2d6a8(int32_t a1)
 	*(int32_t *)v1 = 0;
 	if (*(int32_t *)v2 != -1) {
 		// 0x2d6dc
-		function_2dc1c();
+		ClearPanel();
 		result = *(int32_t *)(g23 - 0x76bc);
 		int32_t v4 = v3 + 0x55ec * *(int32_t *)*(int32_t *)(g23 - 0x77ac); // 0x2d6fc
 		*(int32_t *)(v4 + 180) = *(int32_t *)v2;
@@ -2440,7 +2440,7 @@ lab_0x2db88_3:;
 }
 
 // Address range: 0x2dbac - 0x2dc1c
-int32_t function_2dbac(int32_t a1, int32_t a2)
+int32_t AddPanelString(int32_t a1, int32_t a2)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x76c4); // 0x2dbb4
 	g37 = a1;
@@ -2463,7 +2463,7 @@ int32_t function_2dbac(int32_t a1, int32_t a2)
 }
 
 // Address range: 0x2dc1c - 0x2dc34
-int32_t function_2dc1c(void)
+int32_t ClearPanel(void)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x76c4); // 0x2dc1c
 	g37 = v1;
@@ -2474,7 +2474,7 @@ int32_t function_2dc1c(void)
 }
 
 // Address range: 0x2dc34 - 0x2dd68
-int32_t function_2dc34(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6)
+int32_t DrawPanelBox(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6)
 {
 	int32_t v1 = 640 - a3;                                               // r10
 	int32_t v2 = a3;                                                     // 0x2dc98
@@ -2609,7 +2609,7 @@ int32_t function_2dc34(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 int32_t function_2dd68(int32_t a1)
 {
 	// 0x2dd68
-	return function_2dc1c();
+	return ClearPanel();
 }
 
 // Address range: 0x2dd88 - 0x2de04
@@ -2768,7 +2768,7 @@ int32_t UpdateLifeFlask(void)
 	} else {
 		// 0x2e034
 		g39 = v6;
-		result = function_2dc34(96, 85 - v6, 88, v6, 160, 581 - v6);
+		result = DrawPanelBox(96, 85 - v6, 88, v6, 160, 581 - v6);
 		// branch -> 0x2e050
 	}
 	// 0x2e050
@@ -2901,7 +2901,7 @@ int32_t UpdateManaFlask(void)
 	if (v9 != 0) {
 		// 0x2e2e0
 		g39 = v9;
-		function_2dc34(464, 85 - v9, 88, v9, 528, 581 - v9);
+		DrawPanelBox(464, 85 - v9, 88, v9, 528, 581 - v9);
 		// branch -> 0x2e2fc
 	}
 	int32_t result = function_2cf34(); // 0x2e2fc
@@ -3085,7 +3085,7 @@ int32_t ClearCtrlPan(void)
 {
 	// 0x2e704
 	g39 = 128;
-	int32_t result = DrawInfoBox(function_2dc34(0, *(int32_t *)(g23 - 0x4fd8) + 16, 640, 128, 64, 512)); // 0x2e730
+	int32_t result = DrawInfoBox(DrawPanelBox(0, *(int32_t *)(g23 - 0x4fd8) + 16, 640, 128, 64, 512)); // 0x2e730
 	return result;
 }
 
@@ -3108,7 +3108,7 @@ int32_t function_2e744(void)
 			int32_t v6 = *(int32_t *)(v3 + 4); // 0x2e784
 			int32_t v7 = *(int32_t *)v3;       // 0x2e78c
 			g39 = 20;
-			function_2dc34(v7, v6 - 336, 71, 20, v7 + 64, v6 + 160);
+			DrawPanelBox(v7, v6 - 336, 71, 20, v7 + 64, v6 + 160);
 			// branch -> 0x2e7c8
 		} else {
 			int32_t v8 = *(int32_t *)(v3 + 4);       // 0x2e7b0
@@ -3625,7 +3625,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 	g17 = *(int32_t *)(g23 - 0x77ac);
 	g16 = *(int32_t *)(g23 - 0x77a8);
 	*(int32_t *)v1 = 0;
-	function_2dc1c();
+	ClearPanel();
 	g18 = 0;
 	int32_t v2 = g23 - 0x2c10; // 0x2ec70
 	int32_t v3 = g23 - 0x2cd0; // 0x2ec78
@@ -3678,7 +3678,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 									// 0x2ed14
 									g37 = g24;
 									sprintf();
-									function_2dbac(g31, 1);
+									AddPanelString(g31, 1);
 									// branch -> 0x2ed2c
 								}
 							lab_0x2ed2c:
@@ -3799,7 +3799,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 				*(int32_t *)g29 = 1;
 				*(int32_t *)g30 = 1;
 				strcpy();
-				function_2dbac(g31, 1);
+				AddPanelString(g31, 1);
 				int32_t v25 = g16 + 0x55ec * *(int32_t *)g17; // 0x2edd4
 				int32_t v26 = *(int32_t *)(v25 + 180);        // 0x2edd8
 				if (v26 == -1) {
@@ -3839,7 +3839,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 							g37 = *(int32_t *)(g23 - 0x6494);
 							g38 = *(int32_t *)(g36 + 56 * v26 + 4);
 							sprintf();
-							function_2dbac(g31, 1);
+							AddPanelString(g31, 1);
 							int32_t v28 = *(int32_t *)(g16 + 0x55ec * *(int32_t *)g17 + 2876); // 0x2f094
 							g38 = v28;
 							if (v28 == 1) {
@@ -3855,7 +3855,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 								// branch -> 0x2f0bc
 							}
 							// 0x2f0bc
-							result = function_2dbac(g31, 1);
+							result = AddPanelString(g31, 1);
 							// branch -> 0x2f0c8
 						} else {
 							result = v25;
@@ -3891,7 +3891,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 						g37 = *(int32_t *)(g23 - 0x6474);
 						g38 = *(int32_t *)(g36 + 56 * v26 + 8);
 						sprintf();
-						result = function_2dbac(g31, 1);
+						result = AddPanelString(g31, 1);
 						// branch -> 0x2f0c8
 					} else {
 						// 0x2ee00
@@ -3900,7 +3900,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 							g37 = *(int32_t *)(g23 - 0x6478);
 							g38 = *(int32_t *)(g36 + 56 * v26 + 4);
 							sprintf();
-							function_2dbac(g31, 1);
+							AddPanelString(g31, 1);
 							int32_t v29 = g16 + 0x55ec * *(int32_t *)g17;           // 0x2ee68
 							int32_t v30 = (int32_t) * (char *)(g18 + v29 + 193);    // 0x2ee7c
 							int32_t v31 = v30 + (int32_t) * (char *)(v29 + 0x5570); // 0x2ee80
@@ -3918,7 +3918,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 								// branch -> 0x2eeb4
 							}
 							// 0x2eeb4
-							result = function_2dbac(g31, 1);
+							result = AddPanelString(g31, 1);
 							// branch -> 0x2f0c8
 						} else {
 							result = v25;
@@ -3953,7 +3953,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 				g37 = *(int32_t *)(g23 - 0x6488);
 				g38 = *(int32_t *)(g36 + 56 * v26 + 4);
 				sprintf();
-				function_2dbac(g31, 1);
+				AddPanelString(g31, 1);
 				g38 = 0;
 				int32_t v33 = g16 + 0x55ec * *(int32_t *)g17; // 0x2eef4
 				int32_t v34 = *(int32_t *)(v33 + 0x4828);     // 0x2eef8
@@ -4110,7 +4110,7 @@ int32_t function_2ec14(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 					// branch -> 0x2f054
 				}
 				// 0x2f054
-				result = function_2dbac(g31, 1);
+				result = AddPanelString(g31, 1);
 				// branch -> 0x2f0c8
 				// 0x2f0c8
 				v20 = *(int32_t *)g33;
@@ -4409,7 +4409,7 @@ int32_t control_WriteStringToBuffer(int32_t a1)
 }
 
 // Address range: 0x2f3f8 - 0x2f4f0
-int32_t function_2f3f8(int32_t a1, char *a2, int32_t a3, int32_t a4)
+int32_t control_print_info_str(int32_t a1, char *a2, int32_t a3, int32_t a4)
 {
 	// 0x2f3f8
 	g37 = (int32_t)a2;
@@ -4601,7 +4601,7 @@ int32_t function_2f3f8(int32_t a1, char *a2, int32_t a3, int32_t a4)
 }
 
 // Address range: 0x2f4f0 - 0x2f5a4
-int32_t function_2f4f0(void)
+int32_t control_draw_info_str(void)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x76d0); // 0x2f4f8
 	int32_t v2 = *(int32_t *)(g23 - 0x76c4); // 0x2f4fc
@@ -4619,7 +4619,7 @@ int32_t function_2f4f0(void)
 		int32_t v8 = 0;   // 0x2f56c14
 		if (*v4 != 0) {
 			// 0x2f52c
-			function_2f3f8(0, v4, 1, *(int32_t *)v2);
+			control_print_info_str(0, v4, 1, *(int32_t *)v2);
 			g32 = 1;
 			v5 = g36;
 			v6 = g23;
@@ -4638,7 +4638,7 @@ int32_t function_2f4f0(void)
 			int32_t v13 = v10; // 0x2f568
 			while (true) {
 				int32_t v14 = *(int32_t *)v9;                                       // 0x2f564
-				int32_t v15 = function_2f3f8(v12 + v8, (char *)v13, v14, v11 - v7); // 0x2f574
+				int32_t v15 = control_print_info_str(v12 + v8, (char *)v13, v14, v11 - v7); // 0x2f574
 				int32_t v16 = g35 + 4;                                              // 0x2f578
 				g35 = v16;
 				int32_t v17 = g33 + 64; // 0x2f57c
@@ -4682,7 +4682,7 @@ int32_t DrawInfoBox(int32_t a1)
 	g33 = *(int32_t *)(g23 - 0x76a4);
 	g35 = *(int32_t *)(g23 - 0x77ac);
 	g36 = *(int32_t *)(g23 - 0x77a8);
-	function_2dc34(177, 62, 288, 60, 241, 558);
+	DrawPanelBox(177, 62, 288, 60, 241, 558);
 	if (*(int32_t *)*(int32_t *)(g23 - 0x76d4) == 0) {
 		// 0x2f608
 		if (*(int32_t *)v2 == 0) {
@@ -4693,7 +4693,7 @@ int32_t DrawInfoBox(int32_t a1)
 					// 0x2f634
 					*(char *)g33 = 0;
 					*(char *)g31 = (char)0;
-					function_2dc1c();
+					ClearPanel();
 					// branch -> 0x2f644
 				}
 			}
@@ -4712,7 +4712,7 @@ int32_t DrawInfoBox(int32_t a1)
 				int32_t v7 = v6 + v5;                  // 0x2f680
 				if (*(int32_t *)(v7 + 0x53dc) == 11) {
 					int32_t v8 = *(int32_t *)(v7 + 0x5498); // 0x2f690
-					function_314d0(v8);
+					get_pieces_str(v8);
 					g37 = *(int32_t *)(g23 - 0x6510);
 					g38 = v8;
 					sprintf();
@@ -4723,14 +4723,14 @@ int32_t DrawInfoBox(int32_t a1)
 						v4 = *(int32_t *)(g23 - 0x76c4);
 						if (*(int32_t *)v4 != 0) {
 							// 0x2f8b8
-							result = function_2f4f0();
+							result = control_draw_info_str();
 							// branch -> 0x2f8bc
 						} else {
 							result = v4;
 						}
 					} else {
 						// 0x2f8b8
-						result = function_2f4f0();
+						result = control_draw_info_str();
 						// branch -> 0x2f8bc
 					}
 					// 0x2f8bc
@@ -4740,8 +4740,8 @@ int32_t DrawInfoBox(int32_t a1)
 				// 0x2f6b4
 				if (*(int32_t *)(v7 + 0x5538) == 0) {
 					// 0x2f6c0
-					function_2dc1c();
-					function_2dbac(*(int32_t *)(g23 - 0x6514), 1);
+					ClearPanel();
+					AddPanelString(*(int32_t *)(g23 - 0x6514), 1);
 					*(int32_t *)*(int32_t *)(g23 - 0x76cc) = 1;
 					// branch -> 0x2f89c
 				} else {
@@ -4778,14 +4778,14 @@ int32_t DrawInfoBox(int32_t a1)
 					v4 = *(int32_t *)(g23 - 0x76c4);
 					if (*(int32_t *)v4 != 0) {
 						// 0x2f8b8
-						result = function_2f4f0();
+						result = control_draw_info_str();
 						// branch -> 0x2f8bc
 					} else {
 						result = v4;
 					}
 				} else {
 					// 0x2f8b8
-					result = function_2f4f0();
+					result = control_draw_info_str();
 					// branch -> 0x2f8bc
 				}
 				// 0x2f8bc
@@ -4795,13 +4795,13 @@ int32_t DrawInfoBox(int32_t a1)
 			unsigned char v10 = *(char *)*(int32_t *)(g23 - 0x7748); // 0x2f74c
 			if (v10 != -1) {
 				// 0x2f75c
-				function_60fb8((int32_t)v10);
+				GetItemStr((int32_t)v10);
 				// branch -> 0x2f760
 			}
 			unsigned char v11 = *(char *)*(int32_t *)(g23 - 0x774c); // 0x2f764
 			if (v11 != -1) {
 				// 0x2f774
-				function_9d828((int32_t)v11);
+				GetObjectStr((int32_t)v11);
 				// branch -> 0x2f778
 			}
 			int32_t v12 = *(int32_t *)g29; // 0x2f778
@@ -4824,16 +4824,16 @@ int32_t DrawInfoBox(int32_t a1)
 						g34 = g33;
 						g37 = 0x55ec * (int32_t)v13 + 316 + g36;
 						strcpy();
-						function_2dc1c();
+						ClearPanel();
 						g37 = *(int32_t *)(g23 - 0x6518);
 						v14 = *(char *)(g36 + 0x55ec * (int32_t) * (char *)g27 + 436);
 						g38 = v14;
 						sprintf();
-						function_2dbac(g32, 1);
+						AddPanelString(g32, 1);
 						g37 = *(int32_t *)(g23 - 0x651c);
 						g38 = *(int32_t *)(g36 + 0x55ec * (int32_t) * (char *)g27 + 404) / 64;
 						sprintf();
-						function_2dbac(g32, 1);
+						AddPanelString(g32, 1);
 						// branch -> 0x2f89c
 					}
 					// 0x2f89c
@@ -4842,14 +4842,14 @@ int32_t DrawInfoBox(int32_t a1)
 						v4 = *(int32_t *)(g23 - 0x76c4);
 						if (*(int32_t *)v4 != 0) {
 							// 0x2f8b8
-							result = function_2f4f0();
+							result = control_draw_info_str();
 							// branch -> 0x2f8bc
 						} else {
 							result = v4;
 						}
 					} else {
 						// 0x2f8b8
-						result = function_2f4f0();
+						result = control_draw_info_str();
 						// branch -> 0x2f8bc
 					}
 					// 0x2f8bc
@@ -4861,7 +4861,7 @@ int32_t DrawInfoBox(int32_t a1)
 				g34 = g33;
 				g37 = *(int32_t *)(g28 + 232 * v12 + 220);
 				strcpy();
-				function_2dc1c();
+				ClearPanel();
 				int32_t v15 = g28 + 232 * *(int32_t *)g29; // 0x2f7bc
 				if (*(char *)(v15 + 192) == 0) {
 					// 0x2f7dc
@@ -4881,16 +4881,16 @@ int32_t DrawInfoBox(int32_t a1)
 					g34 = g33;
 					g37 = 0x55ec * (int32_t)v13 + 316 + g36;
 					strcpy();
-					function_2dc1c();
+					ClearPanel();
 					g37 = *(int32_t *)(g23 - 0x6518);
 					v14 = *(char *)(g36 + 0x55ec * (int32_t) * (char *)g27 + 436);
 					g38 = v14;
 					sprintf();
-					function_2dbac(g32, 1);
+					AddPanelString(g32, 1);
 					g37 = *(int32_t *)(g23 - 0x651c);
 					g38 = *(int32_t *)(g36 + 0x55ec * (int32_t) * (char *)g27 + 404) / 64;
 					sprintf();
-					function_2dbac(g32, 1);
+					AddPanelString(g32, 1);
 					// branch -> 0x2f89c
 				}
 				// 0x2f89c
@@ -4899,14 +4899,14 @@ int32_t DrawInfoBox(int32_t a1)
 					v4 = *(int32_t *)(g23 - 0x76c4);
 					if (*(int32_t *)v4 != 0) {
 						// 0x2f8b8
-						result = function_2f4f0();
+						result = control_draw_info_str();
 						// branch -> 0x2f8bc
 					} else {
 						result = v4;
 					}
 				} else {
 					// 0x2f8b8
-					result = function_2f4f0();
+					result = control_draw_info_str();
 					// branch -> 0x2f8bc
 				}
 				// 0x2f8bc
@@ -4921,16 +4921,16 @@ int32_t DrawInfoBox(int32_t a1)
 				g34 = g33;
 				g37 = 0x55ec * (int32_t)v13 + 316 + g36;
 				strcpy();
-				function_2dc1c();
+				ClearPanel();
 				g37 = *(int32_t *)(g23 - 0x6518);
 				v14 = *(char *)(g36 + 0x55ec * (int32_t) * (char *)g27 + 436);
 				g38 = v14;
 				sprintf();
-				function_2dbac(g32, 1);
+				AddPanelString(g32, 1);
 				g37 = *(int32_t *)(g23 - 0x651c);
 				g38 = *(int32_t *)(g36 + 0x55ec * (int32_t) * (char *)g27 + 404) / 64;
 				sprintf();
-				function_2dbac(g32, 1);
+				AddPanelString(g32, 1);
 				// branch -> 0x2f89c
 			}
 			// 0x2f89c
@@ -4939,14 +4939,14 @@ int32_t DrawInfoBox(int32_t a1)
 				v4 = *(int32_t *)(g23 - 0x76c4);
 				if (*(int32_t *)v4 != 0) {
 					// 0x2f8b8
-					result = function_2f4f0();
+					result = control_draw_info_str();
 					// branch -> 0x2f8bc
 				} else {
 					result = v4;
 				}
 			} else {
 				// 0x2f8b8
-				result = function_2f4f0();
+				result = control_draw_info_str();
 				// branch -> 0x2f8bc
 			}
 			// 0x2f8bc
@@ -4959,7 +4959,7 @@ int32_t DrawInfoBox(int32_t a1)
 	// branch -> 0x2f89c
 	// 0x2f89c
 	if (*(char *)g33 != 0) {
-		int32_t result2 = function_2f4f0(); // 0x2f8b8
+		int32_t result2 = control_draw_info_str(); // 0x2f8b8
 		// branch -> 0x2f8bc
 		// 0x2f8bc
 		g10 = v1;
@@ -4969,7 +4969,7 @@ int32_t DrawInfoBox(int32_t a1)
 	v4 = *(int32_t *)(g23 - 0x76c4);
 	if (*(int32_t *)v4 != 0) {
 		// 0x2f8b8
-		result = function_2f4f0();
+		result = control_draw_info_str();
 		// branch -> 0x2f8bc
 	} else {
 		result = v4;
@@ -16999,7 +16999,7 @@ int32_t function_31338(int32_t a1)
 }
 
 // Address range: 0x314d0 - 0x314e8
-int32_t function_314d0(int32_t a1)
+int32_t get_pieces_str(int32_t a1)
 {
 	// 0x314d0
 	if (a1 == 1) {
@@ -17020,7 +17020,7 @@ int32_t DrawGoldSplit(int32_t a1)
 	sprintf();
 	g40 = 3;
 	ADD_PlrStringXY(366, 87, 600, (char *)g30);
-	int32_t v2 = function_314d0(*(int32_t *)g36); // 0x3155c
+	int32_t v2 = get_pieces_str(*(int32_t *)g36); // 0x3155c
 	g37 = *(int32_t *)(g23 - 0x6568);
 	g38 = v2;
 	sprintf();
@@ -17391,12 +17391,12 @@ int32_t DrawTalkPan(int32_t a1)
 	}
 	// 0x31a48
 	g39 = 5;
-	function_2dc34(175, *(int32_t *)(g23 - 0x4fd8) + 20, 294, 5, 239, 516);
+	DrawPanelBox(175, *(int32_t *)(g23 - 0x4fd8) + 20, 294, 5, 239, 516);
 	int32_t v2 = 0;                          // 0x31a88
 	int32_t v3 = *(int32_t *)(g23 - 0x4fd8); // 0x31a6c
 	int32_t v4 = v2 / 2 | v2 & -0x80000000;  // 0x31a70
 	g39 = 1;
-	function_2dc34(v4 + 175, v2 + 25 + v3, 293 - v2, 1, v4 + 239, v2 + 521);
+	DrawPanelBox(v4 + 175, v2 + 25 + v3, 293 - v2, 1, v4 + 239, v2 + 521);
 	int32_t v5 = 1; // 0x31a94
 	// branch -> 0x31a6c
 	while (v5 < 10) {
@@ -17405,19 +17405,19 @@ int32_t DrawTalkPan(int32_t a1)
 		v3 = *(int32_t *)(g23 - 0x4fd8);
 		v4 = v2 / 2 | v2 & -0x80000000;
 		g39 = 1;
-		function_2dc34(v4 + 175, v2 + 25 + v3, 293 - v2, 1, v4 + 239, v2 + 521);
+		DrawPanelBox(v4 + 175, v2 + 25 + v3, 293 - v2, 1, v4 + 239, v2 + 521);
 		v5++;
 		// continue -> 0x31a6c
 	}
 	// 0x31aa0
 	g39 = 30;
-	function_2dc34(185, *(int32_t *)(g23 - 0x4fd8) + 35, 274, 30, 249, 531);
+	DrawPanelBox(185, *(int32_t *)(g23 - 0x4fd8) + 35, 274, 30, 249, 531);
 	g39 = 5;
-	function_2dc34(180, *(int32_t *)(g23 - 0x4fd8) + 65, 284, 5, 244, 561);
+	DrawPanelBox(180, *(int32_t *)(g23 - 0x4fd8) + 65, 284, 5, 244, 561);
 	int32_t v6 = 0;                          // 0x31ae8
 	int32_t v7 = *(int32_t *)(g23 - 0x4fd8); // 0x31ae4
 	g39 = 1;
-	function_2dc34(180, v6 + 70 + v7, v6 + 284, 1, 244, v6 + 566);
+	DrawPanelBox(180, v6 + 70 + v7, v6 + 284, 1, 244, v6 + 566);
 	int32_t v8 = 1; // 0x31b08
 	// branch -> 0x31ae4
 	while (v8 < 10) {
@@ -17425,13 +17425,13 @@ int32_t DrawTalkPan(int32_t a1)
 		v6 = v8;
 		v7 = *(int32_t *)(g23 - 0x4fd8);
 		g39 = 1;
-		function_2dc34(180, v6 + 70 + v7, v6 + 284, 1, 244, v6 + 566);
+		DrawPanelBox(180, v6 + 70 + v7, v6 + 284, 1, 244, v6 + 566);
 		v8++;
 		// continue -> 0x31ae4
 	}
 	// 0x31b14
 	g39 = 55;
-	function_2dc34(170, *(int32_t *)(g23 - 0x4fd8) + 80, 310, 55, 234, 576);
+	DrawPanelBox(170, *(int32_t *)(g23 - 0x4fd8) + 80, 310, 55, 234, 576);
 	int32_t v9;        // bp-56
 	int32_t v10 = &v9; // 0x31b40
 	int32_t v11 = 0;   // 0x31b44

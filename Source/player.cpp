@@ -18046,7 +18046,7 @@ int32_t function_aa8a0(int32_t a1)
 }
 
 // Address range: 0xaaaec - 0xaac40
-int32_t function_aaaec(int32_t a1)
+int32_t ModifyPlrStr(int32_t a1)
 {
 	int32_t v1 = g36; // 0xaaaec
 	g35 = a1;
@@ -18119,7 +18119,7 @@ int32_t function_aaaec(int32_t a1)
 }
 
 // Address range: 0xaac40 - 0xaad74
-int32_t function_aac40(int32_t a1, int32_t a2)
+int32_t ModifyPlrMag(int32_t a1, int32_t a2)
 {
 	int32_t v1 = g36; // 0xaac40
 	g35 = a2;
@@ -18194,7 +18194,7 @@ int32_t function_aac40(int32_t a1, int32_t a2)
 }
 
 // Address range: 0xaad74 - 0xaae80
-int32_t function_aad74(int32_t a1, int32_t a2)
+int32_t ModifyPlrDex(int32_t a1, int32_t a2)
 {
 	// 0xaad74
 	g35 = a1;
@@ -18254,7 +18254,7 @@ int32_t function_aad74(int32_t a1, int32_t a2)
 }
 
 // Address range: 0xaae80 - 0xaafa8
-int32_t function_aae80(int32_t a1, int32_t a2)
+int32_t ModifyPlrVit(int32_t a1, int32_t a2)
 {
 	int32_t v1 = g36; // 0xaae80
 	g35 = a2;

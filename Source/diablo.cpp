@@ -394,6 +394,40 @@ int32_t free_game(int32_t a1)
 	return result;
 }
 
+// Address range: 0x343c0 - 0x343f4
+int32_t diablo_get_not_running(int32_t a1)
+{
+	int32_t v1 = *(int32_t *)(g23 - 0x7564); // 0x343c0
+	int32_t result = g34;                    // 0x343e41
+	if (*(char *)result == 0) {
+		// 0x343f0
+		return result;
+	}
+	int32_t result2; // 0x343e0
+	while (true) {
+		unsigned char v2 = *(char *)(v1 + (int32_t) * (char *)result); // 0x343d4
+		result2 = g34 + 1;
+		g34 = result2;
+		// branch -> 0x343d0
+		while (__asm_rlwinm_((int32_t)v2, 0, 29, 30) != 0) {
+			// 0x343d0
+			v2 = *(char *)(v1 + (int32_t) * (char *)result2);
+			result2 = g34 + 1;
+			g34 = result2;
+			// continue -> 0x343d0
+		}
+		// 0x343e4
+		if (*(char *)result2 == 0) {
+			// break -> 0x343f0
+			break;
+		}
+		result = result2;
+		// continue -> 0x343d0
+	}
+	// 0x343f0
+	return result2;
+}
+
 // Address range: 0x348bc - 0x34ab4
 int32_t run_game_loop(void)
 {
@@ -847,15 +881,15 @@ int32_t WinMain(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 	int32_t v5 = GetTickCount(); // 0x34dfc
 	g34 = v5;
 	function_eb098(v5);
-	int32_t v6 = function_4d330(); // 0x34e0c
+	int32_t v6 = InitHash(); // 0x34e0c
 	g34 = v6;
-	int32_t v7 = function_eb0b0(v6); // 0x34e10
+	int32_t v7 = fault_get_filter(v6); // 0x34e10
 	g34 = v7;
-	function_343c0(v7);
+	diablo_get_not_running(v7);
 	int32_t v8 = init_create_window(g32);                // 0x34e20
-	int32_t v9 = function_4cbac(diablo_init_screen(v8)); // 0x34e28
+	int32_t v9 = diablo_parse_flags(diablo_init_screen(v8)); // 0x34e28
 	g34 = v9;
-	function_2653c(v9);
+	UiInitialize(v9);
 	g34 = 17;
 	int32_t v10 = function_eb980(17); // 0x34e34
 	if (__asm_rlwinm_(v10, 0, 16, 16) == 0) {
@@ -14733,7 +14767,7 @@ int32_t LoadAllGFX(int32_t a1)
 	int32_t v1 = DiabloAllocPtr(); // 0x3735c
 	*(int32_t *)*(int32_t *)(g23 - 0x7578) = v1;
 	int32_t v2 = IncProgress(IncProgress(v1));    // 0x3736c
-	int32_t v3 = IncProgress(function_92610(v2)); // 0x37374
+	int32_t v3 = IncProgress(InitObjectGFX(v2)); // 0x37374
 	g34 = v3;
 	int32_t result = IncProgress(InitMissileGFX(v3)); // 0x3737c
 	return result;

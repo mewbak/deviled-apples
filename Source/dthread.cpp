@@ -189,7 +189,7 @@ int32_t function_4bdd8(int32_t result, char a2, int32_t a3, int32_t a4)
 }
 
 // Address range: 0x4be94 - 0x4bf3c
-int32_t function_4be94(int32_t a1)
+int32_t dthread_start(int32_t a1)
 {
 	int32_t v1 = g10;                            // 0x4be94
 	int32_t result = *(int32_t *)(g23 - 0x77f0); // 0x4be98

@@ -11117,7 +11117,7 @@ int32_t function_60f8c(int32_t a1)
 }
 
 // Address range: 0x60fb8 - 0x61098
-int32_t function_60fb8(int32_t a1)
+int32_t GetItemStr(int32_t a1)
 {
 	int32_t v1 = g36;                        // 0x60fb8
 	int32_t v2 = *(int32_t *)(g23 - 0x7690); // 0x60fc0
