@@ -136,7 +136,7 @@ int32_t start_game(int32_t a1)
 		*(char *)v20 = 0;
 		*(int32_t *)v21 = 1;
 		v22 = function_323d4(v21, v20);
-		v17 = function_ca930(v22);
+		v17 = InitLightTable(v22);
 		LoadDebugGFX(v17);
 		music_stop();
 		v18 = ShowProgress(g20);
@@ -189,7 +189,7 @@ int32_t start_game(int32_t a1)
 		*(char *)v20 = 0;
 		*(int32_t *)v21 = 1;
 		v22 = function_323d4(v21, v20);
-		v17 = function_ca930(v22);
+		v17 = InitLightTable(v22);
 		LoadDebugGFX(v17);
 		music_stop();
 		v18 = ShowProgress(g20);
@@ -238,7 +238,7 @@ int32_t start_game(int32_t a1)
 		*(char *)v20 = 0;
 		*(int32_t *)v21 = 1;
 		v22 = function_323d4(v21, v20);
-		v17 = function_ca930(v22);
+		v17 = InitLightTable(v22);
 		LoadDebugGFX(v17);
 		music_stop();
 		v18 = ShowProgress(g20);
@@ -289,7 +289,7 @@ int32_t start_game(int32_t a1)
 	*(char *)v20 = 0;
 	*(int32_t *)v21 = 1;
 	v22 = function_323d4(v21, v20);
-	v17 = function_ca930(v22);
+	v17 = InitLightTable(v22);
 	LoadDebugGFX(v17);
 	music_stop();
 	v18 = ShowProgress(g20);
@@ -16201,7 +16201,7 @@ int32_t diablo_color_cyc_logic(void)
 	int32_t result2;                         // 0x37f38
 	if (v5 == 4) {
 		// 0x37ee0
-		result2 = function_cc0b8(v4);
+		result2 = lighting_color_cycling(v4);
 		// branch -> 0x37f2c
 	} else {
 		// 0x37ee8
