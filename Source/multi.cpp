@@ -195,7 +195,7 @@ int32_t multi_send_packet(int32_t a1, int32_t a2)
 }
 
 // Address range: 0x9024c - 0x902a8
-int32_t function_9024c(int32_t a1, int32_t a2)
+int32_t NetSendLoPri(int32_t a1, int32_t a2)
 {
 	int32_t v1 = g36; // 0x9024c
 	g36 = a2;
@@ -224,7 +224,7 @@ int32_t function_9024c(int32_t a1, int32_t a2)
 }
 
 // Address range: 0x902a8 - 0x903d8
-int32_t function_902a8(int32_t a1, int32_t a2)
+int32_t NetSendHiPri(int32_t a1, int32_t a2)
 {
 	int32_t v1 = g36;                        // 0x902a8
 	int32_t v2 = *(int32_t *)(g23 - 0x5c14); // 0x902b0
@@ -2371,7 +2371,7 @@ int32_t function_90c14(void)
 			int32_t *v14 = (int32_t *)(g23 - 0x4d00); // 0x90cc4
 			if (*v14 == 0) {
 				// 0x90cd0
-				function_902a8(0, 0);
+				NetSendHiPri(0, 0);
 				*(int32_t *)(g23 - 0x4d00) = g36;
 				// branch -> 0x90d04
 			} else {
@@ -2379,7 +2379,7 @@ int32_t function_90c14(void)
 				*v14 = g36;
 				if (function_8ff48((int32_t *)*(int32_t *)(g23 - 0x5c14)) == 0) {
 					// 0x90cf8
-					function_902a8(0, 0);
+					NetSendHiPri(0, 0);
 					// branch -> 0x90d04
 				}
 			}
@@ -2407,7 +2407,7 @@ int32_t function_90c14(void)
 }
 
 // Address range: 0x90d28 - 0x90d90
-int32_t function_90d28(int32_t result, int32_t a2, int32_t a3)
+int32_t multi_handle_all_packets(int32_t result, int32_t a2, int32_t a3)
 {
 	int32_t v1 = g10; // 0x90d2c
 	int32_t v2 = a3;  // r31
@@ -2447,7 +2447,7 @@ int32_t function_90d28(int32_t result, int32_t a2, int32_t a3)
 }
 
 // Address range: 0x90d90 - 0x90ddc
-int32_t function_90d90(int32_t a1)
+int32_t multi_process_tmsgs(int32_t a1)
 {
 	int32_t v1 = g36; // 0x90d90
 	int32_t v2 = g10; // 0x90d94
@@ -2461,11 +2461,11 @@ int32_t function_90d90(int32_t a1)
 		g10 = v2;
 		return 0;
 	}
-	function_90d28(*(int32_t *)g36, v4, v5);
+	multi_handle_all_packets(*(int32_t *)g36, v4, v5);
 	int32_t v6 = tmsg_get(v4, 512); // 0x90dbc
 	while (v6 != 0) {
 		// 0x90da8
-		function_90d28(*(int32_t *)g36, v4, v6);
+		multi_handle_all_packets(*(int32_t *)g36, v4, v6);
 		v6 = tmsg_get(v4, 512);
 		// continue -> 0x90da8
 	}
@@ -2476,11 +2476,11 @@ int32_t function_90d90(int32_t a1)
 }
 
 // Address range: 0x90ddc - 0x91100
-int32_t function_90ddc(void)
+int32_t multi_process_network_packets(void)
 {
 	// 0x90ddc
 	g30 = *(int32_t *)(g23 - 0x7680);
-	function_90d90(multi_clear_left_tbl());
+	multi_process_tmsgs(multi_clear_left_tbl());
 	int32_t v1;       // bp-48
 	int32_t v2 = &v1; // 0x910b4
 	int32_t v3;       // bp-56
@@ -2651,7 +2651,7 @@ lab_0x90e8c:;
 									// branch -> 0x910a0
 								lab_0x910a0_2:
 									// 0x910a0
-									function_90d28(v1, g29 + 19, v3 - 19);
+									multi_handle_all_packets(v1, g29 + 19, v3 - 19);
 									// branch -> 0x910b4
 									goto lab_0x910b4_8;
 								}
@@ -2686,22 +2686,22 @@ lab_0x90e8c:;
 					goto lab_0x910a0_2;
 				}
 				// 0x910a0
-				function_90d28(v1, g29 + 19, v3 - 19);
+				multi_handle_all_packets(v1, g29 + 19, v3 - 19);
 				// branch -> 0x910b4
 				goto lab_0x910b4_8;
 			}
 			// 0x910a0
-			function_90d28(v1, g29 + 19, v3 - 19);
+			multi_handle_all_packets(v1, g29 + 19, v3 - 19);
 			// branch -> 0x910b4
 			goto lab_0x910b4_8;
 		}
 		// 0x910a0
-		function_90d28(v1, g29 + 19, v3 - 19);
+		multi_handle_all_packets(v1, g29 + 19, v3 - 19);
 		// branch -> 0x910b4
 		goto lab_0x910b4_8;
 	}
 	// 0x910a0
-	function_90d28(v1, g29 + 19, v3 - 19);
+	multi_handle_all_packets(v1, g29 + 19, v3 - 19);
 	// branch -> 0x910b4
 	goto lab_0x910b4_8;
 }

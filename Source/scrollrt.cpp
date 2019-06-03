@@ -335,7 +335,7 @@ int32_t DrawMissile(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, 
 												// branch -> 0xaea28
 											} else {
 												// 0xae9fc
-												function_50650(v21, v20, v23, v18, v22, v24, v25);
+												Cl2DecodeFrm3(v21, v20, v23, v18, v22, v24, v25);
 												// branch -> 0xaea28
 											}
 										lab_0xaea28:
@@ -362,7 +362,7 @@ int32_t DrawMissile(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, 
 										} else {
 											// 0xae9d4
 											g13 = v19 + 3;
-											function_5053c(v21, v20, v17 + 64, v18, *(int32_t *)(v17 + 80), g28, g29);
+											Cl2DecodeLightTbl(v21, v20, v17 + 64, v18, *(int32_t *)(v17 + 80), g28, g29);
 											// branch -> 0xaea28
 											goto lab_0xaea28;
 										}
@@ -451,7 +451,7 @@ int32_t DrawMissile(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, 
 							if (v34 != 0) {
 								// 0xaeae8
 								g13 = v34 + 3;
-								function_5053c(v36, v35, v32 + 64, v33, *(int32_t *)(v32 + 80), g28, g29);
+								Cl2DecodeLightTbl(v36, v35, v32 + 64, v33, *(int32_t *)(v32 + 80), g28, g29);
 								// branch -> 0xaeb3c
 								// 0xaeb3c
 								result6 = function_c9b70((int32_t *)(g24 + 64));
@@ -470,7 +470,7 @@ int32_t DrawMissile(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, 
 								// branch -> 0xaeb3c
 							} else {
 								// 0xaeb10
-								function_50650(v36, v35, v38, v33, v37, v39, v40);
+								Cl2DecodeFrm3(v36, v35, v38, v33, v37, v39, v40);
 								// branch -> 0xaeb3c
 							}
 							// 0xaeb3c
@@ -809,7 +809,7 @@ int32_t function_aedfc(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 						int32_t v11 = g31;                                         // 0xaeec8
 						int32_t v12 = *(int32_t *)(*(int32_t *)(v10 + 224) + 492); // 0xaeecc
 						g13 = 1;
-						function_5053c(g28, g29, g35, v12, g30, v11, v11);
+						Cl2DecodeLightTbl(g28, g29, g35, v12, g30, v11, v11);
 						result2 = function_c9b70((int32_t *)g35);
 						// branch -> 0xaefb0
 					} else {
@@ -848,11 +848,11 @@ int32_t function_aedfc(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 						int32_t v21 = g29;                     // 0xaef90
 						if ((0x1000000 * v17 || 0xffffff) < 0x1ffffff) {
 							// 0xaef80
-							function_50650(v20, v21, g35, v18, *(int32_t *)(v19 + 492), g30, g31);
+							Cl2DecodeFrm3(v20, v21, g35, v18, *(int32_t *)(v19 + 492), g30, g31);
 							// branch -> 0xaefa8
 						} else {
 							// 0xaef54
-							function_5053c(v20, v21, g35, v18, *(int32_t *)(v19 + 492), g30, g31);
+							Cl2DecodeLightTbl(v20, v21, g35, v18, *(int32_t *)(v19 + 492), g30, g31);
 							// branch -> 0xaefa8
 						}
 						// 0xaefa8
@@ -1086,7 +1086,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 												if (*v5 >= 9) {
 													// 0xaf340
 													g13 = 1;
-													function_5053c(g22, g24, g25, g26, g27, g28, g29);
+													Cl2DecodeLightTbl(g22, g24, g25, g26, g27, g28, g29);
 													v18 = g36 + 0x55ec * g20;
 													result = v18;
 													if (*(char *)(v18 + 0x5594) != 0) {
@@ -1094,7 +1094,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 														v13 = g31;
 														v19 = g22 + *(int32_t *)(v18 + 148) - *(int32_t *)(v13 + 2936);
 														g13 = 1;
-														result = function_5053c(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
+														result = Cl2DecodeLightTbl(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
 														// branch -> 0xaf42c
 													}
 													// 0xaf42c
@@ -1106,14 +1106,14 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 											v20 = *v5;
 											g19 = v20;
 											*v5 = v20 > 4 ? v20 - 5 : 0;
-											function_50650(g22, g24, g25, g26, g27, g28, g29);
+											Cl2DecodeFrm3(g22, g24, g25, g26, g27, g28, g29);
 											v21 = g36 + 0x55ec * g20;
 											result = v21;
 											if (*(char *)(v21 + 0x5594) != 0) {
 												// 0xaf3fc
 												v14 = g31;
 												v22 = g22 + *(int32_t *)(v21 + 148) - *(int32_t *)(v14 + 2936);
-												result = function_50650(v22, g24, v14 + 2712, 1, *(int32_t *)(v14 + 2872), g28, g29);
+												result = Cl2DecodeFrm3(v22, g24, v14 + 2712, 1, *(int32_t *)(v14 + 2872), g28, g29);
 												// branch -> 0xaf428
 											}
 											// 0xaf428
@@ -1125,7 +1125,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 										}
 										// 0xaf340
 										g13 = 1;
-										function_5053c(g22, g24, g25, g26, g27, g28, g29);
+										Cl2DecodeLightTbl(g22, g24, g25, g26, g27, g28, g29);
 										v18 = g36 + 0x55ec * g20;
 										result = v18;
 										if (*(char *)(v18 + 0x5594) != 0) {
@@ -1133,7 +1133,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 											v13 = g31;
 											v19 = g22 + *(int32_t *)(v18 + 148) - *(int32_t *)(v13 + 2936);
 											g13 = 1;
-											result = function_5053c(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
+											result = Cl2DecodeLightTbl(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
 											// branch -> 0xaf42c
 										}
 									}
@@ -1209,7 +1209,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 	if (__asm_rlwinm_((int32_t)v23, 0, 25, 25) == 0) {
 		// 0xaf340
 		g13 = 1;
-		function_5053c(g22, g24, g25, g26, g27, g28, g29);
+		Cl2DecodeLightTbl(g22, g24, g25, g26, g27, g28, g29);
 		v18 = g36 + 0x55ec * g20;
 		result = v18;
 		if (*(char *)(v18 + 0x5594) != 0) {
@@ -1217,7 +1217,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 			v13 = g31;
 			v19 = g22 + *(int32_t *)(v18 + 148) - *(int32_t *)(v13 + 2936);
 			g13 = 1;
-			result = function_5053c(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
+			result = Cl2DecodeLightTbl(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
 			// branch -> 0xaf42c
 		}
 		// 0xaf42c
@@ -1231,7 +1231,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 		if (*v5 >= 9) {
 			// 0xaf340
 			g13 = 1;
-			function_5053c(g22, g24, g25, g26, g27, g28, g29);
+			Cl2DecodeLightTbl(g22, g24, g25, g26, g27, g28, g29);
 			v18 = g36 + 0x55ec * g20;
 			result = v18;
 			if (*(char *)(v18 + 0x5594) != 0) {
@@ -1239,7 +1239,7 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 				v13 = g31;
 				v19 = g22 + *(int32_t *)(v18 + 148) - *(int32_t *)(v13 + 2936);
 				g13 = 1;
-				result = function_5053c(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
+				result = Cl2DecodeLightTbl(v19, g24, v13 + 2712, 1, *(int32_t *)(v13 + 2872), g28, g29);
 				// branch -> 0xaf42c
 			}
 			// 0xaf42c
@@ -1251,14 +1251,14 @@ int32_t function_af18c(int32_t result, int32_t a2, int32_t a3, int32_t a4, int32
 	v20 = *v5;
 	g19 = v20;
 	*v5 = v20 > 4 ? v20 - 5 : 0;
-	function_50650(g22, g24, g25, g26, g27, g28, g29);
+	Cl2DecodeFrm3(g22, g24, g25, g26, g27, g28, g29);
 	v21 = g36 + 0x55ec * g20;
 	result = v21;
 	if (*(char *)(v21 + 0x5594) != 0) {
 		// 0xaf3fc
 		v14 = g31;
 		v22 = g22 + *(int32_t *)(v21 + 148) - *(int32_t *)(v14 + 2936);
-		result = function_50650(v22, g24, v14 + 2712, 1, *(int32_t *)(v14 + 2872), g28, g29);
+		result = Cl2DecodeFrm3(v22, g24, v14 + 2712, 1, *(int32_t *)(v14 + 2872), g28, g29);
 		// branch -> 0xaf428
 	}
 	// 0xaf428
@@ -21043,11 +21043,11 @@ int32_t scrollrt_draw_dungeon(int32_t a1, int32_t a2, int32_t a3, int32_t a4, in
 								v27 = g36;
 								if (v65 == 0) {
 									// 0xb1f94
-									function_50650(v24, v25, v26, v64, v66, 0, v27);
+									Cl2DecodeFrm3(v24, v25, v26, v64, v66, 0, v27);
 									// branch -> 0xb1fb0
 								} else {
 									// 0xb1f74
-									function_5053c(v24, v25, v26, v64, v66, 0, v27);
+									Cl2DecodeLightTbl(v24, v25, v26, v64, v66, 0, v27);
 									// branch -> 0xb1fb0
 								}
 								// 0xb1fb0
@@ -27937,11 +27937,11 @@ int32_t scrollrt_draw_dungeon(int32_t a1, int32_t a2, int32_t a3, int32_t a4, in
 								v27 = g36;
 								if (v65 == 0) {
 									// 0xb1f94
-									function_50650(v24, v25, v26, v64, v66, 0, v27);
+									Cl2DecodeFrm3(v24, v25, v26, v64, v66, 0, v27);
 									// branch -> 0xb1fb0
 								} else {
 									// 0xb1f74
-									function_5053c(v24, v25, v26, v64, v66, 0, v27);
+									Cl2DecodeLightTbl(v24, v25, v26, v64, v66, 0, v27);
 									// branch -> 0xb1fb0
 								}
 								// 0xb1fb0
@@ -28888,11 +28888,11 @@ int32_t scrollrt_draw_dungeon(int32_t a1, int32_t a2, int32_t a3, int32_t a4, in
 							v27 = g36;
 							if (v65 == 0) {
 								// 0xb1f94
-								function_50650(v24, v25, v26, v64, v66, 0, v27);
+								Cl2DecodeFrm3(v24, v25, v26, v64, v66, 0, v27);
 								// branch -> 0xb1fb0
 							} else {
 								// 0xb1f74
-								function_5053c(v24, v25, v26, v64, v66, 0, v27);
+								Cl2DecodeLightTbl(v24, v25, v26, v64, v66, 0, v27);
 								// branch -> 0xb1fb0
 							}
 							// 0xb1fb0

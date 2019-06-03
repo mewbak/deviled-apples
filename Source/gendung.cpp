@@ -1642,7 +1642,7 @@ lab_0x523f4:
 }
 
 // Address range: 0x52494 - 0x5289c
-int32_t function_52494(void)
+int32_t SetDungeonMicros(void)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x7794); // 0x5249c
 	g35 = v1;

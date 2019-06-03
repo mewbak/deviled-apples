@@ -386,7 +386,7 @@ int32_t function_ac698(int32_t a1)
 										if (*(char *)v15 == 4) {
 											// 0xac834
 											g13 = *(int32_t *)g31;
-											result = function_73f28(35, 32, 35, 32, 0, 65, 0, 0, 0);
+											result = AddMissile(35, 32, 35, 32, 0, 65, 0, 0, 0);
 											*(char *)g25 = 3;
 											// branch -> 0xac86c
 										}
@@ -479,7 +479,7 @@ int32_t function_ac698(int32_t a1)
 										if (*(char *)v15 == 4) {
 											// 0xac834
 											g13 = *(int32_t *)g31;
-											result = function_73f28(35, 32, 35, 32, 0, 65, 0, 0, 0);
+											result = AddMissile(35, 32, 35, 32, 0, 65, 0, 0, 0);
 											*(char *)g25 = 3;
 											// branch -> 0xac86c
 										}
@@ -561,7 +561,7 @@ int32_t function_ac698(int32_t a1)
 					v14 = 2 * *(int32_t *)(v3 + 368) + 16;
 					*(int32_t *)(g27 + 368) = v14;
 					g13 = *(int32_t *)g31;
-					v27 = function_73f28(v13, v14, 0, 65, 0, 65, 0, (int32_t)&v28, (int32_t)&v28);
+					v27 = AddMissile(v13, v14, 0, 65, 0, 65, 0, (int32_t)&v28, (int32_t)&v28);
 					result = v27;
 					*(char *)g26 = 1;
 					if (*(char *)g36 == 2) {
@@ -585,7 +585,7 @@ int32_t function_ac698(int32_t a1)
 					if (*(char *)v15 == 4) {
 						// 0xac834
 						g13 = *(int32_t *)g31;
-						result = function_73f28(35, 32, 35, 32, 0, 65, 0, 0, 0);
+						result = AddMissile(35, 32, 35, 32, 0, 65, 0, 0, 0);
 						*(char *)g25 = 3;
 						// branch -> 0xac86c
 					}
@@ -708,7 +708,7 @@ int32_t function_ac698(int32_t a1)
 									if (*(char *)v15 == 4) {
 										// 0xac834
 										g13 = *(int32_t *)g31;
-										result = function_73f28(35, 32, 35, 32, 0, 65, 0, 0, 0);
+										result = AddMissile(35, 32, 35, 32, 0, 65, 0, 0, 0);
 										*(char *)g25 = 3;
 										// branch -> 0xac86c
 									}
@@ -854,7 +854,7 @@ int32_t function_ac698(int32_t a1)
 									if (*(char *)v15 == 4) {
 										// 0xac834
 										g13 = *(int32_t *)g31;
-										result = function_73f28(35, 32, 35, 32, 0, 65, 0, 0, 0);
+										result = AddMissile(35, 32, 35, 32, 0, 65, 0, 0, 0);
 										*(char *)g25 = 3;
 										// branch -> 0xac86c
 									}
@@ -936,7 +936,7 @@ int32_t function_ac698(int32_t a1)
 				v14 = 2 * *(int32_t *)(v3 + 368) + 16;
 				*(int32_t *)(g27 + 368) = v14;
 				g13 = *(int32_t *)g31;
-				v27 = function_73f28(v13, v14, 0, 65, 0, 65, 0, (int32_t)&v28, (int32_t)&v28);
+				v27 = AddMissile(v13, v14, 0, 65, 0, 65, 0, (int32_t)&v28, (int32_t)&v28);
 				result = v27;
 				*(char *)g26 = 1;
 				if (*(char *)g36 == 2) {
@@ -960,7 +960,7 @@ int32_t function_ac698(int32_t a1)
 				if (*(char *)v15 == 4) {
 					// 0xac834
 					g13 = *(int32_t *)g31;
-					result = function_73f28(35, 32, 35, 32, 0, 65, 0, 0, 0);
+					result = AddMissile(35, 32, 35, 32, 0, 65, 0, 0, 0);
 					*(char *)g25 = 3;
 					// branch -> 0xac86c
 				}
@@ -1367,7 +1367,7 @@ int32_t function_acb74(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 			*(char *)(g36 + 122) = (char)2;
 			int32_t v15 = 0; // 0xad044
 			g13 = *(int32_t *)g35;
-			function_73f28(35, 32, 35, 32, 0, 65, 0, v15, v15);
+			AddMissile(35, 32, 35, 32, 0, 65, 0, v15, v15);
 			unsigned char v16 = *(char *)(g33 + 0x55ec * *(int32_t *)g35 + 348); // 0xad070
 			result = v16;
 			if (v16 == 0) {

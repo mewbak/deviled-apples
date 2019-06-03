@@ -609,7 +609,7 @@ lab_0x3494c:
 		if (v24 != 0) {
 		lab_0x34a10_2:
 			// 0x34a10
-			function_90ddc();
+			multi_process_network_packets();
 			int32_t v25 = game_loop(*(int32_t *)g28); // 0x34a18
 			g34 = v25;
 			int32_t v26 = msgcmd_send_chat(v25); // 0x34a1c
@@ -1163,7 +1163,7 @@ int32_t LeftMouseCmd(int32_t a1)
 				// 0x35178
 				if (v18 != 0) {
 					// 0x35180
-					function_8b234(1, 13, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
+					NetSendCmdLoc(1, 13, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
 					// branch -> 0x352d4
 					// 0x352d4
 					if (g36 == 0) {
@@ -1309,7 +1309,7 @@ int32_t LeftMouseCmd(int32_t a1)
 			// 0x3521c
 			if (v23 == -1) {
 				// 0x3526c
-				function_8b234(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
+				NetSendCmdLoc(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
 				// branch -> 0x352d4
 				// 0x352d4
 				if (g36 == 0) {
@@ -1338,7 +1338,7 @@ int32_t LeftMouseCmd(int32_t a1)
 			// 0x35228
 			if (function_87558(v23) == 0) {
 				// 0x3524c
-				function_8b234(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
+				NetSendCmdLoc(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
 				// branch -> 0x352d4
 			} else {
 				// 0x35234
@@ -1445,7 +1445,7 @@ int32_t LeftMouseCmd(int32_t a1)
 				// Detected a possible infinite recursion (goto support failed); quitting...
 			} else {
 				// 0x35180
-				function_8b234(1, 13, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
+				NetSendCmdLoc(1, 13, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
 				// branch -> 0x352d4
 			}
 			// 0x352d4
@@ -1515,13 +1515,13 @@ int32_t LeftMouseCmd(int32_t a1)
 				// 0x3521c
 				if (v23 == -1) {
 					// 0x3526c
-					function_8b234(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
+					NetSendCmdLoc(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
 					// branch -> 0x352d4
 				} else {
 					// 0x35228
 					if (function_87558(v23) == 0) {
 						// 0x3524c
-						function_8b234(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
+						NetSendCmdLoc(1, 55, *(int32_t *)g30 % 256, *(int32_t *)g29 % 256);
 						// branch -> 0x352d4
 					} else {
 						// 0x35234
@@ -15356,7 +15356,7 @@ int32_t LoadGameLevel(int32_t a1, int32_t a2)
 										// 0x37b88
 										if (*(char *)g31 != 0) {
 											// 0x37b94
-											function_52494();
+											SetDungeonMicros();
 											// branch -> 0x37b98
 										}
 										int32_t v131 = InitLightMax();                 // 0x37b98

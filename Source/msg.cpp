@@ -1259,7 +1259,7 @@ int32_t function_8a6d4(int32_t result, char a2, uint32_t a3)
 }
 
 // Address range: 0x8a708 - 0x8a8b0
-int32_t function_8a708(int32_t a1, int32_t a2)
+int32_t delta_get_item(int32_t a1, int32_t a2)
 {
 	int32_t v1 = g36; // 0x8a708
 	int32_t v2 = g10; // 0x8a70c
@@ -1921,7 +1921,7 @@ int32_t DeltaLoadLevel(void)
 			if (v34 == 1) {
 				int32_t v38 = (int32_t) * (int16_t *)(v33 + 3);                // 0x8ae74
 				int32_t v39 = (int32_t) * (int16_t *)(v33 + 5);                // 0x8ae78
-				int32_t v40 = function_5a318(v38, v39, *(int32_t *)(v33 + 7)); // 0x8ae80
+				int32_t v40 = FindGetItem(v38, v39, *(int32_t *)(v33 + 7)); // 0x8ae80
 				g34 = v40;
 				if (v40 != -1) {
 					int32_t v41 = g20 + 368 * v40;                                      // 0x8ae98
@@ -2307,11 +2307,11 @@ int32_t NetSendCmd(int32_t a1, char a2)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b1c4
-		result = function_9024c(v2, 1);
+		result = NetSendLoPri(v2, 1);
 		// branch -> 0x8b1d0
 	} else {
 		// 0x8b1b4
-		result = function_902a8(v2, 1);
+		result = NetSendHiPri(v2, 1);
 		// branch -> 0x8b1d0
 	}
 	// 0x8b1d0
@@ -2323,22 +2323,22 @@ int32_t function_8b1e0(char a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, 
 {
 	char v1 = 90; // bp-24
 	a5 = __asm_lwbrx(90, (int32_t)&a5);
-	return function_9024c((int32_t)&v1, 10);
+	return NetSendLoPri((int32_t)&v1, 10);
 }
 
 // Address range: 0x8b234 - 0x8b280
-int32_t function_8b234(int32_t a1, char a2, int32_t a3, int32_t a4)
+int32_t NetSendCmdLoc(int32_t a1, char a2, int32_t a3, int32_t a4)
 {
 	char v1 = a2;     // bp-8
 	int32_t v2 = &v1; // 0x8b264
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b264
-		result = function_9024c(v2, 3);
+		result = NetSendLoPri(v2, 3);
 		// branch -> 0x8b270
 	} else {
 		// 0x8b254
-		result = function_902a8(v2, 3);
+		result = NetSendHiPri(v2, 3);
 		// branch -> 0x8b270
 	}
 	// 0x8b270
@@ -2353,11 +2353,11 @@ int32_t NetSendCmdLocParam1(int32_t a1, char a2, int32_t a3, int32_t a4)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b2c4
-		result = function_9024c(v2, 5);
+		result = NetSendLoPri(v2, 5);
 		// branch -> 0x8b2d0
 	} else {
 		// 0x8b2b4
-		result = function_902a8(v2, 5);
+		result = NetSendHiPri(v2, 5);
 		// branch -> 0x8b2d0
 	}
 	// 0x8b2d0
@@ -2378,11 +2378,11 @@ int32_t function_8b2e0(int32_t a1, char a2, int32_t a3, int32_t a4, int32_t a5, 
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b338
-		result = function_9024c(v7, 7);
+		result = NetSendLoPri(v7, 7);
 		// branch -> 0x8b344
 	} else {
 		// 0x8b328
-		result = function_902a8(v7, 7);
+		result = NetSendHiPri(v7, 7);
 		// branch -> 0x8b344
 	}
 	// 0x8b344
@@ -2408,11 +2408,11 @@ int32_t function_8b354(int32_t a1, char a2, int32_t a3, int32_t a4, int32_t a5, 
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b3c0
-		result = function_9024c(v11, 9);
+		result = NetSendLoPri(v11, 9);
 		// branch -> 0x8b3cc
 	} else {
 		// 0x8b3b0
-		result = function_902a8(v11, 9);
+		result = NetSendHiPri(v11, 9);
 		// branch -> 0x8b3cc
 	}
 	// 0x8b3cc
@@ -2427,11 +2427,11 @@ int32_t NetSendCmdParam1(int32_t a1, char a2, int32_t a3)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b418
-		result = function_9024c(v2, 3);
+		result = NetSendLoPri(v2, 3);
 		// branch -> 0x8b424
 	} else {
 		// 0x8b408
-		result = function_902a8(v2, 3);
+		result = NetSendHiPri(v2, 3);
 		// branch -> 0x8b424
 	}
 	// 0x8b424
@@ -2452,11 +2452,11 @@ int32_t function_8b434(int32_t a1, char a2, int32_t a3, int32_t a4)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b484
-		result = function_9024c(v7, 5);
+		result = NetSendLoPri(v7, 5);
 		// branch -> 0x8b490
 	} else {
 		// 0x8b474
-		result = function_902a8(v7, 5);
+		result = NetSendHiPri(v7, 5);
 		// branch -> 0x8b490
 	}
 	// 0x8b490
@@ -2482,11 +2482,11 @@ int32_t function_8b4a0(int32_t a1, char a2, int32_t a3, int32_t a4, int32_t a5)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b504
-		result = function_9024c(v11, 7);
+		result = NetSendLoPri(v11, 7);
 		// branch -> 0x8b510
 	} else {
 		// 0x8b4f4
-		result = function_902a8(v11, 7);
+		result = NetSendHiPri(v11, 7);
 		// branch -> 0x8b510
 	}
 	// 0x8b510
@@ -2501,11 +2501,11 @@ int32_t function_8b520(int32_t a1, char a2)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b578
-		result = function_9024c(v2, 5);
+		result = NetSendLoPri(v2, 5);
 		// branch -> 0x8b584
 	} else {
 		// 0x8b568
-		result = function_902a8(v2, 5);
+		result = NetSendHiPri(v2, 5);
 		// branch -> 0x8b584
 	}
 	// 0x8b584
@@ -2570,11 +2570,11 @@ int32_t function_8b594(int32_t a1, char a2, int32_t a3, int32_t a4)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8b788
-		result = function_9024c(v32, 30);
+		result = NetSendLoPri(v32, 30);
 		// branch -> 0x8b794
 	} else {
 		// 0x8b778
-		result = function_902a8(v32, 30);
+		result = NetSendHiPri(v32, 30);
 		// branch -> 0x8b794
 	}
 	// 0x8b794
@@ -2624,7 +2624,7 @@ int32_t function_8b7a4(int32_t a1, int32_t a2, char a3, int32_t a4, int32_t a5)
 		int32_t v25 = &v24; // 0x8b844
 		v24 = 0;
 		v24 = __asm_lwbrx(0, v25);
-		int32_t result = function_902a8(v7, 30); // 0x8b85c
+		int32_t result = NetSendHiPri(v7, 30); // 0x8b85c
 		// branch -> 0x8b8a4
 		// 0x8b8a4
 		g36 = v1;
@@ -2796,7 +2796,7 @@ int32_t NetSendCmdExtra(int32_t a1)
 	int32_t v19 = __asm_lwbrx(v17, (int32_t)&v18); // 0x8ba2c
 	v18 = v19;
 	v3 = __asm_lwbrx(v19, (int32_t)&v3);
-	return function_902a8(v2, 30);
+	return NetSendHiPri(v2, 30);
 }
 
 // Address range: 0x8ba58 - 0x8bc38
@@ -2853,11 +2853,11 @@ int32_t function_8ba58(int32_t a1, char a2, int32_t a3, int32_t a4)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8bc1c
-		result = function_9024c(v30, 22);
+		result = NetSendLoPri(v30, 22);
 		// branch -> 0x8bc28
 	} else {
 		// 0x8bc0c
-		result = function_902a8(v30, 22);
+		result = NetSendHiPri(v30, 22);
 		// branch -> 0x8bc28
 	}
 	// 0x8bc28
@@ -2888,11 +2888,11 @@ int32_t function_8bc38(int32_t a1, char a2)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8bcc8
-		result = function_9024c(v15, 11);
+		result = NetSendLoPri(v15, 11);
 		// branch -> 0x8bcd4
 	} else {
 		// 0x8bcb8
-		result = function_902a8(v15, 11);
+		result = NetSendHiPri(v15, 11);
 		// branch -> 0x8bcd4
 	}
 	// 0x8bcd4
@@ -2907,11 +2907,11 @@ int32_t function_8bce4(int32_t a1, char a2)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8bd14
-		result = function_9024c(v2, 2);
+		result = NetSendLoPri(v2, 2);
 		// branch -> 0x8bd20
 	} else {
 		// 0x8bd04
-		result = function_902a8(v2, 2);
+		result = NetSendHiPri(v2, 2);
 		// branch -> 0x8bd20
 	}
 	// 0x8bd20
@@ -2971,11 +2971,11 @@ int32_t function_8bd30(int32_t a1, int32_t a2)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8bef8
-		result = function_9024c(v29, 22);
+		result = NetSendLoPri(v29, 22);
 		// branch -> 0x8bf04
 	} else {
 		// 0x8bee8
-		result = function_902a8(v29, 22);
+		result = NetSendHiPri(v29, 22);
 		// branch -> 0x8bf04
 	}
 	// 0x8bf04
@@ -3365,11 +3365,11 @@ int32_t function_8c028(int32_t a1, char a2, int32_t a3)
 	int32_t result;
 	if (a1 == 0) {
 		// 0x8c068
-		result = function_9024c(v2, 6);
+		result = NetSendLoPri(v2, 6);
 		// branch -> 0x8c074
 	} else {
 		// 0x8c058
-		result = function_902a8(v2, 6);
+		result = NetSendHiPri(v2, 6);
 		// branch -> 0x8c074
 	}
 	// 0x8c074
@@ -3726,7 +3726,7 @@ int32_t On_REQUESTGITEM(int32_t a1, int32_t a2)
 	int32_t v19 = g35;                                              // 0x8c720
 	int32_t v20 = (int32_t) * (int16_t *)(v19 + 7);                 // 0x8c720
 	int32_t v21 = (int32_t) * (int16_t *)(v19 + 9);                 // 0x8c724
-	int32_t v22 = function_5a318(v20, v21, *(int32_t *)(v19 + 11)); // 0x8c72c
+	int32_t v22 = FindGetItem(v20, v21, *(int32_t *)(v19 + 11)); // 0x8c72c
 	g33 = v22;
 	uint32_t v23 = *(int32_t *)g36; // 0x8c7a8
 	int32_t v24 = g35;              // 0x8c7ac
@@ -3800,10 +3800,10 @@ int32_t function_8c7f0(int32_t a1, int32_t a2)
 	*(int32_t *)(a1 + 26) = __asm_lwbrx(v14, v14);
 	int32_t v15 = (int32_t) * (int16_t *)(a1 + 7);                 // 0x8c894
 	int32_t v16 = (int32_t) * (int16_t *)(a1 + 9);                 // 0x8c898
-	int32_t v17 = function_5a318(v15, v16, *(int32_t *)(a1 + 11)); // 0x8c8a0
+	int32_t v17 = FindGetItem(v15, v16, *(int32_t *)(a1 + 11)); // 0x8c8a0
 	int32_t v18 = g33;                                             // 0x8c8a4
 	g32 = v17;
-	if (function_8a708(v18, (int32_t) * (char *)(v18 + 4)) == 0) {
+	if (delta_get_item(v18, (int32_t) * (char *)(v18 + 4)) == 0) {
 		int32_t v19 = g33;                           // 0x8c998
 		int32_t v20 = (int32_t) * (char *)(v19 + 2); // 0x8c9a0
 		function_8b7a4(1, 8, *(char *)(v19 + 1), v20, v19);
@@ -3941,7 +3941,7 @@ int32_t On_REQUESTAGITEM(int32_t a1, int32_t a2)
 	int32_t v19 = g35;                                              // 0x8cb28
 	int32_t v20 = (int32_t) * (int16_t *)(v19 + 7);                 // 0x8cb28
 	int32_t v21 = (int32_t) * (int16_t *)(v19 + 9);                 // 0x8cb2c
-	int32_t v22 = function_5a318(v20, v21, *(int32_t *)(v19 + 11)); // 0x8cb34
+	int32_t v22 = FindGetItem(v20, v21, *(int32_t *)(v19 + 11)); // 0x8cb34
 	uint32_t v23 = *(int32_t *)g36;                                 // 0x8cbac
 	int32_t v24 = g35;                                              // 0x8cbb0
 	if (v22 == -1) {
@@ -3978,7 +3978,7 @@ int32_t On_REQUESTAGITEM(int32_t a1, int32_t a2)
 }
 
 // Address range: 0x8cbf0 - 0x8cdc8
-int32_t function_8cbf0(int32_t a1, int32_t a2)
+int32_t On_AGETITEM(int32_t a1, int32_t a2)
 {
 	g35 = *(int32_t *)(g23 - 0x77a8);
 	g36 = *(int32_t *)(g23 - 0x77ac);
@@ -4014,9 +4014,9 @@ int32_t function_8cbf0(int32_t a1, int32_t a2)
 	*(int32_t *)(a1 + 26) = __asm_lwbrx(v14, v14);
 	int32_t v15 = (int32_t) * (int16_t *)(a1 + 7); // 0x8cc90
 	int32_t v16 = (int32_t) * (int16_t *)(a1 + 9); // 0x8cc94
-	function_5a318(v15, v16, *(int32_t *)(a1 + 11));
+	FindGetItem(v15, v16, *(int32_t *)(a1 + 11));
 	int32_t v17 = g33; // 0x8cca0
-	if (function_8a708(v17, (int32_t) * (char *)(v17 + 4)) == 0) {
+	if (delta_get_item(v17, (int32_t) * (char *)(v17 + 4)) == 0) {
 		int32_t v18 = g33;                           // 0x8cd90
 		int32_t v19 = (int32_t) * (char *)(v18 + 2); // 0x8cd98
 		function_8b7a4(1, 9, *(char *)(v18 + 1), v19, v18);
@@ -4117,7 +4117,7 @@ int32_t function_8cdc8(int32_t a1, int32_t a2)
 		int32_t v14 = g36 + 26;              // 0x8ce50
 		*(int32_t *)(a1 + 22) = v13;
 		*(int32_t *)(a1 + 26) = __asm_lwbrx(v14, v14);
-		function_8a708(g36, (int32_t) * (char *)(a1 + 4));
+		delta_get_item(g36, (int32_t) * (char *)(a1 + 4));
 		int32_t v15 = (int32_t) * (char *)*(int32_t *)(g23 - 0x77e4); // 0x8ce7c
 		if (v15 == *(int32_t *)(*(int32_t *)(g23 - 0x77a8) + 0x55ec * g35 + 52)) {
 			int32_t v16 = g36;                              // 0x8ce8c
@@ -5211,7 +5211,7 @@ int32_t function_8e368(int32_t a1, int32_t a2)
 }
 
 // Address range: 0x8e3f0 - 0x8e4c0
-int32_t function_8e3f0(int32_t a1, int32_t a2)
+int32_t On_WARP(int32_t a1, int32_t a2)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x72bc); // 0x8e3f8
 	g36 = a2;
@@ -5343,7 +5343,7 @@ int32_t function_8e584(int32_t a1, int32_t a2)
 }
 
 // Address range: 0x8e64c - 0x8e770
-int32_t function_8e64c(int32_t a1, int32_t a2)
+int32_t On_AWAKEGOLEM(int32_t a1, int32_t a2)
 {
 	if (*(char *)*(int32_t *)(g23 - 0x72bc) == 1) {
 		// 0x8e674
@@ -5404,7 +5404,7 @@ int32_t function_8e64c(int32_t a1, int32_t a2)
 				int32_t v15 = (int32_t) * (char *)(a1 + 1); // 0x8e74c
 				int32_t v16 = (int32_t) * (char *)(a1 + 2); // 0x8e750
 				int32_t v17 = (int32_t) * (char *)(a1 + 3); // 0x8e754
-				function_73f28(*(int32_t *)(v4 + 56), v14, v15, v16, v17, 33, 0, 0, 1);
+				AddMissile(*(int32_t *)(v4 + 56), v14, v15, v16, v17, 33, 0, 0, 1);
 				// branch -> 0x8e75c
 			}
 		}

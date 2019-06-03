@@ -60,7 +60,7 @@ int32_t function_c6594(int32_t a1)
 				if (v11 - *v12 >= 300) {
 					// 0xc6644
 					*v12 = v11;
-					g34 = function_8b234(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
+					g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
 					v13 = (char *)(g23 - 0x4a7c);
 					if (*v13 == 0) {
 						// 0xc6670
@@ -77,7 +77,7 @@ int32_t function_c6594(int32_t a1)
 			if (v11 - *v12 >= 300) {
 				// 0xc6644
 				*v12 = v11;
-				g34 = function_8b234(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
+				g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
 				v13 = (char *)(g23 - 0x4a7c);
 				if (*v13 == 0) {
 					// 0xc6670
@@ -102,7 +102,7 @@ int32_t function_c6594(int32_t a1)
 		if (v11 - *v12 >= 300) {
 			// 0xc6644
 			*v12 = v11;
-			g34 = function_8b234(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
+			g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
 			v13 = (char *)(g23 - 0x4a7c);
 			if (*v13 == 0) {
 				// 0xc6670
@@ -131,7 +131,7 @@ int32_t function_c6594(int32_t a1)
 	if (v11 - *v12 >= 300) {
 		// 0xc6644
 		*v12 = v11;
-		g34 = function_8b234(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
+		g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
 		v13 = (char *)(g23 - 0x4a7c);
 		if (*v13 == 0) {
 			// 0xc6670
@@ -181,7 +181,7 @@ int32_t track_repeat_walk(int32_t a1)
 	int32_t *v7 = (int32_t *)(g23 - 0x4a80); // 0xc66e8
 	*v7 = *v7 - 300;
 	uint32_t v8 = *(int32_t *)*(int32_t *)(g23 - 0x7658); // 0xc66f4
-	g34 = function_8b234(1, 1, v8 % 256, *(int32_t *)*(int32_t *)(g23 - 0x765c) % 256);
+	g34 = NetSendCmdLoc(1, 1, v8 % 256, *(int32_t *)*(int32_t *)(g23 - 0x765c) % 256);
 	// branch -> 0xc6720
 	// 0xc6720
 	g10 = v1;

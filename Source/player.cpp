@@ -2904,7 +2904,7 @@ int32_t StartStand(int32_t a1, int32_t a2)
 			// 0xa4374
 			if (v7 == *(int32_t *)*(int32_t *)(g23 - 0x77ac)) {
 				// 0xa4384
-				result = function_a640c(v7, -1);
+				result = SyncPlrKill(v7, -1);
 				// branch -> 0xa441c
 				// 0xa441c
 				g36 = v1;
@@ -3144,7 +3144,7 @@ int32_t function_a46f8(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 			// 0xa4764
 			if (v2 == *(int32_t *)g35) {
 				// 0xa4770
-				result = function_a640c(v2, -1);
+				result = SyncPlrKill(v2, -1);
 				// branch -> 0xa4918
 				// 0xa4918
 				return result;
@@ -3289,7 +3289,7 @@ int32_t function_a492c(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 			// 0xa49a4
 			if (v2 == *(int32_t *)g28) {
 				// 0xa49b0
-				result = function_a640c(v2, -1);
+				result = SyncPlrKill(v2, -1);
 				// branch -> 0xa4bbc
 				// 0xa4bbc
 				return result;
@@ -3452,7 +3452,7 @@ int32_t function_a4bd0(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 			// 0xa4c50
 			if (v2 == *(int32_t *)g26) {
 				// 0xa4c5c
-				result = function_a640c(v2, -1);
+				result = SyncPlrKill(v2, -1);
 				// branch -> 0xa4e78
 				// 0xa4e78
 				return result;
@@ -3611,7 +3611,7 @@ int32_t function_a4e8c(int32_t a1)
 			// 0xa4ee8
 			if (v7 == *(int32_t *)*(int32_t *)(g23 - 0x77ac)) {
 				// 0xa4ef8
-				result = function_a640c(v7, -1);
+				result = SyncPlrKill(v7, -1);
 				// branch -> 0xa4f64
 				// 0xa4f64
 				g36 = v1;
@@ -3672,7 +3672,7 @@ int32_t function_a4f84(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 		if (*(int32_t *)(v5 + 404) == 0) {
 			// 0xa4fdc
 			if (v3 == *(int32_t *)*(int32_t *)(g23 - 0x77ac)) {
-				int32_t result = function_a640c(v3, -1); // 0xa4ff4
+				int32_t result = SyncPlrKill(v3, -1); // 0xa4ff4
 				// branch -> 0xa5060
 				// 0xa5060
 				g10 = v1;
@@ -3727,7 +3727,7 @@ int32_t function_a5074(int32_t a1)
 			// 0xa50c4
 			if (v2 == *(int32_t *)*(int32_t *)(g23 - 0x77ac)) {
 				// 0xa50d4
-				result = function_a640c(v2, -1);
+				result = SyncPlrKill(v2, -1);
 				// branch -> 0xa5150
 				// 0xa5150
 				return result;
@@ -3785,7 +3785,7 @@ int32_t function_a5164(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 				// 0xa51d0
 				// branch -> 0xa5350
 				// 0xa5350
-				return function_a640c(v2, -1);
+				return SyncPlrKill(v2, -1);
 			}
 		}
 	}
@@ -4493,7 +4493,7 @@ int32_t function_a579c(int32_t a1, int32_t a2)
 		if (*(int32_t *)(v5 + 404) == 0) {
 			// 0xa57f0
 			if (v3 == *(int32_t *)*(int32_t *)(g23 - 0x77ac)) {
-				int32_t result = function_a640c(v3, -1); // 0xa5808
+				int32_t result = SyncPlrKill(v3, -1); // 0xa5808
 				// branch -> 0xa592c
 				// 0xa592c
 				g10 = v1;
@@ -5888,7 +5888,7 @@ int32_t function_a5fdc(int32_t a1)
 }
 
 // Address range: 0xa640c - 0xa64f4
-int32_t function_a640c(int32_t a1, int32_t a2)
+int32_t SyncPlrKill(int32_t a1, int32_t a2)
 {
 	int32_t v1 = g36; // 0xa640c
 	int32_t v2 = g10; // 0xa6410
@@ -11854,14 +11854,14 @@ int32_t function_a7c3c(int32_t a1)
 											if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 												// 0xa7df0
 												g13 = g26;
-												function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+												AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 												// branch -> 0xa7e20
 											}
 											// 0xa7e20
 											if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 												// 0xa7e2c
 												g13 = g26;
-												function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+												AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 												// branch -> 0xa7e5c
 											}
 											// 0xa7e5c
@@ -12085,14 +12085,14 @@ int32_t function_a7c3c(int32_t a1)
 								if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 									// 0xa7df0
 									g13 = g26;
-									function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+									AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 									// branch -> 0xa7e20
 								}
 								// 0xa7e20
 								if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 									// 0xa7e2c
 									g13 = g26;
-									function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+									AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 									// branch -> 0xa7e5c
 								}
 								// 0xa7e5c
@@ -12308,14 +12308,14 @@ int32_t function_a7c3c(int32_t a1)
 								if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 									// 0xa7df0
 									g13 = g26;
-									function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+									AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 									// branch -> 0xa7e20
 								}
 								// 0xa7e20
 								if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 									// 0xa7e2c
 									g13 = g26;
-									function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+									AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 									// branch -> 0xa7e5c
 								}
 								// 0xa7e5c
@@ -12533,14 +12533,14 @@ int32_t function_a7c3c(int32_t a1)
 					if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 						// 0xa7df0
 						g13 = g26;
-						function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+						AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 						// branch -> 0xa7e20
 					}
 					// 0xa7e20
 					if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 						// 0xa7e2c
 						g13 = g26;
-						function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+						AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 						// branch -> 0xa7e5c
 					}
 					// 0xa7e5c
@@ -12760,14 +12760,14 @@ int32_t function_a7c3c(int32_t a1)
 									if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 										// 0xa7df0
 										g13 = g26;
-										function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+										AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 										// branch -> 0xa7e20
 									}
 									// 0xa7e20
 									if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 										// 0xa7e2c
 										g13 = g26;
-										function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+										AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 										// branch -> 0xa7e5c
 									}
 									// 0xa7e5c
@@ -12966,14 +12966,14 @@ int32_t function_a7c3c(int32_t a1)
 						if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 							// 0xa7df0
 							g13 = g26;
-							function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+							AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 							// branch -> 0xa7e20
 						}
 						// 0xa7e20
 						if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 							// 0xa7e2c
 							g13 = g26;
-							function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+							AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 							// branch -> 0xa7e5c
 						}
 						// 0xa7e5c
@@ -13186,14 +13186,14 @@ int32_t function_a7c3c(int32_t a1)
 					if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 						// 0xa7df0
 						g13 = g26;
-						function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+						AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 						// branch -> 0xa7e20
 					}
 					// 0xa7e20
 					if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 						// 0xa7e2c
 						g13 = g26;
-						function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+						AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 						// branch -> 0xa7e5c
 					}
 					// 0xa7e5c
@@ -13366,14 +13366,14 @@ int32_t function_a7c3c(int32_t a1)
 		if (__asm_rlwinm_(*(int32_t *)g31, 0, 27, 27) != 0) {
 			// 0xa7df0
 			g13 = g26;
-			function_73f28(g29, g28, 1, 0, 0, 64, 0, 0, 0);
+			AddMissile(g29, g28, 1, 0, 0, 64, 0, 0, 0);
 			// branch -> 0xa7e20
 		}
 		// 0xa7e20
 		if (__asm_rlwinm_(*(int32_t *)g31, 0, 26, 26) != 0) {
 			// 0xa7e2c
 			g13 = g26;
-			function_73f28(g29, g28, 2, 0, 0, 64, 0, 0, 0);
+			AddMissile(g29, g28, 2, 0, 0, 64, 0, 0, 0);
 			// branch -> 0xa7e5c
 		}
 		// 0xa7e5c
@@ -13566,7 +13566,7 @@ int32_t function_a7fa4(int32_t a1)
 				v17 = *(int32_t *)(v12 + 60);
 				v18 = *(int32_t *)(v12 + 468);
 				v13 = *(int32_t *)(v12 + 112);
-				function_73f28(v16, v17, v15, v18, v13, 0, 0, (int32_t)&v19, (int32_t)&v19);
+				AddMissile(v16, v17, v15, v18, v13, 0, 0, (int32_t)&v19, (int32_t)&v19);
 				g34 = 4;
 				g38 = *(int32_t *)g31;
 				PlaySfxLoc(4);
@@ -13642,7 +13642,7 @@ int32_t function_a7fa4(int32_t a1)
 	v17 = *(int32_t *)(v12 + 60);
 	v18 = *(int32_t *)(v12 + 468);
 	v13 = *(int32_t *)(v12 + 112);
-	function_73f28(v16, v17, v15, v18, v13, 0, 0, (int32_t)&v19, (int32_t)&v19);
+	AddMissile(v16, v17, v15, v18, v13, 0, 0, (int32_t)&v19, (int32_t)&v19);
 	g34 = 4;
 	g38 = *(int32_t *)g31;
 	PlaySfxLoc(4);
@@ -15918,7 +15918,7 @@ int32_t function_a8828(int32_t a1)
 }
 
 // Address range: 0xa9780 - 0xa9814
-int32_t function_a9780(int32_t a1)
+int32_t PlrDeathModeOK(int32_t a1)
 {
 	int32_t v1 = g36; // 0xa9780
 	int32_t v2 = g10; // 0xa9784
@@ -16303,11 +16303,11 @@ int32_t ProcessPlayers(int32_t a1)
 				}
 				// 0xa9b88
 				CheckCheatStats(v9);
-				if (function_a9780(g30) == 0) {
+				if (PlrDeathModeOK(g30) == 0) {
 					// 0xa9ba0
 					if (*(int32_t *)(g31 + 404) <= 63) {
 						// 0xa9bac
-						function_a640c(g30, -1);
+						SyncPlrKill(g30, -1);
 						// branch -> 0xa9bb8
 					}
 				}
@@ -16323,7 +16323,7 @@ int32_t ProcessPlayers(int32_t a1)
 							*v16 = *v16 - 4;
 							if (*(int32_t *)(g31 + 404) <= 63) {
 								// 0xa9c00
-								function_a640c(g30, 0);
+								SyncPlrKill(g30, 0);
 								// branch -> 0xa9c0c
 							}
 							// 0xa9c0c

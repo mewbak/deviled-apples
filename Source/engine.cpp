@@ -6338,7 +6338,7 @@ int32_t function_50478(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 }
 
 // Address range: 0x5053c - 0x50650
-int32_t function_5053c(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7)
+int32_t Cl2DecodeLightTbl(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7)
 {
 	int32_t v1 = g10; // 0x50540
 	g33 = a3;
@@ -6399,7 +6399,7 @@ int32_t function_5053c(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 }
 
 // Address range: 0x50650 - 0x50738
-int32_t function_50650(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7)
+int32_t Cl2DecodeFrm3(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6, int32_t a7)
 {
 	int32_t v1 = g10; // 0x50654
 	g35 = a3;

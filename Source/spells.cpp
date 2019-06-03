@@ -855,7 +855,7 @@ int32_t CastSpell(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, in
 				while (true) {
 					// 0xb5ee0
 					g13 = g28;
-					result = function_73f28(g29, g30, g31, g32, g36, 52, 0x1000000 * g33 / 0x1000000, 0, v4);
+					result = AddMissile(g29, g30, g31, g32, g36, 52, 0x1000000 * g33 / 0x1000000, 0, v4);
 					v9 = g24 - 1;
 					g24 = v9;
 					if (v9 > 0) {
@@ -915,7 +915,7 @@ int32_t CastSpell(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, in
 			lab_0xb5e58:
 				// 0xb5e58
 				g13 = g28;
-				v15 = function_73f28(g29, g30, g31, g32, g36, v12, 0x1000000 * g33 / 0x1000000, g27, g35);
+				v15 = AddMissile(g29, g30, g31, g32, g36, v12, 0x1000000 * g33 / 0x1000000, g27, g35);
 				int32_t v16 = g25; // 0xb5e80
 				g25 = v16 + 1;
 				v17 = g22 + 1;
@@ -966,7 +966,7 @@ int32_t CastSpell(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, in
 			while (true) {
 				// 0xb5ee0
 				g13 = g28;
-				result = function_73f28(g29, g30, g31, g32, g36, 52, 0x1000000 * g33 / 0x1000000, v24, v23);
+				result = AddMissile(g29, g30, g31, g32, g36, 52, 0x1000000 * g33 / 0x1000000, v24, v23);
 				v9 = g24 - 1;
 				g24 = v9;
 				if (v9 > 0) {
@@ -1172,7 +1172,7 @@ int32_t DoResurrect(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 		int32_t v7 = *(int32_t *)(v5 + 56); // 0xb60e4
 		g13 = a1;
 		int32_t *v8;
-		int32_t v9 = function_73f28(v7, v6, 0, 62, 0, 62, 0, (int32_t)&v8, (int32_t)&v8); // 0xb6108
+		int32_t v9 = AddMissile(v7, v6, 0, 62, 0, 62, 0, (int32_t)&v8, (int32_t)&v8); // 0xb6108
 		result = v9;
 		v4 = g30;
 		v2 = g31;

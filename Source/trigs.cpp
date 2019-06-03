@@ -3087,7 +3087,7 @@ int32_t CheckTriggers(int32_t a1)
 													// branch -> 0xc8584
 													// 0xc8584
 													InitDiabloMsg((char)g21);
-													g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+													g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 													// branch -> 0xc85f0
 													// 0xc85f0
 													g10 = v1;
@@ -3101,7 +3101,7 @@ int32_t CheckTriggers(int32_t a1)
 													// branch -> 0xc8584
 													// 0xc8584
 													InitDiabloMsg((char)g21);
-													g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+													g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 													// branch -> 0xc85f0
 													// 0xc85f0
 													g10 = v1;
@@ -3115,7 +3115,7 @@ int32_t CheckTriggers(int32_t a1)
 													// branch -> 0xc8584
 													// 0xc8584
 													InitDiabloMsg((char)g21);
-													g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+													g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 													// branch -> 0xc85f0
 													// 0xc85f0
 													g10 = v1;
@@ -3123,7 +3123,7 @@ int32_t CheckTriggers(int32_t a1)
 												}
 												// 0xc8584
 												InitDiabloMsg((char)g21);
-												g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+												g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 												// branch -> 0xc85f0
 												// 0xc85f0
 												g10 = v1;
@@ -3141,7 +3141,7 @@ int32_t CheckTriggers(int32_t a1)
 												// branch -> 0xc8584
 												// 0xc8584
 												InitDiabloMsg((char)g21);
-												g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+												g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 												// branch -> 0xc85f0
 												// 0xc85f0
 												g10 = v1;
@@ -3155,7 +3155,7 @@ int32_t CheckTriggers(int32_t a1)
 												// branch -> 0xc8584
 												// 0xc8584
 												InitDiabloMsg((char)g21);
-												g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+												g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 												// branch -> 0xc85f0
 												// 0xc85f0
 												g10 = v1;
@@ -3169,7 +3169,7 @@ int32_t CheckTriggers(int32_t a1)
 												// branch -> 0xc8584
 												// 0xc8584
 												InitDiabloMsg((char)g21);
-												g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+												g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 												// branch -> 0xc85f0
 												// 0xc85f0
 												g10 = v1;
@@ -3177,7 +3177,7 @@ int32_t CheckTriggers(int32_t a1)
 											}
 											// 0xc8584
 											InitDiabloMsg((char)g21);
-											g34 = function_8b234(1, 1, g24 % 256, g22 % 256);
+											g34 = NetSendCmdLoc(1, 1, g24 % 256, g22 % 256);
 											// branch -> 0xc85f0
 											// 0xc85f0
 											g10 = v1;

@@ -57,7 +57,7 @@ int32_t function_abcb8(int32_t a1, int32_t a2, int32_t a3)
 	*(int32_t *)(*(int32_t *)(g23 - 0x70e8) + 300) = -1;
 	*(char *)(*(int32_t *)*(int32_t *)(g23 - 0x7594) + 112 * a2 + a3) = 0;
 	int32_t *v6;
-	int32_t v7 = function_73f28(0, 0, a2, a3, 0, 10, 0, v5, (int32_t)&v6); // 0xabd24
+	int32_t v7 = AddMissile(0, 0, a2, a3, 0, 10, 0, v5, (int32_t)&v6); // 0xabd24
 	if (v7 == -1) {
 		// 0xabd74
 		g36 = v1;
