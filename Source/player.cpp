@@ -6376,7 +6376,7 @@ int32_t RestartTownLvl(int32_t a1)
 }
 
 // Address range: 0xa69f0 - 0xa6ac8
-int32_t function_a69f0(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
+int32_t StartWarpLvl(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 {
 	// 0xa69f0
 	g34 = a1;
