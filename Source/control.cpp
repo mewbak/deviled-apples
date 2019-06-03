@@ -17641,11 +17641,11 @@ int32_t function_31e2c(int32_t a1)
 		// 0x31eac
 		// branch -> 0x31eb4
 	}
-	int32_t v3 = function_d00a8((char *)v2); // 0x31eb8
+	int32_t v3 = msgcmd_add_server_cmd_W((char *)v2); // 0x31eb8
 	int32_t result = v3;                     // 0x31ee4
 	if (v3 == 0) {
 		// 0x31ec4
-		result = function_8c084(g35, g36);
+		result = NetSendCmdString(g35, g36);
 		// branch -> 0x31ed0
 	}
 	// 0x31ed0

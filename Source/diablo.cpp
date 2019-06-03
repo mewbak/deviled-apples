@@ -578,7 +578,7 @@ lab_0x3494c:
 			function_90ddc();
 			int32_t v25 = game_loop(*(int32_t *)g28); // 0x34a18
 			g34 = v25;
-			int32_t v26 = function_cffb4(v25); // 0x34a1c
+			int32_t v26 = msgcmd_send_chat(v25); // 0x34a1c
 			*(int32_t *)g28 = 0;
 			g34 = DrawAndBlit(v26);
 			// branch -> 0x34a2c
