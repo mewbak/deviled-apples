@@ -665,7 +665,7 @@ int32_t function_ac698(int32_t a1)
 		if (*(char *)v29 == 2) {
 			int32_t v30 = *(int32_t *)(g23 - 0x754c); // 0xac6f8
 			int32_t v31 = *(int32_t *)(g23 - 0x7550); // 0xac700
-			function_95b04(83, 2 * *(int32_t *)v30 + 20, 2 * *(int32_t *)v31 + 22);
+			AddObject(83, 2 * *(int32_t *)v30 + 20, 2 * *(int32_t *)v31 + 22);
 			*(char *)v29 = 3;
 			result = function_8b520(1, 15);
 			// branch -> 0xac734
@@ -2298,7 +2298,7 @@ int32_t function_ad890(void)
 				v7 = g23;
 				v13 = *(int32_t *)(v7 - 0x754c);
 				v11 = *(int32_t *)*(int32_t *)(v7 - 0x7550);
-				result = function_95b04(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
+				result = AddObject(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
 				// branch -> 0xad9a4
 			} else {
 				result = 0;
@@ -2330,7 +2330,7 @@ int32_t function_ad890(void)
 				v7 = g23;
 				v13 = *(int32_t *)(v7 - 0x754c);
 				v11 = *(int32_t *)*(int32_t *)(v7 - 0x7550);
-				result = function_95b04(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
+				result = AddObject(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
 				// branch -> 0xad9a4
 			} else {
 				result = 0;
@@ -2367,7 +2367,7 @@ int32_t function_ad890(void)
 			v7 = g23;
 			v13 = *(int32_t *)(v7 - 0x754c);
 			v11 = *(int32_t *)*(int32_t *)(v7 - 0x7550);
-			result = function_95b04(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
+			result = AddObject(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
 			// branch -> 0xad9a4
 		} else {
 			result = 0;
@@ -2420,7 +2420,7 @@ int32_t function_ad890(void)
 			v7 = g23;
 			v13 = *(int32_t *)(v7 - 0x754c);
 			v11 = *(int32_t *)*(int32_t *)(v7 - 0x7550);
-			result = function_95b04(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
+			result = AddObject(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
 			// branch -> 0xad9a4
 		} else {
 			result = 0;
@@ -2479,7 +2479,7 @@ int32_t function_ad890(void)
 		v7 = g23;
 		v13 = *(int32_t *)(v7 - 0x754c);
 		v11 = *(int32_t *)*(int32_t *)(v7 - 0x7550);
-		result = function_95b04(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
+		result = AddObject(83, 2 * *(int32_t *)v13 + 20, 2 * v11 + 22);
 		// branch -> 0xad9a4
 	} else {
 		result = 0;

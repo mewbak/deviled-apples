@@ -9798,7 +9798,7 @@ int32_t function_60128(int32_t result, int32_t a2, int32_t a3)
 }
 
 // Address range: 0x6022c - 0x60328
-int32_t function_6022c(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5)
+int32_t CreateRndItem(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5)
 {
 	int32_t v1 = g10; // 0x60230
 	g33 = a3;
@@ -15750,7 +15750,7 @@ int32_t function_6459c(int32_t a1)
 }
 
 // Address range: 0x646a0 - 0x646e0
-int32_t function_646a0(int32_t a1)
+int32_t ItemNoFlippy(int32_t a1)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x71e4);                      // 0x646a0
 	int32_t v2 = 4 * *(int32_t *)v1 + *(int32_t *)(g23 - 0x71e0); // 0x646bc

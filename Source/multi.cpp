@@ -2454,7 +2454,7 @@ int32_t function_90d90(int32_t a1)
 	g36 = *(int32_t *)(g23 - 0x77ac);
 	int32_t v3;                           // bp-520
 	int32_t v4 = &v3;                     // 0x90db4
-	int32_t v5 = function_c0eac(v4, 512); // 0x90dbc1
+	int32_t v5 = tmsg_get(v4, 512); // 0x90dbc1
 	if (v5 == 0) {
 		// 0x90dc8
 		g36 = v1;
@@ -2462,11 +2462,11 @@ int32_t function_90d90(int32_t a1)
 		return 0;
 	}
 	function_90d28(*(int32_t *)g36, v4, v5);
-	int32_t v6 = function_c0eac(v4, 512); // 0x90dbc
+	int32_t v6 = tmsg_get(v4, 512); // 0x90dbc
 	while (v6 != 0) {
 		// 0x90da8
 		function_90d28(*(int32_t *)g36, v4, v6);
-		v6 = function_c0eac(v4, 512);
+		v6 = tmsg_get(v4, 512);
 		// continue -> 0x90da8
 	}
 	// 0x90dc8

@@ -362,7 +362,7 @@ lab_0x929e0:
 	// continue (via goto) -> 0x92920
 	goto lab_0x92920_8;
 lab_0x929f4:;
-	int32_t v4 = function_95b04(g31, g36, v2); // 0x92a00
+	int32_t v4 = AddObject(g31, g36, v2); // 0x92a00
 	int32_t v5 = g32 + 1;                      // 0x92a04
 	g32 = v5;
 	if (v5 >= g33) {
@@ -496,7 +496,7 @@ lab_0x92b50:
 	// continue (via goto) -> 0x92a54
 	goto lab_0x92a54_11;
 lab_0x92b64:;
-	int32_t v4 = function_95b04(g31, g36, v2); // 0x92b70
+	int32_t v4 = AddObject(g31, g36, v2); // 0x92b70
 	int32_t v5 = g32 + 1;                      // 0x92b74
 	g32 = v5;
 	if (v5 >= g33) {
@@ -568,7 +568,7 @@ int32_t function_92b94(int32_t a1, int32_t a2, int32_t a3)
 								// continue (via goto) -> 0x92bd0
 								goto lab_0x92bd0;
 							} else {
-								int32_t v16 = function_95b04(g26, v5, v6); // 0x92c58
+								int32_t v16 = AddObject(g26, v5, v6); // 0x92c58
 								int32_t v17 = v2 + 1;                      // 0x92c5c
 								v2 = v17;
 								if (v17 >= v1) {
@@ -750,18 +750,18 @@ lab_0x92ddc:
 			int32_t v6 = v2; // 0x92eb8
 			if (*(int16_t *)(*(int32_t *)g36 + v4 + v3) == 367) {
 				// 0x92df8
-				function_95b04(36, v2, g32 + 1);
-				function_95b04(38, g31 + 2, g32 - 1);
-				function_95b04(37, g31, g32 + 3);
-				function_95b04(39, g31 + 4, g32 - 1);
-				function_95b04(40, g31, g32 + 5);
-				function_95b04(29, g31 + 1, g32 + 3);
-				function_95b04(30, g31 + 4, g32 + 5);
-				function_95b04(31, g31 + 2, g32);
-				function_95b04(32, g31 + 3, g32 + 2);
-				function_95b04(33, g31 + 2, g32 + 4);
-				function_95b04(34, g31 + 2, g32 + 1);
-				g34 = function_95b04(35, g31 + 4, g32 + 2);
+				AddObject(36, v2, g32 + 1);
+				AddObject(38, g31 + 2, g32 - 1);
+				AddObject(37, g31, g32 + 3);
+				AddObject(39, g31 + 4, g32 - 1);
+				AddObject(40, g31, g32 + 5);
+				AddObject(29, g31 + 1, g32 + 3);
+				AddObject(30, g31 + 4, g32 + 5);
+				AddObject(31, g31 + 2, g32);
+				AddObject(32, g31 + 3, g32 + 2);
+				AddObject(33, g31 + 2, g32 + 4);
+				AddObject(34, g31 + 2, g32 + 1);
+				g34 = AddObject(35, g31 + 4, g32 + 2);
 				v5 = g35;
 				v6 = g31;
 				// branch -> 0x92eb8
@@ -801,10 +801,10 @@ lab_0x92ddc:
 int32_t function_92eec(int32_t a1)
 {
 	int32_t v1 = *(int32_t *)(g23 - 0x7604); // 0x92ef4
-	function_95b04(87, *(int32_t *)(v1 + 316) - 2, *(int32_t *)(v1 + 320) + 1);
-	function_95b04(87, g36 + 3, g35 + 1);
-	function_95b04(87, g36 - 1, g35 + 2);
-	int32_t result = function_95b04(87, g36 + 2, g35 + 2); // 0x92f48
+	AddObject(87, *(int32_t *)(v1 + 316) - 2, *(int32_t *)(v1 + 320) + 1);
+	AddObject(87, g36 + 3, g35 + 1);
+	AddObject(87, g36 - 1, g35 + 2);
+	int32_t result = AddObject(87, g36 + 2, g35 + 2); // 0x92f48
 	return result;
 }
 
@@ -875,13 +875,13 @@ lab_0x92fac:
 					// 0x93028
 					if (QuestStatus(8) != 0) {
 						// 0x93038
-						function_95b04(71, g27, g26);
+						AddObject(71, g27, g26);
 						// branch -> 0x93048
 					}
 					// 0x93048
 					if (QuestStatus(11) != 0) {
 						// 0x93058
-						function_95b04(88, g27, g26);
+						AddObject(88, g27, g26);
 						// branch -> 0x93068
 					}
 					// 0x93068
@@ -890,7 +890,7 @@ lab_0x92fac:
 						g27 = v9;
 						int32_t v10 = 2 * *(int32_t *)*(int32_t *)(g23 - 0x7550) + 40; // 0x93098
 						g26 = v10;
-						function_95b04(72, v9, v10);
+						AddObject(72, v9, v10);
 						// branch -> 0x930a8
 					}
 					int32_t v11 = *(int32_t *)(g23 - 0x7684);                // 0x930ac
@@ -950,7 +950,7 @@ int32_t function_93120(int32_t a1)
 			// 0x93184
 			g37 = 4;
 			random(-113);
-			function_95b04(g33, v3, v3);
+			AddObject(g33, v3, v3);
 			g31 = 1;
 			g27 = 1;
 			int32_t v4 = 1; // 0x93248
@@ -1080,7 +1080,7 @@ int32_t AddL1Objs(int32_t result2, int32_t a2, int32_t a3, int32_t a4)
 					int32_t v16 = v10; // 0x9335424
 					if (v14 == 270) {
 						// 0x932cc
-						v16 = function_95b04(0, v11, g30);
+						v16 = AddObject(0, v11, g30);
 						v15 = g32;
 						// branch -> 0x932dc
 					}
@@ -1119,14 +1119,14 @@ int32_t AddL1Objs(int32_t result2, int32_t a2, int32_t a3, int32_t a4)
 									}
 								}
 								// 0x93314
-								v17 = function_95b04(2, g31, g30);
+								v17 = AddObject(2, g31, g30);
 								// branch -> 0x93324
 								goto lab_0x93324;
 							}
 						}
 					}
 					// 0x932f4
-					v16 = function_95b04(1, g31, g30);
+					v16 = AddObject(1, g31, g30);
 					v15 = g32;
 					// branch -> 0x93304
 					goto lab_0x93304;
@@ -1234,13 +1234,13 @@ int32_t AddL2Objs(int32_t result2, int32_t a2, int32_t a3, int32_t a4)
 								}
 							}
 							// 0x933cc
-							v17 = function_95b04(43, g31, g30);
+							v17 = AddObject(43, g31, g30);
 							// branch -> 0x933dc
 							goto lab_0x933dc;
 						}
 					}
 					// 0x933ac
-					v16 = function_95b04(42, v11, g30);
+					v16 = AddObject(42, v11, g30);
 					v15 = g32;
 					// branch -> 0x933bc
 					goto lab_0x933bc;
@@ -1314,13 +1314,13 @@ int32_t function_93410(int32_t result2, int32_t a2, int32_t a3, int32_t a4)
 					int32_t v15 = v9; // 0x934b422
 					if (v13 == 531) {
 						// 0x9345c
-						v15 = function_95b04(74, v10, g30);
+						v15 = AddObject(74, v10, g30);
 						v14 = g32;
 						// branch -> 0x9346c
 					}
 					if (v14 == 534) {
 						// 0x93474
-						v15 = function_95b04(75, g31, g30);
+						v15 = AddObject(75, g31, g30);
 						// branch -> 0x93484
 					}
 					int32_t v16 = g35 + 224; // 0x93484
@@ -1420,7 +1420,7 @@ int32_t function_934e4(int32_t a1)
 					int32_t v8 = random(-111); // 0x93540
 					if (v8 == 0) {
 						// 0x9354c
-						v6 = function_95b04(46, g36, g35);
+						v6 = AddObject(46, g36, g35);
 						// branch -> 0x9355c
 					} else {
 						v6 = v8;
@@ -1433,7 +1433,7 @@ int32_t function_934e4(int32_t a1)
 					int32_t v10 = random(-111); // 0x9356c
 					if (v10 == 0) {
 						// 0x93578
-						v9 = function_95b04(47, g36, g35);
+						v9 = AddObject(47, g36, g35);
 						// branch -> 0x93588
 					} else {
 						v9 = v10;
@@ -1449,7 +1449,7 @@ int32_t function_934e4(int32_t a1)
 						int32_t v14 = g35;                   // 0x935b0
 						if (*(char *)(v14 + v13 - 112) == 0) {
 							// 0x935bc
-							v11 = function_95b04(44, g36 - 1, v14);
+							v11 = AddObject(44, g36 - 1, v14);
 							// branch -> 0x935cc
 						} else {
 							v11 = v13;
@@ -1468,7 +1468,7 @@ int32_t function_934e4(int32_t a1)
 						int32_t v17 = g35;                   // 0x935f4
 						if (*(char *)(v17 + v16 - 1) == 0) {
 							// 0x93600
-							result = function_95b04(45, g36, v17 - 1);
+							result = AddObject(45, g36, v17 - 1);
 							// branch -> 0x93610
 						} else {
 							result = v16;
@@ -1617,7 +1617,7 @@ int32_t function_936a4(int32_t a1)
 									int32_t v24 = v17; // 0x937d0
 									if (v6 - v24 >= 2) {
 										// 0x937dc
-										function_95b04(53, v24, v14);
+										AddObject(53, v24, v14);
 										int32_t v25 = *(int32_t *)g35 + 112 * v17;                                    // 0x937f4
 										unsigned char v26 = *(char *)(v3 + v25);                                      // 0x937f8
 										int32_t v27 = 120 * (0x1000000 * (int32_t)v26 - 0x1000000) / 0x1000000 + g31; // 0x93810
@@ -1681,7 +1681,7 @@ int32_t function_936a4(int32_t a1)
 									goto lab_0x938bc_5;
 								}
 								// 0x93878
-								function_95b04(54, v17, v34);
+								AddObject(54, v17, v34);
 								unsigned char v35 = *(char *)(v14 + g30 + *(int32_t *)g35);                   // 0x93894
 								int32_t v36 = 120 * (0x1000000 * (int32_t)v35 - 0x1000000) / 0x1000000 + g31; // 0x938a8
 								*(int32_t *)(v36 + 88) = v6;
@@ -1955,7 +1955,7 @@ int32_t function_939f4(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 				if (v22 != 0) {
 					int32_t v25 = v18 + 16 + g25; // 0x93aa4
 					g18 = v25;
-					function_95b04(*(int32_t *)(g21 + 4 * (int32_t)v22), v25, g31);
+					AddObject(*(int32_t *)(g21 + 4 * (int32_t)v22), v25, g31);
 					int32_t v26 = ObjIndex(g18, g31); // 0x93abc
 					SetObjMapRange(v26, g27, g28, g19, g20, g29);
 					v21 = g33;
@@ -2057,7 +2057,7 @@ int32_t function_93b18(int32_t a1, int32_t a2, int32_t a3)
 				int32_t v23 = v18; // 0x93bb8
 				if (v21 != 0) {
 					// 0x93ba0
-					function_95b04(*(int32_t *)(g31 + 4 * (int32_t)v21), g35 + v17 + 16, g26);
+					AddObject(*(int32_t *)(g31 + 4 * (int32_t)v21), g35 + v17 + 16, g26);
 					v20 = g28;
 					v22 = g30;
 					v23 = g25;
@@ -2207,13 +2207,13 @@ lab_0x93d3c:
 						return result;
 					}
 					// 0x93db8
-					function_95b04(86, g35, g33);
-					function_95b04(87, g35 - 2, g33 + 1);
-					function_95b04(87, g35 - 2, g33);
-					function_95b04(87, g35 - 1, g33 - 1);
-					function_95b04(87, g35 + 1, g33 - 1);
-					function_95b04(87, g35 + 2, g33);
-					result = function_95b04(87, g35 + 2, g33 + 1);
+					AddObject(86, g35, g33);
+					AddObject(87, g35 - 2, g33 + 1);
+					AddObject(87, g35 - 2, g33);
+					AddObject(87, g35 - 1, g33 - 1);
+					AddObject(87, g35 + 1, g33 - 1);
+					AddObject(87, g35 + 2, g33);
+					result = AddObject(87, g35 + 2, g33 + 1);
 					// branch -> 0x93e28
 					// 0x93e28
 					g10 = v1;
@@ -2297,7 +2297,7 @@ int32_t function_93e3c(int32_t a1)
 						int32_t v13 = random(0); // 0x93ec8
 						if (v13 == 1) {
 							// 0x93f04
-							result = function_95b04(37, g35 + 1, v3);
+							result = AddObject(37, g35 + 1, v3);
 							// branch -> 0x93f88
 							goto lab_0x93f88_7;
 						} else {
@@ -2309,7 +2309,7 @@ int32_t function_93e3c(int32_t a1)
 									goto lab_0x93f88_7;
 								}
 								// 0x93f18
-								result = function_95b04(40, g35 + 1, v3);
+								result = AddObject(40, g35 + 1, v3);
 								// branch -> 0x93f88
 								goto lab_0x93f88_7;
 							} else {
@@ -2319,7 +2319,7 @@ int32_t function_93e3c(int32_t a1)
 									goto lab_0x93f88_7;
 								}
 								// 0x93ef0
-								result = function_95b04(36, g35 + 1, v3);
+								result = AddObject(36, g35 + 1, v3);
 								// branch -> 0x93f88
 								goto lab_0x93f88_7;
 							}
@@ -2372,7 +2372,7 @@ int32_t function_93e3c(int32_t a1)
 				int32_t v17 = random(0); // 0x93f48
 				if (v17 == 1) {
 					// 0x93f78
-					result = function_95b04(39, g35, v3);
+					result = AddObject(39, g35, v3);
 					// branch -> 0x93f88
 					goto lab_0x93f88_13;
 				} else {
@@ -2387,7 +2387,7 @@ int32_t function_93e3c(int32_t a1)
 						goto lab_0x93f88_13;
 					}
 					// 0x93f64
-					result = function_95b04(38, g35, v3);
+					result = AddObject(38, g35, v3);
 					// branch -> 0x93f88
 					goto lab_0x93f88_13;
 				}
@@ -2510,16 +2510,16 @@ lab_0x94094:
 						return result;
 					}
 					// 0x94124
-					function_95b04(95, v4, g33);
-					function_95b04(30, g35, g33 + 2);
-					function_95b04(87, g35 + 1, g33 + 2);
-					function_95b04(31, g35 + 2, g33 + 2);
-					function_95b04(33, g35, g33 - 2);
-					function_95b04(87, g35 + 1, g33 - 2);
-					function_95b04(34, g35 + 2, g33 - 2);
-					function_95b04(87, g35 - 1, g33 - 1);
-					function_95b04(35, g35 - 1, g33);
-					result = function_95b04(87, g35 - 1, g33 + 1);
+					AddObject(95, v4, g33);
+					AddObject(30, g35, g33 + 2);
+					AddObject(87, g35 + 1, g33 + 2);
+					AddObject(31, g35 + 2, g33 + 2);
+					AddObject(33, g35, g33 - 2);
+					AddObject(87, g35 + 1, g33 - 2);
+					AddObject(34, g35 + 2, g33 - 2);
+					AddObject(87, g35 - 1, g33 - 1);
+					AddObject(35, g35 - 1, g33);
+					result = AddObject(87, g35 - 1, g33 + 1);
 					// branch -> 0x941c4
 					// 0x941c4
 					g10 = v1;
@@ -2624,7 +2624,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 			// 0x942d8
 			if (QuestStatus(7) != 0) {
 				// 0x942e8
-				function_95b04(97, 2 * *(int32_t *)g32 + 26, 2 * *(int32_t *)g31 + 19);
+				AddObject(97, 2 * *(int32_t *)g32 + 26, 2 * *(int32_t *)g31 + 19);
 				// branch -> 0x94308
 			}
 			// 0x94308
@@ -2711,7 +2711,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 									v34 = *(int32_t *)g32;
 									g13 = v33 + 7;
 									function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-									v36 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+									v36 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 									// branch -> 0x944f0
 									// 0x944f0
 									function_93120(v36);
@@ -2933,7 +2933,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 								v34 = *(int32_t *)g32;
 								g13 = v33 + 7;
 								function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-								v36 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+								v36 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 								// branch -> 0x944f0
 								// 0x944f0
 								function_93120(v36);
@@ -3147,7 +3147,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 							v34 = *(int32_t *)g32;
 							g13 = v33 + 7;
 							function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-							v31 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+							v31 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 							// branch -> 0x944f0
 						}
 						// 0x944f0
@@ -3394,7 +3394,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 								v34 = *(int32_t *)g32;
 								g13 = v33 + 7;
 								function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-								v36 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+								v36 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 								// branch -> 0x944f0
 								// 0x944f0
 								function_93120(v36);
@@ -3616,7 +3616,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 							v34 = *(int32_t *)g32;
 							g13 = v33 + 7;
 							function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-							v36 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+							v36 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 							// branch -> 0x944f0
 							// 0x944f0
 							function_93120(v36);
@@ -3830,7 +3830,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 						v34 = *(int32_t *)g32;
 						g13 = v33 + 7;
 						function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-						v31 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+						v31 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 						// branch -> 0x944f0
 					}
 					// 0x944f0
@@ -4069,7 +4069,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 						v34 = *(int32_t *)g32;
 						g13 = v33 + 7;
 						function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-						v36 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+						v36 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 						// branch -> 0x944f0
 						// 0x944f0
 						function_93120(v36);
@@ -4291,7 +4291,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 					v34 = *(int32_t *)g32;
 					g13 = v33 + 7;
 					function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-					v36 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+					v36 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 					// branch -> 0x944f0
 					// 0x944f0
 					function_93120(v36);
@@ -4505,7 +4505,7 @@ int32_t InitObjects(int32_t a1, int32_t a2)
 				v34 = *(int32_t *)g32;
 				g13 = v33 + 7;
 				function_92f64(0, 0, 112, 112, v34, v33 + 3, v34 + 2, g24);
-				v31 = function_95b04(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
+				v31 = AddObject(73, 2 * *(int32_t *)g32 + 25, 2 * *(int32_t *)g31 + 32);
 				// branch -> 0x944f0
 			}
 			// 0x944f0
@@ -4844,7 +4844,7 @@ int32_t SetMapObjects(int32_t a1, int32_t a2, int32_t a3)
 					int32_t v72 = v67; // 0x94930
 					if (v70 != 0) {
 						int32_t v73 = *(int32_t *)(g24 + 4 * (int32_t)v70); // 0x94920
-						function_95b04(v73, g31 + v66 + 16, v60);
+						AddObject(v73, g31 + v66 + 16, v60);
 						v69 = g36;
 						v71 = g21;
 						v72 = v5;
@@ -6035,7 +6035,7 @@ int32_t function_959f0(int32_t a1)
 		*(char *)(v8 + 112 * v4 + v5 + 225) = (char)v7;
 		int32_t v9 = *(int32_t *)g36; // 0x95a7c
 		*(char *)(112 * v4 + 114 + v9 + v5) = (char)v7;
-		result = function_95b04(94, v4 + 2, v5 + 2);
+		result = AddObject(94, v4 + 2, v5 + 2);
 		// branch -> 0x95aa8
 	} else {
 		result = v2;
@@ -6052,12 +6052,12 @@ int32_t function_95ac0(int32_t a1)
 	int32_t v1 = 0; // bp-4
 	int32_t v2;     // bp-8
 	function_95920(5, &v1, (int32_t)&v2);
-	int32_t result = function_95b04(96, v1 + 2, v2 + 2); // 0x95af0
+	int32_t result = AddObject(96, v1 + 2, v2 + 2); // 0x95af0
 	return result;
 }
 
 // Address range: 0x95b04 - 0x95db8
-int32_t function_95b04(int32_t result, int32_t a2, int32_t a3)
+int32_t AddObject(int32_t result, int32_t a2, int32_t a3)
 {
 	int32_t v1 = g10;                        // 0x95b08
 	int32_t v2 = *(int32_t *)(g23 - 0x7194); // 0x95b0c

@@ -3971,10 +3971,10 @@ int32_t InitMonsters(int32_t a1)
 	int32_t v3 = v2; // 0x7b60c
 	if (*(char *)v2 == 0) {
 		// 0x7b5ac
-		function_7bac4(1, 0, 0, 0, 0);
-		function_7bac4(1, 0, 0, 0, 0);
-		function_7bac4(1, 0, 0, 0, 0);
-		function_7bac4(1, 0, 0, 0, 0);
+		AddMonster(1, 0, 0, 0, 0);
+		AddMonster(1, 0, 0, 0, 0);
+		AddMonster(1, 0, 0, 0, 0);
+		AddMonster(1, 0, 0, 0, 0);
 		v3 = g29;
 		// branch -> 0x7b60c
 	}
@@ -4328,10 +4328,10 @@ int32_t SetMapMonsters(int32_t a1, int32_t a2, int32_t a3)
 	g27 = a3;
 	g29 = function_c9948();
 	function_795ec(109, 2);
-	function_7bac4(1, 0, 0, 0, 0);
-	function_7bac4(1, 0, 0, 0, 0);
-	function_7bac4(1, 0, 0, 0, 0);
-	function_7bac4(1, 0, 0, 0, 0);
+	AddMonster(1, 0, 0, 0, 0);
+	AddMonster(1, 0, 0, 0, 0);
+	AddMonster(1, 0, 0, 0, 0);
+	AddMonster(1, 0, 0, 0, 0);
 	if (*(char *)*(int32_t *)(g23 - 0x77d8) != 0) {
 		// 0x7b930
 		if (*(char *)*(int32_t *)(g23 - 0x77e0) == 5) {
@@ -4457,7 +4457,7 @@ int32_t function_7ba88(int32_t a1)
 }
 
 // Address range: 0x7bac4 - 0x7bb5c
-int32_t function_7bac4(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5)
+int32_t AddMonster(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5)
 {
 	int32_t v1 = g36;                                    // 0x7bac4
 	int32_t v2 = g10;                                    // 0x7bac8
@@ -32023,7 +32023,7 @@ int32_t function_86e9c(int32_t a1, int32_t a2, int32_t a3)
 	int32_t v10; // 0x86f6c
 	if (*(int32_t *)g33 <= 0 || v9 < 0) {
 		// 0x86f58
-		v10 = function_7bac4(a1, a2, g30, -1, 1);
+		v10 = AddMonster(a1, a2, g30, -1, 1);
 		if (v10 != -1) {
 			// 0x86f7c
 			function_7c234(v10, g30);
@@ -32062,7 +32062,7 @@ int32_t function_86e9c(int32_t a1, int32_t a2, int32_t a3)
 		}
 	}
 	// 0x86f58
-	v10 = function_7bac4(a1, a2, g30, v12 - 1, 1);
+	v10 = AddMonster(a1, a2, g30, v12 - 1, 1);
 	if (v10 != -1) {
 		// 0x86f7c
 		function_7c234(v10, g30);
@@ -32367,7 +32367,7 @@ int32_t function_871a8(int32_t a1)
 	int32_t v9; // 0x8726c
 	if (*(int32_t *)g33 <= 0 || v7 < 0) {
 		// 0x87258
-		v9 = function_7bac4(0, 0, 0, -1, 0);
+		v9 = AddMonster(0, 0, 0, -1, 0);
 		g31 = v9;
 		if (v9 != -1) {
 			// 0x8727c
@@ -32407,7 +32407,7 @@ int32_t function_871a8(int32_t a1)
 		}
 	}
 	// 0x87258
-	v9 = function_7bac4(0, 0, 0, v11 - 1, 0);
+	v9 = AddMonster(0, 0, 0, v11 - 1, 0);
 	g31 = v9;
 	if (v9 != -1) {
 		// 0x8727c
