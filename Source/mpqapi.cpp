@@ -777,20 +777,20 @@ int32_t mpqapi_write_block_table(int32_t a1)
 		if (v26 == 0) {
 			// 0x88278
 			g34 = v4;
-			int32_t v27 = function_4d2a4(v4, 3); // 0x88280
+			int32_t v27 = Hash(v4, 3); // 0x88280
 			g38 = v27;
 			int32_t v28 = *(int32_t *)(g23 - 0x4d5c); // 0x88288
 			g35 = (int32_t) "MoveWindow";
-			function_4cfa8((int32_t *)v28, (int32_t) "MoveWindow" - 0x8000, v27);
+			Encrypt((int32_t *)v28, (int32_t) "MoveWindow" - 0x8000, v27);
 			int32_t v29 = *(int32_t *)(g23 - 0x4d54); // 0x88298
 			g34 = v29;
 			int32_t v30 = *(int32_t *)(g23 - 0x4d5c); // 0x882a0
 			int32_t v31;                              // bp-24
 			g36 = function_eafd8(v29, v30, g35 - 0x8000, (int32_t)&v31, 0);
 			g34 = v4;
-			int32_t v32 = function_4d2a4(v4, 3); // 0x882c0
+			int32_t v32 = Hash(v4, 3); // 0x882c0
 			g38 = v32;
-			function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d5c), g35 - 0x8000, v32);
+			Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d5c), g35 - 0x8000, v32);
 			int32_t v33 = *(int32_t *)(g23 - 0x4d5c); // 0x882d8
 			v7 = v33;
 			v8 = 1024;
@@ -915,20 +915,20 @@ int32_t mpqapi_write_hash_table(int32_t a1)
 		if (v25 == 0) {
 			// 0x8843c
 			g34 = v3;
-			int32_t v26 = function_4d2a4(v3, 3); // 0x88444
+			int32_t v26 = Hash(v3, 3); // 0x88444
 			g38 = v26;
 			int32_t v27 = *(int32_t *)(g23 - 0x4d60); // 0x8844c
 			g35 = (int32_t) "MoveWindow";
-			function_4cfa8((int32_t *)v27, (int32_t) "MoveWindow" - 0x8000, v26);
+			Encrypt((int32_t *)v27, (int32_t) "MoveWindow" - 0x8000, v26);
 			int32_t v28 = *(int32_t *)(g23 - 0x4d54); // 0x8845c
 			g34 = v28;
 			int32_t v29 = *(int32_t *)(g23 - 0x4d60); // 0x88464
 			int32_t v30;                              // bp-24
 			g36 = function_eafd8(v28, v29, g35 - 0x8000, (int32_t)&v30, 0);
 			g34 = v3;
-			int32_t v31 = function_4d2a4(v3, 3); // 0x88484
+			int32_t v31 = Hash(v3, 3); // 0x88484
 			g38 = v31;
-			function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d60), g35 - 0x8000, v31);
+			Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d60), g35 - 0x8000, v31);
 			int32_t v32 = *(int32_t *)(g23 - 0x4d60); // 0x8849c
 			v6 = v32;
 			v7 = 1024;
@@ -1286,15 +1286,15 @@ int32_t ParseMPQHeader(int32_t *a1, int32_t a2)
 int32_t function_88814(void)
 {
 	int32_t v1 = g34;                  // 0x88828
-	int32_t v2 = function_4d2a4(2, 2); // 0x88834
+	int32_t v2 = Hash(2, 2); // 0x88834
 	g34 = v1;
-	int32_t v3 = function_4d2a4(v1, 1); // 0x88844
+	int32_t v3 = Hash(v1, 1); // 0x88844
 	g34 = v1;
-	return function_87f98(function_4d2a4(v1, 0), v3, v2, 0);
+	return function_87f98(Hash(v1, 0), v3, v2, 0);
 }
 
 // Address range: 0x88884 - 0x8890c
-int32_t function_88884(void)
+int32_t mpqapi_remove_hash_entry(void)
 {
 	int32_t v1 = g36;              // 0x88884
 	int32_t v2 = g35;              // 0x8888c
@@ -1323,7 +1323,7 @@ int32_t function_88884(void)
 // Address range: 0x8890c - 0x8892c
 int32_t function_8890c(int32_t a1)
 {
-	int32_t result = function_88884(); // 0x88918
+	int32_t result = mpqapi_remove_hash_entry(); // 0x88918
 	return result;
 }
 
@@ -1346,7 +1346,7 @@ int32_t function_8892c(int32_t a1)
 	}
 	int32_t v4; // bp-280
 	g34 = &v4;
-	function_88884();
+	mpqapi_remove_hash_entry();
 	int32_t v5 = g36;
 	g34 = v5;
 	g15 = g35;
@@ -1354,7 +1354,7 @@ int32_t function_8892c(int32_t a1)
 	while (CurrentProc() != 0) {
 		// 0x8894c
 		g34 = &v4;
-		function_88884();
+		mpqapi_remove_hash_entry();
 		v5 = g36;
 		g34 = v5;
 		g15 = g35;
@@ -1369,20 +1369,20 @@ int32_t function_8892c(int32_t a1)
 }
 
 // Address range: 0x8898c - 0x88be8
-int32_t function_8898c(int32_t a1, int32_t a2, int32_t a3)
+int32_t mpqapi_add_file(int32_t a1, int32_t a2, int32_t a3)
 {
 	// 0x8898c
 	g34 = a1;
 	int32_t v1 = g10; // 0x88990
 	g35 = a2;
 	g31 = g34;
-	g33 = function_4d2a4(0, 0);
+	g33 = Hash(0, 0);
 	int32_t v2 = g31; // 0x889b4
 	g34 = v2;
-	g32 = function_4d2a4(v2, 1);
+	g32 = Hash(v2, 1);
 	int32_t v3 = g31; // 0x889c4
 	g34 = v3;
-	int32_t v4 = function_4d2a4(v3, 2); // 0x889cc
+	int32_t v4 = Hash(v3, 2); // 0x889cc
 	g36 = v4;
 	if (function_87f98(g33, g32, v4, 0) + (int32_t) "MoveWindow" != 0xffff) {
 		// 0x889f4
@@ -1772,7 +1772,7 @@ int32_t function_8898c(int32_t a1, int32_t a2, int32_t a3)
 }
 
 // Address range: 0x88be8 - 0x88ffc
-int32_t function_88be8(int32_t a1, int32_t a2, int32_t a3, int32_t *a4)
+int32_t mpqapi_write_file_contents(int32_t a1, int32_t a2, int32_t a3, int32_t *a4)
 {
 	int32_t v1 = g10; // 0x88bec
 	g35 = *(int32_t *)(g23 - 0x5cc0);
@@ -1855,7 +1855,7 @@ int32_t function_88be8(int32_t a1, int32_t a2, int32_t a3, int32_t *a4)
 			// 0x88c44
 			v9 = g30;
 			g34 = v9;
-			function_4d2a4(v9, 3);
+			Hash(v9, 3);
 			v10 = g28;
 			v16 = 4 * (v10 + 4095) / 0x1000 + 4;
 			g36 = v16;
@@ -2210,7 +2210,7 @@ int32_t function_88be8(int32_t a1, int32_t a2, int32_t a3, int32_t *a4)
 						int32_t v75 = v74 < 0x1000 ? v74 : 0x1000; // bp-52
 						g34 = g35;
 						memcpy();
-						v75 = function_4d5f4(g35, v75);
+						v75 = PkwareCompress(g35, v75);
 						int32_t v76; // 0x88e28
 						if (g32 == 0) {
 							int32_t v77 = g36; // 0x88de4
@@ -2510,7 +2510,7 @@ int32_t function_88be8(int32_t a1, int32_t a2, int32_t a3, int32_t *a4)
 		// 0x88c44
 		v9 = g30;
 		g34 = v9;
-		function_4d2a4(v9, 3);
+		Hash(v9, 3);
 		v10 = g28;
 		v16 = 4 * (v10 + 4095) / 0x1000 + 4;
 		g36 = v16;
@@ -2830,7 +2830,7 @@ int32_t function_88be8(int32_t a1, int32_t a2, int32_t a3, int32_t *a4)
 		// 0x88c44
 		v9 = g30;
 		g34 = v9;
-		function_4d2a4(v9, 3);
+		Hash(v9, 3);
 		v10 = g28;
 		v16 = 4 * (v10 + 4095) / 0x1000 + 4;
 		g36 = v16;
@@ -3130,7 +3130,7 @@ int32_t function_88be8(int32_t a1, int32_t a2, int32_t a3, int32_t *a4)
 	// 0x88c44
 	v9 = g30;
 	g34 = v9;
-	function_4d2a4(v9, 3);
+	Hash(v9, 3);
 	v10 = g28;
 	v16 = 4 * (v10 + 4095) / 0x1000 + 4;
 	g36 = v16;
@@ -3435,13 +3435,13 @@ int32_t mpqapi_write_file(int32_t a1, int32_t a2, int32_t a3)
 	int32_t v3 = g33; // 0x89010
 	g33 = g34;
 	*(int32_t *)(g23 - 0x4d58) = 1;
-	function_88884();
-	int32_t v4 = function_8898c(g33, 0, 0); // 0x89038
+	mpqapi_remove_hash_entry();
+	int32_t v4 = mpqapi_add_file(g33, 0, 0); // 0x89038
 	int32_t result = 1;
-	if (function_88be8(g33, g35, g36, (int32_t *)v4) == 0) {
+	if (mpqapi_write_file_contents(g33, g35, g36, (int32_t *)v4) == 0) {
 		// 0x89058
 		g34 = g33;
-		function_88884();
+		mpqapi_remove_hash_entry();
 		result = 0;
 		// branch -> 0x8906c
 	}
@@ -3463,7 +3463,7 @@ int32_t function_89088(int32_t a1, int32_t a2)
 		int32_t *v3 = (int32_t *)(*(int32_t *)(g23 - 0x4d60) + 16 * v2 + 12); // 0x890c0
 		int32_t v4 = *v3;                                                     // 0x890c0
 		*v3 = -2;
-		result = function_8898c(g36, 16 * v4 + *(int32_t *)(g23 - 0x4d5c), v4);
+		result = mpqapi_add_file(g36, 16 * v4 + *(int32_t *)(g23 - 0x4d5c), v4);
 		*(int32_t *)(g23 - 0x4d58) = 1;
 		// branch -> 0x890e0
 	} else {
@@ -3679,9 +3679,9 @@ int32_t OpenMPQ(int32_t a1, int32_t a2, int32_t a3)
 									// 0x894a8
 									v61 = *(int32_t *)(v3 - 0x5cb4);
 									g34 = v61;
-									v43 = function_4d2a4(v61, 3);
+									v43 = Hash(v61, 3);
 									g38 = v43;
-									function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
+									Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
 									v62 = *(int32_t *)(g23 - 0x4d60);
 									v7 = v62;
 									v6 = 1024;
@@ -3752,9 +3752,9 @@ int32_t OpenMPQ(int32_t a1, int32_t a2, int32_t a3)
 							// 0x893a4
 							v55 = *(int32_t *)(v3 - 0x5cb0);
 							g34 = v55;
-							v34 = function_4d2a4(v55, 3);
+							v34 = Hash(v55, 3);
 							g38 = v34;
-							function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d5c), g33 - 0x8000, v34);
+							Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d5c), g33 - 0x8000, v34);
 							v56 = *(int32_t *)(g23 - 0x4d5c);
 							v7 = v56;
 							v6 = 1024;
@@ -3819,9 +3819,9 @@ int32_t OpenMPQ(int32_t a1, int32_t a2, int32_t a3)
 											// 0x894a8
 											v61 = *(int32_t *)(v3 - 0x5cb4);
 											g34 = v61;
-											v43 = function_4d2a4(v61, 3);
+											v43 = Hash(v61, 3);
 											g38 = v43;
-											function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
+											Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
 											v62 = *(int32_t *)(g23 - 0x4d60);
 											v7 = v62;
 											// branch -> 0x894d0
@@ -3941,9 +3941,9 @@ int32_t OpenMPQ(int32_t a1, int32_t a2, int32_t a3)
 							// 0x894a8
 							v61 = *(int32_t *)(v3 - 0x5cb4);
 							g34 = v61;
-							v43 = function_4d2a4(v61, 3);
+							v43 = Hash(v61, 3);
 							g38 = v43;
-							function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
+							Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
 							v62 = *(int32_t *)(g23 - 0x4d60);
 							v7 = v62;
 							// branch -> 0x894d0
@@ -4007,9 +4007,9 @@ int32_t OpenMPQ(int32_t a1, int32_t a2, int32_t a3)
 					// 0x893a4
 					v55 = *(int32_t *)(v3 - 0x5cb0);
 					g34 = v55;
-					v34 = function_4d2a4(v55, 3);
+					v34 = Hash(v55, 3);
 					g38 = v34;
-					function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d5c), g33 - 0x8000, v34);
+					Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d5c), g33 - 0x8000, v34);
 					v56 = *(int32_t *)(g23 - 0x4d5c);
 					v7 = v56;
 					// branch -> 0x893cc
@@ -4073,9 +4073,9 @@ int32_t OpenMPQ(int32_t a1, int32_t a2, int32_t a3)
 								// 0x894a8
 								v61 = *(int32_t *)(v3 - 0x5cb4);
 								g34 = v61;
-								v43 = function_4d2a4(v61, 3);
+								v43 = Hash(v61, 3);
 								g38 = v43;
-								function_4ccac((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
+								Decrypt((int32_t *)*(int32_t *)(g23 - 0x4d60), g33 - 0x8000, v43);
 								v62 = *(int32_t *)(g23 - 0x4d60);
 								v7 = v62;
 								// branch -> 0x894d0
