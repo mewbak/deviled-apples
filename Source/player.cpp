@@ -14262,7 +14262,7 @@ int32_t function_a8828(int32_t a1)
 	int32_t v7 = v6; // 0xa88ac
 	if (*(int32_t *)v6 == 20) {
 		int32_t v8 = g33 + 232 * *(int32_t *)(v5 + 36); // 0xa889c
-		function_a9fdc(v3, *(int32_t *)(v8 + 40), *(int32_t *)(v8 + 44), 0);
+		MakePlrPath(v3, *(int32_t *)(v8 + 40), *(int32_t *)(v8 + 44), 0);
 		v7 = g29;
 		// branch -> 0xa88ac
 	}
@@ -14270,7 +14270,7 @@ int32_t function_a8828(int32_t a1)
 	if (*(int32_t *)v7 == 21) {
 		int32_t v9 = g32;                                        // 0xa88b8
 		int32_t v10 = 0x55ec * *(int32_t *)(g31 + v9 + 36) + v9; // 0xa88cc
-		function_a9fdc(g35, *(int32_t *)(v10 + 64), *(int32_t *)(v10 + 68), 0);
+		MakePlrPath(g35, *(int32_t *)(v10 + 64), *(int32_t *)(v10 + 68), 0);
 		// branch -> 0xa88dc
 	}
 	int32_t v11 = g32;       // 0xa88dc
@@ -16561,7 +16561,7 @@ int32_t function_a9df0(int32_t a1, int32_t a2, int32_t a3)
 }
 
 // Address range: 0xa9fdc - 0xaa11c
-int32_t function_a9fdc(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
+int32_t MakePlrPath(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 {
 	int32_t v1 = g10; // 0xa9fe0
 	g27 = a1;
@@ -16605,7 +16605,7 @@ int32_t function_a9fdc(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 	int32_t v9 = g33;                                                                      // 0xaa044
 	int32_t v10 = *(int32_t *)(v9 + v8 + 68);                                              // 0xaa054
 	int32_t v11 = v9 + 4 + v8;                                                             // 0xaa060
-	int32_t v12 = function_9f124(*(int32_t *)(g23 - 0x6f98), g27, v10, v7, g29, v11, v11); // 0xaa064
+	int32_t v12 = FindPath(*(int32_t *)(g23 - 0x6f98), g27, v10, v7, g29, v11, v11); // 0xaa064
 	if (v12 == 0) {
 		// 0xaa108
 		g10 = v1;

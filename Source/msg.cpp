@@ -3497,7 +3497,7 @@ int32_t function_8c2a4(int32_t a1, int32_t a2)
 		ClrPlrPath(a2);
 		int32_t v3 = g33;                          // 0x8c2fc
 		int32_t v4 = (int32_t) * (char *)(v3 + 1); // 0x8c2fc
-		function_a9fdc(g35, v4, (int32_t) * (char *)(v3 + 2), 1);
+		MakePlrPath(g35, v4, (int32_t) * (char *)(v3 + 2), 1);
 		*(int32_t *)(g36 + 32) = -1;
 		// branch -> 0x8c318
 	}
@@ -3674,7 +3674,7 @@ int32_t function_8c5c8(int32_t a1, int32_t a2)
 		unsigned char v6 = *(char *)(v4 | 1); // 0x8c614
 		*(int16_t *)v3 = 256 * (int16_t)v6 | (int16_t)v5;
 		int32_t v7 = (int32_t) * (char *)(a1 + 1); // 0x8c628
-		function_a9fdc(a2, v7, (int32_t) * (char *)(a1 + 2), 0);
+		MakePlrPath(a2, v7, (int32_t) * (char *)(a1 + 2), 0);
 		*(int32_t *)(g36 + 32) = 15;
 		*(int32_t *)(g36 + 36) = (int32_t) * (int16_t *)(g35 + 3);
 		// branch -> 0x8c644
@@ -3889,7 +3889,7 @@ int32_t function_8c9d4(int32_t a1, int32_t a2)
 		unsigned char v6 = *(char *)(v4 | 1); // 0x8ca20
 		*(int16_t *)v3 = 256 * (int16_t)v6 | (int16_t)v5;
 		int32_t v7 = (int32_t) * (char *)(a1 + 1); // 0x8ca34
-		function_a9fdc(a2, v7, (int32_t) * (char *)(a1 + 2), 0);
+		MakePlrPath(a2, v7, (int32_t) * (char *)(a1 + 2), 0);
 		*(int32_t *)(g36 + 32) = 16;
 		*(int32_t *)(g36 + 36) = (int32_t) * (int16_t *)(g35 + 3);
 		// branch -> 0x8ca50
@@ -4375,7 +4375,7 @@ int32_t function_8d354(int32_t a1, int32_t a2)
 	g36 = v2;
 	if (v1 == *(int32_t *)(v2 + 52)) {
 		int32_t v3 = (int32_t) * (char *)(a1 + 1); // 0x8d3a0
-		function_a9fdc(a2, v3, (int32_t) * (char *)(a1 + 2), 0);
+		MakePlrPath(a2, v3, (int32_t) * (char *)(a1 + 2), 0);
 		*(int32_t *)(g36 + 32) = 9;
 		*(int32_t *)(g36 + 36) = (int32_t) * (char *)(g35 + 1);
 		*(int32_t *)(g36 + 40) = (int32_t) * (char *)(g35 + 2);
@@ -4623,7 +4623,7 @@ int32_t function_8d834(int32_t a1, int32_t a2)
 			// 0x8d8b0
 			if (*(int32_t *)(v9 + 76) == 0) {
 				int32_t v11 = (int32_t) * (char *)(v8 + 1); // 0x8d8bc
-				function_a9fdc(a2, v11, (int32_t) * (char *)(v8 + 2), 1);
+				MakePlrPath(a2, v11, (int32_t) * (char *)(v8 + 2), 1);
 				// branch -> 0x8d8e0
 				// 0x8d8e0
 				v10 = g33 + g35;
@@ -4635,7 +4635,7 @@ int32_t function_8d834(int32_t a1, int32_t a2)
 			}
 		}
 		int32_t v12 = (int32_t) * (char *)(v8 + 1); // 0x8d8d0
-		function_a9fdc(v12, (int32_t) * (char *)(v8 + 2), 0, 0);
+		MakePlrPath(v12, (int32_t) * (char *)(v8 + 2), 0, 0);
 		// branch -> 0x8d8e0
 		// 0x8d8e0
 		v10 = g33 + g35;
@@ -4672,7 +4672,7 @@ int32_t function_8d914(int32_t a1, int32_t a2)
 			// 0x8d990
 			if (*(int32_t *)(v9 + 76) == 0) {
 				int32_t v11 = (int32_t) * (char *)(v8 + 1); // 0x8d99c
-				function_a9fdc(a2, v11, (int32_t) * (char *)(v8 + 2), 1);
+				MakePlrPath(a2, v11, (int32_t) * (char *)(v8 + 2), 1);
 				// branch -> 0x8d9c0
 				// 0x8d9c0
 				v10 = g33 + g35;
@@ -4684,7 +4684,7 @@ int32_t function_8d914(int32_t a1, int32_t a2)
 			}
 		}
 		int32_t v12 = (int32_t) * (char *)(v8 + 1); // 0x8d9b0
-		function_a9fdc(v12, (int32_t) * (char *)(v8 + 2), 0, 0);
+		MakePlrPath(v12, (int32_t) * (char *)(v8 + 2), 0, 0);
 		// branch -> 0x8d9c0
 		// 0x8d9c0
 		v10 = g33 + g35;
@@ -4756,7 +4756,7 @@ int32_t function_8da4c(int32_t a1, int32_t a2)
 			// 0x8daf4
 			v16 = 232 * (int32_t) * (int16_t *)(g30 + 1);
 			v17 = *(int32_t *)(v13 + v16);
-			function_a9fdc(a2, *(int32_t *)(v10 + v16), v17, 0);
+			MakePlrPath(a2, *(int32_t *)(v10 + v16), v17, 0);
 			// branch -> 0x8db10
 		} else {
 			// 0x8daec
@@ -4764,7 +4764,7 @@ int32_t function_8da4c(int32_t a1, int32_t a2)
 				// 0x8daf4
 				v16 = 232 * (int32_t) * (int16_t *)(g30 + 1);
 				v17 = *(int32_t *)(v13 + v16);
-				function_a9fdc(a2, *(int32_t *)(v10 + v16), v17, 0);
+				MakePlrPath(a2, *(int32_t *)(v10 + v16), v17, 0);
 				// branch -> 0x8db10
 			}
 		}
@@ -4795,7 +4795,7 @@ int32_t function_8db3c(int32_t a1, int32_t a2)
 		unsigned char v7 = *(char *)(v5 | 1); // 0x8db88
 		*(int16_t *)v4 = 256 * (int16_t)v7 | (int16_t)v6;
 		int32_t v8 = v1 + 0x55ec * (int32_t) * (int16_t *)(a1 + 1); // 0x8dba4
-		function_a9fdc(a2, *(int32_t *)(v8 + 64), *(int32_t *)(v8 + 68), 0);
+		MakePlrPath(a2, *(int32_t *)(v8 + 64), *(int32_t *)(v8 + 68), 0);
 		*(int32_t *)(g36 + 32) = 21;
 		*(int32_t *)(g36 + 36) = (int32_t) * (int16_t *)(g35 + 1);
 		// branch -> 0x8dbc4
@@ -5171,7 +5171,7 @@ int32_t function_8e2d0(int32_t a1, int32_t a2)
 		unsigned char v6 = *(char *)(v4 | 1); // 0x8e31c
 		*(int16_t *)v3 = 256 * (int16_t)v6 | (int16_t)v5;
 		int32_t v7 = (int32_t) * (char *)(a1 + 1); // 0x8e330
-		function_a9fdc(a2, v7, (int32_t) * (char *)(a1 + 2), 0);
+		MakePlrPath(a2, v7, (int32_t) * (char *)(a1 + 2), 0);
 		*(int32_t *)(g36 + 32) = 17;
 		*(int32_t *)(g36 + 36) = (int32_t) * (int16_t *)(g35 + 3);
 		// branch -> 0x8e34c

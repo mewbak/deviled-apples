@@ -27765,7 +27765,7 @@ int32_t function_5b990(int32_t a1)
 }
 
 // Address range: 0x5bab0 - 0x5bb10
-int32_t function_5bab0(int32_t a1)
+int32_t DropItemBeforeTrig(int32_t a1)
 {
 	// 0x5bab0
 	int32_t result;

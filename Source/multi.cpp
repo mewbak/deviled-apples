@@ -38,7 +38,7 @@ int32_t function_8ff5c(int32_t *a1, int32_t a2, int32_t a3)
 }
 
 // Address range: 0x8ffd8 - 0x90098
-int32_t function_8ffd8(int32_t *a1, int32_t result, int32_t a3)
+int32_t multi_recv_packet(int32_t *a1, int32_t result, int32_t a3)
 {
 	int32_t v1 = (int32_t)a1;
 	g31 = v1;
@@ -269,9 +269,9 @@ int32_t function_902a8(int32_t a1, int32_t a2)
 			NetRecvPlrData((char *)&v11);
 			v15 = &v12;
 			v12 = *(int32_t *)g35 - 19;
-			v24 = function_8ffd8((int32_t *)g36, (int32_t)&v6, v15);
-			v25 = function_8ffd8((int32_t *)*(int32_t *)(g23 - 0x5c10), v24, v15);
-			v23 = function_be090((char *)v25, v12);
+			v24 = multi_recv_packet((int32_t *)g36, (int32_t)&v6, v15);
+			v25 = multi_recv_packet((int32_t *)*(int32_t *)(g23 - 0x5c10), v24, v15);
+			v23 = sync_all_monsters((char *)v25, v12);
 			v12 = v23;
 			v5 = &v7;
 			v16 = *(int32_t *)g35;
@@ -324,9 +324,9 @@ int32_t function_902a8(int32_t a1, int32_t a2)
 		NetRecvPlrData((char *)&v11);
 		v15 = &v12;
 		v12 = *(int32_t *)g35 - 19;
-		v24 = function_8ffd8((int32_t *)g36, (int32_t)&v6, v15);
-		v25 = function_8ffd8((int32_t *)*(int32_t *)(g23 - 0x5c10), v24, v15);
-		v23 = function_be090((char *)v25, v12);
+		v24 = multi_recv_packet((int32_t *)g36, (int32_t)&v6, v15);
+		v25 = multi_recv_packet((int32_t *)*(int32_t *)(g23 - 0x5c10), v24, v15);
+		v23 = sync_all_monsters((char *)v25, v12);
 		v12 = v23;
 		v5 = &v7;
 		v16 = *(int32_t *)g35;
@@ -2647,7 +2647,7 @@ lab_0x90e8c:;
 									// 0x91058
 									v49 = g29;
 									v50 = (int32_t) * (char *)(v49 + 3);
-									function_a9fdc(v1, (int32_t) * (char *)(v49 + 2), v50, 1);
+									MakePlrPath(v1, (int32_t) * (char *)(v49 + 2), v50, 1);
 									// branch -> 0x910a0
 								lab_0x910a0_2:
 									// 0x910a0
@@ -2658,7 +2658,7 @@ lab_0x90e8c:;
 								// 0x91058
 								v49 = g29;
 								v50 = (int32_t) * (char *)(v49 + 3);
-								function_a9fdc(v1, (int32_t) * (char *)(v49 + 2), v50, 1);
+								MakePlrPath(v1, (int32_t) * (char *)(v49 + 2), v50, 1);
 								// branch -> 0x910a0
 								goto lab_0x910a0_2;
 							}
