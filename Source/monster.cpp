@@ -28103,7 +28103,7 @@ int32_t ProcessMonsters(int32_t a1)
 									// 0x850d8
 									g34 = g36;
 									g15 = *(int32_t *)(g33 + 4 * (int32_t) * (char *)(g35 + 156));
-									CurrentProc();
+									FunctionPointer();
 									// branch -> 0x850f0
 								} else {
 								lab_0x850ac:
@@ -28112,7 +28112,7 @@ int32_t ProcessMonsters(int32_t a1)
 										// 0x850bc
 										g34 = g36;
 										g15 = *(int32_t *)(g33 + 4 * (int32_t) * (char *)(g35 + 156));
-										CurrentProc();
+										FunctionPointer();
 										// branch -> 0x850f0
 									}
 								}
@@ -29116,7 +29116,7 @@ int32_t function_8576c(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 					g34 = v16;
 					g15 = g28;
 					int32_t v19; // 0x858b8
-					if (CurrentProc() == 0) {
+					if (FunctionPointer() == 0) {
 						// 0x858b4
 						v19 = 1;
 						// branch -> 0x858b8
@@ -29254,7 +29254,7 @@ int32_t function_8576c(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 					g34 = g29;
 					g15 = g28;
 					int32_t v33; // 0x859c8
-					if (CurrentProc() == 0) {
+					if (FunctionPointer() == 0) {
 						// 0x859c4
 						v33 = 1;
 						// branch -> 0x859c8
@@ -29439,7 +29439,7 @@ int32_t function_85a54(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 					g34 = g28;
 					g15 = g27;
 					int32_t v19; // 0x85ba8
-					if (CurrentProc() == 0) {
+					if (FunctionPointer() == 0) {
 						// 0x85ba4
 						v19 = 1;
 						// branch -> 0x85ba8
@@ -29577,7 +29577,7 @@ int32_t function_85a54(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 					g34 = g28;
 					g15 = g27;
 					int32_t v33; // 0x85cbc
-					if (CurrentProc() == 0) {
+					if (FunctionPointer() == 0) {
 						// 0x85cb8
 						v33 = 1;
 						// branch -> 0x85cbc

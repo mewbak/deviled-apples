@@ -19419,7 +19419,7 @@ int32_t function_73f28(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 							// 0x74124
 							g34 = g36;
 							g15 = *(int32_t *)(g22 + g25 + 4);
-							CurrentProc();
+							FunctionPointer();
 							// branch -> 0x7415c
 							// 0x7415c
 							g10 = v1;
@@ -19463,7 +19463,7 @@ int32_t function_73f28(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 					// 0x74124
 					g34 = g36;
 					g15 = *(int32_t *)(g22 + g25 + 4);
-					CurrentProc();
+					FunctionPointer();
 					result = g36;
 					// branch -> 0x7415c
 				} else {
@@ -19537,7 +19537,7 @@ int32_t function_73f28(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 				// 0x74124
 				g34 = g36;
 				g15 = *(int32_t *)(g22 + g25 + 4);
-				CurrentProc();
+				FunctionPointer();
 				// branch -> 0x7415c
 				// 0x7415c
 				g10 = v1;
@@ -19581,7 +19581,7 @@ int32_t function_73f28(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		// 0x74124
 		g34 = g36;
 		g15 = *(int32_t *)(g22 + g25 + 4);
-		CurrentProc();
+		FunctionPointer();
 		result = g36;
 		// branch -> 0x7415c
 	} else {
@@ -28344,7 +28344,7 @@ int32_t ProcessMissiles(int32_t a1)
 				v30 = g36 + 180 * v29;
 				v18 = v30;
 				g15 = *(int32_t *)(g33 + 28 * *(int32_t *)v30 + 8);
-				result2 = CurrentProc();
+				result2 = FunctionPointer();
 				if (__asm_rlwinm_(*(int32_t *)(v18 + 60), 0, 30, 30) == 0) {
 					goto lab_0x79004;
 				}
@@ -28476,7 +28476,7 @@ int32_t ProcessMissiles(int32_t a1)
 		v30 = g36 + 180 * v29;
 		v18 = v30;
 		g15 = *(int32_t *)(g33 + 28 * *(int32_t *)v30 + 8);
-		result2 = CurrentProc();
+		result2 = FunctionPointer();
 		if (__asm_rlwinm_(*(int32_t *)(v18 + 60), 0, 30, 30) == 0) {
 		lab_0x79004:;
 			int32_t v38 = v18 + 88;        // 0x79004

@@ -1608,7 +1608,7 @@ int32_t function_af6d0(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 										char *v12 = (char *)(g36 + *(int32_t *)g35); // 0xaf7d8
 										*v12 = *v12 | 4;
 										g15 = *(int32_t *)(g23 - 0x4bcc);
-										CurrentProc();
+										FunctionPointer();
 										result3 = function_c9b70((int32_t *)*(int32_t *)(g32 + 124));
 										// branch -> 0xaf828
 									lab_0xaf828:;
@@ -2182,7 +2182,7 @@ int32_t function_afc30(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 	*(int32_t *)g31 = (int32_t)v15;
 	if (v15 != 0) {
 		// 0xafd10
-		function_d8e58(a1);
+		drawLowerScreen(a1);
 		// branch -> 0xafd18
 	}
 	// 0xafd18
@@ -2191,7 +2191,7 @@ int32_t function_afc30(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 	*(int32_t *)g31 = (int32_t)v16;
 	if (v16 != 0) {
 		// 0xafd30
-		function_d8e58(a1 + 32);
+		drawLowerScreen(a1 + 32);
 		// branch -> 0xafd38
 	}
 	// 0xafd38
@@ -2209,14 +2209,14 @@ int32_t function_afc30(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 			*(int32_t *)g31 = (int32_t)v20;
 			if (v20 != 0) {
 				// 0xafd64
-				function_d8e58(g32);
+				drawLowerScreen(g32);
 				// branch -> 0xafd6c
 			}
 			uint16_t v21 = *(int16_t *)(v14 + 2); // 0xafd6c
 			*(int32_t *)g31 = (int32_t)v21;
 			if (v21 != 0) {
 				// 0xafd7c
-				function_d8e58(g32 + 32);
+				drawLowerScreen(g32 + 32);
 				// branch -> 0xafd84
 			}
 			int32_t v22 = v14 + 4; // 0xafd84
@@ -10720,7 +10720,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					int32_t v48 = *(int32_t *)g26;                     // 0xb0880
 					int32_t v49 = *(int32_t *)(g22 + v46) + v48 + g29; // 0xb088c
 					g34 = v49;
-					v47 = function_d9114(v49, v48);
+					v47 = world_draw_black_tile(v49, v48);
 					// branch -> 0xb0894
 				} else {
 					int32_t v50 = g22 + v46;                                                  // 0xb0754
@@ -10734,7 +10734,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					*(int32_t *)g32 = (int32_t)v55;
 					if (v55 != 0) {
 						// 0xb07a8
-						function_d8e58(v54);
+						drawLowerScreen(v54);
 						// branch -> 0xb07b0
 					}
 					// 0xb07b0
@@ -10743,28 +10743,28 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					*(int32_t *)g32 = (int32_t)v56;
 					if (v56 != 0) {
 						// 0xb07c8
-						function_d8e58(v54 - 0x6000);
+						drawLowerScreen(v54 - 0x6000);
 						// branch -> 0xb07d0
 					}
 					uint16_t v57 = *(int16_t *)(g28 + 10); // 0xb07d0
 					*(int32_t *)g32 = (int32_t)v57;
 					if (v57 != 0) {
 						// 0xb07e0
-						function_d8e58(v54 - 0xc000);
+						drawLowerScreen(v54 - 0xc000);
 						// branch -> 0xb07ec
 					}
 					uint16_t v58 = *(int16_t *)(g28 + 14); // 0xb07ec
 					*(int32_t *)g32 = (int32_t)v58;
 					if (v58 != 0) {
 						// 0xb07fc
-						function_d8e58(v54 - 0x12000);
+						drawLowerScreen(v54 - 0x12000);
 						// branch -> 0xb0808
 					}
 					uint16_t v59 = *(int16_t *)(g28 + 18); // 0xb0808
 					*(int32_t *)g32 = (int32_t)v59;
 					if (v59 != 0) {
 						// 0xb0818
-						function_d8e58(v54 - 0x18000);
+						drawLowerScreen(v54 - 0x18000);
 						// branch -> 0xb0824
 					}
 					uint16_t v60 = *(int16_t *)(g28 + 22); // 0xb0824
@@ -10773,7 +10773,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						// 0xb0834
 						if (*(char *)*(int32_t *)(g23 - 0x7794) == 4) {
 							// 0xb0844
-							function_d8e58(v54 - 0x1e000);
+							drawLowerScreen(v54 - 0x1e000);
 							// branch -> 0xb0850
 						}
 					}
@@ -10826,7 +10826,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						v23 = *(int32_t *)g26;
 						v24 = v23 + *(int32_t *)g25 + g29;
 						g34 = v24;
-						result2 = function_d9114(v24, v23);
+						result2 = world_draw_black_tile(v24, v23);
 						// branch -> 0xb0bfc
 					} else {
 						// 0xb0adc
@@ -10841,7 +10841,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						*(int32_t *)g32 = (int32_t)v25;
 						if (v25 != 0) {
 							// 0xb0b2c
-							function_d8e58(g31);
+							drawLowerScreen(g31);
 							// branch -> 0xb0b34
 						}
 						// 0xb0b34
@@ -10850,7 +10850,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						*(int32_t *)g32 = (int32_t)v27;
 						if (v27 != 0) {
 							// 0xb0b4c
-							function_d8e58(g31 - 0x6000);
+							drawLowerScreen(g31 - 0x6000);
 							// branch -> 0xb0b54
 						}
 						// 0xb0b54
@@ -10858,7 +10858,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						*(int32_t *)g32 = (int32_t)v28;
 						if (v28 != 0) {
 							// 0xb0b64
-							function_d8e58(g31 - 0xc000);
+							drawLowerScreen(g31 - 0xc000);
 							// branch -> 0xb0b70
 						}
 						// 0xb0b70
@@ -10866,7 +10866,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						*(int32_t *)g32 = (int32_t)v29;
 						if (v29 != 0) {
 							// 0xb0b80
-							function_d8e58(g31 - 0x12000);
+							drawLowerScreen(g31 - 0x12000);
 							// branch -> 0xb0b8c
 						}
 						// 0xb0b8c
@@ -10874,7 +10874,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						*(int32_t *)g32 = (int32_t)v30;
 						if (v30 != 0) {
 							// 0xb0b9c
-							function_d8e58(g31 - 0x18000);
+							drawLowerScreen(g31 - 0x18000);
 							// branch -> 0xb0ba8
 						}
 						// 0xb0ba8
@@ -10884,7 +10884,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 							// 0xb0bb8
 							if (*(char *)*(int32_t *)(g23 - 0x7794) == 4) {
 								// 0xb0bc8
-								function_d8e58(g31 - 0x1e000);
+								drawLowerScreen(g31 - 0x1e000);
 								// branch -> 0xb0bd4
 							}
 						}
@@ -10932,7 +10932,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 									if (v75 == 0) {
 										int32_t v76 = *(int32_t *)g26 + *(int32_t *)g25 + g29; // 0xb091c
 										g34 = v76;
-										v63 = function_d9114(v76, 0);
+										v63 = world_draw_black_tile(v76, 0);
 										// branch -> 0xb0a24
 									} else {
 										unsigned char v77 = *(char *)(v71 + *(int32_t *)g16);            // 0xb0934
@@ -10945,7 +10945,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 										*(int32_t *)g32 = (int32_t)v80;
 										if (v80 != 0) {
 											// 0xb0978
-											function_d8e58(g36);
+											drawLowerScreen(g36);
 											// branch -> 0xb0980
 										}
 										// 0xb0980
@@ -10954,7 +10954,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 										*(int32_t *)g32 = (int32_t)v81;
 										if (v81 != 0) {
 											// 0xb0998
-											function_d8e58(g36 + 32);
+											drawLowerScreen(g36 + 32);
 											// branch -> 0xb09a0
 										}
 										// 0xb09a0
@@ -10972,14 +10972,14 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 												*(int32_t *)g32 = (int32_t)v85;
 												if (v85 != 0) {
 													// 0xb09c8
-													function_d8e58(g36);
+													drawLowerScreen(g36);
 													// branch -> 0xb09d0
 												}
 												uint16_t v86 = *(int16_t *)(g35 + 2); // 0xb09d0
 												*(int32_t *)g32 = (int32_t)v86;
 												if (v86 != 0) {
 													// 0xb09e0
-													function_d8e58(g36 + 32);
+													drawLowerScreen(g36 + 32);
 													// branch -> 0xb09e8
 												}
 												int32_t v87 = g35 + 4; // 0xb09e8
@@ -11132,7 +11132,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					v23 = *(int32_t *)g26;
 					v24 = v23 + *(int32_t *)g25 + g29;
 					g34 = v24;
-					result2 = function_d9114(v24, v23);
+					result2 = world_draw_black_tile(v24, v23);
 					// branch -> 0xb0bfc
 				} else {
 					// 0xb0adc
@@ -11147,7 +11147,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					*(int32_t *)g32 = (int32_t)v25;
 					if (v25 != 0) {
 						// 0xb0b2c
-						function_d8e58(g31);
+						drawLowerScreen(g31);
 						// branch -> 0xb0b34
 					}
 					// 0xb0b34
@@ -11156,7 +11156,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					*(int32_t *)g32 = (int32_t)v27;
 					if (v27 != 0) {
 						// 0xb0b4c
-						function_d8e58(g31 - 0x6000);
+						drawLowerScreen(g31 - 0x6000);
 						// branch -> 0xb0b54
 					}
 					// 0xb0b54
@@ -11164,7 +11164,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					*(int32_t *)g32 = (int32_t)v28;
 					if (v28 != 0) {
 						// 0xb0b64
-						function_d8e58(g31 - 0xc000);
+						drawLowerScreen(g31 - 0xc000);
 						// branch -> 0xb0b70
 					}
 					// 0xb0b70
@@ -11172,7 +11172,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					*(int32_t *)g32 = (int32_t)v29;
 					if (v29 != 0) {
 						// 0xb0b80
-						function_d8e58(g31 - 0x12000);
+						drawLowerScreen(g31 - 0x12000);
 						// branch -> 0xb0b8c
 					}
 					// 0xb0b8c
@@ -11180,7 +11180,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 					*(int32_t *)g32 = (int32_t)v30;
 					if (v30 != 0) {
 						// 0xb0b9c
-						function_d8e58(g31 - 0x18000);
+						drawLowerScreen(g31 - 0x18000);
 						// branch -> 0xb0ba8
 					}
 					// 0xb0ba8
@@ -11190,7 +11190,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 						// 0xb0bb8
 						if (*(char *)*(int32_t *)(g23 - 0x7794) == 4) {
 							// 0xb0bc8
-							function_d8e58(g31 - 0x1e000);
+							drawLowerScreen(g31 - 0x1e000);
 							// branch -> 0xb0bd4
 						}
 					}
@@ -11263,7 +11263,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 				v23 = *(int32_t *)g26;
 				v24 = v23 + *(int32_t *)g25 + g29;
 				g34 = v24;
-				int32_t result5 = function_d9114(v24, v23); // 0xb0ad4
+				int32_t result5 = world_draw_black_tile(v24, v23); // 0xb0ad4
 				// branch -> 0xb0bfc
 				// 0xb0bfc
 				g10 = v1;
@@ -11281,7 +11281,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 			*(int32_t *)g32 = (int32_t)v25;
 			if (v25 != 0) {
 				// 0xb0b2c
-				function_d8e58(g31);
+				drawLowerScreen(g31);
 				// branch -> 0xb0b34
 			}
 			// 0xb0b34
@@ -11290,7 +11290,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 			*(int32_t *)g32 = (int32_t)v27;
 			if (v27 != 0) {
 				// 0xb0b4c
-				function_d8e58(g31 - 0x6000);
+				drawLowerScreen(g31 - 0x6000);
 				// branch -> 0xb0b54
 			}
 			// 0xb0b54
@@ -11298,7 +11298,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 			*(int32_t *)g32 = (int32_t)v28;
 			if (v28 != 0) {
 				// 0xb0b64
-				function_d8e58(g31 - 0xc000);
+				drawLowerScreen(g31 - 0xc000);
 				// branch -> 0xb0b70
 			}
 			// 0xb0b70
@@ -11306,7 +11306,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 			*(int32_t *)g32 = (int32_t)v29;
 			if (v29 != 0) {
 				// 0xb0b80
-				function_d8e58(g31 - 0x12000);
+				drawLowerScreen(g31 - 0x12000);
 				// branch -> 0xb0b8c
 			}
 			// 0xb0b8c
@@ -11314,7 +11314,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 			*(int32_t *)g32 = (int32_t)v30;
 			if (v30 != 0) {
 				// 0xb0b9c
-				function_d8e58(g31 - 0x18000);
+				drawLowerScreen(g31 - 0x18000);
 				// branch -> 0xb0ba8
 			}
 			// 0xb0ba8
@@ -11325,7 +11325,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 				// 0xb0bb8
 				if (*(char *)*(int32_t *)(g23 - 0x7794) == 4) {
 					// 0xb0bc8
-					function_d8e58(g31 - 0x1e000);
+					drawLowerScreen(g31 - 0x1e000);
 					// branch -> 0xb0bd4
 					// 0xb0bd4
 					v26 = *(int32_t *)g26;
@@ -11367,7 +11367,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 		v23 = *(int32_t *)g26;
 		v24 = v23 + *(int32_t *)g25 + g29;
 		g34 = v24;
-		result2 = function_d9114(v24, v23);
+		result2 = world_draw_black_tile(v24, v23);
 		// branch -> 0xb0bfc
 	} else {
 		// 0xb0adc
@@ -11382,7 +11382,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 		*(int32_t *)g32 = (int32_t)v25;
 		if (v25 != 0) {
 			// 0xb0b2c
-			function_d8e58(g31);
+			drawLowerScreen(g31);
 			// branch -> 0xb0b34
 		}
 		// 0xb0b34
@@ -11391,7 +11391,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 		*(int32_t *)g32 = (int32_t)v27;
 		if (v27 != 0) {
 			// 0xb0b4c
-			function_d8e58(g31 - 0x6000);
+			drawLowerScreen(g31 - 0x6000);
 			// branch -> 0xb0b54
 		}
 		// 0xb0b54
@@ -11399,7 +11399,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 		*(int32_t *)g32 = (int32_t)v28;
 		if (v28 != 0) {
 			// 0xb0b64
-			function_d8e58(g31 - 0xc000);
+			drawLowerScreen(g31 - 0xc000);
 			// branch -> 0xb0b70
 		}
 		// 0xb0b70
@@ -11407,7 +11407,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 		*(int32_t *)g32 = (int32_t)v29;
 		if (v29 != 0) {
 			// 0xb0b80
-			function_d8e58(g31 - 0x12000);
+			drawLowerScreen(g31 - 0x12000);
 			// branch -> 0xb0b8c
 		}
 		// 0xb0b8c
@@ -11415,7 +11415,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 		*(int32_t *)g32 = (int32_t)v30;
 		if (v30 != 0) {
 			// 0xb0b9c
-			function_d8e58(g31 - 0x18000);
+			drawLowerScreen(g31 - 0x18000);
 			// branch -> 0xb0ba8
 		}
 		// 0xb0ba8
@@ -11425,7 +11425,7 @@ int32_t scrollrt_draw_lower(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 			// 0xb0bb8
 			if (*(char *)*(int32_t *)(g23 - 0x7794) == 4) {
 				// 0xb0bc8
-				function_d8e58(g31 - 0x1e000);
+				drawLowerScreen(g31 - 0x1e000);
 				// branch -> 0xb0bd4
 			}
 		}
@@ -11492,7 +11492,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v17;
 		if (v17 != 0) {
 			// 0xb0d80
-			result = function_d8e58(g31);
+			result = drawLowerScreen(g31);
 			// branch -> 0xb0d88
 		}
 		// 0xb0d88
@@ -11500,7 +11500,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v18;
 		if (v18 != 0) {
 			// 0xb0d98
-			result = function_d8e58(g31 + 32);
+			result = drawLowerScreen(g31 + 32);
 			// branch -> 0xb0da0
 		}
 		// 0xb0da0
@@ -11508,7 +11508,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v19;
 		if (v19 != 0) {
 			// 0xb0db0
-			result = function_d8e58(g31 - 0x6000);
+			result = drawLowerScreen(g31 - 0x6000);
 			// branch -> 0xb0db8
 		}
 		// 0xb0db8
@@ -11516,7 +11516,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v20;
 		if (v20 != 0) {
 			// 0xb0dc8
-			result = function_d8e58(g31 - 0x5fe0);
+			result = drawLowerScreen(g31 - 0x5fe0);
 			// branch -> 0xb0dd0
 		}
 		// 0xb0dd0
@@ -11543,7 +11543,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 			*(int32_t *)g32 = (int32_t)v19;
 			if (v19 != 0) {
 				// 0xb0db0
-				result = function_d8e58(g31 - 0x6000);
+				result = drawLowerScreen(g31 - 0x6000);
 				// branch -> 0xb0db8
 			}
 			// 0xb0db8
@@ -11551,7 +11551,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 			*(int32_t *)g32 = (int32_t)v20;
 			if (v20 != 0) {
 				// 0xb0dc8
-				result = function_d8e58(g31 - 0x5fe0);
+				result = drawLowerScreen(g31 - 0x5fe0);
 				// branch -> 0xb0dd0
 			}
 		}
@@ -11562,14 +11562,14 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 			*(int32_t *)g32 = (int32_t)v21;
 			if (v21 != 0) {
 				// 0xb0d18
-				result = function_d8e58(g31);
+				result = drawLowerScreen(g31);
 				// branch -> 0xb0d20
 			}
 			uint16_t v22 = *(int16_t *)(g27 + 6); // 0xb0d20
 			*(int32_t *)g32 = (int32_t)v22;
 			if (v22 != 0) {
 				// 0xb0d30
-				result = function_d8e58(g31 + 32);
+				result = drawLowerScreen(g31 + 32);
 				// branch -> 0xb0d38
 			}
 		} else {
@@ -11596,14 +11596,14 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v23;
 		if (v23 != 0) {
 			// 0xb0d4c
-			result = function_d8e58(g31);
+			result = drawLowerScreen(g31);
 			// branch -> 0xb0d54
 		}
 		uint16_t v24 = *(int16_t *)(g27 + 10); // 0xb0d54
 		*(int32_t *)g32 = (int32_t)v24;
 		if (v24 != 0) {
 			// 0xb0d64
-			result = function_d8e58(g31 + 32);
+			result = drawLowerScreen(g31 + 32);
 			// branch -> 0xb0d6c
 		}
 		// 0xb0d6c
@@ -11612,7 +11612,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v17;
 		if (v17 != 0) {
 			// 0xb0d80
-			result = function_d8e58(g31);
+			result = drawLowerScreen(g31);
 			// branch -> 0xb0d88
 		}
 		// 0xb0d88
@@ -11620,7 +11620,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v18;
 		if (v18 != 0) {
 			// 0xb0d98
-			result = function_d8e58(g31 + 32);
+			result = drawLowerScreen(g31 + 32);
 			// branch -> 0xb0da0
 		}
 		// 0xb0da0
@@ -11628,7 +11628,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v19;
 		if (v19 != 0) {
 			// 0xb0db0
-			result = function_d8e58(g31 - 0x6000);
+			result = drawLowerScreen(g31 - 0x6000);
 			// branch -> 0xb0db8
 		}
 		// 0xb0db8
@@ -11636,7 +11636,7 @@ int32_t function_b0c10(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a
 		*(int32_t *)g32 = (int32_t)v20;
 		if (v20 != 0) {
 			// 0xb0dc8
-			result = function_d8e58(g31 - 0x5fe0);
+			result = drawLowerScreen(g31 - 0x5fe0);
 			// branch -> 0xb0dd0
 		}
 	}
@@ -20286,14 +20286,14 @@ int32_t scrollrt_draw_lower_2(int32_t a1, int32_t a2, int32_t a3, int32_t a4, in
 																		*(int32_t *)g32 = (int32_t)v70;
 																		if (v70 != 0) {
 																			// 0xb19b0
-																			function_d8e58(g36);
+																			drawLowerScreen(g36);
 																			// branch -> 0xb19b8
 																		}
 																		uint16_t v71 = *(int16_t *)(g33 + 6); // 0xb19b8
 																		*(int32_t *)g32 = (int32_t)v71;
 																		if (v71 != 0) {
 																			// 0xb19c8
-																			function_d8e58(g36 + 32);
+																			drawLowerScreen(g36 + 32);
 																			// branch -> 0xb19d0
 																		}
 																	}
@@ -20455,7 +20455,7 @@ int32_t scrollrt_draw_lower_2(int32_t a1, int32_t a2, int32_t a3, int32_t a4, in
 																			*(int32_t *)g32 = (int32_t)v106;
 																			if (v106 != 0) {
 																				// 0xb1b34
-																				function_d8e58(g35);
+																				drawLowerScreen(g35);
 																				// branch -> 0xb1b3c
 																			}
 																		}
@@ -20578,7 +20578,7 @@ int32_t scrollrt_draw_lower_2(int32_t a1, int32_t a2, int32_t a3, int32_t a4, in
 									*(int32_t *)g32 = (int32_t)v108;
 									if (v108 != 0) {
 										// 0xb185c
-										function_d8e58(g35);
+										drawLowerScreen(g35);
 										// branch -> 0xb1864
 									}
 								}
@@ -29398,7 +29398,7 @@ int32_t scrollrt_draw_upper(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 							int32_t v48 = *(int32_t *)g24;                         // 0xb2878
 							int32_t v49 = *(int32_t *)(g21 + 4 * g16) + v48 + g28; // 0xb2884
 							g34 = v49;
-							function_d9114(v49, v48);
+							world_draw_black_tile(v49, v48);
 							// branch -> 0xb288c
 						} else {
 							int32_t v50 = g21 + 4 * g16;                                                 // 0xb2770
@@ -29501,7 +29501,7 @@ int32_t scrollrt_draw_upper(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 								v28 = *(int32_t *)g24;
 								v29 = v28 + *(int32_t *)g25 + g28;
 								g34 = v29;
-								result2 = function_d9114(v29, v28);
+								result2 = world_draw_black_tile(v29, v28);
 								// branch -> 0xb2c0c
 							} else {
 								// 0xb2af0
@@ -29778,7 +29778,7 @@ int32_t scrollrt_draw_upper(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 													int32_t v102 = g28; // 0xb2c00
 													v29 = v28 + v100 + v102;
 													g34 = v29;
-													result2 = function_d9114(v29, v28);
+													result2 = world_draw_black_tile(v29, v28);
 													// branch -> 0xb2c0c
 													// 0xb2c0c
 													v67 = v1;
@@ -29938,7 +29938,7 @@ int32_t scrollrt_draw_upper(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 											}
 											int32_t v150 = *(int32_t *)g24 + *(int32_t *)g25 + g28; // 0xb2a48
 											g34 = v150;
-											result3 = function_d9114(v150, 0);
+											result3 = world_draw_black_tile(v150, 0);
 											// branch -> 0xb2a50
 											// 0xb2a50
 											v61 = g18 + 224;
@@ -30029,7 +30029,7 @@ int32_t scrollrt_draw_upper(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int3
 							v28 = *(int32_t *)g24;
 							v29 = v28 + *(int32_t *)g25 + g28;
 							g34 = v29;
-							result2 = function_d9114(v29, v28);
+							result2 = world_draw_black_tile(v29, v28);
 							// branch -> 0xb2c0c
 						} else {
 							// 0xb2af0
@@ -30167,7 +30167,7 @@ lab_0xb2a7c:
 		v28 = *(int32_t *)g24;
 		v29 = v28 + *(int32_t *)g25 + g28;
 		g34 = v29;
-		function_d9114(v29, v28);
+		world_draw_black_tile(v29, v28);
 		// branch -> 0xb2c0c
 	} else {
 		// 0xb2af0
@@ -31693,13 +31693,13 @@ int32_t DoBlitScreen(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 			int32_t v4 = *(int32_t *)g36; // 0x27dcc
 			g34 = v4;
 			g15 = *(int32_t *)(v4 + 116);
-			int32_t v5 = CurrentProc(); // 0x27dd4
+			int32_t v5 = FunctionPointer(); // 0x27dd4
 			g34 = v5;
 			if (v5 % 256 == 0) {
 				int32_t v6 = *(int32_t *)g36; // 0x27de4
 				g34 = v6;
 				g15 = *(int32_t *)(v6 + 128);
-				int32_t result = CurrentProc(); // 0x27dec
+				int32_t result = FunctionPointer(); // 0x27dec
 				g34 = result;
 				if (result % 256 == 0) {
 					// 0x27dfc
@@ -31716,7 +31716,7 @@ int32_t DoBlitScreen(int32_t a1, int32_t a2, int32_t a3, int32_t a4)
 					// branch -> 0x27e20
 					// 0x27e20
 					g10 = v1;
-					return CurrentProc();
+					return FunctionPointer();
 				}
 			}
 			// 0x27db0

@@ -3112,7 +3112,7 @@ int32_t multi_event_handler(int32_t a1)
 		// 0x915fc
 		g34 = *(int32_t *)v3;
 		g15 = v2;
-		int32_t v4 = CurrentProc(); // 0x91608
+		int32_t v4 = FunctionPointer(); // 0x91608
 		g34 = v4;
 		int32_t result = v4; // 0x91650
 		int32_t v5;          // 0x91630

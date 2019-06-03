@@ -1337,7 +1337,7 @@ int32_t function_8892c(int32_t a1)
 	g34 = 0;
 	g15 = a1;
 	g36 = 1;
-	if (CurrentProc() == 0) {
+	if (FunctionPointer() == 0) {
 		// 0x88974
 		g36 = v1;
 		g10 = v2;
@@ -1351,7 +1351,7 @@ int32_t function_8892c(int32_t a1)
 	g34 = v5;
 	g15 = g35;
 	g36 = v5 + 1;
-	while (CurrentProc() != 0) {
+	while (FunctionPointer() != 0) {
 		// 0x8894c
 		g34 = &v4;
 		mpqapi_remove_hash_entry();

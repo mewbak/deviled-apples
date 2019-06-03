@@ -585,7 +585,7 @@ int32_t WindowProc(void)
 		// branch -> 0x55278
 	} else {
 		// 0x55268
-		result = CurrentProc();
+		result = FunctionPointer();
 		// branch -> 0x55278
 	}
 	// 0x55278
