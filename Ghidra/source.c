@@ -6072,7 +6072,7 @@ void PlrDeadItem(ulonglong param_1, int *param_2, undefined8 param_3, undefined8
 	return;
 }
 
-void FUN_10095224(ulonglong param_1, uint param_2, ulonglong param_3, undefined8 param_4,
+void StartPlayerKill(ulonglong param_1, uint param_2, ulonglong param_3, undefined8 param_4,
     undefined8 param_5, ulonglong param_6, ulonglong param_7, ulonglong param_8,
     undefined4 param_9)
 
@@ -6606,7 +6606,7 @@ void SyncPlrKill(ulonglong param_1, uint param_2, undefined8 param_3, undefined8
 		}
 		SetPlayerHitPoints(param_1, 0, uVar4, param_4, param_5, (int)param_6, (int)param_7, (int)param_8,
 		    in_stack_ffffffc8);
-		FUN_10095224(param_1, param_2, uVar4, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+		StartPlayerKill(param_1, param_2, uVar4, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
 	}
 	return;
 }
@@ -6618,7 +6618,7 @@ void StartPlayerKill(ulonglong param_1, uint param_2, ulonglong param_3, undefin
 {
 	undefined4 in_stack_ffffffc8;
 
-	FUN_10095224(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+	StartPlayerKill(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
 	return;
 }
 
