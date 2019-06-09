@@ -509,7 +509,7 @@ ulonglong mpqapi_write_block_table(undefined param_1, undefined param_2, undefin
 			lVar4 = lVar4 + -1;
 		} while (lVar4 != 0);
 		uVar5 = Hash(uVar2, 3, *puVar1);
-		FUN_1003c5dc(*(undefined4 *)(iVar3 + -0x4d5c), 0x8000, (int)uVar5, *puVar1);
+		Encrypt(*(undefined4 *)(iVar3 + -0x4d5c), 0x8000, (int)uVar5, *puVar1);
 		iVar7 = WriteFile((char)*(undefined4 *)(iVar3 + -0x4d54), (char)*(undefined4 *)(iVar3 + -0x4d5c),
 		    0, (char)(ZEXT48(register0x0000000c) - 0x50) + '8', 0, param_6, param_7, param_8,
 		    puVar1[0xb], puVar1[0xf], *(undefined4 *)(puVar1 + 0x14));
@@ -581,7 +581,7 @@ ulonglong mpqapi_write_hash_table(undefined param_1, undefined param_2, undefine
 			lVar4 = lVar4 + -1;
 		} while (lVar4 != 0);
 		uVar5 = Hash(uVar2, 3, *puVar1);
-		FUN_1003c5dc(*(undefined4 *)(iVar3 + -0x4d60), 0x8000, (int)uVar5, *puVar1);
+		Encrypt(*(undefined4 *)(iVar3 + -0x4d60), 0x8000, (int)uVar5, *puVar1);
 		iVar7 = WriteFile((char)*(undefined4 *)(iVar3 + -0x4d54), (char)*(undefined4 *)(iVar3 + -0x4d60),
 		    0, (char)(ZEXT48(register0x0000000c) - 0x50) + '8', 0, param_6, param_7, param_8,
 		    puVar1[0xb], puVar1[0xf], *(undefined4 *)(puVar1 + 0x14));
