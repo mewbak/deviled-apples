@@ -4392,3 +4392,115 @@ void DrawAndBlit(undefined8 param_1, undefined8 param_2, undefined8 param_3, ulo
 	}
 	return;
 }
+
+void DoBlitScreen(longlong param_1, longlong param_2, ulonglong param_3, longlong param_4,
+    longlong param_5, int param_6, int param_7, int param_8, undefined4 param_9)
+
+{
+	bool bVar1;
+	undefined **ppuVar2;
+	longlong lVar3;
+	longlong lVar4;
+	longlong lVar5;
+	uint uVar6;
+	undefined4 *puVar7;
+	ulonglong uVar8;
+	undefined8 unaff_r25;
+	undefined8 unaff_r26;
+	longlong lVar9;
+	undefined8 unaff_r27;
+	undefined8 unaff_r28;
+	undefined8 unaff_r29;
+	ulonglong uVar10;
+	undefined8 unaff_r30;
+	undefined8 unaff_r31;
+	longlong lVar11;
+	undefined4 in_stack_ffffff98;
+	undefined in_stack_ffffff9f;
+	undefined4 local_5c;
+	int local_34;
+	undefined4 local_30;
+	int local_2c;
+	undefined4 local_28;
+	undefined4 local_1c;
+	undefined4 uStack24;
+	undefined4 uStack20;
+	undefined4 uStack16;
+	undefined4 uStack12;
+	undefined4 uStack8;
+	undefined4 uStack4;
+
+	lVar11 = (longlong)param_8;
+	lVar9 = (longlong)param_7;
+	lVar3 = (longlong)param_6;
+	ppuVar2 = &toc;
+	local_1c = (undefined4)((ulonglong)unaff_r25 >> 0x20);
+	uStack24 = (undefined4)((ulonglong)unaff_r26 >> 0x20);
+	uStack20 = (undefined4)((ulonglong)unaff_r27 >> 0x20);
+	uStack16 = (undefined4)((ulonglong)unaff_r28 >> 0x20);
+	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
+	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
+	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
+	local_34 = (int)param_2;
+	if (_DAT_100f3f88 == 0) {
+		local_30 = (undefined4)param_1;
+		local_2c = local_34 + (int)param_4;
+		local_28 = (undefined4)(param_1 + param_3);
+		lVar4 = GetTickCount((char)(param_1 + param_3), (char)param_2, (char)param_3, (char)param_4,
+		    (char)param_5, (char)param_6, (char)param_7, (char)param_8,
+		    (char)in_stack_ffffff98, in_stack_ffffff9f, local_5c);
+		bVar1 = false;
+		do {
+			uVar6 = FUN_100dbf44();
+			uVar6._3_1_ = (undefined)uVar6;
+			if ((uVar6 & 0xff) == 0) {
+				uVar6 = FUN_100dbf44();
+				uVar6._3_1_ = (undefined)uVar6;
+				if ((uVar6 & 0xff) == 0)
+					goto LAB_10017430;
+			}
+			lVar5 = GetTickCount((undefined)uVar6, (char)param_2, (char)param_3, (char)param_4, (char)param_5,
+			    (char)lVar3, (char)lVar9, (char)lVar11, (char)in_stack_ffffff98,
+			    in_stack_ffffff9f, local_5c);
+		} while ((lVar4 - lVar5 & 0xffffffffU) < 0x1389);
+		bVar1 = true;
+	LAB_10017430:
+		if (!bVar1) {
+			FUN_100dbf44(&local_34, 0x40, 0xa0);
+		}
+	} else {
+		lVar11 = 0x300 - param_3;
+		lVar11._4_4_ = (int)lVar11;
+		lVar3 = (longlong)(int)_DAT_100f3f84;
+		lVar9 = (ulonglong)_DAT_100f3f84 - param_3;
+		lock_buf(6, (char)_DAT_100f3f84, (char)param_3, (char)param_4, (char)param_5, (char)param_6,
+		    (char)param_7, (char)param_8, in_stack_ffffff98);
+		lVar3 = ZEXT48(ppuVar2[-0x1412]) + param_1 + (longlong)local_34 * lVar3;
+		param_1 = param_1 + (param_2 + 0xa0) * 0x300 + 0x40 + (ulonglong) * (uint *)ppuVar2[-0x1e01];
+		if (((uint)(undefined8 *)param_1 & 7) == ((uint)(undefined8 *)lVar3 & 7)) {
+			param_6 = lVar11._4_4_;
+			FUN_10017074((undefined8 *)lVar3, (undefined8 *)param_1, (uint)param_3, (int)param_4, (int)lVar9,
+			    lVar11._4_4_);
+			param_5 = lVar9;
+		} else {
+			uVar10 = (ulonglong)((uint)param_3 >> 2);
+			uVar8 = uVar10;
+			do {
+				do {
+					puVar7 = (undefined4 *)param_1;
+					param_3 = uVar8 - 1;
+					param_1 = param_1 + 4;
+					*(undefined4 *)lVar3 = *puVar7;
+					lVar3 = lVar3 + 4;
+					uVar8 = param_3;
+				} while (param_3 != 0);
+				param_4 = param_4 + -1;
+				param_1 = param_1 + lVar11;
+				lVar3 = lVar3 + lVar9;
+				uVar8 = uVar10;
+			} while (param_4 != 0);
+		}
+		unlock_buf(6, param_1, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffff98);
+	}
+	return;
+}
