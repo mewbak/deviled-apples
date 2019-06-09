@@ -2330,7 +2330,7 @@ void LoadAllGFX(undefined8 param_1, undefined8 param_2, undefined8 param_3, unde
 	uVar3 = IncProgress((char)uVar4, (char)puVar1, uVar9, uVar11, uVar13, (char)param_6, (char)param_7,
 	    (char)param_8, in_stack_ffffffc8);
 	IncProgress((char)uVar3, (char)uVar6, uVar9, uVar11, uVar13, (char)param_6, (char)param_7, (char)param_8, in_stack_ffffffc8);
-	uVar5 = FUN_10081c44();
+	uVar5 = InitObjectGFX();
 	uVar3 = IncProgress(uVar5, (char)uVar6, uVar9, uVar11, uVar13, (char)param_6, (char)param_7,
 	    (char)param_8, in_stack_ffffffc8);
 	uVar16 = (undefined)param_8;
