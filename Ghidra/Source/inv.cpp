@@ -840,7 +840,7 @@ WeaponAutoPlace(int param_1, undefined param_2, undefined param_3, undefined par
 	puVar6 = PTR_DAT_100f1828 + param_1;
 	if (puVar6[0x5491] == '\x02') {
 		if ((*(int *)(puVar6 + 0xa60) == -1) && (*(int *)(puVar6 + 0xbd0) == -1)) {
-			FUN_1007b26c(1, 4, param_3, param_4, param_5, param_6, param_7, param_8);
+			NetSendCmdChItem(1, 4, param_3, param_4, param_5, param_6, param_7, param_8);
 			lVar8 = 0x2e;
 			puVar4 = (undefined4 *)(puVar6 + 0x53cc);
 			puVar5 = (undefined4 *)(puVar6 + 0xa50);
@@ -861,7 +861,7 @@ WeaponAutoPlace(int param_1, undefined param_2, undefined param_3, undefined par
 			uVar1 = *(uint *)(PTR_DAT_100f1828 + param_1 + 0xbd0);
 			if ((uVar1 == 0xffffffff) || ((PTR_DAT_100f1828 + param_1)[0xc86] != '\x01')) {
 				if (*(int *)(puVar6 + 0xa60) == -1) {
-					FUN_1007b26c(1, 4, (ulonglong)uVar1, param_4, param_5, param_6, param_7, param_8);
+					NetSendCmdChItem(1, 4, (ulonglong)uVar1, param_4, param_5, param_6, param_7, param_8);
 					lVar8 = 0x2e;
 					puVar4 = (undefined4 *)(puVar7 + param_1 + 0x53cc);
 					puVar5 = (undefined4 *)(puVar7 + param_1 + 0xa50);
@@ -877,7 +877,7 @@ WeaponAutoPlace(int param_1, undefined param_2, undefined param_3, undefined par
 					if ((uVar1 != 0xffffffff) || (puVar7 = PTR_DAT_100f1828 + param_1, puVar7[0xb15] == '\x02')) {
 						return 0;
 					}
-					FUN_1007b26c(1, 5, (ulonglong)uVar1, param_4, param_5, param_6, param_7, param_8);
+					NetSendCmdChItem(1, 5, (ulonglong)uVar1, param_4, param_5, param_6, param_7, param_8);
 					lVar8 = 0x2e;
 					puVar4 = (undefined4 *)(puVar7 + 0x53cc);
 					puVar5 = (undefined4 *)(puVar7 + 0xbc0);
