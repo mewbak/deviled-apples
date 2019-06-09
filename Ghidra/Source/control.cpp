@@ -1852,7 +1852,7 @@ void DoAutoMap(undefined param_1, undefined param_2, undefined param_3, undefine
 		InitDiabloMsg('\x01');
 	} else {
 		if (*(int *)PTR_DAT_100f1858 == 0) {
-			FUN_1001995c();
+			StartAutomap();
 		} else {
 			*(undefined4 *)PTR_DAT_100f1858 = 0;
 		}
