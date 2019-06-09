@@ -3423,7 +3423,7 @@ void MonstStartKill(ulonglong param_1, ulonglong param_2, undefined8 param_3, un
 		puVar2[0xc3] = puVar2[0xc3] | (byte)(1 << param_2);
 	}
 	if (((param_2 & 0xffffffff) < 4) && (4 < (param_1 & 0xffffffff))) {
-		FUN_10092e14(puVar2[0xc4], (ulonglong) * (ushort *)(puVar2 + 0xc6), (ulonglong)(byte)puVar2[0xc3]);
+		AddPlrMonstExper(puVar2[0xc4], (ulonglong) * (ushort *)(puVar2 + 0xc6), (ulonglong)(byte)puVar2[0xc3]);
 	}
 	puVar1 = ppuVar4[-0x1c53];
 	uVar9 = SUB41(puVar1, 0);
@@ -3560,7 +3560,7 @@ void M2MStartKill(ulonglong param_1, ulonglong param_2, undefined8 param_3, unde
 	puVar5 = puVar7 + iVar8;
 	puVar5[0xc3] = puVar5[0xc3] | (byte)(1 << param_1);
 	if ((param_1 & 0xffffffff) < 4) {
-		FUN_10092e14((puVar7 + iVar8)[0xc4], (ulonglong) * (ushort *)(puVar7 + iVar8 + 0xc6),
+		AddPlrMonstExper((puVar7 + iVar8)[0xc4], (ulonglong) * (ushort *)(puVar7 + iVar8 + 0xc6),
 		    (ulonglong)(byte)puVar5[0xc3]);
 	}
 	ppbVar18 = (byte **)(puVar7 + 0xe0 + iVar8);

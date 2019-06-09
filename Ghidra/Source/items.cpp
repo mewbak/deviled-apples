@@ -580,9 +580,9 @@ void CalcPlrItemVals(ulonglong param_1, int param_2, ulonglong param_3, ulonglon
 	if (((int)*(char *)(iVar30 + 0x13a) != iVar7) && ((int)param_1 == **(int **)(iVar5 + -0x77ac))) {
 		FUN_100baf64(*(int *)(iVar30 + 0x9c), iVar7);
 		if (iVar7 < 10) {
-			FUN_100bb3b4(*(int *)(iVar30 + 0xa0), 10);
+			ChangeVisionRadius(*(int *)(iVar30 + 0xa0), 10);
 		} else {
-			FUN_100bb3b4(*(int *)(iVar30 + 0xa0), iVar7);
+			ChangeVisionRadius(*(int *)(iVar30 + 0xa0), iVar7);
 		}
 		*(undefined *)(iVar30 + 0x13a) = (char)iVar7;
 	}

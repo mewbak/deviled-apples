@@ -4390,7 +4390,7 @@ On_PLAYER_JOINLEVEL(undefined8 param_1, ulonglong param_2, undefined8 param_3, u
 				}
 				puVar5 = puVar5 + iVar3;
 				uVar10 = countLeadingZeros(*(int *)puVar7 - (int)param_2);
-				uVar13 = FUN_100bb33c(puVar4[0xe], puVar4[0xf], (int)(char)puVar5[0x13a],
+				uVar13 = AddVision(puVar4[0xe], puVar4[0xf], (int)(char)puVar5[0x13a],
 				    (uint)uVar10 >> 5 & 0xff);
 				*(undefined4 *)(puVar5 + 0xa0) = uVar13;
 				*(undefined4 *)(puVar5 + 0x9c) = 0xffffffff;
