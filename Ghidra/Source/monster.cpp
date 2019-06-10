@@ -3478,7 +3478,7 @@ void MonstStartKill(ulonglong param_1, ulonglong param_2, undefined8 param_3, un
 	uVar8 = (undefined) * (int *)ppuVar4[-0x1d9f];
 	*(undefined2 *)(*(int *)ppuVar4[-0x1d9f] + *(int *)(puVar2 + 0x20) * 0xe0 + *(int *)(puVar2 + 0x24) * 2) = (short)(param_1 + 1);
 	uVar9 = (undefined)(param_1 + 1);
-	FUN_1009c1a8(iVar3, (int)param_3, uVar8, uVar9, uVar10, uVar11, uVar12, uVar13, in_stack_ffffffa8);
+	CheckQuestKill(iVar3, (int)param_3, uVar8, uVar9, uVar10, uVar11, uVar12, uVar13, in_stack_ffffffa8);
 	M_FallenFear((ulonglong) * (uint *)(puVar2 + 0x20), (ulonglong) * (uint *)(puVar2 + 0x24), uVar8, uVar9,
 	    uVar10, uVar11, uVar12, uVar13, in_stack_ffffffa8);
 	if ((0x2d < **(byte **)(puVar2 + 0xe0)) && (**(byte **)(puVar2 + 0xe0) < 0x32)) {
@@ -3607,7 +3607,7 @@ void M2MStartKill(ulonglong param_1, ulonglong param_2, undefined8 param_3, unde
 	uVar11 = (undefined) * (int *)ppuVar9[-0x1d9f];
 	*(undefined2 *)(*(int *)ppuVar9[-0x1d9f] + *puVar3 * 0xe0 + *puVar4 * 2) = (short)(param_2 + 1);
 	uVar13 = (undefined)(param_2 + 1);
-	FUN_1009c1a8(uVar2, 1, uVar11, uVar13, uVar14, uVar15, uVar16, uVar17, in_stack_ffffffa8);
+	CheckQuestKill(uVar2, 1, uVar11, uVar13, uVar14, uVar15, uVar16, uVar17, in_stack_ffffffa8);
 	M_FallenFear((ulonglong)*puVar3, (ulonglong)*puVar4, uVar11, uVar13, uVar14, uVar15, uVar16, uVar17,
 	    in_stack_ffffffa8);
 	if ((0x2d < **ppbVar18) && (**ppbVar18 < 0x32)) {

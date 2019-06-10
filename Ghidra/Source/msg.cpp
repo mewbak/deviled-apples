@@ -593,7 +593,7 @@ void DeltaImportJunk(char *param_1, undefined param_2, undefined param_3, char p
 			uVar4 = 0;
 			uVar5 = 0;
 			local_3c = iVar2;
-			FUN_1009b2c0(iVar12, 0, 0, 0, 0, 0);
+			SetPortalStats(iVar12, 0, 0, 0, 0, 0);
 		} else {
 			memcpy((char)uVar10, (char)lVar8, 5, (char)uVar3, (char)uVar4, (char)uVar5, (char)lVar6,
 			    (char)lVar7, in_stack_ffffffbb, in_stack_ffffffbf, iVar2);
@@ -603,7 +603,7 @@ void DeltaImportJunk(char *param_1, undefined param_2, undefined param_3, char p
 			uVar5 = (ulonglong)pbVar11[3];
 			lVar8 = lVar8 + 5;
 			local_3c = iVar2;
-			FUN_1009b2c0(iVar12, 1, (uint)*pbVar11, (uint)pbVar11[1], (uint)pbVar11[2], (uint)pbVar11[3]);
+			SetPortalStats(iVar12, 1, (uint)*pbVar11, (uint)pbVar11[1], (uint)pbVar11[2], (uint)pbVar11[3]);
 		}
 		iVar12 = iVar12 + 1;
 		uVar10 = uVar10 + 5;

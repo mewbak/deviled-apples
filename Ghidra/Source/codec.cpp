@@ -1,15 +1,4 @@
 
-void SHA1Clear(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined4 in_stack_ffffffc8;
-
-	FUN_100a42a0(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
-	return;
-}
-
 void codec_init_key(undefined4 param_1, int param_2, char param_3, char param_4, char param_5, char param_6, char param_7, char param_8, undefined4 param_9, undefined param_10,
     undefined4 param_11)
 
@@ -132,7 +121,7 @@ void codec_init_key(undefined4 param_1, int param_2, char param_3, char param_4,
 		lVar9 = lVar9 + 8;
 		lVar33 = lVar33 + -1;
 	} while (lVar33 != 0);
-	FUN_100a43b4(0, (char)lVar13, cVar16, uVar19, uVar21, uVar22, uVar25, uVar31, *(undefined4 *)(iVar6 + 8));
+	SHA1Reset(0, (char)lVar13, cVar16, uVar19, uVar21, uVar22, uVar25, uVar31, *(undefined4 *)(iVar6 + 8));
 	uVar15 = (undefined)(uVar7 - 0xe4);
 	uVar17 = (undefined)(uVar7 - 0xf8);
 	uVar12 = SHA1Calculate(0, uVar7 - 0xe4, (uint *)(uVar7 - 0xf8), uVar19, uVar21, uVar22, uVar25, uVar31,
@@ -188,7 +177,7 @@ void codec_init_key(undefined4 param_1, int param_2, char param_3, char param_4,
 	    *(undefined4 *)(iVar6 + 0x14));
 	iVar27 = 0;
 	do {
-		FUN_100a43b4(iVar27, (char)lVar9, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
+		SHA1Reset(iVar27, (char)lVar9, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
 		    (char)lVar13, *(undefined4 *)(iVar6 + 8));
 		lVar14 = 0;
 		lVar9 = uVar7 - 0x5c;
