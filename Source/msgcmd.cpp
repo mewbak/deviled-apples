@@ -1,59 +1,54 @@
 
-ulonglong sgChat_Cmd_New(uint *param_1)
+void msgcmd_add_server_cmd(char *command)
 
 {
-	return (ulonglong)*param_1;
-}
-
-undefined8 sgChat_Cmd_SNew(undefined8 param_1, undefined8 param_2)
-
-{
-	return param_2;
-}
-
-void msgcmd_add_server_cmd(uint param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined **ppuVar1;
-	int iVar5;
+	int iVar1;
+	size_t sVar4;
 	ulonglong uVar2;
-	undefined8 uVar3;
-	longlong lVar4;
+	void *pvVar5;
+	longlong lVar3;
 	undefined uVar6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffb8;
 	undefined uVar7;
 	undefined in_stack_ffffffbf;
 	int local_3c;
-	int iVar8;
 
-	ppuVar1 = &toc;
-	iVar5 = strlen(param_1);
-	if ((longlong)iVar5 != 0) {
-		if (((longlong)iVar5 + 1U & 0xffffffff) < 0x81) {
-			uVar2 = FUN_100be958((uint *)ppuVar1[-0x1533]);
-			uVar3 = SMemAlloc(0x88, (char)uVar2, 0xfe, 8, param_5, param_6, param_7, param_8,
-			    (char)in_stack_ffffffb8, in_stack_ffffffbf, local_3c);
-			iVar8 = local_3c;
-			lVar4 = sgChat_Cmd_SNew(0x88, uVar3);
-			lVar4._4_4_ = (int **)lVar4;
-			if (lVar4 != 0) {
-				lVar4._4_4_ = (int **)sgChat_Cmd_Insert(lVar4._4_4_);
+	iVar1 = 0x100f8fd0;
+	sVar4 = strlen(command);
+	if ((longlong)(int)sVar4 != 0) {
+		if (((longlong)(int)sVar4 + 1U & 0xffffffff) < 0x81) {
+			uVar2 = FUN_100be958(*(uint **)(iVar1 + -0x54cc));
+			pvVar5 = SMemAlloc(0x88, (char *)uVar2, -2, 8);
+			iVar1 = local_3c;
+			lVar3 = FUN_100bec88(0x88, (longlong)(int)pvVar5);
+			lVar3._4_4_ = (int **)lVar3;
+			if (lVar3 != 0) {
+				lVar3._4_4_ = (int **)FUN_100bf468(lVar3._4_4_);
 			}
 			uVar7 = (undefined)in_stack_ffffffb8;
 			uVar6 = 0;
-			sgChat_Cmd_Create(*(int ***)(local_3c + -0x54d0), lVar4._4_4_, 2, (int **)0x0, param_5, param_6, param_7,
-			    param_8, in_stack_ffffffb8);
-			memcpy((char)lVar4._4_4_ + '\b', (char)param_1, (char)iVar5 + '\x01', uVar6, param_5, param_6,
-			    param_7, param_8, uVar7, in_stack_ffffffbf, iVar8);
+			FUN_100bf338(*(int ***)(local_3c + -0x54d0), lVar3._4_4_, 2, (int **)0x0, in_r7, in_r8, in_r9, in_r10,
+			    in_stack_ffffffb8);
+			CopyMemory((char)lVar3._4_4_ + '\b', (char)command, (char)sVar4 + '\x01', uVar6, in_r7, in_r8, in_r9,
+			    in_r10, uVar7, in_stack_ffffffbf, iVar1);
 		}
 	}
 	return;
 }
 
-void sgChat_Cmd_Create(int **param_1, int **param_2, int param_3, int **param_4, undefined param_5,
-    undefined param_6, undefined param_7, undefined param_8, undefined4 param_9)
+void FUN_100bf338(int **param_1,
+    int **param_2,
+    int param_3,
+    int **param_4,
+    undefined param_5,
+    undefined param_6,
+    undefined param_7,
+    undefined param_8,
+    undefined4 param_9)
 
 {
 	int *piVar1;
@@ -121,15 +116,15 @@ void sgChat_Cmd_Create(int **param_1, int **param_2, int param_3, int **param_4,
 			*(int ***)param_1 = ppiVar4;
 			*(int ***)(param_4 + 1) = param_2;
 		} else {
-			FUN_100bec54((char)_DAT_100f3afc, (char)_DAT_100f3af8, (char)param_3, (char)param_4, param_5, uVar3, (char)ppiVar4, param_8, in_stack_ffffffab, in_stack_ffffffaf, in_stack_ffffffb8,
-			    in_stack_ffffffbc, in_stack_ffffffc0, in_stack_ffffffc4, in_stack_ffffffc8,
-			    in_stack_ffffffcc, in_stack_ffffffd0, in_stack_ffffffd4);
+			FUN_100bec54(0x51, 0x65, (char)param_3, (char)param_4, param_5, uVar3, (char)ppiVar4, param_8,
+			    in_stack_ffffffab, in_stack_ffffffaf, in_stack_ffffffb8, in_stack_ffffffbc, in_stack_ffffffc0,
+			    in_stack_ffffffc4, in_stack_ffffffc8, in_stack_ffffffcc, in_stack_ffffffd0, in_stack_ffffffd4);
 		}
 	}
 	return;
 }
 
-void sgChat_Cmd_Insert(undefined4 *param_1)
+void FUN_100bf468(undefined4 *param_1)
 
 {
 	*param_1 = 0;
@@ -137,52 +132,37 @@ void sgChat_Cmd_Insert(undefined4 *param_1)
 	return;
 }
 
-void msgcmd_cmd_cleanup(undefined param_1, undefined param_2, char param_3, char param_4, char param_5,
-    char param_6, char param_7, char param_8, undefined4 param_9)
+void msgcmd_cmd_cleanup(void)
 
 {
-	int iVar1;
-	uint *puVar2;
-	ulonglong uVar3;
-	ulonglong uVar4;
-	longlong lVar5;
-	undefined uVar6;
-	longlong lVar7;
-	undefined uVar8;
-	longlong lVar9;
-	longlong lVar10;
-	longlong lVar11;
-	longlong lVar12;
+	ulonglong uVar1;
+	ulonglong uVar2;
+	undefined8 in_r5;
+	undefined uVar3;
+	undefined8 in_r6;
+	undefined uVar4;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffb8;
-	undefined in_stack_ffffffbf;
-	undefined4 local_3c;
 
-	puVar2 = _DAT_100f3b04;
-	iVar1 = _DAT_100f3b00;
-	lVar12 = (longlong)param_8;
-	lVar11 = (longlong)param_7;
-	lVar10 = (longlong)param_6;
-	lVar9 = (longlong)param_5;
-	lVar7 = (longlong)param_4;
-	lVar5 = (longlong)param_3;
 	while (true) {
-		uVar8 = (undefined)lVar7;
-		uVar6 = (undefined)lVar5;
-		uVar4 = sgChat_Cmd_Next(iVar1);
-		if (uVar4 == 0)
+		uVar4 = (undefined)in_r6;
+		uVar3 = (undefined)in_r5;
+		uVar2 = DeleteAll((int)&DAT_101b2044);
+		if (uVar2 == 0)
 			break;
-		sgChat_Cmd_SDelete((int *)uVar4, -1, uVar6, uVar8, (char)lVar9, (char)lVar10, (char)lVar11, (char)lVar12,
-		    in_stack_ffffffb8);
-		uVar3 = sgChat_Cmd_New(puVar2);
-		lVar5 = -2;
-		lVar7 = 0;
-		SMemFree((char)uVar4, (char)uVar3, 0xfe, 0, (char)lVar9, (char)lVar10, (char)lVar11, (char)lVar12,
-		    (char)in_stack_ffffffb8, in_stack_ffffffbf, local_3c);
+		FUN_100bf508((int *)uVar2, -1, uVar3, uVar4, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffb8);
+		uVar1 = FUN_100be958((uint *)&PTR_s_EXTERNMESSAGE_10121500);
+		in_r5 = 0xfffffffffffffffe;
+		in_r6 = 0;
+		SMemFree((int *)uVar2, (char *)uVar1, -2, '\0');
 	}
 	return;
 }
 
-ulonglong sgChat_Cmd_Next(int param_1)
+ulonglong DeleteAll(int param_1)
 
 {
 	if (0 < (int)*(uint *)(param_1 + 8)) {
@@ -191,8 +171,15 @@ ulonglong sgChat_Cmd_Next(int param_1)
 	return 0;
 }
 
-int *sgChat_Cmd_SDelete(int *param_1, short param_2, undefined param_3, undefined param_4, undefined param_5,
-    undefined param_6, undefined param_7, undefined param_8, undefined4 param_9)
+int *FUN_100bf508(int *param_1,
+    short param_2,
+    undefined param_3,
+    undefined param_4,
+    undefined param_5,
+    undefined param_6,
+    undefined param_7,
+    undefined param_8,
+    undefined4 param_9)
 
 {
 	int iVar1;
@@ -240,58 +227,53 @@ int *sgChat_Cmd_SDelete(int *param_1, short param_2, undefined param_3, undefine
 			}
 		}
 		if (0 < param_2) {
-			__dl((char)param_1, (char)param_2, param_3, param_4, param_5, param_6, param_7, param_8,
+			__dl__FPv((char)param_1, (char)param_2, param_3, param_4, param_5, param_6, param_7, param_8,
 			    in_stack_ffffffcb, in_stack_ffffffcf, local_2c);
 		}
 	}
 	return param_1;
 }
 
-void msgcmd_send_chat(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void msgcmd_send_chat(void)
 
 {
-	int iVar1;
-	ulonglong uVar2;
-	longlong lVar3;
-	ulonglong uVar4;
+	int *location;
+	DWORD DVar2;
+	ulonglong uVar1;
+	undefined in_r5;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffb8;
-	undefined uVar5;
-	undefined in_stack_ffffffbf;
 	int local_3c;
-	int iVar6;
 
-	iVar1 = _DAT_100f3b00;
-	uVar2 = (ulonglong) * (uint *)(_DAT_100f3b00 + 8);
-	if ((int)*(uint *)(_DAT_100f3b00 + 8) < 1) {
-		uVar2 = 0;
+	location = piRam101b204c;
+	if ((int)piRam101b204c < 1) {
+		location = (int *)0x0;
 	}
-	if (uVar2 != 0) {
+	if (location != (int *)0x0) {
 		if (DAT_100f4638 == '\0') {
-			param_1 = 0;
 			_DAT_100f463c = 0;
 			DAT_100f4638 = '\x01';
 		}
-		lVar3 = GetTickCount(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-		    (char)in_stack_ffffffb8, in_stack_ffffffbf, local_3c);
-		if (1999 < (lVar3 - (ulonglong) * (uint *)(local_3c + -0x4994) & 0xffffffff)) {
-			*(undefined4 *)(local_3c + -0x4994) = (int)lVar3;
-			SNetSendServerChatCommand((char)uVar2 + '\b', param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-			    (char)in_stack_ffffffb8, in_stack_ffffffbf, local_3c);
-			iVar6 = local_3c;
-			sgChat_Cmd_Next(iVar1, (int)(int *)uVar2);
-			uVar5 = (undefined)in_stack_ffffffb8;
-			sgChat_Cmd_SDelete((int *)uVar2, -1, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffb8);
-			uVar4 = sgChat_Cmd_New(*(uint **)(local_3c + -0x54cc));
-			SMemFree((char)uVar2, (char)uVar4, 0xfe, 0, param_5, param_6, param_7, param_8, uVar5,
-			    in_stack_ffffffbf, iVar6);
+		DVar2 = GetTickCount();
+		if (1999 < DVar2 - *(int *)(local_3c + -0x4994)) {
+			*(DWORD *)(local_3c + -0x4994) = DVar2;
+			SNetSendServerChatCommand((char *)(location + 2));
+			FUN_100bf6b0((int)&DAT_101b2044, (int)location);
+			FUN_100bf508(location, -1, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffb8);
+			uVar1 = FUN_100be958(*(uint **)(local_3c + -0x54cc));
+			SMemFree(location, (char *)uVar1, -2, '\0');
 		}
 	}
 	return;
 }
 
-ulonglong sgChat_Cmd_Next(int param_1, int param_2)
+ulonglong FUN_100bf6b0(int param_1, int param_2)
 
 {
 	if (param_2 == 0) {
@@ -303,65 +285,47 @@ ulonglong sgChat_Cmd_Next(int param_1, int param_2)
 	return (ulonglong) * (uint *)(param_2 + 4);
 }
 
-undefined8
-msgcmd_add_server_cmd_W(byte *param_1, char param_2, char param_3, char param_4, char param_5, char param_6,
-    char param_7, char param_8, undefined4 param_9)
+BOOL msgcmd_add_server_cmd_W(char *chat_message)
 
 {
 	byte bVar1;
-	undefined8 uVar2;
-	int iVar3;
-	longlong lVar4;
-	longlong lVar5;
-	longlong lVar6;
-	longlong lVar7;
-	longlong lVar8;
-	longlong lVar9;
-	longlong lVar10;
+	BOOL BVar2;
+	size_t sVar3;
 	undefined8 unaff_r27;
-	uint uVar11;
+	uint uVar4;
 	undefined8 unaff_r28;
 	undefined8 unaff_r29;
-	undefined *puVar12;
+	char *pcVar5;
 	undefined8 unaff_r30;
 	undefined8 unaff_r31;
-	byte *pbVar13;
-	undefined4 in_stack_ffffff38;
-	undefined local_98[132];
+	byte *pbVar6;
+	char local_98[132];
 	undefined4 local_14;
 	undefined4 uStack16;
 	undefined4 uStack12;
 	undefined4 uStack8;
 	undefined4 uStack4;
 
-	lVar10 = (longlong)param_8;
-	lVar9 = (longlong)param_7;
-	lVar8 = (longlong)param_6;
-	lVar7 = (longlong)param_5;
-	lVar6 = (longlong)param_4;
-	lVar5 = (longlong)param_3;
-	lVar4 = (longlong)param_2;
 	local_14 = (undefined4)((ulonglong)unaff_r27 >> 0x20);
 	uStack16 = (undefined4)((ulonglong)unaff_r28 >> 0x20);
 	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
 	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
 	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
-	if (*param_1 == 0x2f) {
-		puVar12 = local_98;
-		uVar11 = 0;
-		pbVar13 = param_1;
-		while (iVar3 = strlen((uint)param_1), uVar11 < iVar3 + 1U) {
-			bVar1 = *pbVar13;
-			uVar11 = uVar11 + 1;
-			pbVar13 = pbVar13 + 1;
-			*puVar12 = (&DAT_100f64e8)[(uint)bVar1];
-			puVar12 = puVar12 + 1;
+	if (*chat_message == '/') {
+		pcVar5 = local_98;
+		uVar4 = 0;
+		pbVar6 = (byte *)chat_message;
+		while (sVar3 = strlen(chat_message), uVar4 < sVar3 + 1) {
+			bVar1 = *pbVar6;
+			uVar4 = uVar4 + 1;
+			pbVar6 = pbVar6 + 1;
+			*pcVar5 = (&DAT_100f64e8)[(uint)bVar1];
+			pcVar5 = pcVar5 + 1;
 		}
-		msgcmd_add_server_cmd((uint)local_98, (char)lVar4, (char)lVar5, (char)lVar6, (char)lVar7, (char)lVar8,
-		    (char)lVar9, (char)lVar10, in_stack_ffffff38);
-		uVar2 = 1;
+		msgcmd_add_server_cmd(local_98);
+		BVar2 = 1;
 	} else {
-		uVar2 = 0;
+		BVar2 = 0;
 	}
-	return uVar2;
+	return BVar2;
 }

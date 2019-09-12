@@ -1,598 +1,386 @@
 
-void diablo_parse_flags(byte *param_1)
+void FUN_100239e8(uint param_1)
+
+{
+	_DAT_100f4078 = param_1 & 0xff;
+	return;
+}
+
+void diablo_parse_flags(char *args)
 
 {
 	while (true) {
-		if (*param_1 == 0)
+		if (*args == 0)
 			break;
-		while ((*(byte *)(_DAT_100f1a6c + (uint)*param_1) & 6) != 0) {
-			param_1 = param_1 + 1;
+		while (((&DAT_101234a8)[(uint)(byte)*args] & 6) != 0) {
+			args = (char *)((byte *)args + 1);
 		}
-		param_1 = param_1 + 1;
+		args = (char *)((byte *)args + 1);
 	}
 	return;
 }
 
-void FreeGameMem(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void FreeGameMem(void)
 
 {
-	uint uVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined **ppuVar4;
-	undefined uVar5;
-	undefined4 in_stack_ffffffc8;
+	void *p;
+	int iVar1;
 
-	puVar3 = PTR_DAT_100f1a68;
-	puVar2 = PTR_DAT_100f1a58;
-	ppuVar4 = &toc;
-	music_stop(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
-	FUN_100b9100(*(int *)puVar3, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	mem_free_dbg((int **)puVar3, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	mem_free_dbg((int **)ppuVar4[-0x1d5b], param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	mem_free_dbg((int **)ppuVar4[-0x1d5c], param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	mem_free_dbg((int **)ppuVar4[-0x1d5d], param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	uVar1 = *(uint *)puVar2;
-	*(undefined4 *)puVar2 = 0;
-	uVar5 = mem_free_dbg((ulonglong)uVar1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	uVar5 = FreeMissiles(uVar5, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	uVar5 = FreeMonsters(uVar5, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	uVar5 = FreeObjectGFX(uVar5, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	uVar5 = FreeEffects(uVar5, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	FreeTownerGFX(uVar5, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+	iVar1 = 0x100f8fd0;
+	music_stop();
+	UnlockMemFile((char)_DAT_1013b348);
+	MemFreeDbg((int **)&DAT_1013b348);
+	MemFreeDbg(*(int ***)(iVar1 + -0x756c));
+	MemFreeDbg(*(int ***)(iVar1 + -0x7570));
+	MemFreeDbg(*(int ***)(iVar1 + -0x7574));
+	p = _DAT_1013b340;
+	_DAT_1013b340 = (void *)0x0;
+	mem_free_dbg(p);
+	FreeMissiles();
+	FreeMonsters();
+	FreeObjectGFX();
+	FreeEffects();
+	FreeTownerGFX();
 	return;
 }
 
-void start_game(int param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined8 param_7, undefined4 param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void start_game(uint uMsg)
 
 {
 	undefined4 *puVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	undefined *puVar8;
-	undefined *puVar9;
-	undefined *puVar10;
-	undefined *puVar11;
-	undefined *puVar12;
-	undefined *puVar13;
-	undefined *puVar14;
-	undefined *puVar15;
-	undefined4 uVar17;
-	undefined uVar18;
-	undefined8 uVar16;
-	ulonglong uVar19;
-	undefined uVar20;
-	undefined7 uVar21;
-	undefined uVar22;
-	undefined7 uVar23;
-	undefined uVar24;
-	undefined7 uVar25;
-	undefined uVar26;
-	undefined uVar27;
-	undefined uVar28;
-	undefined uVar29;
-	undefined4 in_stack_ffffff88;
+	undefined in_r5;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
+	undefined in_stack_ffffff8b;
 	undefined in_stack_ffffff8f;
 	int local_6c;
 
-	puVar15 = PTR_DAT_100f1a54;
-	puVar14 = PTR_DAT_100f1a50;
-	puVar13 = PTR_DAT_100f1a4c;
-	puVar12 = PTR_DAT_100f1a48;
-	puVar11 = PTR_DAT_100f1a44;
-	puVar10 = PTR_DAT_100f1a40;
-	puVar9 = PTR_DAT_100f1a3c;
-	puVar8 = PTR_DAT_100f1a38;
-	puVar7 = PTR_DAT_100f19a0;
-	puVar6 = PTR_DAT_100f1954;
-	puVar5 = PTR_DAT_100f1950;
-	puVar4 = PTR_DAT_100f194c;
-	puVar3 = PTR_DAT_100f1944;
-	puVar2 = PTR_DAT_100f1834;
-	uVar25 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar26 = (undefined)param_5;
-	uVar23 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar24 = (undefined)param_4;
-	uVar21 = (undefined7)((ulonglong)param_3 >> 8);
-	uVar22 = (undefined)param_3;
-	uVar17 = DiabloAllocPtr(0x6200);
-	*(undefined4 *)puVar15 = uVar17;
-	uVar17 = DiabloAllocPtr(0x62000);
-	*(undefined4 *)puVar14 = uVar17;
-	uVar17 = DiabloAllocPtr(0x62000);
-	*(undefined4 *)puVar13 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar12 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar11 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar10 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar2 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar5 = uVar17;
-	uVar17 = DiabloAllocPtr(0x6200);
-	*(undefined4 *)puVar6 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar7 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar4 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar3 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar9 = uVar17;
-	uVar17 = DiabloAllocPtr(0x3100);
-	*(undefined4 *)puVar8 = uVar17;
-	if (((((*(int *)puVar14 == 0) || (*(int *)puVar13 == 0)) || (*(int *)puVar15 == 0)) || ((((*(int *)puVar12 == 0 || (*(int *)puVar11 == 0)) || ((*(int *)puVar10 == 0 || ((*(int *)puVar2 == 0 || (*(int *)puVar5 == 0)))))) || (*(int *)puVar6 == 0)))) || ((((*(int *)puVar7 == 0 || (*(int *)puVar4 == 0)) || (*(int *)puVar3 == 0)) || ((*(int *)puVar9 == 0 || (*(int *)puVar8 == 0)))))) {
-		ExitProcess(0, (undefined)param_2, uVar22, uVar24, uVar26, (char)param_6, (char)param_7, (char)param_8,
-		    (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
+	_DAT_1012f1d4 = DiabloAllocPtr(0x6200);
+	_DAT_1012f1d0 = DiabloAllocPtr(0x62000);
+	_DAT_1012f1cc = DiabloAllocPtr(0x62000);
+	_DAT_1012f1c8 = DiabloAllocPtr(0x3100);
+	_DAT_1012f1c4 = DiabloAllocPtr(0x3100);
+	_DAT_1012f1c0 = DiabloAllocPtr(0x3100);
+	_DAT_1012f1bc = DiabloAllocPtr(0x3100);
+	_DAT_1012f1b8 = DiabloAllocPtr(0x3100);
+	_DAT_1012f1b4 = DiabloAllocPtr(0x6200);
+	_DAT_1012f1b0 = DiabloAllocPtr(0x3100);
+	_DAT_1012f1ac = DiabloAllocPtr(0x3100);
+	_DAT_1012f1a8 = DiabloAllocPtr(0x3100);
+	_DAT_1012f1a4 = DiabloAllocPtr(0x3100);
+	_DAT_1012f1a0 = DiabloAllocPtr(0x3100);
+	if (((((_DAT_1012f1d0 == (BYTE *)0x0) || (_DAT_1012f1cc == (BYTE *)0x0)) || (_DAT_1012f1d4 == (BYTE *)0x0)) || ((((_DAT_1012f1c8 == (BYTE *)0x0 || (_DAT_1012f1c4 == (BYTE *)0x0)) || ((_DAT_1012f1c0 == (BYTE *)0x0 || ((_DAT_1012f1bc == (BYTE *)0x0 || (_DAT_1012f1b8 == (BYTE *)0x0)))))) || (_DAT_1012f1b4 == (BYTE *)0x0)))) || ((((_DAT_1012f1b0 == (BYTE *)0x0 || (_DAT_1012f1ac == (BYTE *)0x0)) || (_DAT_1012f1a8 == (BYTE *)0x0)) || ((_DAT_1012f1a4 == (BYTE *)0x0 || (_DAT_1012f1a0 == (BYTE *)0x0)))))) {
+		ExitProcess(0);
 	}
-	memset((char)*(undefined4 *)puVar15, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar14, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar13, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar12, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar11, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar10, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar2, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar5, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar6, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar7, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar4, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar3, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar9, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	memset((char)*(undefined4 *)puVar8, 0, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff88, in_stack_ffffff8f, local_6c);
-	uVar19 = ZEXT48(*(undefined **)(local_6c + -0x759c));
+	ZeroMemory((char)_DAT_1012f1d4, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1d0, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1cc, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1c8, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1c4, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1c0, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1bc, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1b8, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1b4, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1b0, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1ac, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1a8, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1a4, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
+	ZeroMemory((char)_DAT_1012f1a0, 0, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff8b, in_stack_ffffff8f,
+	    local_6c);
 	puVar1 = *(undefined4 **)(local_6c + -0x766c);
 	**(undefined **)(local_6c + -0x759c) = 0;
 	*puVar1 = 1;
-	uVar18 = InitCursor(ZEXT48(puVar1), uVar19, CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24),
-	    CONCAT71(uVar25, uVar26), param_6, (int)param_7, param_8, in_stack_ffffff88);
-	uVar16 = InitLightTable(uVar18, (char)uVar19, uVar22, uVar24, uVar26, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffff88);
-	uVar18 = LoadDebugGFX(uVar16, uVar19, CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24),
-	    CONCAT71(uVar25, uVar26), param_6, (int)param_7, param_8, in_stack_ffffff88);
-	music_stop(uVar18, (char)uVar19, uVar22, uVar24, uVar26, (char)param_6, (char)param_7, (char)param_8,
-	    in_stack_ffffff88);
-	uVar29 = (undefined)param_8;
-	uVar27 = (undefined)param_6;
-	uVar20 = (undefined)uVar19;
-	uVar28 = (undefined)param_7;
-	ShowProgress(param_1, uVar19, CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24),
-	    CONCAT71(uVar25, uVar26), param_6, param_7, param_8, in_stack_ffffff88);
-	uVar18 = gmenu_init_menu();
-	InitLevelCursor(uVar18, uVar20, uVar22, uVar24, uVar26, uVar27, uVar28, uVar29, in_stack_ffffff88);
+	InitCursor();
+	InitLightTable();
+	LoadDebugGFX();
+	music_stop();
+	ShowProgress(uMsg);
+	gmenu_init_menu();
+	InitLevelCursor();
 	*(undefined4 *)(local_6c + -0x4f54) = 0;
 	**(undefined **)(local_6c + -0x7560) = 0;
 	track_repeat_walk(0);
 	return;
 }
 
-void free_game(undefined8 param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, int param_6, int param_7, int param_8, undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void free_game(void)
 
 {
-	uint uVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	undefined *puVar8;
-	undefined *puVar9;
-	undefined *puVar10;
-	undefined *puVar11;
-	undefined *puVar12;
-	undefined *puVar13;
-	undefined *puVar14;
-	undefined *puVar15;
-	undefined uVar16;
-	ulonglong uVar17;
-	undefined uVar18;
-	undefined7 uVar19;
-	undefined uVar20;
-	undefined7 uVar21;
-	undefined uVar22;
-	undefined7 uVar23;
-	undefined uVar24;
-	longlong lVar25;
-	undefined uVar26;
-	longlong lVar27;
-	undefined uVar28;
-	longlong lVar29;
-	undefined uVar30;
-	ulonglong uVar31;
-	undefined4 in_stack_ffffff98;
+	void *p;
+	int pnum;
 
-	puVar15 = PTR_DAT_100f1a54;
-	puVar14 = PTR_DAT_100f1a50;
-	puVar13 = PTR_DAT_100f1a4c;
-	puVar12 = PTR_DAT_100f1a48;
-	puVar11 = PTR_DAT_100f1a44;
-	puVar10 = PTR_DAT_100f1a40;
-	puVar9 = PTR_DAT_100f1a3c;
-	puVar8 = PTR_DAT_100f1a38;
-	puVar7 = PTR_DAT_100f19a0;
-	puVar6 = PTR_DAT_100f1954;
-	puVar5 = PTR_DAT_100f1950;
-	puVar4 = PTR_DAT_100f194c;
-	puVar3 = PTR_DAT_100f1944;
-	puVar2 = PTR_DAT_100f1834;
-	uVar23 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar24 = (undefined)param_5;
-	uVar21 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar22 = (undefined)param_4;
-	uVar19 = (undefined7)((ulonglong)param_3 >> 8);
-	uVar20 = (undefined)param_3;
-	lVar29 = (longlong)param_8;
-	lVar27 = (longlong)param_7;
-	lVar25 = (longlong)param_6;
-	uVar17 = ZEXT48(PTR_DAT_100f1a50);
-	uVar1 = *(uint *)PTR_DAT_100f1a50;
-	if (uVar1 != 0) {
-		*(undefined4 *)PTR_DAT_100f1a50 = 0;
-		mem_free_dbg((ulonglong)uVar1, (char)puVar14, uVar20, uVar22, uVar24, (char)param_6, (char)param_7,
-		    (char)param_8, in_stack_ffffff98);
+	p = _DAT_1012f1d0;
+	if (_DAT_1012f1d0 != (void *)0x0) {
+		_DAT_1012f1d0 = (void *)0x0;
+		mem_free_dbg(p);
 	}
-	uVar1 = *(uint *)puVar13;
-	*(undefined4 *)puVar13 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar15;
-	*(undefined4 *)puVar15 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar12;
-	*(undefined4 *)puVar12 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar11;
-	*(undefined4 *)puVar11 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar10;
-	*(undefined4 *)puVar10 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar2;
-	*(undefined4 *)puVar2 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar5;
-	*(undefined4 *)puVar5 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar6;
-	*(undefined4 *)puVar6 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar7;
-	*(undefined4 *)puVar7 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar4;
-	*(undefined4 *)puVar4 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar3;
-	*(undefined4 *)puVar3 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar9;
-	*(undefined4 *)puVar9 = 0;
-	mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar1 = *(uint *)puVar8;
-	*(undefined4 *)puVar8 = 0;
-	uVar16 = mem_free_dbg((ulonglong)uVar1, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27, (char)lVar29, in_stack_ffffff98);
-	uVar16 = FreeControlPan(uVar16, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar16 = FreeInvGFX(uVar16, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar16 = FreeGMenu(uVar16, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	uVar16 = FreeQuestText(uVar16, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27,
-	    (char)lVar29, in_stack_ffffff98);
-	FreeStoreMem(uVar16, (char)uVar17, uVar20, uVar22, uVar24, (char)lVar25, (char)lVar27, (char)lVar29,
-	    in_stack_ffffff98);
-	uVar31 = 0;
+	p = _DAT_1012f1cc;
+	_DAT_1012f1cc = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1d4;
+	_DAT_1012f1d4 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1c8;
+	_DAT_1012f1c8 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1c4;
+	_DAT_1012f1c4 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1c0;
+	_DAT_1012f1c0 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1bc;
+	_DAT_1012f1bc = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1b8;
+	_DAT_1012f1b8 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1b4;
+	_DAT_1012f1b4 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1b0;
+	_DAT_1012f1b0 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1ac;
+	_DAT_1012f1ac = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1a8;
+	_DAT_1012f1a8 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1a4;
+	_DAT_1012f1a4 = (void *)0x0;
+	mem_free_dbg(p);
+	p = _DAT_1012f1a0;
+	_DAT_1012f1a0 = (void *)0x0;
+	mem_free_dbg(p);
+	FreeControlPan();
+	FreeInvGFX();
+	FreeGMenu();
+	FreeQuestText();
+	FreeStoreMem();
+	pnum = 0;
 	do {
-		uVar16 = FreePlayerGFX(uVar31, uVar17, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22),
-		    CONCAT71(uVar23, uVar24), (int)lVar25, (int)lVar27, (int)lVar29,
-		    in_stack_ffffff98);
-		uVar30 = (undefined)lVar29;
-		uVar28 = (undefined)lVar27;
-		uVar26 = (undefined)lVar25;
-		uVar18 = (undefined)uVar17;
-		uVar31 = uVar31 + 1;
-	} while ((int)uVar31 < 4);
-	uVar16 = FreeItemGFX(uVar16, uVar18, uVar20, uVar22, uVar24, uVar26, uVar28, uVar30, in_stack_ffffff98);
-	uVar16 = FreeCursor(uVar16, uVar18, uVar20, uVar22, uVar24, uVar26, uVar28, uVar30, in_stack_ffffff98);
-	uVar16 = FreeLightTable(uVar16, uVar18, uVar20, uVar22, uVar24, uVar26, uVar28, uVar30, in_stack_ffffff98);
-	uVar16 = FreeDebugGFX(uVar16, uVar18, uVar20, uVar22, uVar24, uVar26, uVar28, uVar30, in_stack_ffffff98);
-	FreeGameMem(uVar16, uVar18, uVar20, uVar22, uVar24, uVar26, uVar28, uVar30, in_stack_ffffff98);
+		FreePlayerGFX(pnum);
+		pnum = pnum + 1;
+	} while (pnum < 4);
+	FreeItemGFX();
+	FreeCursor();
+	FreeLightTable();
+	FreeDebugGFX();
+	FreeGameMem();
 	return;
 }
 
-void run_game_loop(int param_1, longlong param_2, ulonglong param_3, ulonglong param_4,
-    undefined8 param_5, undefined8 param_6, undefined8 param_7, undefined8 param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void run_game_loop(uint uMsg)
 
 {
-	undefined4 *puVar1;
-	undefined *puVar2;
-	char cVar3;
-	bool bVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	undefined *puVar8;
-	undefined *puVar9;
-	ulonglong uVar10;
-	undefined8 uVar11;
-	ulonglong uVar12;
-	int iVar14;
-	undefined uVar15;
-	ulonglong uVar13;
-	undefined uVar16;
-	undefined uVar17;
-	undefined uVar18;
-	undefined4 uVar19;
-	undefined4 uVar20;
-	undefined4 uVar21;
+	undefined *puVar1;
+	char cVar2;
+	bool bVar3;
+	ulonglong uVar4;
+	WNDPROC *pWVar5;
+	int iVar6;
+	BOOL BVar7;
+	undefined8 in_r4;
+	undefined uVar8;
+	undefined8 in_r5;
+	undefined uVar9;
+	undefined8 in_r6;
+	undefined uVar10;
+	undefined8 in_r7;
+	undefined uVar11;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 
-	puVar9 = PTR_DAT_100f1a34;
-	puVar8 = PTR_DAT_100f1a2c;
-	puVar7 = PTR_DAT_100f1a24;
-	puVar6 = PTR_DAT_100f1a20;
-	puVar5 = PTR_DAT_100f1914;
-	uVar13 = ZEXT48(&toc);
-	puVar2 = (undefined *)(ZEXT48(register0x0000000c) - 0x80);
-	*(BADSPACEBASE **)puVar2 = register0x0000000c;
-	nthread_ignore_mutex(1, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)param_6, (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8));
-	start_game(param_1, param_2, param_3, param_4, param_5, (int)param_6, param_7, (int)param_8,
-	    *(undefined4 *)(puVar2 + 8));
-	uVar10 = SetWindowProc(*(undefined **)((int)uVar13 + -0x75a0), (char)param_2, (char)param_3,
-	    (char)param_4, (char)param_5, (char)param_6, (char)param_7, (char)param_8,
-	    *(undefined4 *)(puVar2 + 8));
-	uVar11 = control_update_life_mana(*puVar2);
-	msg_process_net_packets(uVar11, param_2, param_3, param_4, param_5, (int)param_6, (int)param_7, (int)param_8,
-	    *(undefined4 *)(puVar2 + 8));
-	puVar1 = *(undefined4 **)((int)uVar13 + -0x75a8);
-	*(undefined4 *)puVar8 = 1;
-	*puVar1 = 1;
-	*(undefined4 *)puVar7 = 1;
-	*(undefined4 *)puVar5 = 0xff;
-	DrawAndBlit(ZEXT48(puVar1), param_2, param_3, param_4, param_5, (int)param_6, param_7, (int)param_8,
-	    *(undefined4 *)(puVar2 + 8));
-	PaletteFadeIn(8, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)param_6, (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8));
-	*(undefined4 *)puVar5 = 0xff;
-	*(undefined4 *)puVar6 = 1;
-	nthread_ignore_mutex(0, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)param_6, (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8));
-	uVar12 = FUN_10017ae8(1, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)param_6,
-	    (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8));
+	uVar4 = 0x100f8fd0;
+	puVar1 = (undefined *)(ZEXT48(register0x0000000c) - 0x80);
+	*(BADSPACEBASE **)puVar1 = register0x0000000c;
+	nthread_ignore_mutex(1, *puVar1);
+	start_game(uMsg, *puVar1);
+	pWVar5 = SetWindowProc(*(undefined4 *)((int)uVar4 + -0x75a0), *puVar1);
+	control_update_life_mana(*puVar1);
+	msg_process_net_packets(*puVar1);
+	_gbRunGame = 1;
+	**(undefined4 **)((int)uVar4 + -0x75a8) = 1;
+	_DAT_101290fc = 1;
+	_drawpanflag = 0xff;
+	DrawAndBlit(*puVar1);
+	PaletteFadeIn(8, *puVar1);
+	_drawpanflag = 0xff;
+	_DAT_101290f4 = 1;
+	nthread_ignore_mutex(0, *puVar1);
+	FUN_10017ae8(
+	    1, (char)in_r4, (char)in_r5, (char)in_r6, (char)in_r7, in_r8, in_r9, in_r10, *(undefined4 *)(puVar1 + 8));
 LAB_10024060:
 	do {
-		iVar14 = (int)uVar13;
-		uVar21 = (undefined4)param_8;
-		uVar19 = (undefined4)param_6;
-		if (*(int *)puVar8 == 0) {
-			FUN_10017ae8(0, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)param_6,
-			    (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8));
-			uVar13 = ZEXT48(*(byte **)(iVar14 + -0x77f0));
-			if (1 < **(byte **)(iVar14 + -0x77f0)) {
-				uVar13 = pfile_write_hero(uVar13, param_2, param_3, (int)param_4, (int)param_5, uVar19, (int)param_7,
-				    uVar21, *(undefined4 *)(puVar2 + 8));
+		iVar6 = (int)uVar4;
+		if (_gbRunGame == 0) {
+			FUN_10017ae8(0, (char)in_r4, (char)in_r5, (char)in_r6, (char)in_r7, in_r8, in_r9, in_r10,
+			    *(undefined4 *)(puVar1 + 8));
+			if (1 < **(byte **)(iVar6 + -0x77f0)) {
+				pfile_write_hero(*puVar1);
 			}
-			pfile_flush_W(uVar13, param_2, param_3, (int)param_4, (int)param_5, uVar19, (int)param_7, uVar21,
-			    *(undefined4 *)(puVar2 + 8));
-			PaletteFadeOut(8, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)uVar19,
-			    (char)param_7, (char)uVar21, *(undefined4 *)(puVar2 + 8));
-			SetCursor_(0, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)uVar19,
-			    (char)param_7, (char)uVar21, *(undefined4 *)(puVar2 + 8));
-			ClearScreenBuffer();
-			uVar20 = (undefined4)param_7;
-			*(undefined4 *)puVar5 = 0xff;
-			scrollrt_draw_game_screen(1, param_2, param_3, param_4, param_5, uVar19, param_7, uVar21,
-			    *(undefined4 *)(puVar2 + 8));
-			uVar13 = SetWindowProc((undefined *)uVar10, (char)param_2, (char)param_3, (char)param_4,
-			    (char)param_5, (char)uVar19, (char)uVar20, (char)uVar21,
-			    *(undefined4 *)(puVar2 + 8));
-			uVar11 = free_game(uVar13, param_2, param_3, param_4, param_5, uVar19, uVar20, uVar21,
-			    *(undefined4 *)(puVar2 + 8));
-			if (*puVar9 != '\0') {
-				*puVar9 = 0;
-				DoEnding(uVar11, param_2, param_3, param_4, param_5, uVar19, uVar20, uVar21,
-				    *(undefined4 *)(puVar2 + 8));
+			pfile_flush_W(*puVar1);
+			PaletteFadeOut(8, *puVar1);
+			SetCursor_(0, *puVar1);
+			ClearScreenBuffer(*puVar1);
+			_drawpanflag = 0xff;
+			scrollrt_draw_game_screen(1, *puVar1);
+			SetWindowProc(pWVar5, *puVar1);
+			free_game(*puVar1);
+			if (cineflag != '\0') {
+				cineflag = '\0';
+				DoEnding(*puVar1);
 			}
 			return;
 		}
-		diablo_color_cyc_logic((char)uVar12, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)param_6,
-		    (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8));
-		cVar3 = (char)(ZEXT48(register0x0000000c) - 0x80);
-		param_2 = 0;
-		param_3 = 0;
-		param_4 = 0;
-		param_5 = 0;
-		iVar14 = PeekMessage(cVar3 + '<', 0, 0, 0, 0, (char)param_6, (char)param_7, (char)param_8, puVar2[0xb],
-		    puVar2[0xf], *(undefined4 *)(puVar2 + 0x14));
-		uVar13 = (ulonglong) * (uint *)(puVar2 + 0x14);
-		if (iVar14 == 0)
+		diablo_color_cyc_logic(*puVar1);
+		cVar2 = (char)(ZEXT48(register0x0000000c) - 0x80);
+		in_r4 = 0;
+		in_r5 = 0;
+		in_r6 = 0;
+		in_r7 = 0;
+		iVar6 = PeekMessage(
+		    cVar2 + '<', 0, 0, 0, 0, in_r8, in_r9, in_r10, puVar1[0xb], puVar1[0xf], *(undefined4 *)(puVar1 + 0x14));
+		uVar4 = (ulonglong) * (uint *)(puVar1 + 0x14);
+		if (iVar6 == 0)
 			goto LAB_10024034;
 		while (true) {
-			param_2 = 0;
-			param_3 = 0;
-			param_4 = 0;
-			param_5 = 1;
-			uVar12 = PeekMessage(cVar3 + '<', 0, 0, 0, 1, (char)param_6, (char)param_7, (char)param_8, puVar2[0xb], puVar2[0xf], *(undefined4 *)(puVar2 + 0x14));
-			uVar13 = (ulonglong) * (uint *)(puVar2 + 0x14);
-			uVar15 = (undefined)param_2;
-			uVar16 = (undefined)param_3;
-			uVar17 = (undefined)param_4;
-			uVar18 = (undefined)param_5;
-			if ((int)uVar12 == 0)
+			in_r4 = 0;
+			in_r5 = 0;
+			in_r6 = 0;
+			in_r7 = 1;
+			iVar6 = PeekMessage(
+			    cVar2 + '<', 0, 0, 0, 1, in_r8, in_r9, in_r10, puVar1[0xb], puVar1[0xf], *(undefined4 *)(puVar1 + 0x14));
+			uVar11 = (undefined)in_r7;
+			uVar10 = (undefined)in_r6;
+			uVar9 = (undefined)in_r5;
+			uVar8 = (undefined)in_r4;
+			uVar4 = (ulonglong) * (uint *)(puVar1 + 0x14);
+			if (iVar6 == 0)
 				break;
-			if (*(int *)(puVar2 + 0x40) == 0x12) {
-				*(undefined4 *)puVar7 = 0;
-				*(undefined4 *)puVar8 = 0;
+			if (*(int *)(puVar1 + 0x40) == 0x12) {
+				_DAT_101290fc = 0;
+				_gbRunGame = 0;
 				break;
 			}
-			TranslateMessage(cVar3 + '<', uVar15, uVar16, uVar17, uVar18, (char)param_6, (char)param_7,
-			    (char)param_8, puVar2[0xb], puVar2[0xf], *(undefined4 *)(puVar2 + 0x14));
-			DispatchMessage(cVar3 + '<', uVar15, uVar16, uVar17, uVar18, (char)param_6, (char)param_7,
-			    (char)param_8, puVar2[0xb], puVar2[0xf], *(undefined4 *)(puVar2 + 0x14));
+			TranslateMessage(puVar1 + 0x3c, *puVar1);
+			DispatchMessage(cVar2 + '<', uVar8, uVar9, uVar10, uVar11, in_r8, in_r9, in_r10, puVar1[0xb], puVar1[0xf],
+			    *(undefined4 *)(puVar1 + 0x14));
 		}
-		bVar4 = false;
-		if ((*(int *)puVar8 != 0) && (uVar12 = nthread_has_500ms_passed(0, uVar15, uVar16, uVar17, uVar18, (char)param_6, (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8), puVar2[0xf], *(undefined4 *)(puVar2 + 0x18)), (int)uVar12 != 0)) {
-			bVar4 = true;
+		bVar3 = false;
+		if ((_gbRunGame != 0) && (BVar7 = nthread_has_500ms_passed(0, *puVar1), BVar7 != 0)) {
+			bVar3 = true;
 		}
-	} while (!bVar4);
+	} while (!bVar3);
 	goto LAB_10024044;
 LAB_10024034:
-	uVar12 = nthread_has_500ms_passed(0, (char)param_2, (char)param_3, (char)param_4, (char)param_5, (char)param_6,
-	    (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8), puVar2[0xf],
-	    *(undefined4 *)(puVar2 + 0x18));
-	if ((int)uVar12 != 0) {
+	BVar7 = nthread_has_500ms_passed(0, *puVar1);
+	if (BVar7 != 0) {
 	LAB_10024044:
-		multi_process_network_packets(uVar12, param_2, param_3, param_4, param_5, (int)param_6, (int)param_7, (int)param_8,
-		    *(undefined4 *)(puVar2 + 8));
-		uVar15 = game_loop((ulonglong) * (uint *)puVar6, param_2, param_3, param_4, param_5, param_6, param_7, param_8, *(undefined4 *)(puVar2 + 8));
-		uVar11 = msgcmd_send_chat(uVar15, (char)param_2, (char)param_3, (char)param_4, (char)param_5,
-		    (char)param_6, (char)param_7, (char)param_8, *(undefined4 *)(puVar2 + 8));
-		*(undefined4 *)puVar6 = 0;
-		uVar12 = DrawAndBlit(uVar11, param_2, param_3, param_4, param_5, (int)param_6, param_7, (int)param_8,
-		    *(undefined4 *)(puVar2 + 8));
+		multi_process_network_packets(*puVar1);
+		game_loop(_DAT_101290f4, *puVar1);
+		msgcmd_send_chat(*puVar1);
+		_DAT_101290f4 = 0;
+		DrawAndBlit(*puVar1);
 	}
 	goto LAB_10024060;
 }
 
-ulonglong StartGame(int param_1, undefined8 param_2, ulonglong param_3, ulonglong param_4,
-    undefined8 param_5, undefined8 param_6, undefined8 param_7, undefined8 param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+BOOL StartGame(BOOL bNewGame, BOOL bSinglePlayer)
 
 {
-	undefined *puVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined8 uVar6;
-	int iVar7;
-	undefined uVar8;
-	undefined8 extraout_r3;
-	longlong lVar9;
-	undefined uVar10;
-	undefined7 uVar11;
-	undefined uVar12;
-	undefined7 uVar13;
-	undefined uVar14;
-	undefined7 uVar15;
-	undefined uVar16;
-	undefined uVar17;
-	undefined uVar18;
-	undefined uVar19;
-	undefined4 in_stack_ffffffa8;
-	undefined uVar20;
-	undefined in_stack_ffffffaf;
-	undefined4 local_4c;
+	undefined8 uVar1;
+	BOOL BVar2;
+	uint uMsg;
+	undefined8 unaff_r24;
+	undefined8 unaff_r25;
+	undefined8 unaff_r26;
+	undefined8 unaff_r27;
+	undefined8 unaff_r28;
+	undefined8 unaff_r29;
+	undefined8 unaff_r30;
+	undefined8 unaff_r31;
+	BOOL local_28[2];
+	undefined4 local_20;
+	undefined4 uStack28;
+	undefined4 uStack24;
+	undefined4 uStack20;
+	undefined4 uStack16;
+	undefined4 uStack12;
+	undefined4 uStack8;
+	undefined4 uStack4;
 
-	puVar5 = PTR_DAT_100f1a24;
-	puVar4 = PTR_DAT_100f1a1c;
-	puVar3 = PTR_DAT_100f1a18;
-	puVar2 = PTR_DAT_100f1a14;
-	puVar1 = PTR_DAT_100f1824;
-	uVar15 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar16 = (undefined)param_5;
-	uVar13 = (undefined7)(param_4 >> 8);
-	uVar14 = (undefined)param_4;
-	uVar11 = (undefined7)(param_3 >> 8);
-	uVar12 = (undefined)param_3;
-	*PTR_DAT_100f1a1c = 1;
+	local_20 = (undefined4)((ulonglong)unaff_r24 >> 0x20);
+	uStack28 = (undefined4)((ulonglong)unaff_r25 >> 0x20);
+	uStack24 = (undefined4)((ulonglong)unaff_r26 >> 0x20);
+	uStack20 = (undefined4)((ulonglong)unaff_r27 >> 0x20);
+	uStack16 = (undefined4)((ulonglong)unaff_r28 >> 0x20);
+	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
+	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
+	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
+	DAT_1017de92 = 1;
 	do {
-		lVar9 = ZEXT48(register0x0000000c) - 0x28;
-		*(undefined4 *)puVar3 = 0;
-		iVar7 = NetInit(param_2);
-		uVar20 = (undefined)in_stack_ffffffa8;
-		uVar10 = (undefined)lVar9;
-		uVar8 = (undefined)iVar7;
-		uVar19 = (undefined)param_8;
-		uVar18 = (undefined)param_7;
-		uVar17 = (undefined)param_6;
-		if (iVar7 == 0) {
-			uVar6 = countLeadingZeros(0);
-			*(uint *)puVar5 = (uint)uVar6 >> 5 & 0xff;
+		local_28[0] = 0;
+		_DAT_101290f0 = 0;
+		BVar2 = NetInit(bSinglePlayer, local_28);
+		if (BVar2 == 0) {
+			uVar1 = countLeadingZeros(local_28[0]);
+			_DAT_101290fc = (uint)uVar1 >> 5 & 0xff;
 			break;
 		}
-		*puVar4 = 0;
-		if ((param_1 != 0) || (*(int *)puVar2 == 0)) {
-			uVar8 = InitLevels();
-			uVar8 = InitQuests(uVar8, (char)lVar9, uVar12, uVar14, uVar16, (char)param_6, (char)param_7,
-			    (char)param_8, in_stack_ffffffa8);
-			InitPortals(uVar8, (char)lVar9, uVar12, uVar14, uVar16, (char)param_6, (char)param_7, (char)param_8,
-			    in_stack_ffffffa8);
-			InitDungMsgs((ulonglong) * (uint *)puVar1, lVar9, CONCAT71(uVar11, uVar12), CONCAT71(uVar13, uVar14),
-			    CONCAT71(uVar15, uVar16), (int)param_6, (int)param_7, (int)param_8, in_stack_ffffffa8);
+		DAT_1017de92 = 0;
+		if ((bNewGame != 0) || (_DAT_10186eb0 == 0)) {
+			InitLevels();
+			InitQuests();
+			InitPortals();
+			InitDungMsgs(myplr);
 		}
-		if ((*(int *)puVar2 == 0) || (*(int *)puVar3 == 0)) {
-			iVar7 = 0x40a;
+		if ((_DAT_10186eb0 == 0) || (_DAT_101290f0 == 0)) {
+			uMsg = 0x40a;
 		} else {
-			iVar7 = 0x40b;
+			uMsg = 0x40b;
 		}
-		run_game_loop(iVar7, lVar9, CONCAT71(uVar11, uVar12), CONCAT71(uVar13, uVar14), CONCAT71(uVar15, uVar16), param_6, param_7, param_8, in_stack_ffffffa8);
-		NetClose(extraout_r3, lVar9, CONCAT71(uVar11, uVar12), CONCAT71(uVar13, uVar14),
-		    CONCAT71(uVar15, uVar16), (int)param_6, (int)param_7, (int)param_8, in_stack_ffffffa8);
-		uVar10 = 0;
-		uVar6 = pfile_create_player_description(0, 0, CONCAT71(uVar11, uVar12), CONCAT71(uVar13, uVar14), CONCAT71(uVar15, uVar16), param_6, param_7, param_8, in_stack_ffffffa8);
-		uVar20 = (undefined)in_stack_ffffffa8;
-		uVar8 = (undefined)uVar6;
-		uVar19 = (undefined)param_8;
-		uVar18 = (undefined)param_7;
-		uVar17 = (undefined)param_6;
-	} while (*(int *)puVar5 != 0);
-	SNetDestroy(uVar8, uVar10, uVar12, uVar14, uVar16, uVar17, uVar18, uVar19, uVar20, in_stack_ffffffaf,
-	    local_4c);
-	return (ulonglong) * (uint *)puVar5;
+		run_game_loop(uMsg);
+		NetClose();
+		pfile_create_player_description((char *)0x0, 0);
+	} while (_DAT_101290fc != 0);
+	SNetDestroy();
+	return (BOOL)_DAT_101290fc;
 }
 
-void diablo_init_screen(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void diablo_init_screen(void)
 
 {
-	undefined4 *puVar1;
-	undefined *puVar2;
+	LONG *pLVar1;
+	int iVar2;
 	int iVar3;
 	int iVar4;
 	int iVar5;
@@ -601,1458 +389,1061 @@ void diablo_init_screen(undefined param_1, undefined param_2, undefined param_3,
 	int iVar8;
 	int iVar9;
 	int iVar10;
-	undefined *puVar11;
-	int iVar12;
-	int *piVar13;
-	int iVar14;
-	longlong lVar15;
+	int *PitchTbl;
+	int iVar11;
+	longlong lVar12;
+	int local_3c;
+	tagPOINT local_10[2];
+	undefined *_ScrollStruct;
 
-	puVar11 = PTR_DAT_100f1818;
-	puVar2 = (undefined *)(ZEXT48(register0x0000000c) - 0x50);
-	*(BADSPACEBASE **)puVar2 = register0x0000000c;
-	GetCursorPos((char)(ZEXT48(register0x0000000c) - 0x50) + '@', param_2, param_3, param_4, param_5,
-	    param_6, param_7, param_8, puVar2[0xb], puVar2[0xf], *(undefined4 *)(puVar2 + 0x14));
-	iVar14 = *(int *)(puVar2 + 0x14);
-	lVar15 = 0x20;
-	puVar1 = *(undefined4 **)(iVar14 + -0x76ac);
-	**(undefined4 **)(iVar14 + -0x76a8) = *(undefined4 *)(puVar2 + 0x40);
-	iVar12 = 0;
-	piVar13 = *(int **)(iVar14 + -0x7698);
-	iVar14 = 0;
-	*puVar1 = *(undefined4 *)(puVar2 + 0x44);
-	*(undefined4 *)(puVar11 + 8) = 0;
-	*(undefined4 *)(puVar11 + 0xc) = 0;
-	*(undefined4 *)puVar11 = 0;
-	*(undefined4 *)(puVar11 + 4) = 0;
-	*(undefined4 *)(puVar11 + 0x10) = 0;
+	GetCursorPos((LPPOINT)local_10);
+	lVar12 = 0x20;
+	pLVar1 = *(LONG **)(local_3c + -0x76ac);
+	**(LONG **)(local_3c + -0x76a8) = local_10[0].x;
+	iVar10 = 0;
+	PitchTbl = *(int **)(local_3c + -0x7698);
+	iVar11 = 0;
+	*pLVar1 = local_10[0].y;
+	ScrollStruct_1012f2e8._sdx = 0;
+	ScrollStruct_1012f2e8._sdy = 0;
+	ScrollStruct_1012f2e8._sxoff = 0;
+	ScrollStruct_1012f2e8._syoff = 0;
+	ScrollStruct_1012f2e8._sdir = 0;
 	do {
-		*piVar13 = iVar12;
-		piVar13[1] = (iVar14 + 1) * 0x300;
-		piVar13[2] = (iVar14 + 2) * 0x300;
-		piVar13[3] = (iVar14 + 3) * 0x300;
-		piVar13[4] = (iVar14 + 4) * 0x300;
-		piVar13[5] = (iVar14 + 5) * 0x300;
-		piVar13[6] = (iVar14 + 6) * 0x300;
-		piVar13[7] = (iVar14 + 7) * 0x300;
-		piVar13[8] = iVar12 + 0x1800;
-		piVar13[9] = (iVar14 + 9) * 0x300;
-		piVar13[10] = (iVar14 + 10) * 0x300;
-		piVar13[0xb] = (iVar14 + 0xb) * 0x300;
-		piVar13[0xc] = (iVar14 + 0xc) * 0x300;
-		piVar13[0xd] = (iVar14 + 0xd) * 0x300;
-		piVar13[0xe] = (iVar14 + 0xe) * 0x300;
-		iVar3 = iVar14 + 0x17;
-		piVar13[0xf] = (iVar14 + 0xf) * 0x300;
-		iVar4 = iVar14 + 0x19;
-		piVar13[0x10] = iVar12 + 0x3000;
-		piVar13[0x11] = (iVar14 + 0x11) * 0x300;
-		iVar5 = iVar14 + 0x1a;
-		piVar13[0x12] = (iVar14 + 0x12) * 0x300;
-		iVar6 = iVar14 + 0x1b;
-		piVar13[0x13] = (iVar14 + 0x13) * 0x300;
-		iVar7 = iVar14 + 0x1c;
-		piVar13[0x14] = (iVar14 + 0x14) * 0x300;
-		iVar8 = iVar14 + 0x1d;
-		piVar13[0x15] = (iVar14 + 0x15) * 0x300;
-		iVar9 = iVar14 + 0x1e;
-		piVar13[0x16] = (iVar14 + 0x16) * 0x300;
-		iVar10 = iVar14 + 0x1f;
-		iVar14 = iVar14 + 0x20;
-		piVar13[0x17] = iVar3 * 0x300;
-		piVar13[0x18] = iVar12 + 0x4800;
-		iVar12 = iVar12 + 0x6000;
-		piVar13[0x19] = iVar4 * 0x300;
-		piVar13[0x1a] = iVar5 * 0x300;
-		piVar13[0x1b] = iVar6 * 0x300;
-		piVar13[0x1c] = iVar7 * 0x300;
-		piVar13[0x1d] = iVar8 * 0x300;
-		piVar13[0x1e] = iVar9 * 0x300;
-		piVar13[0x1f] = iVar10 * 0x300;
-		piVar13 = piVar13 + 0x20;
-		lVar15 = lVar15 + -1;
-	} while (lVar15 != 0);
-	ClrDiabloMsg(*puVar2);
+		*PitchTbl = iVar10;
+		PitchTbl[1] = (iVar11 + 1) * 0x300;
+		PitchTbl[2] = (iVar11 + 2) * 0x300;
+		PitchTbl[3] = (iVar11 + 3) * 0x300;
+		PitchTbl[4] = (iVar11 + 4) * 0x300;
+		PitchTbl[5] = (iVar11 + 5) * 0x300;
+		PitchTbl[6] = (iVar11 + 6) * 0x300;
+		PitchTbl[7] = (iVar11 + 7) * 0x300;
+		PitchTbl[8] = iVar10 + 0x1800;
+		PitchTbl[9] = (iVar11 + 9) * 0x300;
+		PitchTbl[10] = (iVar11 + 10) * 0x300;
+		PitchTbl[0xb] = (iVar11 + 0xb) * 0x300;
+		PitchTbl[0xc] = (iVar11 + 0xc) * 0x300;
+		PitchTbl[0xd] = (iVar11 + 0xd) * 0x300;
+		PitchTbl[0xe] = (iVar11 + 0xe) * 0x300;
+		iVar2 = iVar11 + 0x17;
+		PitchTbl[0xf] = (iVar11 + 0xf) * 0x300;
+		iVar3 = iVar11 + 0x19;
+		PitchTbl[0x10] = iVar10 + 0x3000;
+		PitchTbl[0x11] = (iVar11 + 0x11) * 0x300;
+		iVar4 = iVar11 + 0x1a;
+		PitchTbl[0x12] = (iVar11 + 0x12) * 0x300;
+		iVar5 = iVar11 + 0x1b;
+		PitchTbl[0x13] = (iVar11 + 0x13) * 0x300;
+		iVar6 = iVar11 + 0x1c;
+		PitchTbl[0x14] = (iVar11 + 0x14) * 0x300;
+		iVar7 = iVar11 + 0x1d;
+		PitchTbl[0x15] = (iVar11 + 0x15) * 0x300;
+		iVar8 = iVar11 + 0x1e;
+		PitchTbl[0x16] = (iVar11 + 0x16) * 0x300;
+		iVar9 = iVar11 + 0x1f;
+		iVar11 = iVar11 + 0x20;
+		PitchTbl[0x17] = iVar2 * 0x300;
+		PitchTbl[0x18] = iVar10 + 0x4800;
+		iVar10 = iVar10 + 0x6000;
+		PitchTbl[0x19] = iVar3 * 0x300;
+		PitchTbl[0x1a] = iVar4 * 0x300;
+		PitchTbl[0x1b] = iVar5 * 0x300;
+		PitchTbl[0x1c] = iVar6 * 0x300;
+		PitchTbl[0x1d] = iVar7 * 0x300;
+		PitchTbl[0x1e] = iVar8 * 0x300;
+		PitchTbl[0x1f] = iVar9 * 0x300;
+		PitchTbl = PitchTbl + 0x20;
+		lVar12 = lVar12 + -1;
+	} while (lVar12 != 0);
+	ClrDiabloMsg();
 	return;
 }
 
-undefined8
-WinMain(undefined4 param_1, undefined4 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined8 param_6, undefined8 param_7, undefined8 param_8,
-    undefined4 param_9, undefined param_10, undefined4 param_11)
+// WARNING: Type propagation algorithm not settling
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 
 {
-	undefined4 *puVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined uVar9;
-	byte *pbVar6;
-	undefined8 uVar4;
-	uint uVar7;
-	int iVar8;
-	ulonglong uVar5;
-	ulonglong uVar10;
-	undefined uVar11;
-	undefined8 uVar12;
-	ulonglong uVar13;
-	undefined uVar14;
-	longlong lVar15;
-	undefined uVar16;
-	undefined uVar17;
-	undefined uVar18;
-	undefined uVar19;
-	undefined uVar20;
+	DWORD DVar1;
+	undefined uVar4;
+	char *args;
+	SHORT SVar3;
+	BOOL BVar2;
+	undefined uVar5;
+	undefined uVar6;
+	undefined uVar7;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
+	undefined8 unaff_r27;
+	undefined8 unaff_r28;
+	undefined8 unaff_r29;
+	undefined8 unaff_r30;
+	undefined8 unaff_r31;
+	HINSTANCE pHStack0000001c;
 	undefined4 in_stack_ffffffa8;
-	undefined uVar21;
 	undefined in_stack_ffffffaf;
 	int local_4c;
-	int iVar22;
+	int iVar8;
+	int local_28;
+	undefined4 local_24;
+	undefined2 local_20;
+	undefined4 local_14;
+	undefined4 uStack16;
+	undefined4 uStack12;
+	undefined4 uStack8;
+	undefined4 uStack4;
 
-	puVar3 = PTR_s_Diablo_100f1a08;
-	puVar2 = PTR_DAT_100f17c4;
-	uVar9 = SUB41(PTR_PTR_LAB_100f1a10, 0);
-	uVar12 = param_4;
-	SwapOutMemFuncFPLib(uVar9, (undefined)param_2, (char)param_3, (char)param_4, (char)param_5,
-	    (char)param_6, (char)param_7, (char)param_8, (char)in_stack_ffffffa8,
+	uVar7 = (undefined)nShowCmd;
+	uVar6 = SUB41(lpCmdLine, 0);
+	uVar4 = SUB41(hPrevInstance, 0);
+	local_14 = (undefined4)((ulonglong)unaff_r27 >> 0x20);
+	uStack16 = (undefined4)((ulonglong)unaff_r28 >> 0x20);
+	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
+	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
+	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
+	pHStack0000001c = hPrevInstance;
+	SwapOutMemFuncFPLib(
+	    0x58, uVar4, uVar6, uVar7, in_r7, in_r8, in_r9, in_r10, (char)in_stack_ffffffa8, in_stack_ffffffaf, local_4c);
+	SwapOutMemFuncWin32(
+	    0x58, uVar4, uVar6, uVar7, in_r7, in_r8, in_r9, in_r10, (char)in_stack_ffffffa8, in_stack_ffffffaf, local_4c);
+	uVar5 = SUB41(*(HINSTANCE *)(local_4c + -0x75c4), 0);
+	*(HINSTANCE *)&(*(HINSTANCE *)(local_4c + -0x75c4))->unused = hInstance;
+	ShowCursor(0);
+	DVar1 = GetTickCount();
+	uVar4 = vc_srand((char)DVar1, uVar5, uVar6, uVar7, in_r7, in_r8, in_r9, in_r10, (char)in_stack_ffffffa8,
 	    in_stack_ffffffaf, local_4c);
-	SwapOutMemFuncWin32(uVar9, (undefined)param_2, (char)param_3, (char)uVar12, (char)param_5,
-	    (char)param_6, (char)param_7, (char)param_8, (char)in_stack_ffffffa8,
-	    in_stack_ffffffaf, local_4c);
-	puVar1 = *(undefined4 **)(local_4c + -0x75c4);
-	uVar10 = ZEXT48(puVar1);
-	*puVar1 = param_1;
-	uVar9 = ShowCursor(0, (char)puVar1, (char)param_3, (char)uVar12, (char)param_5, (char)param_6,
-	    (char)param_7, (char)param_8, (char)in_stack_ffffffa8, in_stack_ffffffaf,
-	    local_4c);
-	uVar9 = GetTickCount(uVar9, (char)uVar10, (char)param_3, (char)uVar12, (char)param_5, (char)param_6,
-	    (char)param_7, (char)param_8, (char)in_stack_ffffffa8, in_stack_ffffffaf,
-	    local_4c);
-	vc_srand(uVar9, (char)uVar10, (char)param_3, (char)uVar12, (char)param_5, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffffa8, in_stack_ffffffaf, local_4c);
-	uVar9 = InitHash();
-	pbVar6 = (byte *)GetCommandLine(uVar9, (char)uVar10, (char)param_3, (char)uVar12, (char)param_5,
-	    (char)param_6, (char)param_7, (char)param_8, (char)in_stack_ffffffa8,
-	    in_stack_ffffffaf, local_4c);
-	diablo_parse_flags(pbVar6);
-	uVar9 = init_create_window(param_4, uVar10, param_3, uVar12, param_5, (int)param_6, (int)param_7, (int)param_8,
-	    in_stack_ffffffa8);
-	uVar4 = diablo_init_screen(uVar9, (char)uVar10, (char)param_3, (char)uVar12, (char)param_5, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffffa8);
-	uVar11 = (undefined)uVar10;
-	uVar9 = sound_init(uVar4, uVar10, param_3, uVar12, param_5, (int)param_6, (int)param_7, (int)param_8,
-	    in_stack_ffffffa8);
-	UiInitialize(uVar9, uVar11, (char)param_3, (char)uVar12, (char)param_5, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffffa8);
-	uVar7 = GetAsyncKeyState(0x11, uVar11, (char)param_3, (char)uVar12, (char)param_5, (char)param_6,
-	    (char)param_7, (char)param_8, (char)in_stack_ffffffa8, in_stack_ffffffaf,
-	    local_4c);
-	iVar22 = local_4c;
-	if ((uVar7 & 0x8000) == 0) {
-		iVar22 = local_4c;
-		play_movie((ulonglong) * (uint *)(local_4c + -0x63e0), 1, param_3, uVar12, param_5, (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffffa8);
+	InitHash();
+	args = (char *)GetCommandLine(
+	    uVar4, uVar5, uVar6, uVar7, in_r7, in_r8, in_r9, in_r10, (char)in_stack_ffffffa8, in_stack_ffffffaf, local_4c);
+	diablo_parse_flags(args);
+	init_create_window(nShowCmd);
+	diablo_init_screen();
+	sound_init();
+	UiInitialize();
+	SVar3 = GetAsyncKeyState(0x11);
+	iVar8 = local_4c;
+	if (((int)SVar3 & 0x8000U) == 0) {
+		iVar8 = local_4c;
+		play_movie(*(char **)(local_4c + -0x63e0), 1);
 	}
-	uVar9 = 0xdc;
-	lVar15 = ZEXT48(register0x0000000c) - 0x28;
-	uVar12 = 0;
-	uVar10 = (ulonglong) * (ushort *)(local_4c + -0x22fc);
-	iVar8 = SRegLoadValue((char)puVar3, 0xdc, 0, (char)lVar15, (char)*(ushort *)(local_4c + -0x22fc),
-	    (char)param_6, (char)param_7, (char)param_8, (char)in_stack_ffffffa8,
-	    in_stack_ffffffaf, iVar22);
-	uVar7 = GetAsyncKeyState(0x11, uVar9, (char)uVar12, (char)lVar15, (char)uVar10, (char)param_6,
-	    (char)param_7, (char)param_8, (char)in_stack_ffffffa8, in_stack_ffffffaf,
-	    iVar22);
-	if (((uVar7 & 0x8000) == 0) && (iVar8 == 0)) {
-		play_movie((ulonglong) * (uint *)(iVar22 + -0x63e8), 1, uVar12, lVar15, uVar10, (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffffa8);
+	local_24 = *(undefined4 *)(local_4c + -0x2300);
+	local_20 = *(undefined2 *)(local_4c + -0x22fc);
+	uVar4 = (undefined)local_20;
+	local_28 = 0;
+	BVar2 = SRegLoadValue(s_Diablo_1010ca40, (char *)&local_24, '\0', &local_28);
+	if (BVar2 == 0) {
+		local_28 = 1;
 	}
-	lVar15 = ZEXT48(register0x0000000c) - 0x24;
-	uVar13 = 0;
-	uVar12 = 0;
-	SRegSaveValue((char)puVar3, (char)lVar15, 0, 0, (char)uVar10, (char)param_6, (char)param_7, (char)param_8, (char)in_stack_ffffffa8, in_stack_ffffffaf, iVar22);
-	uVar5 = GetAsyncKeyState(0x11, (char)lVar15, (char)uVar13, (char)uVar12, (char)uVar10, (char)param_6,
-	    (char)param_7, (char)param_8, (char)in_stack_ffffffa8, in_stack_ffffffaf,
-	    iVar22);
-	if ((uVar5 & 0x8000) == 0) {
-		uVar4 = UiTitleDialog(7, (char)lVar15, (char)uVar13, (char)uVar12, (char)uVar10, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffffa8);
-		uVar5 = BlackPalette((char)uVar4, (char)lVar15, (char)uVar13, (char)uVar12, (char)uVar10,
-		    (char)param_6, (char)param_7, (char)param_8, in_stack_ffffffa8);
+	SVar3 = GetAsyncKeyState(0x11);
+	if ((((int)SVar3 & 0x8000U) == 0) && (local_28 != 0)) {
+		play_movie(*(char **)(iVar8 + -0x63e8), 1);
 	}
-	uVar17 = (undefined)uVar10;
-	uVar16 = (undefined)uVar12;
-	uVar14 = (undefined)uVar13;
-	uVar11 = (undefined)lVar15;
-	uVar20 = (undefined)param_8;
-	uVar19 = (undefined)param_7;
-	uVar18 = (undefined)param_6;
-	uVar9 = mainmenu_loop(uVar5, lVar15, uVar13, uVar12, uVar10, param_6, param_7, param_8, in_stack_ffffffa8);
-	uVar9 = UiDestroy(uVar9, uVar11, uVar14, uVar16, uVar17, uVar18, uVar19, uVar20, in_stack_ffffffa8);
-	uVar21 = (undefined)in_stack_ffffffa8;
-	SaveGamma(uVar9, uVar11, uVar14, uVar16, uVar17, uVar18, uVar19, uVar20, in_stack_ffffffa8);
-	if (*(int *)puVar2 != 0) {
-		Sleep(0x2c, uVar11, uVar14, uVar16, uVar17, uVar18, uVar19, uVar20, uVar21, in_stack_ffffffaf, iVar22);
-		DestroyWindow((char)*(undefined4 *)puVar2, uVar11, uVar14, uVar16, uVar17, uVar18, uVar19, uVar20,
-		    uVar21, in_stack_ffffffaf, iVar22);
+	uVar5 = (undefined)(ZEXT48(register0x0000000c) - 0x24);
+	uVar6 = 0;
+	uVar7 = 0;
+	SRegSaveValue(s_Diablo_1010ca40, (char *)(ZEXT48(register0x0000000c) - 0x24), '\0', 0);
+	SVar3 = GetAsyncKeyState(0x11);
+	if (((int)SVar3 & 0x8000U) == 0) {
+		FUN_10015a68(7, uVar5, uVar6, uVar7, uVar4, in_r8, in_r9, in_r10, in_stack_ffffffa8);
+		BlackPalette();
+	}
+	mainmenu_loop();
+	UiDestroy();
+	SaveGamma();
+	if (_DAT_1012915c != (HWND)0x0) {
+		Sleep(300);
+		DestroyWindow(_DAT_1012915c);
 	}
 	return 0;
 }
 
-undefined8
-LeftMouseCmd(int param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4, undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8, undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+BOOL LeftMouseCmd(BOOL bShift)
 
 {
-	byte bVar1;
-	bool bVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	undefined *puVar8;
-	undefined *puVar9;
-	undefined *puVar10;
-	undefined *puVar11;
-	undefined *puVar12;
-	undefined **ppuVar13;
-	longlong lVar14;
-	undefined8 uVar15;
-	ulonglong uVar16;
-	undefined4 in_stack_ffffff98;
+	BYTE y;
+	bool bVar1;
+	int iVar2;
+	int iVar3;
+	BOOL BVar4;
+	BYTE x;
+	BYTE bCmd;
 
-	puVar12 = PTR_DAT_100f1978;
-	puVar11 = PTR_DAT_100f1974;
-	puVar10 = PTR_DAT_100f188c;
-	puVar9 = PTR_DAT_100f1888;
-	puVar8 = PTR_DAT_100f1884;
-	puVar7 = PTR_DAT_100f1880;
-	puVar6 = PTR_DAT_100f1874;
-	puVar5 = PTR_DAT_100f1828;
-	puVar4 = PTR_DAT_100f1824;
-	puVar3 = PTR_DAT_100f1814;
-	ppuVar13 = &toc;
-	if (*PTR_DAT_100f183c == '\0') {
-		if ((*PTR_DAT_100f1888 != -1) && (*(int *)PTR_DAT_100f188c == 1)) {
-			if (*(int *)PTR_DAT_100f1814 == 0) {
-				uVar15 = 0x2a;
+	iVar2 = 0x100f8fd0;
+	if (leveltype == '\0') {
+		if ((DAT_101285f6 != -1) && (_DAT_1012861c == 1)) {
+			if (_DAT_1013c970 == 0) {
+				x = '*';
 			} else {
-				uVar15 = 0x29;
+				x = ')';
 			}
-			NetSendCmdLocParam1(1, uVar15, (ulonglong)(*(uint *)PTR_DAT_100f1978 & 0xff),
-			    (ulonglong)(*(uint *)PTR_DAT_100f1974 & 0xff), (longlong)(char)*PTR_DAT_100f1888,
-			    param_6, param_7, param_8, in_stack_ffffff98);
+			NetSendCmdLocParam1(1, x, (BYTE)_DAT_10128600, (BYTE)_DAT_101285fc, (short)DAT_101285f6);
 		}
-		if (*(uint *)puVar7 != 0xffffffff) {
-			NetSendCmdLocParam1(1, 0x1d, (ulonglong)(*(uint *)puVar12 & 0xff), (ulonglong)(*(uint *)puVar11 & 0xff),
-			    (ulonglong)(*(uint *)puVar7 & 0xffff), param_6, param_7, param_8, in_stack_ffffff98);
+		if (_DAT_101285f8 != -1) {
+			NetSendCmdLocParam1(1, '\x1d', (BYTE)_DAT_10128600, (BYTE)_DAT_101285fc, (WORD)_DAT_101285f8);
 		}
-		if (((*puVar9 == -1) && (*(int *)puVar7 == -1)) && (*puVar6 == -1)) {
+		if (((DAT_101285f6 == -1) && (_DAT_101285f8 == -1)) && (DAT_101285f4 == -1)) {
 			return 1;
 		}
 	} else {
-		bVar2 = false;
-		uVar16 = (ulonglong) * (uint *)PTR_DAT_100f1978;
-		lVar14 = abs((ulonglong)
-		        * (uint *)(PTR_DAT_100f1828 + *(int *)PTR_DAT_100f1824 * 0x55ec + 0x38)
-		    - uVar16);
-		if ((int)lVar14 < 2) {
-			uVar16 = (ulonglong) * (uint *)puVar11;
-			lVar14 = abs((ulonglong) * (uint *)(puVar5 + *(int *)puVar4 * 0x55ec + 0x3c) - uVar16);
-			if ((int)lVar14 < 2) {
-				bVar2 = true;
-			}
+		bVar1 = false;
+		iVar3 = abs(*(int *)((int)plr + myplr * 0x55ec + 0x38) - _DAT_10128600);
+		if ((iVar3 < 2) && (iVar3 = abs(*(int *)((int)plr + myplr * 0x55ec + 0x3c) - _DAT_101285fc), iVar3 < 2)) {
+			bVar1 = true;
 		}
-		if (((*puVar9 == -1) || (*(int *)puVar10 != 1)) || (param_1 != 0)) {
-			bVar1 = *puVar8;
-			if ((bVar1 == 0xff) || ((param_1 != 0 && ((!bVar2 || (ppuVar13[-0x1da2][(int)(char)bVar1 * 0x78 + 0x34] != '\x01')))))) {
-				if (*(int *)(puVar5 + *(int *)puVar4 * 0x55ec + 0x134) == 1) {
-					if (param_1 == 0) {
-						if (*(uint *)puVar7 == 0xffffffff) {
-							if ((*puVar6 != -1) && (_DAT_100f6b8c == 0)) {
-								NetSendCmdParam1(1, 0x15, (longlong)(char)*puVar6, param_4, param_5, param_6, param_7, param_8,
-								    in_stack_ffffff98);
+		x = (BYTE)_DAT_10128600;
+		y = (BYTE)_DAT_101285fc;
+		if (((DAT_101285f6 == -1) || (_DAT_1012861c != 1)) || (bShift != 0)) {
+			if ((DAT_101285f7 == -1) || ((bShift != 0 && ((!bVar1 || (*(char *)(*(int *)(iVar2 + -0x7688) + (int)DAT_101285f7 * 0x78 + 0x34) != '\x01')))))) {
+				if (*(int *)((int)plr + myplr * 0x55ec + 0x134) == 1) {
+					if (bShift == 0) {
+						if (_DAT_101285f8 == -1) {
+							if ((DAT_101285f4 != -1) && (_DAT_100f6b8c == 0)) {
+								NetSendCmdParam1(1, '\x15', (short)DAT_101285f4);
 							}
 						} else {
-							uVar15 = CanTalkToMonst((ulonglong) * (uint *)puVar7, uVar16, (ulonglong)bVar1, param_4,
-							    param_5, param_6, param_7, param_8, in_stack_ffffff98);
-							if ((int)uVar15 == 0) {
-								NetSendCmdParam1(1, 0x14, (ulonglong)(*(uint *)puVar7 & 0xffff), param_4, param_5, param_6,
-								    param_7, param_8, in_stack_ffffff98);
+							BVar4 = CanTalkToMonst(_DAT_101285f8);
+							if (BVar4 == 0) {
+								NetSendCmdParam1(1, '\x14', (WORD)_DAT_101285f8);
 							} else {
-								NetSendCmdParam1(1, 0x12, (ulonglong)(*(uint *)puVar7 & 0xffff), param_4, param_5, param_6,
-								    param_7, param_8, in_stack_ffffff98);
+								NetSendCmdParam1(1, '\x12', (WORD)_DAT_101285f8);
 							}
 						}
 					} else {
-						NetSendCmdLoc(1, 0xd, (ulonglong)(*(uint *)puVar12 & 0xff),
-						    (ulonglong)(*(uint *)puVar11 & 0xff), param_5, param_6, param_7, param_8,
-						    in_stack_ffffff98);
+						NetSendCmdLoc(1, '\r', x, y);
 					}
 				} else {
-					if (param_1 == 0) {
-						if (*(uint *)puVar7 == 0xffffffff) {
-							if ((*puVar6 != -1) && (_DAT_100f6b8c == 0)) {
-								NetSendCmdParam1(1, 0x13, (longlong)(char)*puVar6, param_4, param_5, param_6, param_7, param_8,
-								    in_stack_ffffff98);
+					if (bShift == 0) {
+						if (_DAT_101285f8 == -1) {
+							if ((DAT_101285f4 != -1) && (_DAT_100f6b8c == 0)) {
+								NetSendCmdParam1(1, '\x13', (short)DAT_101285f4);
 							}
 						} else {
-							NetSendCmdParam1(1, 0x12, (ulonglong)(*(uint *)puVar7 & 0xffff), param_4, param_5, param_6,
-							    param_7, param_8, in_stack_ffffff98);
+							NetSendCmdParam1(1, '\x12', (WORD)_DAT_101285f8);
 						}
 					} else {
-						if (*(uint *)puVar7 == 0xffffffff) {
-							NetSendCmdLoc(1, 0x37, (ulonglong)(*(uint *)puVar12 & 0xff),
-							    (ulonglong)(*(uint *)puVar11 & 0xff), param_5, param_6, param_7, param_8,
-							    in_stack_ffffff98);
+						if (_DAT_101285f8 == -1) {
+							NetSendCmdLoc(1, '7', x, y);
 						} else {
-							uVar15 = CanTalkToMonst((ulonglong) * (uint *)puVar7, uVar16, (ulonglong)bVar1, param_4,
-							    param_5, param_6, param_7, param_8, in_stack_ffffff98);
-							if ((int)uVar15 == 0) {
-								NetSendCmdLoc(1, 0x37, (ulonglong)(*(uint *)puVar12 & 0xff),
-								    (ulonglong)(*(uint *)puVar11 & 0xff), param_5, param_6, param_7, param_8,
-								    in_stack_ffffff98);
+							BVar4 = CanTalkToMonst(_DAT_101285f8);
+							if (BVar4 == 0) {
+								NetSendCmdLoc(1, '7', (BYTE)_DAT_10128600, (BYTE)_DAT_101285fc);
 							} else {
-								NetSendCmdParam1(1, 0x12, (ulonglong)(*(uint *)puVar7 & 0xffff), param_4, param_5, param_6,
-								    param_7, param_8, in_stack_ffffff98);
+								NetSendCmdParam1(1, '\x12', (WORD)_DAT_101285f8);
 							}
 						}
 					}
 				}
 			} else {
-				if (*(int *)puVar10 == 5) {
-					uVar15 = 0x11;
+				if (_DAT_1012861c == 5) {
+					bCmd = '\x11';
 				} else {
-					uVar15 = 0x10;
+					bCmd = '\x10';
 				}
-				NetSendCmdLocParam1(1, uVar15, (ulonglong)(*(uint *)puVar12 & 0xff),
-				    (ulonglong)(*(uint *)puVar11 & 0xff), (longlong)(char)bVar1, param_6, param_7,
-				    param_8, in_stack_ffffff98);
+				NetSendCmdLocParam1(1, bCmd, x, y, (short)DAT_101285f7);
 			}
 		} else {
-			if (*(int *)puVar3 == 0) {
-				uVar15 = 0x2a;
+			if (_DAT_1013c970 == 0) {
+				bCmd = '*';
 			} else {
-				uVar15 = 0x29;
+				bCmd = ')';
 			}
-			NetSendCmdLocParam1(1, uVar15, (ulonglong)(*(uint *)puVar12 & 0xff),
-			    (ulonglong)(*(uint *)puVar11 & 0xff), (longlong)(char)*puVar9, param_6, param_7,
-			    param_8, in_stack_ffffff98);
+			NetSendCmdLocParam1(1, bCmd, x, y, (short)DAT_101285f6);
 		}
-		if ((((param_1 == 0) && (*puVar9 == -1)) && (*puVar8 == -1)) && ((*(int *)puVar7 == -1 && (*puVar6 == -1)))) {
+		if ((((bShift == 0) && (DAT_101285f6 == -1)) && (DAT_101285f7 == -1)) && ((_DAT_101285f8 == -1 && (DAT_101285f4 == -1)))) {
 			return 1;
 		}
 	}
 	return 0;
 }
 
-undefined8 TryIconCurs(void)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+// WARNING: Unknown calling convention yet parameter storage is locked
+
+BOOL TryIconCurs(void)
+
+{
+	BOOL BVar1;
+	int iVar2;
+	WORD wParam2;
+
+	iVar2 = 0x100f8fd0;
+	if (_DAT_1012861c == 8) {
+		NetSendCmdParam1(1, '\x1a', (short)(char)DAT_101285f4);
+		BVar1 = 1;
+	} else {
+		if (_DAT_1012861c == 10) {
+			NetSendCmdParam1(1, 'M', (short)(char)DAT_101285f4);
+			BVar1 = 1;
+		} else {
+			if (_DAT_1012861c == 7) {
+				DoTelekinesis();
+				BVar1 = 1;
+			} else {
+				if (_DAT_1012861c == 2) {
+					if ((int)DAT_101285f5 == -1) {
+						NewCursor(1);
+					} else {
+						CheckIdentify(myplr, (int)DAT_101285f5);
+					}
+					BVar1 = 1;
+				} else {
+					if (_DAT_1012861c == 3) {
+						if ((int)DAT_101285f5 == -1) {
+							NewCursor(1);
+						} else {
+							DoRepair(myplr, (int)DAT_101285f5);
+						}
+						BVar1 = 1;
+					} else {
+						if (_DAT_1012861c == 4) {
+							if ((int)DAT_101285f5 == -1) {
+								NewCursor(1);
+							} else {
+								DoRecharge(myplr, (int)DAT_101285f5);
+							}
+							BVar1 = 1;
+						} else {
+							if (_DAT_1012861c == 9) {
+								if (_DAT_101285f8 == -1) {
+									if (DAT_101285f4 == -1) {
+										GetSpellLevel(myplr, *(int *)((int)plr + myplr * 0x55ec + 0xac));
+										NetSendCmdParam3(1, '\x0f', (ushort) * *(undefined4 **)(iVar2 + -0x7658) & 0xff,
+										    (ushort) * *(undefined4 **)(iVar2 + -0x765c) & 0xff,
+										    (WORD) * (undefined4 *)((int)plr + myplr * 0x55ec + 0xac));
+									} else {
+										iVar2 = GetSpellLevel(myplr, *(int *)((int)plr + myplr * 0x55ec + 0xac));
+										NetSendCmdLocParam2(1, '\x19', DAT_101285f4,
+										    (BYTE) * (undefined4 *)((int)plr + myplr * 0x55ec + 0xac), (WORD)iVar2,
+										    wParam2);
+									}
+								} else {
+									iVar2 = GetSpellLevel(myplr, *(int *)((int)plr + myplr * 0x55ec + 0xac));
+									NetSendCmdLocParam2(1, '\x18', (BYTE)_DAT_101285f8,
+									    (BYTE) * (undefined4 *)((int)plr + myplr * 0x55ec + 0xac), (WORD)iVar2, wParam2);
+								}
+								NewCursor(1);
+								BVar1 = 1;
+							} else {
+								if ((_DAT_1012861c == 5) && (DAT_101285f7 == -1)) {
+									NewCursor(1);
+									BVar1 = 1;
+								} else {
+									BVar1 = 0;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return BVar1;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+BOOL LeftMouseDown(int wParam)
+
+{
+	undefined8 uVar1;
+	int iVar2;
+	BOOL BVar4;
+	ulonglong uVar3;
+	undefined8 in_r4;
+	ulonglong in_r5;
+	undefined8 in_r6;
+	undefined8 in_r7;
+	undefined4 in_r8;
+	undefined4 in_r9;
+	undefined4 in_r10;
+	undefined4 in_stack_ffffffa8;
+
+	iVar2 = 0x100f8fd0;
+	BVar4 = gmenu_left_mouse(1);
+	if (((BVar4 == 0) && (BVar4 = control_check_talk_btn(), BVar4 == 0)) && (*(int *)(iVar2 + -0x4f54) == 0)) {
+		if (**(int **)(iVar2 + -0x75cc) == 0) {
+			if (**(int **)(iVar2 + -0x75d0) != 2) {
+				if (**(int **)(iVar2 + -0x7678) == 0) {
+					if (_DAT_101282b4 == 0) {
+						if (**(char **)(iVar2 + -0x7764) == '\0') {
+							if (_MouseY < 0x160) {
+								BVar4 = gmenu_exception();
+								if (BVar4 != 0) {
+									return 0;
+								}
+								BVar4 = TryIconCurs();
+								if (BVar4 != 0) {
+									return 0;
+								}
+								uVar3 = ZEXT48(*(int **)(iVar2 + -0x77c8));
+								if ((((**(int **)(iVar2 + -0x77c8) != 0) && (0x20 < MouseX)) && (MouseX < 0x120)) && ((0x20 < _MouseY && (_MouseY < 0x134)))) {
+									QuestlogESC();
+									return 0;
+								}
+								if (DAT_1014919d != '\0') {
+									DAT_1014919d = 0;
+									sfx_stop();
+									FUN_1005bd38(
+									    uVar3, in_r4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffa8);
+									return 0;
+								}
+								if ((**(int **)(iVar2 + -0x77c4) != 0) && (MouseX < 0x140)) {
+									CheckChrBtns();
+									return 0;
+								}
+								if ((**(int **)(iVar2 + -0x77bc) != 0) && (0x140 < MouseX)) {
+									if (_DAT_10128178 == 0) {
+										CheckInvItem();
+									}
+									return 0;
+								}
+								if ((**(int **)(iVar2 + -0x77c0) != 0) && (0x140 < MouseX)) {
+									CheckSBook();
+									return 0;
+								}
+								if (0xb < _DAT_1012861c) {
+									BVar4 = TryInvPut();
+									if (BVar4 != 0) {
+										NetSendCmdPItem(1, '\n', (BYTE) * *(undefined4 **)(iVar2 + -0x7658),
+										    (BYTE) * *(undefined4 **)(iVar2 + -0x765c));
+										NewCursor(1);
+									}
+									return 0;
+								}
+								if ((*(int *)(*(int *)(iVar2 + -0x77a8) + **(int **)(iVar2 + -0x77ac) * 0x55ec + 0x180) != 0) && (_DAT_101282b4 == 0)) {
+									CheckLvlBtn();
+								}
+								if (**(int **)(iVar2 + -0x76d8) == 0) {
+									uVar1 = countLeadingZeros(5 - wParam);
+									BVar4 = LeftMouseCmd((uint)uVar1 >> 5 & 0xff);
+									return BVar4;
+								}
+							} else {
+								if (((**(int **)(iVar2 + -0x76d0) == 0) && (_DAT_10128178 == 0)) && (BVar4 = gmenu_exception(), BVar4 == 0)) {
+									CheckInvScrn();
+								}
+								DoPanBtn();
+								if ((1 < _DAT_1012861c) && (_DAT_1012861c < 0xc)) {
+									NewCursor(1);
+								}
+							}
+						} else {
+							CheckStoreBtn();
+						}
+					} else {
+						SetSpell();
+					}
+				} else {
+					doom_close();
+				}
+			}
+		} else {
+			control_check_btn_press();
+		}
+	}
+	return 0;
+}
+
+void LeftMouseUp(void)
 
 {
 	int iVar1;
-	uint uVar2;
-	uint uVar3;
-	undefined *puVar4;
-	undefined **ppuVar5;
-	undefined8 uVar6;
-	longlong lVar7;
-	ulonglong uVar8;
-	undefined uVar9;
-	char cVar10;
-	ulonglong in_r6;
-	undefined uVar11;
-	ulonglong in_r7;
-	undefined uVar12;
-	ulonglong in_r8;
-	undefined uVar13;
-	ulonglong in_r9;
-	undefined uVar15;
-	undefined4 uVar14;
-	ulonglong in_r10;
-	undefined uVar17;
-	undefined4 uVar16;
-	undefined *puVar18;
-	undefined *puVar19;
-	undefined4 in_stack_ffffffb8;
 
-	puVar19 = PTR_DAT_100f1880;
-	puVar18 = PTR_DAT_100f1874;
-	puVar4 = PTR_DAT_100f1824;
-	uVar16 = (undefined4)in_r10;
-	uVar14 = (undefined4)in_r9;
-	ppuVar5 = &toc;
-	uVar8 = ZEXT48(PTR_DAT_100f18a4);
-	iVar1 = *(int *)PTR_DAT_100f188c;
-	if (iVar1 == 8) {
-		NetSendCmdParam1(1, 0x1a, (longlong)(char)*PTR_DAT_100f1874, in_r6, in_r7, (int)in_r8, uVar14, uVar16,
-		    in_stack_ffffffb8);
-		uVar6 = 1;
-	} else {
-		if (iVar1 == 10) {
-			NetSendCmdParam1(1, 0x4d, (longlong)(char)*PTR_DAT_100f1874, in_r6, in_r7, (int)in_r8, uVar14, uVar16,
-			    in_stack_ffffffb8);
-			uVar6 = 1;
-		} else {
-			if (iVar1 == 7) {
-				DoTelekinesis();
-				uVar6 = 1;
-			} else {
-				uVar13 = (undefined)in_r8;
-				uVar9 = SUB41(PTR_DAT_100f18a4, 0);
-				uVar11 = (undefined)in_r6;
-				uVar12 = (undefined)in_r7;
-				uVar15 = (undefined)in_r9;
-				uVar17 = (undefined)in_r10;
-				if (iVar1 == 2) {
-					cVar10 = *PTR_DAT_100f18a4;
-					if ((int)cVar10 == -1) {
-						NewCursor(1, cVar10, uVar9, uVar11, uVar12, uVar13, uVar15, uVar17, in_stack_ffffffb8);
-					} else {
-						CheckIdentify((ulonglong) * (uint *)PTR_DAT_100f1824, (int)cVar10, uVar8, in_r6, in_r7, in_r8,
-						    in_r9, in_r10, in_stack_ffffffb8);
-					}
-					uVar6 = 1;
-				} else {
-					if (iVar1 == 3) {
-						cVar10 = *PTR_DAT_100f18a4;
-						if ((int)cVar10 == -1) {
-							NewCursor(1, cVar10, uVar9, uVar11, uVar12, uVar13, uVar15, uVar17, in_stack_ffffffb8);
-						} else {
-							DoRepair((ulonglong) * (uint *)PTR_DAT_100f1824, (int)cVar10, uVar8, in_r6, in_r7, in_r8,
-							    in_r9, in_r10, in_stack_ffffffb8);
-						}
-						uVar6 = 1;
-					} else {
-						if (iVar1 == 4) {
-							cVar10 = *PTR_DAT_100f18a4;
-							if ((int)cVar10 == -1) {
-								NewCursor(1, cVar10, uVar9, uVar11, uVar12, uVar13, uVar15, uVar17, in_stack_ffffffb8);
-							} else {
-								DoRecharge((ulonglong) * (uint *)PTR_DAT_100f1824, (int)cVar10, uVar8, in_r6, in_r7,
-								    in_r8, in_r9, in_r10, in_stack_ffffffb8);
-							}
-							uVar6 = 1;
-						} else {
-							if (iVar1 == 9) {
-								if (*(int *)PTR_DAT_100f1880 == -1) {
-									if (*PTR_DAT_100f1874 == -1) {
-										puVar18 = PTR_DAT_100f1828 + 0xac;
-										lVar7 = GetSpellLevel(*(int *)PTR_DAT_100f1824,
-										    *(int *)(puVar18 + *(int *)PTR_DAT_100f1824 * 0x55ec));
-										uVar17 = (undefined)uVar16;
-										uVar15 = (undefined)uVar14;
-										uVar2 = (uint)lVar7 & 0xffff;
-										uVar13 = (undefined)uVar2;
-										uVar11 = (undefined)(*(uint *)ppuVar5[-0x1d97] & 0xff);
-										cVar10 = (char)(*(uint *)ppuVar5[-0x1d96] & 0xff);
-										uVar3 = *(uint *)(puVar18 + *(int *)puVar4 * 0x55ec) & 0xffff;
-										uVar12 = (undefined)uVar3;
-										uVar9 = 0xf;
-										NetSendCmdLocParam2(1, 0xf, (ulonglong)(*(uint *)ppuVar5[-0x1d96] & 0xff),
-										    (ulonglong)(*(uint *)ppuVar5[-0x1d97] & 0xff), (ulonglong)uVar3,
-										    uVar2, uVar14, uVar16, in_stack_ffffffb8);
-									} else {
-										puVar19 = PTR_DAT_100f1828 + 0xac;
-										lVar7 = GetSpellLevel(*(int *)PTR_DAT_100f1824,
-										    *(int *)(puVar19 + *(int *)PTR_DAT_100f1824 * 0x55ec));
-										uVar17 = (undefined)uVar16;
-										uVar15 = (undefined)uVar14;
-										uVar13 = (undefined)in_r8;
-										uVar2 = (uint)lVar7 & 0xffff;
-										uVar12 = (undefined)uVar2;
-										cVar10 = *puVar18;
-										uVar9 = 0x19;
-										uVar3 = *(uint *)(puVar19 + *(int *)puVar4 * 0x55ec) & 0xffff;
-										uVar11 = (undefined)uVar3;
-										NetSendCmdParam3(1, 0x19, (longlong)cVar10, (ulonglong)uVar3, (ulonglong)uVar2, in_r8,
-										    uVar14, uVar16, in_stack_ffffffb8);
-									}
-								} else {
-									puVar18 = PTR_DAT_100f1828 + 0xac;
-									lVar7 = GetSpellLevel(*(int *)PTR_DAT_100f1824,
-									    *(int *)(puVar18 + *(int *)PTR_DAT_100f1824 * 0x55ec));
-									uVar17 = (undefined)uVar16;
-									uVar15 = (undefined)uVar14;
-									uVar13 = (undefined)in_r8;
-									uVar2 = (uint)lVar7 & 0xffff;
-									uVar12 = (undefined)uVar2;
-									uVar9 = 0x18;
-									cVar10 = (char)(*(uint *)puVar19 & 0xffff);
-									uVar3 = *(uint *)(puVar18 + *(int *)puVar4 * 0x55ec) & 0xffff;
-									uVar11 = (undefined)uVar3;
-									NetSendCmdParam3(1, 0x18, (ulonglong)(*(uint *)puVar19 & 0xffff), (ulonglong)uVar3,
-									    (ulonglong)uVar2, in_r8, uVar14, uVar16, in_stack_ffffffb8);
-								}
-								NewCursor(1, uVar9, cVar10, uVar11, uVar12, uVar13, uVar15, uVar17, in_stack_ffffffb8);
-								uVar6 = 1;
-							} else {
-								if ((iVar1 == 5) && (*PTR_DAT_100f1884 == -1)) {
-									NewCursor(1, (char)PTR_DAT_100f1828, uVar9, uVar11, uVar12, uVar13, uVar15, uVar17,
-									    in_stack_ffffffb8);
-									uVar6 = 1;
-								} else {
-									uVar6 = 0;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	return uVar6;
-}
-
-undefined8
-LeftMouseDown(int param_1, undefined8 param_2, ulonglong param_3, undefined8 param_4, longlong param_5,
-    uint param_6, undefined4 param_7, undefined4 param_8, undefined4 param_9)
-
-{
-	undefined *puVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined **ppuVar7;
-	undefined8 uVar8;
-	ulonglong uVar9;
-	int iVar10;
-	undefined uVar11;
-	undefined uVar12;
-	undefined uVar13;
-	undefined uVar14;
-	undefined uVar15;
-	undefined7 uVar16;
-	undefined uVar17;
-	undefined uVar18;
-	undefined uVar19;
-	undefined4 in_stack_ffffffa8;
-
-	puVar6 = PTR_DAT_100f1928;
-	puVar5 = PTR_DAT_100f1924;
-	puVar4 = PTR_DAT_100f1918;
-	puVar3 = PTR_DAT_100f18cc;
-	puVar2 = PTR_DAT_100f18a0;
-	puVar1 = PTR_DAT_100f188c;
-	uVar16 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar17 = (undefined)param_5;
-	ppuVar7 = &toc;
-	uVar8 = gmenu_left_mouse(1, (char)param_2, (char)param_3, (char)param_4, uVar17, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffffa8);
-	if ((int)uVar8 == 0) {
-		uVar8 = control_check_talk_btn();
-		uVar19 = (undefined)param_8;
-		uVar18 = (undefined)param_7;
-		uVar15 = (undefined)param_6;
-		uVar14 = (undefined)param_4;
-		uVar13 = (undefined)param_3;
-		uVar11 = (undefined)param_2;
-		if (((int)uVar8 == 0) && (ppuVar7[-0x13d5] == (undefined *)0x0)) {
-			if (*(int *)ppuVar7[-0x1d73] == 0) {
-				if (*(int *)ppuVar7[-0x1d74] != 2) {
-					uVar12 = SUB41(ppuVar7[-0x1d9e], 0);
-					if (*(int *)ppuVar7[-0x1d9e] == 0) {
-						if (*(int *)puVar4 == 0) {
-							if (*ppuVar7[-0x1dd9] == '\0') {
-								if (*(int *)puVar5 < 0x160) {
-									uVar9 = gmenu_exception();
-									if ((int)uVar9 != 0) {
-										return 0;
-									}
-									iVar10 = TryIconCurs();
-									if (iVar10 != 0) {
-										return 0;
-									}
-									uVar11 = SUB41(ppuVar7[-0x1df2], 0);
-									uVar13 = (undefined)param_2;
-									uVar14 = (undefined)param_3;
-									uVar15 = (undefined)param_4;
-									uVar18 = (undefined)param_6;
-									uVar19 = (undefined)param_7;
-									uVar12 = (undefined)param_8;
-									if ((((*(int *)ppuVar7[-0x1df2] != 0) && (0x20 < *(int *)puVar6)) && (*(int *)puVar6 < 0x120)) && ((iVar10 = *(int *)puVar5, 0x20 < iVar10 && (iVar10 < 0x134)))) {
-										QuestlogESC(uVar11, uVar13, uVar14, uVar15, uVar17, uVar18, uVar19, uVar12,
-										    in_stack_ffffffa8);
-										return 0;
-									}
-									if (*puVar2 != '\0') {
-										*puVar2 = 0;
-										uVar8 = sfx_stop(uVar11, uVar13, uVar14, uVar15, uVar17, uVar18, uVar19, uVar12,
-										    in_stack_ffffffa8);
-										music_stop2(uVar8, param_2, param_3, param_4, CONCAT71(uVar16, uVar17), param_6,
-										    param_7, param_8, in_stack_ffffffa8);
-										return 0;
-									}
-									if ((*(int *)ppuVar7[-0x1df1] != 0) && (*(int *)puVar6 < 0x140)) {
-										CheckChrBtns();
-										return 0;
-									}
-									if ((*(int *)ppuVar7[-0x1def] != 0) && (0x140 < *(int *)puVar6)) {
-										if (*(int *)puVar3 == 0) {
-											CheckInvItem();
-										}
-										return 0;
-									}
-									uVar11 = SUB41(ppuVar7[-0x1df0], 0);
-									if ((*(int *)ppuVar7[-0x1df0] != 0) && (0x140 < *(int *)puVar6)) {
-										CheckSBook(uVar11, uVar13, uVar14, uVar15, uVar17, uVar18, uVar19, uVar12,
-										    in_stack_ffffffa8);
-										return 0;
-									}
-									if (0xb < *(int *)puVar1) {
-										uVar8 = TryInvPut(uVar11, uVar13, uVar14, uVar15, uVar17, uVar18, uVar19, uVar12,
-										    in_stack_ffffffa8);
-										uVar14 = (undefined)param_8;
-										uVar13 = (undefined)param_7;
-										uVar11 = (undefined)param_6;
-										if ((int)uVar8 != 0) {
-											uVar15 = 10;
-											uVar18 = (undefined)(*(uint *)ppuVar7[-0x1d96] & 0xff);
-											uVar19 = (undefined)(*(uint *)ppuVar7[-0x1d97] & 0xff);
-											NetSendCmdPItem(1, 10, (ulonglong)(*(uint *)ppuVar7[-0x1d96] & 0xff),
-											    (ulonglong)(*(uint *)ppuVar7[-0x1d97] & 0xff),
-											    CONCAT71(uVar16, uVar17), param_6, param_7, param_8, in_stack_ffffffa8);
-											NewCursor(1, uVar15, uVar18, uVar19, uVar17, uVar11, uVar13, uVar14,
-											    in_stack_ffffffa8);
-										}
-										return 0;
-									}
-									uVar9 = ZEXT48(ppuVar7[-0x1dea]);
-									if ((*(int *)(ppuVar7[-0x1dea] + *(int *)ppuVar7[-0x1deb] * 0x55ec + 0x180) != 0)
-									    && (*(int *)puVar4 == 0)) {
-										CheckLvlBtn();
-									}
-									if (*(int *)ppuVar7[-0x1db6] == 0) {
-										uVar8 = countLeadingZeros(5 - param_1);
-										uVar8 = LeftMouseCmd((uint)uVar8 >> 5 & 0xff, uVar9, param_3, param_4,
-										    CONCAT71(uVar16, uVar17), param_6, param_7, param_8,
-										    in_stack_ffffffa8);
-										return uVar8;
-									}
-								} else {
-									uVar12 = SUB41(ppuVar7[-0x1db4], 0);
-									if ((*(int *)ppuVar7[-0x1db4] == 0) && (*(int *)puVar3 == 0)) {
-										uVar9 = gmenu_exception();
-										uVar12 = (undefined)uVar9;
-										if ((int)uVar9 == 0) {
-											uVar12 = CheckInvScrn(uVar12, uVar11, uVar13, uVar14, uVar17, uVar15, uVar18, uVar19,
-											    in_stack_ffffffa8);
-										}
-									}
-									DoPanBtn(uVar12, uVar11, uVar13, uVar14, uVar17, uVar15, uVar18, uVar19,
-									    in_stack_ffffffa8);
-									iVar10 = *(int *)puVar1;
-									if ((1 < iVar10) && (iVar10 < 0xc)) {
-										NewCursor(1, uVar11, uVar13, uVar14, uVar17, uVar15, uVar18, uVar19,
-										    in_stack_ffffffa8);
-									}
-								}
-							} else {
-								CheckStoreBtn();
-							}
-						} else {
-							SetSpell(uVar12, uVar11, uVar13, uVar14, uVar17, uVar15, uVar18, uVar19, in_stack_ffffffa8);
-						}
-					} else {
-						doom_close(uVar12, uVar11, uVar13, uVar14, uVar17, uVar15, uVar18, uVar19, in_stack_ffffffa8);
-					}
-				}
-			} else {
-				control_check_btn_press((char)ppuVar7[-0x1d73], uVar11, uVar13, uVar14, uVar17, uVar15, uVar18, uVar19,
-				    in_stack_ffffffa8);
-			}
-		}
-	}
-	return 0;
-}
-
-void LeftMouseUp(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined **ppuVar1;
-	undefined4 in_stack_ffffffc8;
-
-	ppuVar1 = &toc;
-	gmenu_left_mouse(0, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+	iVar1 = 0x100f8fd0;
+	gmenu_left_mouse(0);
 	control_release_talk_btn();
-	if (*(int *)ppuVar1[-0x1db8] != 0) {
-		CheckBtnUp((char)ppuVar1[-0x1db8], param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_ffffffc8);
+	if (**(int **)(iVar1 + -0x76e0) != 0) {
+		CheckBtnUp();
 	}
-	if (*(int *)ppuVar1[-0x1dbb] != 0) {
+	if (**(int **)(iVar1 + -0x76ec) != 0) {
 		ReleaseChrBtns();
 	}
-	if (*(int *)ppuVar1[-0x1db6] != 0) {
+	if (**(int **)(iVar1 + -0x76d8) != 0) {
 		ReleaseLvlBtn();
 	}
-	if (*ppuVar1[-0x1dd9] != '\0') {
+	if (**(char **)(iVar1 + -0x7764) != '\0') {
 		ReleaseStoreBtn();
 	}
 	return;
 }
 
-void RightMouseDown(undefined8 param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined8 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
+void RightMouseDown(void)
 
 {
-	char cVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined **ppuVar4;
-	ulonglong uVar5;
-	int iVar7;
-	undefined8 uVar6;
-	longlong lVar8;
-	undefined7 uVar9;
-	undefined uVar10;
-	undefined7 uVar11;
-	undefined uVar12;
-	undefined7 uVar13;
-	undefined uVar14;
-	undefined7 uVar15;
-	undefined uVar16;
-	undefined4 in_stack_ffffffc8;
+	int iVar1;
+	BOOL BVar2;
 
-	puVar3 = PTR_DAT_100f18a4;
-	puVar2 = PTR_DAT_100f1824;
-	uVar15 = (undefined7)((ulonglong)param_6 >> 8);
-	uVar16 = (undefined)param_6;
-	uVar13 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar14 = (undefined)param_5;
-	uVar11 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar12 = (undefined)param_4;
-	uVar9 = (undefined7)((ulonglong)param_3 >> 8);
-	uVar10 = (undefined)param_3;
-	ppuVar4 = &toc;
-	uVar5 = gmenu_exception();
-	if (((((int)uVar5 == 0) && (ppuVar4[-0x13d5] == (undefined *)0x0)) && (*(int *)ppuVar4[-0x1d74] != 2)) && (ppuVar4[-0x1dea][*(int *)puVar2 * 0x55ec + 0x139] == '\0')) {
-		if (*(int *)ppuVar4[-0x1d9e] == 0) {
-			if (*ppuVar4[-0x1dd9] == '\0') {
-				if (*(int *)ppuVar4[-0x1dae] == 0) {
-					if (*(int *)ppuVar4[-0x1dab] < 0x160) {
-						if ((*(int *)ppuVar4[-0x1df0] != 0) && (0x140 < *(int *)ppuVar4[-0x1daa])) {
-							return;
-						}
-						iVar7 = TryIconCurs();
-						if (iVar7 != 0) {
-							return;
-						}
-						param_2._7_1_ = *puVar3;
-						if (((char)param_2 != -1) && (uVar6 = UseInvItem((ulonglong) * (uint *)puVar2, (longlong)(char)param_2, uVar10, uVar12, uVar14, uVar16, (char)param_7, (char)param_8, in_stack_ffffffc8), (int)uVar6 != 0)) {
-							return;
-						}
-					}
-					uVar5 = ZEXT48(ppuVar4[-0x1dd1]);
-					iVar7 = *(int *)ppuVar4[-0x1dd1];
-					if (iVar7 == 1) {
-						cVar1 = *puVar3;
-						lVar8 = (longlong)cVar1;
-						if ((cVar1 == -1) || (uVar5 = UseInvItem((ulonglong) * (uint *)puVar2, lVar8, uVar10, uVar12, uVar14, uVar16, (char)param_7, (char)param_8, in_stack_ffffffc8), (int)uVar5 == 0)) {
-							CheckPlrSpell(uVar5, lVar8, CONCAT71(uVar9, uVar10), CONCAT71(uVar11, uVar12),
-							    CONCAT71(uVar13, uVar14), CONCAT71(uVar15, uVar16), param_7, param_8,
-							    in_stack_ffffffc8);
-						}
-					} else {
-						if ((1 < iVar7) && (iVar7 < 0xc)) {
-							NewCursor(1, (char)param_2, uVar10, uVar12, uVar14, uVar16, (char)param_7, (char)param_8,
-							    in_stack_ffffffc8);
+	iVar1 = 0x100f8fd0;
+	BVar2 = gmenu_exception();
+	if ((((BVar2 == 0) && (*(int *)(iVar1 + -0x4f54) == 0)) && (**(int **)(iVar1 + -0x75d0) != 2)) && (*(char *)(*(int *)(iVar1 + -0x77a8) + myplr * 0x55ec + 0x139) == '\0')) {
+		if (**(int **)(iVar1 + -0x7678) == 0) {
+			if (**(char **)(iVar1 + -0x7764) == '\0') {
+				if (**(int **)(iVar1 + -0x76b8) == 0) {
+					if ((0x15f < **(int **)(iVar1 + -0x76ac)) || (((**(int **)(iVar1 + -0x77c0) == 0 || (**(int **)(iVar1 + -0x76a8) < 0x141)) && ((BVar2 = TryIconCurs(), BVar2 == 0 && (((int)DAT_101285f5 == -1 || (BVar2 = UseInvItem(myplr, (int)DAT_101285f5), BVar2 == 0)))))))) {
+						iVar1 = **(int **)(iVar1 + -0x7744);
+						if (iVar1 == 1) {
+							if (((int)DAT_101285f5 == -1) || (BVar2 = UseInvItem(myplr, (int)DAT_101285f5), BVar2 == 0)) {
+								CheckPlrSpell();
+							}
+						} else {
+							if ((1 < iVar1) && (iVar1 < 0xc)) {
+								NewCursor(1);
+							}
 						}
 					}
 				} else {
-					SetSpell((char)ppuVar4[-0x1dae], (char)param_2, uVar10, uVar12, uVar14, uVar16,
-					    (char)param_7, (char)param_8, in_stack_ffffffc8);
+					SetSpell();
 				}
 			}
 		} else {
-			doom_close((char)ppuVar4[-0x1d9e], (char)param_2, uVar10, uVar12, uVar14, uVar16, (char)param_7,
-			    (char)param_8, in_stack_ffffffc8);
+			doom_close();
 		}
 	}
 	return;
 }
 
-void GM_Game(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+BOOL gmenu_on_mouse_move(void)
 
 {
-	undefined4 in_stack_ffffffc8;
+	BOOL BVar1;
 
-	gmenu_on_mouse_move(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
-	return;
+	BVar1 = gmenu_on_mouse_move();
+	return BVar1;
 }
 
-void diablo_pause_game(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void diablo_pause_game(void)
 
 {
-	undefined *puVar1;
-	undefined *puVar2;
-	undefined **ppuVar3;
-	undefined4 in_stack_ffffffc8;
+	int iVar1;
 
-	puVar2 = PTR_DAT_100f1a00;
-	puVar1 = PTR_DAT_100f17e0;
-	ppuVar3 = &toc;
-	if ((byte)*PTR_DAT_100f17e0 < 2) {
-		if (*(int *)PTR_DAT_100f1a00 == 0) {
-			*(undefined4 *)PTR_DAT_100f1a00 = 2;
-			ppuVar3 = &toc;
-			FreeMonsterSnd((char)puVar1, (char)puVar2, param_3, param_4, param_5, param_6, param_7, param_8,
-			    in_stack_ffffffc8);
+	iVar1 = 0x100f8fd0;
+	if ((byte)gbMaxPlayers < 2) {
+		if (_DAT_10129104 == 0) {
+			_DAT_10129104 = 2;
+			iVar1 = 0x100f8fd0;
+			FreeMonsterSnd();
 			track_repeat_walk(0);
 		} else {
-			*(undefined4 *)PTR_DAT_100f1a00 = 0;
+			_DAT_10129104 = 0;
 		}
-		*(undefined4 *)ppuVar3[-0x1daf] = 0xff;
+		**(undefined4 **)(iVar1 + -0x76bc) = 0xff;
 	}
 	return;
 }
 
-void diablo_hotkey_msg(int param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
+char *FUN_10025168(int param_1,
+    int param_2,
+    int param_3,
+    int param_4,
+    undefined param_5,
+    undefined param_6,
+    undefined param_7,
+    undefined param_8,
     undefined4 param_9)
 
 {
-	undefined4 in_stack_ffffff78;
-	undefined auStack88[88];
+	char *pcVar1;
 
-	if (*PTR_DAT_100f17e0 != '\x01') {
-		strcpy((int)auStack88, (int)(s_I_need_help__Come_Here__100f6b90 + param_1 * 0x50));
-		NetSendCmdString(0xffffffff, (uint)auStack88, param_3, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_ffffff78);
+	strcpy((char *)param_1, s_I_need_help__Come_Here__100f6b90);
+	strcpy((char *)param_2, s_Follow_me__100f6be0);
+	strcpy((char *)param_3, s_Here_s_something_for_you__100f6c30);
+	pcVar1 = strcpy((char *)param_4, s_Now_you_DIE__100f6c80);
+	return pcVar1;
+}
+
+char *FUN_100251e0(int param_1,
+    int param_2,
+    int param_3,
+    int param_4,
+    undefined param_5,
+    undefined param_6,
+    undefined param_7,
+    undefined param_8,
+    undefined4 param_9)
+
+{
+	char *pcVar1;
+
+	strncpy(s_I_need_help__Come_Here__100f6b90, (char *)param_1, 0x4f);
+	uRam100f6bdf = 0;
+	strncpy(s_Follow_me__100f6be0, (char *)param_2, 0x4f);
+	uRam100f6c2f = 0;
+	strncpy(s_Here_s_something_for_you__100f6c30, (char *)param_3, 0x4f);
+	uRam100f6c7f = 0;
+	pcVar1 = strncpy(s_Now_you_DIE__100f6c80, (char *)param_4, 0x4f);
+	uRam100f6ccf = 0;
+	return pcVar1;
+}
+
+void diablo_hotkey_msg(DWORD dwMsg)
+
+{
+	char acStack88[88];
+
+	if (gbMaxPlayers != '\x01') {
+		strcpy(acStack88, s_I_need_help__Come_Here__100f6b90 + dwMsg * 0x50);
+		NetSendCmdString(-1, acStack88);
 	}
 	return;
 }
 
-undefined8
-PressSysKey(int param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4, undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8, undefined4 param_9)
+BOOL PressSysKey(int wParam)
 
 {
-	ulonglong uVar1;
-	undefined8 uVar2;
-	undefined4 in_stack_ffffffc8;
+	BOOL BVar1;
 
-	uVar1 = gmenu_exception();
-	if ((int)uVar1 == 0) {
-		if (param_1 == 0x79) {
-			diablo_hotkey_msg(1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
-			uVar2 = 1;
+	BVar1 = gmenu_exception();
+	if (BVar1 == 0) {
+		if (wParam == 0x79) {
+			diablo_hotkey_msg(1);
+			BVar1 = 1;
 		} else {
-			uVar2 = 0;
+			BVar1 = 0;
 		}
 	} else {
-		uVar2 = 0;
+		BVar1 = 0;
 	}
-	return uVar2;
+	return BVar1;
 }
 
-ulonglong PressEscKey_part(undefined8 param_1, undefined8 param_2, ulonglong param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
+void ReleaseKey(int vkey)
 
 {
-	int iVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined **ppuVar5;
-	ulonglong uVar6;
-	undefined8 uVar7;
-	ulonglong uVar8;
-	undefined7 uVar9;
-	undefined uVar10;
-	undefined7 uVar11;
-	undefined uVar12;
-	undefined7 uVar13;
-	undefined uVar14;
-	undefined uVar15;
-	undefined uVar16;
-	undefined uVar17;
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+BOOL PressEscKey(void)
+
+{
+	bool bVar1;
+	int iVar2;
+	ulonglong uVar3;
+	BOOL BVar4;
+	ulonglong uVar5;
+	ulonglong in_r5;
+	undefined8 in_r6;
+	undefined8 in_r7;
+	undefined4 in_r8;
+	undefined4 in_r9;
+	undefined4 in_r10;
 	undefined4 in_stack_ffffffb8;
 
-	puVar4 = PTR_DAT_100f19fc;
-	puVar3 = PTR_DAT_100f1918;
-	puVar2 = PTR_DAT_100f18a0;
-	uVar13 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar14 = (undefined)param_5;
-	uVar11 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar12 = (undefined)param_4;
-	uVar9 = (undefined7)(param_3 >> 8);
-	uVar10 = (undefined)param_3;
-	ppuVar5 = &toc;
-	uVar8 = ZEXT48(PTR_DAT_100f1958);
-	iVar1 = *(int *)PTR_DAT_100f1958;
-	if (iVar1 != 0) {
-		ppuVar5 = &toc;
-		doom_close(0, (char)PTR_DAT_100f1958, uVar10, uVar12, uVar14, (char)param_6, (char)param_7,
-		    (char)param_8, in_stack_ffffffb8);
+	iVar2 = 0x100f8fd0;
+	uVar5 = ZEXT48(&DAT_101291f0);
+	bVar1 = _DAT_101291f0 != 0;
+	if (bVar1) {
+		iVar2 = 0x100f8fd0;
+		doom_close();
 	}
-	uVar17 = (undefined)param_8;
-	uVar16 = (undefined)param_7;
-	uVar15 = (undefined)param_6;
-	uVar6 = (ulonglong)(iVar1 != 0);
-	if (*(int *)puVar4 != 0) {
-		*(undefined4 *)puVar4 = 0;
-		uVar6 = 1;
+	uVar3 = (ulonglong)bVar1;
+	if (_DAT_1013c640 != 0) {
+		_DAT_1013c640 = 0;
+		uVar3 = 1;
 	}
-	if (*puVar2 == '\0') {
-		if (*ppuVar5[-0x1dd9] != '\0') {
+	BVar4 = (BOOL)uVar3;
+	if (DAT_1014919d == '\0') {
+		if (**(char **)(iVar2 + -0x7764) != '\0') {
 			STextESC();
-			uVar6 = 1;
+			BVar4 = 1;
 		}
 	} else {
-		*puVar2 = 0;
-		uVar7 = sfx_stop((char)uVar6, (char)uVar8, uVar10, uVar12, uVar14, uVar15, uVar16, uVar17,
-		    in_stack_ffffffb8);
-		uVar17 = (undefined)param_8;
-		uVar16 = (undefined)param_7;
-		uVar15 = (undefined)param_6;
-		music_stop2(uVar7, uVar8, CONCAT71(uVar9, uVar10), CONCAT71(uVar11, uVar12), CONCAT71(uVar13, uVar14),
-		    param_6, param_7, param_8, in_stack_ffffffb8);
-		uVar6 = 1;
+		DAT_1014919d = '\0';
+		sfx_stop();
+		FUN_1005bd38(uVar3, uVar5, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffb8);
+		BVar4 = 1;
 	}
-	if (*ppuVar5[-0x1d76] != '\0') {
-		uVar6 = 1;
-		*ppuVar5[-0x1d77] = 0;
+	if (**(char **)(iVar2 + -0x75d8) != '\0') {
+		BVar4 = 1;
+		**(undefined **)(iVar2 + -0x75dc) = 0;
 	}
-	if (*(int *)ppuVar5[-0x1db4] != 0) {
+	if (**(int **)(iVar2 + -0x76d0) != 0) {
 		control_reset_talk();
-		uVar6 = 1;
+		BVar4 = 1;
 	}
-	if (*(int *)ppuVar5[-0x1dc1] != 0) {
-		control_drop_gold('\x1b', (char)ppuVar5[-0x1dc1], uVar10, uVar12, uVar14, uVar15, uVar16, uVar17,
-		    in_stack_ffffffb8);
-		uVar6 = 1;
+	if (**(int **)(iVar2 + -0x7704) != 0) {
+		control_drop_gold('\x1b');
+		BVar4 = 1;
 	}
-	if (*(int *)puVar3 != 0) {
-		*(undefined4 *)puVar3 = 0;
-		uVar6 = 1;
+	if (_DAT_101282b4 != 0) {
+		_DAT_101282b4 = 0;
+		BVar4 = 1;
 	}
-	return uVar6;
+	return BVar4;
 }
 
-void SetCursorPos_wrapper(int param_1, int param_2, undefined param_3, undefined param_4, undefined param_5,
-    undefined param_6, undefined param_7, undefined param_8, undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
-{
-	int iVar1;
-	bool bVar2;
-	bool bVar3;
-	undefined uVar4;
-	char cVar5;
-	undefined uVar6;
-	undefined in_stack_ffffffcb;
-	undefined in_stack_ffffffcf;
-	undefined4 local_2c;
-
-	iVar1 = *(int *)PTR_DAT_100f1928;
-	if (*(int *)PTR_DAT_100f1924 < 0x160) {
-		bVar3 = true;
-		if ((*(int *)PTR_DAT_100f180c == 0) && (*(int *)PTR_DAT_100f1808 == 0)) {
-			bVar3 = false;
-		}
-		uVar4 = SUB41(PTR_DAT_100f1814, 0);
-		bVar2 = true;
-		if ((*(int *)PTR_DAT_100f1814 == 0) && (uVar4 = SUB41(PTR_DAT_100f1810, 0), *(int *)PTR_DAT_100f1810 == 0)) {
-			bVar2 = false;
-		}
-		cVar5 = (char)iVar1;
-		uVar6 = (undefined) * (int *)PTR_DAT_100f1924;
-		if (((param_1 == 0) || (bVar2)) || (iVar1 < 0x141)) {
-			if (((param_2 != 0) && (!bVar3)) && (iVar1 < 0x140)) {
-				SetCursorPos(cVar5 + -0x60, uVar6, uVar4, bVar2, cVar5, uVar6, bVar3, param_8, in_stack_ffffffcb,
-				    in_stack_ffffffcf, local_2c);
-			}
-		} else {
-			SetCursorPos(cVar5 + '`', uVar6, uVar4, bVar2, cVar5, uVar6, bVar3, param_8, in_stack_ffffffcb,
-			    in_stack_ffffffcf, local_2c);
-		}
-	}
-	return;
-}
-
-undefined8
-PressEscKey(undefined8 param_1, undefined8 param_2, ulonglong param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
+undefined8 PressEscKey2(undefined8 param_1,
+    undefined8 param_2,
+    ulonglong param_3,
+    undefined8 param_4,
+    undefined8 param_5,
+    undefined4 param_6,
+    undefined4 param_7,
+    undefined4 param_8,
     undefined4 param_9)
 
 {
 	uint uVar1;
 	uint uVar2;
-	uint uVar3;
-	uint uVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	undefined *puVar8;
-	int iVar9;
-	ulonglong uVar10;
-	undefined8 uVar11;
-	int iVar12;
-	undefined uVar13;
-	undefined uVar14;
-	undefined uVar15;
-	undefined uVar16;
-	undefined uVar17;
-	undefined uVar18;
-	undefined uVar19;
-	undefined4 in_stack_ffffffb8;
+	BOOL BVar4;
+	undefined8 uVar3;
+	uint uVar5;
 
-	puVar8 = PTR_DAT_100f1814;
-	puVar7 = PTR_DAT_100f1810;
-	puVar6 = PTR_DAT_100f180c;
-	puVar5 = PTR_DAT_100f1808;
-	uVar16 = (undefined)param_5;
-	uVar19 = (undefined)param_8;
-	uVar18 = (undefined)param_7;
-	uVar17 = (undefined)param_6;
-	uVar10 = PressEscKey_part(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffb8);
-	if ((int)uVar10 == 0) {
-		uVar1 = *(uint *)puVar8;
-		iVar12 = 1;
-		uVar2 = *(uint *)puVar6;
-		uVar14 = (undefined)uVar2;
-		uVar3 = *(uint *)puVar7;
-		uVar4 = *(uint *)puVar5;
-		uVar15 = (undefined)uVar4;
-		if ((uVar1 == 0) && (uVar3 == 0)) {
-			iVar12 = 0;
+	BVar4 = PressEscKey();
+	if (BVar4 == 0) {
+		uVar5 = 1;
+		uVar1 = _DAT_1019cbec | _DAT_10128158 | _DAT_1013c970 | _DAT_101282b8;
+		if ((_DAT_1013c970 == 0) && (_DAT_10128158 == 0)) {
+			uVar5 = 0;
 		}
-		iVar9 = 1;
-		if ((uVar2 == 0) && (uVar4 == 0)) {
-			iVar9 = 0;
+		uVar2 = 1;
+		if ((_DAT_101282b8 == 0) && (_DAT_1019cbec == 0)) {
+			uVar2 = 0;
 		}
-		uVar13 = (undefined)iVar12;
-		SetCursorPos_wrapper(iVar9, iVar12, uVar14, uVar15, uVar16, uVar17, uVar18, uVar19, in_stack_ffffffb8);
-		*(undefined4 *)puVar8 = 0;
-		*(undefined4 *)puVar6 = 0;
-		*(undefined4 *)puVar7 = 0;
-		*(undefined4 *)puVar5 = 0;
-		if ((uVar4 | uVar3 | uVar1 | uVar2) == 0) {
-			uVar10 = gmenu_exception();
-			if ((int)uVar10 == 0) {
-				uVar11 = 0;
+		func_0x1002552c((ulonglong)uVar2, (ulonglong)uVar5);
+		_DAT_1013c970 = 0;
+		_DAT_101282b8 = 0;
+		_DAT_10128158 = 0;
+		_DAT_1019cbec = 0;
+		if (uVar1 == 0) {
+			BVar4 = gmenu_exception();
+			if (BVar4 == 0) {
+				uVar3 = 0;
 			} else {
-				gamemenu_off((char)uVar10, uVar13, uVar14, uVar15, uVar16, uVar17, uVar18, uVar19, in_stack_ffffffb8);
-				uVar11 = 1;
+				gamemenu_off();
+				uVar3 = 1;
 			}
 		} else {
-			uVar11 = 1;
+			uVar3 = 1;
 		}
 	} else {
-		uVar11 = 1;
+		uVar3 = 1;
 	}
-	return uVar11;
+	return uVar3;
 }
 
-void PressKey(ulonglong param_1, undefined8 param_2, ulonglong param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void PressKey(int vkey)
 
 {
-	int *piVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	undefined *puVar8;
-	undefined *puVar9;
-	undefined *puVar10;
-	undefined *puVar11;
-	undefined *puVar12;
-	undefined *puVar13;
-	uint uVar16;
-	undefined8 uVar14;
-	ulonglong uVar15;
-	ulonglong extraout_r3;
-	ulonglong extraout_r3_00;
-	ulonglong extraout_r3_01;
-	ulonglong extraout_r3_02;
-	undefined uVar17;
-	undefined uVar18;
-	undefined7 uVar19;
-	undefined uVar20;
-	undefined7 uVar21;
-	undefined uVar22;
-	undefined7 uVar23;
-	undefined uVar24;
-	undefined uVar25;
-	undefined uVar26;
-	undefined uVar27;
+	SHORT SVar5;
+	BOOL BVar3;
+	ulonglong uVar1;
+	undefined8 uVar2;
+	uint uVar4;
+	undefined8 in_r4;
+	uint uVar6;
+	ulonglong in_r5;
+	undefined8 in_r6;
+	undefined8 in_r7;
+	undefined4 in_r8;
+	undefined4 in_r9;
+	undefined4 in_r10;
 	undefined4 in_stack_ffffff98;
-	undefined in_stack_ffffff9f;
 	int local_5c;
 
-	puVar13 = PTR_DAT_100f19fc;
-	puVar12 = PTR_DAT_100f19f4;
-	puVar11 = PTR_DAT_100f1918;
-	puVar10 = PTR_DAT_100f1900;
-	puVar9 = PTR_DAT_100f18a0;
-	puVar8 = PTR_DAT_100f186c;
-	puVar7 = PTR_DAT_100f1858;
-	puVar6 = PTR_DAT_100f183c;
-	puVar5 = PTR_DAT_100f1814;
-	puVar4 = PTR_DAT_100f1810;
-	puVar3 = PTR_DAT_100f180c;
-	puVar2 = PTR_DAT_100f1808;
-	uVar23 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar24 = (undefined)param_5;
-	uVar21 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar22 = (undefined)param_4;
-	uVar19 = (undefined7)(param_3 >> 8);
-	uVar20 = (undefined)param_3;
-	uVar16 = GetKeyState(0x11, (char)param_2, uVar20, uVar22, uVar24, (char)param_6, (char)param_7,
-	    (char)param_8, (char)in_stack_ffffff98, in_stack_ffffff9f, local_5c);
-	if ((uVar16 & 0x8000) != 0) {
-		uVar14._4_4_ = (int)param_1;
-		if (uVar14._4_4_ == 0x37) {
-			param_1 = 0x76;
+	SVar5 = GetKeyState(0x11);
+	if (((int)SVar5 & 0x8000U) != 0) {
+		if (vkey == 0x37) {
+			vkey = 0x76;
 		} else {
-			if (uVar14._4_4_ < 0x37) {
-				if (uVar14._4_4_ == 0x33) {
-					param_1 = 0x72;
+			if (vkey < 0x37) {
+				if (vkey == 0x33) {
+					vkey = 0x72;
 				} else {
-					if (uVar14._4_4_ < 0x33) {
-						if (uVar14._4_4_ == 0x31) {
-							param_1 = 0x70;
+					if (vkey < 0x33) {
+						if (vkey == 0x31) {
+							vkey = 0x70;
 						} else {
-							if (uVar14._4_4_ < 0x31) {
-								if (0x2f < uVar14._4_4_) {
-									param_1 = 0x79;
+							if (vkey < 0x31) {
+								if (0x2f < vkey) {
+									vkey = 0x79;
 								}
 							} else {
-								param_1 = 0x71;
+								vkey = 0x71;
 							}
 						}
 					} else {
-						if (uVar14._4_4_ == 0x35) {
-							param_1 = 0x74;
+						if (vkey == 0x35) {
+							vkey = 0x74;
 						} else {
-							if (uVar14._4_4_ < 0x35) {
-								param_1 = 0x73;
+							if (vkey < 0x35) {
+								vkey = 0x73;
 							} else {
-								param_1 = 0x75;
+								vkey = 0x75;
 							}
 						}
 					}
 				}
 			} else {
-				if (uVar14._4_4_ == 0xbb) {
-					param_1 = 0x7b;
+				if (vkey == 0xbb) {
+					vkey = 0x7b;
 				} else {
-					if (uVar14._4_4_ < 0xbb) {
-						if (uVar14._4_4_ == 0x39) {
-							param_1 = 0x78;
+					if (vkey < 0xbb) {
+						if (vkey == 0x39) {
+							vkey = 0x78;
 						} else {
-							if (uVar14._4_4_ < 0x39) {
-								param_1 = 0x77;
+							if (vkey < 0x39) {
+								vkey = 0x77;
 							}
 						}
 					} else {
-						if (uVar14._4_4_ == 0xbd) {
-							param_1 = 0x7a;
+						if (vkey == 0xbd) {
+							vkey = 0x7a;
 						}
 					}
 				}
 			}
 		}
 	}
-	uVar14._4_4_ = (int)param_1;
-	uVar14 = gmenu_presskeys(uVar14._4_4_, (char)param_2, uVar20, uVar22, uVar24, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffff98);
-	if ((int)uVar14 != 0) {
+	BVar3 = gmenu_presskeys(vkey);
+	if (BVar3 != 0) {
 		return;
 	}
-	uVar14 = control_presskeys(param_1, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22),
-	    CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
-	if ((int)uVar14 != 0) {
+	BVar3 = control_presskeys(vkey);
+	if (BVar3 != 0) {
 		return;
 	}
-	uVar15 = ZEXT48(*(int **)(local_5c + -0x75cc));
+	uVar1 = ZEXT48(*(int **)(local_5c + -0x75cc));
 	if (**(int **)(local_5c + -0x75cc) != 0) {
 		if (*(int *)(local_5c + -0x4f54) != 0) {
 			return;
 		}
-		if ((param_1 & 0xffffffff) == 0x78) {
-			diablo_hotkey_msg(0, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
-			uVar15 = extraout_r3;
+		if (vkey == 0x78) {
+			uVar1 = 0;
+			diablo_hotkey_msg(0);
 		}
-		if ((param_1 & 0xffffffff) == 0x79) {
-			diablo_hotkey_msg(1, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
-			uVar15 = extraout_r3_00;
+		if (vkey == 0x79) {
+			uVar1 = 1;
+			diablo_hotkey_msg(1);
 		}
-		if ((param_1 & 0xffffffff) == 0x7a) {
-			diablo_hotkey_msg(2, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
-			uVar15 = extraout_r3_01;
+		if (vkey == 0x7a) {
+			uVar1 = 2;
+			diablo_hotkey_msg(2);
 		}
-		if ((param_1 & 0xffffffff) == 0x7b) {
-			diablo_hotkey_msg(3, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
-			uVar15 = extraout_r3_02;
+		if (vkey == 0x7b) {
+			uVar1 = 3;
+			diablo_hotkey_msg(3);
 		}
-		if ((param_1 & 0xffffffff) == 0xd) {
-			uVar15 = control_type_message();
+		if (vkey == 0xd) {
+			control_type_message();
 		}
-		if ((param_1 & 0xffffffff) != 0x1b) {
+		if (vkey != 0x1b) {
 			return;
 		}
 	}
-	uVar18 = (undefined)param_2;
-	uVar27 = (undefined)param_8;
-	uVar26 = (undefined)param_7;
-	uVar25 = (undefined)param_6;
-	if ((param_1 & 0xffffffff) == 0x1b) {
-		uVar14 = PressEscKey(uVar15, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22),
-		    CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
-		if ((int)uVar14 == 0) {
+	if (vkey == 0x1b) {
+		uVar2 = PressEscKey2(uVar1, in_r4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff98);
+		if ((int)uVar2 == 0) {
 			track_repeat_walk(0);
-			gamemenu_previous(0, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
+			gamemenu_previous();
 		}
 	} else {
 		if ((*(int *)(local_5c + -0x4f54) == 0) && (**(int **)(local_5c + -0x7704) == 0)) {
-			if ((param_1 & 0xffffffff) == 0x13) {
-				diablo_pause_game((char)*(int **)(local_5c + -0x7704), uVar18, uVar20, uVar22, uVar24, uVar25, uVar26,
-				    uVar27, in_stack_ffffff98);
+			if (vkey == 0x13) {
+				diablo_pause_game();
 			} else {
-				piVar1 = *(int **)(local_5c + -0x75d0);
-				if (*piVar1 != 2) {
-					if ((param_1 & 0xffffffff) == 0xd) {
-						if (*puVar8 == '\0') {
-							if (*(int *)puVar2 == 0) {
+				if (**(int **)(local_5c + -0x75d0) != 2) {
+					if (vkey == 0xd) {
+						if (stextflag == '\0') {
+							if (_DAT_1019cbec == 0) {
 								control_type_message();
 							} else {
 								QuestlogEnter();
 							}
 						} else {
-							STextEnter(ZEXT48(piVar1), param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22),
-							    CONCAT71(uVar23, uVar24), param_6, param_7, param_8, in_stack_ffffff98);
+							STextEnter();
 						}
 					} else {
 						if (*(int *)(local_5c + -0x4f58) != 0) {
-							if (uVar14._4_4_ == 0x72) {
-								param_1 = 0x76;
+							if (vkey == 0x72) {
+								vkey = 0x76;
 							} else {
-								if (uVar14._4_4_ < 0x72) {
-									if (uVar14._4_4_ == 0x70) {
-										param_1 = 0x74;
+								if (vkey < 0x72) {
+									if (vkey == 0x70) {
+										vkey = 0x74;
 									} else {
-										if (0x6f < uVar14._4_4_) {
-											param_1 = 0x75;
+										if (0x6f < vkey) {
+											vkey = 0x75;
 										}
 									}
 								} else {
-									if (uVar14._4_4_ < 0x74) {
-										param_1 = 0x77;
+									if (vkey < 0x74) {
+										vkey = 0x77;
 									}
 								}
 							}
 						}
-						if (((param_1 & 0xffffffff) == 0x70) || ((param_1 & 0xffffffff) == 0x2d)) {
-							if (*(int *)puVar13 == 0) {
-								if (*puVar8 == '\0') {
-									uVar17 = 0;
-									*(undefined4 *)puVar5 = 0;
-									*(undefined4 *)puVar3 = 0;
-									*(undefined4 *)puVar4 = 0;
-									*(undefined4 *)puVar11 = 0;
-									if ((*puVar9 != '\0') && (*puVar6 == '\0')) {
-										*puVar9 = 0;
-										uVar14 = sfx_stop(0, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26, uVar27,
-										    in_stack_ffffff98);
-										uVar27 = (undefined)param_8;
-										uVar26 = (undefined)param_7;
-										uVar25 = (undefined)param_6;
-										uVar18 = (undefined)param_2;
-										uVar17 = music_stop2(uVar14, param_2, CONCAT71(uVar19, uVar20),
-										    CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24), param_6,
-										    param_7, param_8, in_stack_ffffff98);
+						if ((vkey == 0x70) || (vkey == 0x2d)) {
+							if (_DAT_1013c640 == 0) {
+								if (stextflag == '\0') {
+									uVar2 = 0;
+									_DAT_1013c970 = 0;
+									_DAT_101282b8 = 0;
+									_DAT_10128158 = 0;
+									_DAT_101282b4 = 0;
+									if ((DAT_1014919d != '\0') && (leveltype == '\0')) {
+										DAT_1014919d = '\0';
+										sfx_stop();
+										FUN_1005bd38(
+										    uVar2, in_r4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffff98);
 									}
-									*(undefined4 *)puVar2 = 0;
-									*(undefined4 *)puVar7 = 0;
-									*puVar12 = 0;
-									gamemenu_off(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26, uVar27,
-									    in_stack_ffffff98);
-									uVar17 = DisplayHelp();
-									doom_close(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26, uVar27,
-									    in_stack_ffffff98);
+									_DAT_1019cbec = 0;
+									_DAT_10127e74 = 0;
+									DAT_1012edb1 = 0;
+									gamemenu_off();
+									DisplayHelp();
+									doom_close();
 								} else {
 									ClearPanel();
-									AddPanelString(*(int *)(local_5c + -0x63f0), 1, uVar20, uVar22, uVar24, uVar25, uVar26,
-									    uVar27, in_stack_ffffff98);
-									AddPanelString(*(int *)(local_5c + -0x63f4), 1, uVar20, uVar22, uVar24, uVar25, uVar26,
-									    uVar27, in_stack_ffffff98);
+									AddPanelString(*(char **)(local_5c + -0x63f0), 1);
+									AddPanelString(*(char **)(local_5c + -0x63f4), 1);
 									track_repeat_walk(0);
 								}
 							} else {
-								*(undefined4 *)puVar13 = 0;
+								_DAT_1013c640 = 0;
 							}
 						} else {
-							if ((param_1 & 0xffffffff) == 0x74) {
-								if (*(int *)puVar11 == 0) {
-									ToggleSpell(0, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26, uVar27, in_stack_ffffff98);
+							if (vkey == 0x74) {
+								if (_DAT_101282b4 == 0) {
+									ToggleSpell(0);
 								} else {
 									SetSpeedSpell(0);
 								}
 							} else {
-								if ((param_1 & 0xffffffff) == 0x75) {
-									if (*(int *)puVar11 == 0) {
-										ToggleSpell(1, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26, uVar27,
-										    in_stack_ffffff98);
+								if (vkey == 0x75) {
+									if (_DAT_101282b4 == 0) {
+										ToggleSpell(1);
 									} else {
 										SetSpeedSpell(1);
 									}
 								} else {
-									if ((param_1 & 0xffffffff) == 0x76) {
-										if (*(int *)puVar11 == 0) {
-											ToggleSpell(2, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26, uVar27,
-											    in_stack_ffffff98);
+									if (vkey == 0x76) {
+										if (_DAT_101282b4 == 0) {
+											ToggleSpell(2);
 										} else {
 											SetSpeedSpell(2);
 										}
 									} else {
-										if ((param_1 & 0xffffffff) == 0x77) {
-											if (*(int *)puVar11 == 0) {
-												ToggleSpell(3, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26, uVar27,
-												    in_stack_ffffff98);
+										if (vkey == 0x77) {
+											if (_DAT_101282b4 == 0) {
+												ToggleSpell(3);
 											} else {
 												SetSpeedSpell(3);
 											}
 										} else {
-											if ((param_1 & 0xffffffff) == 0x78) {
-												diablo_hotkey_msg(0, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22),
-												    CONCAT71(uVar23, uVar24), param_6, param_7, param_8,
-												    in_stack_ffffff98);
+											if (vkey == 0x78) {
+												diablo_hotkey_msg(0);
 											} else {
-												if ((param_1 & 0xffffffff) == 0x79) {
-													diablo_hotkey_msg(1, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22),
-													    CONCAT71(uVar23, uVar24), param_6, param_7, param_8,
-													    in_stack_ffffff98);
+												if (vkey == 0x79) {
+													diablo_hotkey_msg(1);
 												} else {
-													if ((param_1 & 0xffffffff) == 0x7a) {
-														diablo_hotkey_msg(2, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22),
-														    CONCAT71(uVar23, uVar24), param_6, param_7, param_8,
-														    in_stack_ffffff98);
+													if (vkey == 0x7a) {
+														diablo_hotkey_msg(2);
 													} else {
-														if ((param_1 & 0xffffffff) == 0x7b) {
-															diablo_hotkey_msg(3, param_2, CONCAT71(uVar19, uVar20), CONCAT71(uVar21, uVar22), CONCAT71(uVar23, uVar24), param_6, param_7, param_8,
-															    in_stack_ffffff98);
+														if (vkey == 0x7b) {
+															diablo_hotkey_msg(3);
 														} else {
-															uVar17 = SUB41(piVar1, 0);
-															if ((param_1 & 0xffffffff) == 0x26) {
-																if (*puVar8 == '\0') {
-																	if (*(int *)puVar2 == 0) {
-																		if (*(int *)puVar13 == 0) {
-																			if (*(int *)puVar7 != 0) {
+															if (vkey == 0x26) {
+																if (stextflag == '\0') {
+																	if (_DAT_1019cbec == 0) {
+																		if (_DAT_1013c640 == 0) {
+																			if (_DAT_10127e74 != 0) {
 																				AutomapUp();
 																			}
 																		} else {
 																			HelpScrollUp();
 																		}
 																	} else {
-																		QuestlogUp(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26,
-																		    uVar27, in_stack_ffffff98);
+																		QuestlogUp();
 																	}
 																} else {
-																	STextUp(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26,
-																	    uVar27, in_stack_ffffff98);
+																	STextUp();
 																}
 															} else {
-																if ((param_1 & 0xffffffff) == 0x28) {
-																	if (*puVar8 == '\0') {
-																		if (*(int *)puVar2 == 0) {
-																			if (*(int *)puVar13 == 0) {
-																				if (*(int *)puVar7 != 0) {
+																if (vkey == 0x28) {
+																	if (stextflag == '\0') {
+																		if (_DAT_1019cbec == 0) {
+																			if (_DAT_1013c640 == 0) {
+																				if (_DAT_10127e74 != 0) {
 																					AutomapDown();
 																				}
 																			} else {
 																				HelpScrollDown();
 																			}
 																		} else {
-																			QuestlogDown(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26,
-																			    uVar27, in_stack_ffffff98);
+																			QuestlogDown();
 																		}
 																	} else {
-																		STextDown(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26,
-																		    uVar27, in_stack_ffffff98);
+																		STextDown();
 																	}
 																} else {
-																	if ((param_1 & 0xffffffff) == 0x21) {
-																		if (*puVar8 != '\0') {
-																			STextPrior(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25, uVar26,
-																			    uVar27, in_stack_ffffff98);
+																	if (vkey == 0x21) {
+																		if (stextflag != '\0') {
+																			STextPrior();
 																		}
 																	} else {
-																		if ((param_1 & 0xffffffff) == 0x22) {
-																			if (*puVar8 != '\0') {
-																				STextNext(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25,
-																				    uVar26, uVar27, in_stack_ffffff98);
+																		if (vkey == 0x22) {
+																			if (stextflag != '\0') {
+																				STextNext();
 																			}
 																		} else {
-																			if ((param_1 & 0xffffffff) == 0x25) {
-																				if ((*(int *)puVar7 != 0) && (*(int *)puVar10 == 0)) {
+																			if (vkey == 0x25) {
+																				if ((_DAT_10127e74 != 0) && (_DAT_10128154 == 0)) {
 																					AutomapLeft();
 																				}
 																			} else {
-																				if ((param_1 & 0xffffffff) == 0x27) {
-																					if ((*(int *)puVar7 != 0) && (*(int *)puVar10 == 0)) {
+																				if (vkey == 0x27) {
+																					if ((_DAT_10127e74 != 0) && (_DAT_10128154 == 0)) {
 																						AutomapRight();
 																					}
 																				} else {
-																					if ((param_1 & 0xffffffff) == 9) {
-																						DoAutoMap(uVar17, uVar18, uVar20, uVar22, uVar24, uVar25,
-																						    uVar26, uVar27, in_stack_ffffff98);
+																					if (vkey == 9) {
+																						DoAutoMap();
 																					} else {
-																						if ((param_1 & 0xffffffff) == 0x20) {
-																							uVar16 = 1;
-																							if ((*(int *)puVar5 == 0) && (*(int *)puVar4 == 0)) {
-																								uVar16 = 0;
+																						if (vkey == 0x20) {
+																							uVar6 = 1;
+																							if ((_DAT_1013c970 == 0) && (_DAT_10128158 == 0)) {
+																								uVar6 = 0;
 																							}
-																							uVar14._4_4_ = 1;
-																							if ((*(int *)puVar3 == 0) && (*(int *)puVar2 == 0)) {
-																								uVar14._4_4_ = 0;
+																							uVar4 = 1;
+																							if ((_DAT_101282b8 == 0) && (_DAT_1019cbec == 0)) {
+																								uVar4 = 0;
 																							}
-																							uVar15 = (ulonglong)uVar16;
-																							SetCursorPos_wrapper(uVar14._4_4_, uVar16, uVar20, uVar22, uVar24,
-																							    uVar25, uVar26, uVar27, in_stack_ffffff98);
-																							uVar17 = (undefined)param_8;
-																							uVar27 = (undefined)param_7;
-																							uVar26 = (undefined)param_6;
-																							uVar25 = (undefined)uVar15;
-																							uVar18 = 0;
-																							*(undefined4 *)puVar13 = 0;
-																							*(undefined4 *)puVar5 = 0;
-																							*(undefined4 *)puVar3 = 0;
-																							*(undefined4 *)puVar4 = 0;
-																							*(undefined4 *)puVar11 = 0;
-																							if ((*puVar9 != '\0') && (*puVar6 == '\0')) {
-																								*puVar9 = 0;
-																								uVar14 = sfx_stop(0, uVar25, uVar20, uVar22, uVar24,
-																								    uVar26, uVar27, uVar17,
-																								    in_stack_ffffff98);
-																								uVar17 = (undefined)param_8;
-																								uVar27 = (undefined)param_7;
-																								uVar26 = (undefined)param_6;
-																								uVar25 = (undefined)uVar15;
-																								uVar18 = music_stop2(uVar14, uVar15,
-																								    CONCAT71(uVar19, uVar20),
-																								    CONCAT71(uVar21, uVar22),
-																								    CONCAT71(uVar23, uVar24),
-																								    param_6, param_7, param_8,
+																							uVar1 = (ulonglong)uVar6;
+																							func_0x1002552c(
+																							    (ulonglong)uVar4);
+																							uVar2 = 0;
+																							_DAT_1013c640 = 0;
+																							_DAT_1013c970 = 0;
+																							_DAT_101282b8 = 0;
+																							_DAT_10128158 = 0;
+																							_DAT_101282b4 = 0;
+																							if ((DAT_1014919d != '\0') && (leveltype == '\0')) {
+																								DAT_1014919d = '\0';
+																								sfx_stop();
+																								FUN_1005bd38(uVar2,
+																								    uVar1, in_r5, in_r6,
+																								    in_r7, in_r8, in_r9,
+																								    in_r10,
 																								    in_stack_ffffff98);
 																							}
-																							*(undefined4 *)puVar2 = 0;
-																							*(undefined4 *)puVar7 = 0;
-																							*puVar12 = 0;
-																							uVar18 = gamemenu_off(uVar18, uVar25, uVar20, uVar22,
-																							    uVar24, uVar26, uVar27, uVar17,
-																							    in_stack_ffffff98);
-																							doom_close(uVar18, uVar25, uVar20, uVar22, uVar24, uVar26, uVar27, uVar17, in_stack_ffffff98);
+																							_DAT_1019cbec = 0;
+																							_DAT_10127e74 = 0;
+																							DAT_1012edb1 = 0;
+																							gamemenu_off();
+																							doom_close();
 																						}
 																					}
 																				}
@@ -2078,214 +1469,363 @@ void PressKey(ulonglong param_1, undefined8 param_2, ulonglong param_3, undefine
 	return;
 }
 
-void PressChar(ulonglong param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void PressChar(int vkey)
 
 {
-	undefined *puVar1;
-	undefined **ppuVar2;
-	ulonglong uVar3;
-	undefined8 uVar4;
-	undefined uVar5;
-	char cVar6;
-	undefined4 in_stack_ffffff98;
+	int iVar1;
+	BOOL BVar2;
+	char vkey_00;
 
-	puVar1 = PTR_DAT_100f18cc;
-	ppuVar2 = &toc;
-	uVar3 = gmenu_exception();
-	if (((((int)uVar3 == 0) && (uVar4 = control_talk_last_key(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffff98), (int)uVar4 == 0)) && (ppuVar2[-0x13d5] == (undefined *)0x0)) && (*(int *)ppuVar2[-0x1d73] == 0)) {
-		cVar6 = (char)param_1;
-		if ((cVar6 == 'p') || (cVar6 == 'P')) {
-			diablo_pause_game(cVar6, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffff98);
+	iVar1 = 0x100f8fd0;
+	BVar2 = gmenu_exception();
+	if ((((BVar2 == 0) && (BVar2 = control_talk_last_key(vkey), BVar2 == 0)) && (*(int *)(iVar1 + -0x4f54) == 0)) && (**(int **)(iVar1 + -0x75cc) == 0)) {
+		vkey_00 = (char)vkey;
+		if ((vkey_00 == 'p') || (vkey_00 == 'P')) {
+			diablo_pause_game();
 		} else {
-			if (*(int *)ppuVar2[-0x1d74] != 2) {
-				uVar5 = SUB41(ppuVar2[-0x1d9e], 0);
-				if (*(int *)ppuVar2[-0x1d9e] == 0) {
-					if (*(int *)puVar1 == 0) {
-						if ((param_1 - 0x21 & 0xffffffff) < 0x5a) {
+			if (**(int **)(iVar1 + -0x75d0) != 2) {
+				if (**(int **)(iVar1 + -0x7678) == 0) {
+					if (_DAT_10128178 == 0) {
+						if (vkey - 0x21U < 0x5a) {
 							// WARNING: Could not recover jumptable at 0x10025e30. Too many branches
 							// WARNING: Treating indirect jump as call
-							(*(code *)ppuVar2[(int)(param_1 - 0x21) + -0x8be])();
+							(**(code **)(iVar1 + -0x22f8 + (vkey - 0x21U) * 4))();
 							return;
 						}
 					} else {
-						control_drop_gold(cVar6, uVar5, param_3, param_4, param_5, param_6, param_7, param_8,
-						    in_stack_ffffff98);
+						control_drop_gold(vkey_00);
 					}
 				} else {
-					doom_close(cVar6, uVar5, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffff98);
+					doom_close();
 				}
 			}
 		}
 	}
 	return;
+}
+
+LRESULT DisableInputWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+
+{
+	LRESULT plVar1;
+
+	if (uMsg == 0x201) {
+		if (DAT_10128fdc != '\0') {
+			return (LRESULT)0x0;
+		}
+		DAT_10128fdc = 1;
+		SetCapture((HWND)hWnd);
+		return (LRESULT)0x0;
+	}
+	if (0x200 < (int)uMsg) {
+		if (uMsg == 0x205) {
+			if (DAT_10128fdc != '\x02') {
+				return (LRESULT)0x0;
+			}
+			DAT_10128fdc = 0;
+			ReleaseCapture();
+			return (LRESULT)0x0;
+		}
+		if ((int)uMsg < 0x205) {
+			if (uMsg != 0x203) {
+				if (0x202 < (int)uMsg) {
+					if (DAT_10128fdc != '\0') {
+						return (LRESULT)0x0;
+					}
+					DAT_10128fdc = 2;
+					SetCapture((HWND)hWnd);
+					return (LRESULT)0x0;
+				}
+				if (DAT_10128fdc != '\x01') {
+					return (LRESULT)0x0;
+				}
+				DAT_10128fdc = 0;
+				ReleaseCapture();
+				return (LRESULT)0x0;
+			}
+		} else {
+			if (uMsg == 0x215) {
+				if ((LPARAM)hWnd != lParam) {
+					DAT_10128fdc = '\0';
+				}
+				return (LRESULT)0x0;
+			}
+		}
+		goto LAB_10026314;
+	}
+	if (uMsg == 0x104) {
+	LAB_10026244:
+		plVar1 = (LRESULT)0x0;
+	} else {
+		if ((int)uMsg < 0x104) {
+			if (((int)uMsg < 0x103) && (0xff < (int)uMsg))
+				goto LAB_10026244;
+		} else {
+			if ((uMsg == 0x112) || ((0x111 < (int)uMsg && (0x1ff < (int)uMsg))))
+				goto LAB_10026244;
+		}
+	LAB_10026314:
+		plVar1 = MainWndProc(hWnd, uMsg, wParam, lParam);
+	}
+	return plVar1;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+LRESULT GM_Game(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+
+{
+	short sVar1;
+	short sVar2;
+	BOOL rep;
+	LRESULT plVar3;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
+	undefined in_stack_ffffffab;
+	undefined in_stack_ffffffaf;
+	int local_4c;
+
+	sVar1 = (short)lParam;
+	sVar2 = (short)((uint)lParam >> 0x10);
+	if (uMsg == 0x205) {
+		MouseX = (int)sVar1;
+		_MouseY = (int)sVar2;
+		if (DAT_10128fdc != '\x02') {
+			return (LRESULT)0x0;
+		}
+		DAT_10128fdc = 0;
+		ReleaseCapture();
+		return (LRESULT)0x0;
+	}
+	if ((int)uMsg < 0x205) {
+		if (uMsg == 0x112) {
+			if (wParam == 0xf060) {
+				_DAT_101290fc = 0;
+				_gbRunGame = 0;
+				return (LRESULT)0x0;
+			}
+		} else {
+			if ((int)uMsg < 0x112) {
+				if (uMsg == 0x102) {
+					ConvertText_MacToWindows(0xd8, 0xd8, 2, (char)lParam, 0x54, in_r8, in_r9, in_r10, in_stack_ffffffab,
+					    in_stack_ffffffaf, local_4c);
+					PressChar((int)(char)wParam & 0xffU | wParam & 0xffffff00);
+					return (LRESULT)0x0;
+				}
+				if ((int)uMsg < 0x102) {
+					if (uMsg == 0x100) {
+						PressKey(wParam);
+						return (LRESULT)0x0;
+					}
+					if (0xff < (int)uMsg) {
+						ReleaseKey(wParam);
+						return (LRESULT)0x0;
+					}
+				} else {
+					if ((uMsg == 0x104) && (rep = PressSysKey(wParam), rep != 0)) {
+						return (LRESULT)0x0;
+					}
+				}
+			} else {
+				if (uMsg == 0x202) {
+					MouseX = (int)sVar1;
+					_MouseY = (int)sVar2;
+					if (DAT_10128fdc != '\x01') {
+						return (LRESULT)0x0;
+					}
+					DAT_10128fdc = 0;
+					LeftMouseUp();
+					track_repeat_walk(0);
+					ReleaseCapture();
+					return (LRESULT)0x0;
+				}
+				if ((int)uMsg < 0x202) {
+					if (uMsg == 0x200) {
+						MouseX = (int)sVar1;
+						_MouseY = (int)sVar2;
+						gmenu_on_mouse_move();
+						return (LRESULT)0x0;
+					}
+					if (0x1ff < (int)uMsg) {
+						MouseX = (int)sVar1;
+						_MouseY = (int)sVar2;
+						if (DAT_10128fdc != '\0') {
+							return (LRESULT)0x0;
+						}
+						DAT_10128fdc = 1;
+						SetCapture((HWND)hWnd);
+						rep = LeftMouseDown(wParam);
+						track_repeat_walk(rep);
+						return (LRESULT)0x0;
+					}
+				} else {
+					if (0x203 < (int)uMsg) {
+						MouseX = (int)sVar1;
+						_MouseY = (int)sVar2;
+						if (DAT_10128fdc != '\0') {
+							return (LRESULT)0x0;
+						}
+						DAT_10128fdc = 2;
+						SetCapture((HWND)hWnd);
+						RightMouseDown();
+						return (LRESULT)0x0;
+					}
+				}
+			}
+		}
+	} else {
+		if (uMsg != 0x3a4) {
+			if ((int)uMsg < 0x3a4) {
+				if (uMsg == 0x3a1) {
+					rep = gmenu_exception();
+					if (rep != 0) {
+						gamemenu_off();
+					}
+					gamemenu_previous();
+				} else {
+					if ((int)uMsg < 0x3a1) {
+						if ((uMsg == 0x215) && ((LPARAM)hWnd != lParam)) {
+							DAT_10128fdc = '\0';
+							track_repeat_walk(0);
+						}
+					} else {
+						if ((int)uMsg < 0x3a3) {
+							rep = PressEscKey();
+							if (rep == 0) {
+								track_repeat_walk(0);
+								gamemenu_previous();
+							}
+						} else {
+							rep = gmenu_exception();
+							if (rep != 0) {
+								gamemenu_off();
+							}
+							gamemenu_previous();
+						}
+					}
+				}
+			} else {
+				if (uMsg == 0x3a7) {
+					diablo_pause_game();
+				} else {
+					if ((int)uMsg < 0x3a7) {
+						if ((int)uMsg < 0x3a6) {
+							rep = gmenu_exception();
+							if (rep != 0) {
+								gamemenu_off();
+							}
+							gamemenu_previous();
+						}
+					} else {
+						if (((int)uMsg < 0x40a) && (0x401 < (int)uMsg)) {
+							if (1 < (byte)gbMaxPlayers) {
+								pfile_write_hero();
+							}
+							nthread_ignore_mutex(1);
+							PaletteFadeOut(8);
+							FreeMonsterSnd();
+							music_stop();
+							track_repeat_walk(0);
+							DAT_10128fdc = 0;
+							ReleaseCapture();
+							ShowProgress(uMsg);
+							**(undefined4 **)(local_4c + -0x76bc) = 0xff;
+							DrawAndBlit();
+							if (_gbRunGame != 0) {
+								PaletteFadeIn(8);
+							}
+							nthread_ignore_mutex(0);
+							**(undefined4 **)(local_4c + -0x75b0) = 1;
+							return (LRESULT)0x0;
+						}
+					}
+				}
+			}
+		}
+	}
+	plVar3 = MainWndProc(hWnd, uMsg, wParam, lParam);
+	return plVar3;
 }
 
 // WARNING: Removing unreachable block (ram,0x100267c0)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
-void LoadLvlGFX(undefined8 param_1, longlong param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
+void LoadLvlGFX(void)
 
 {
 	byte bVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined **ppuVar7;
-	longlong lVar8;
-	undefined8 uVar9;
-	undefined7 uVar10;
-	undefined uVar11;
-	undefined7 uVar12;
-	undefined uVar13;
-	undefined7 uVar14;
-	undefined uVar15;
-	ulonglong uVar16;
-	ulonglong uVar17;
-	undefined4 in_stack_ffffffa8;
-	undefined in_stack_ffffffaf;
-	undefined4 in_stack_ffffffb8;
-	undefined4 in_stack_ffffffbc;
-	undefined4 in_stack_ffffffc0;
-	undefined4 in_stack_ffffffc4;
-	undefined4 in_stack_ffffffc8;
-	undefined4 in_stack_ffffffcc;
-	undefined4 in_stack_ffffffd0;
-	undefined4 in_stack_ffffffd4;
+	int iVar2;
+	char cVar3;
+	undefined uVar4;
+	undefined in_r5;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
+	undefined in_stack_ffffffab;
 
-	puVar6 = PTR_DAT_100f1a68;
-	puVar5 = PTR_DAT_100f1a64;
-	puVar4 = PTR_DAT_100f1a60;
-	puVar3 = PTR_DAT_100f1a5c;
-	puVar2 = PTR_DAT_100f19e8;
-	uVar14 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar15 = (undefined)param_5;
-	uVar12 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar13 = (undefined)param_4;
-	uVar10 = (undefined7)((ulonglong)param_3 >> 8);
-	uVar11 = (undefined)param_3;
-	ppuVar7 = &toc;
-	uVar16 = ZEXT48(PTR_s_Levels_L2Data_L2S_CEL_100f2ba8);
-	uVar17 = ZEXT48(PTR_s_Levels_L1Data_L1S_CEL_100f2bb8);
-	if (*(int *)PTR_DAT_100f1a68 != 0) {
-		ppuVar7 = &toc;
-		FUN_100b9100(*(int *)PTR_DAT_100f1a68, (char)param_2, uVar11, uVar13, uVar15, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffffa8);
-		mem_free_dbg((int **)puVar6, (char)param_2, uVar11, uVar13, uVar15, (char)param_6, (char)param_7,
-		    (char)param_8, in_stack_ffffffa8);
+	iVar2 = 0x100f8fd0;
+	if (_DAT_1013b348 != (BYTE *)0x0) {
+		iVar2 = 0x100f8fd0;
+		UnlockMemFile((char)_DAT_1013b348);
+		MemFreeDbg((int **)&DAT_1013b348);
 	}
-	bVar1 = *ppuVar7[-0x1de5];
+	bVar1 = **(byte **)(iVar2 + -0x7794);
 	if (bVar1 == 2) {
-		uVar9 = 0;
-		lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1907]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-		    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8,
-		    in_stack_ffffffa8);
-		*(int *)puVar6 = (int)lVar8;
-		uVar17 = FUN_100b8f7c((ulonglong) * (uint *)puVar6, uVar9, CONCAT71(uVar10, uVar11),
-		    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8,
-		    in_stack_ffffffa8);
-		*(int *)puVar2 = (int)uVar17;
-		lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1908]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-		    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8,
-		    in_stack_ffffffa8);
-		*(int *)puVar5 = (int)lVar8;
-		lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1909]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-		    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8,
-		    in_stack_ffffffa8);
-		*(int *)puVar4 = (int)lVar8;
-		lVar8 = LoadFileInMem(uVar16, (undefined4 *)0x0, CONCAT71(uVar10, uVar11), CONCAT71(uVar12, uVar13),
-		    CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-		*(int *)puVar3 = (int)lVar8;
+		uVar4 = 0;
+		_DAT_1013b348 = LoadFileInMem(*(char **)(iVar2 + -0x641c), (DWORD *)0x0);
+		cVar3 = LockMemFile(ZEXT48(_DAT_1013b348), uVar4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffab);
+		_DAT_1013b344 = (int)cVar3;
+		_DAT_1013b350 = LoadFileInMem(*(char **)(iVar2 + -0x6420), (DWORD *)0x0);
+		_DAT_1013b34c = LoadFileInMem(*(char **)(iVar2 + -0x6424), (DWORD *)0x0);
+		_DAT_1013b354 = LoadFileInMem("Levels\\L2Data\\L2S.CEL", (DWORD *)0x0);
 	} else {
 		if (bVar1 < 2) {
 			if (bVar1 == 0) {
-				uVar9 = 0;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x18ff]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar6 = (int)lVar8;
-				uVar16 = FUN_100b8f7c((ulonglong) * (uint *)puVar6, uVar9, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-				    param_8, in_stack_ffffffa8);
-				*(int *)puVar2 = (int)uVar16;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1900]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar5 = (int)lVar8;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1901]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar4 = (int)lVar8;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1902]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar3 = (int)lVar8;
+				uVar4 = 0;
+				_DAT_1013b348 = LoadFileInMem(*(char **)(iVar2 + -0x63fc), (DWORD *)0x0);
+				cVar3 = LockMemFile(
+				    ZEXT48(_DAT_1013b348), uVar4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffab);
+				_DAT_1013b344 = (int)cVar3;
+				_DAT_1013b350 = LoadFileInMem(*(char **)(iVar2 + -0x6400), (DWORD *)0x0);
+				_DAT_1013b34c = LoadFileInMem(*(char **)(iVar2 + -0x6404), (DWORD *)0x0);
+				_DAT_1013b354 = LoadFileInMem(*(char **)(iVar2 + -0x6408), (DWORD *)0x0);
 			} else {
-				uVar9 = 0;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1903]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar6 = (int)lVar8;
-				uVar16 = FUN_100b8f7c((ulonglong) * (uint *)puVar6, uVar9, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-				    param_8, in_stack_ffffffa8);
-				*(int *)puVar2 = (int)uVar16;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1904]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar5 = (int)lVar8;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1905]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar4 = (int)lVar8;
-				lVar8 = LoadFileInMem(uVar17, (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar3 = (int)lVar8;
+				uVar4 = 0;
+				_DAT_1013b348 = LoadFileInMem(*(char **)(iVar2 + -0x640c), (DWORD *)0x0);
+				cVar3 = LockMemFile(
+				    ZEXT48(_DAT_1013b348), uVar4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffab);
+				_DAT_1013b344 = (int)cVar3;
+				_DAT_1013b350 = LoadFileInMem(*(char **)(iVar2 + -0x6410), (DWORD *)0x0);
+				_DAT_1013b34c = LoadFileInMem(*(char **)(iVar2 + -0x6414), (DWORD *)0x0);
+				_DAT_1013b354 = LoadFileInMem("Levels\\L1Data\\L1S.CEL", (DWORD *)0x0);
 			}
 		} else {
 			if (bVar1 == 4) {
-				uVar9 = 0;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x190e]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar6 = (int)lVar8;
-				uVar17 = FUN_100b8f7c((ulonglong) * (uint *)puVar6, uVar9, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-				    param_8, in_stack_ffffffa8);
-				*(int *)puVar2 = (int)uVar17;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x190f]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar5 = (int)lVar8;
-				lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x1910]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar4 = (int)lVar8;
-				lVar8 = LoadFileInMem(uVar16, (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-				    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8);
-				*(int *)puVar3 = (int)lVar8;
+				uVar4 = 0;
+				_DAT_1013b348 = LoadFileInMem(*(char **)(iVar2 + -0x6438), (DWORD *)0x0);
+				cVar3 = LockMemFile(
+				    ZEXT48(_DAT_1013b348), uVar4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffab);
+				_DAT_1013b344 = (int)cVar3;
+				_DAT_1013b350 = LoadFileInMem(*(char **)(iVar2 + -0x643c), (DWORD *)0x0);
+				_DAT_1013b34c = LoadFileInMem(*(char **)(iVar2 + -0x6440), (DWORD *)0x0);
+				_DAT_1013b354 = LoadFileInMem("Levels\\L2Data\\L2S.CEL", (DWORD *)0x0);
 			} else {
 				if (bVar1 < 4) {
-					uVar9 = 0;
-					lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x190b]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-					    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-					    param_8, in_stack_ffffffa8);
-					*(int *)puVar6 = (int)lVar8;
-					uVar16 = FUN_100b8f7c((ulonglong) * (uint *)puVar6, uVar9, CONCAT71(uVar10, uVar11),
-					    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-					    param_8, in_stack_ffffffa8);
-					*(int *)puVar2 = (int)uVar16;
-					lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x190c]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-					    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-					    param_8, in_stack_ffffffa8);
-					*(int *)puVar5 = (int)lVar8;
-					lVar8 = LoadFileInMem(ZEXT48(ppuVar7[-0x190d]), (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-					    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-					    param_8, in_stack_ffffffa8);
-					*(int *)puVar4 = (int)lVar8;
-					lVar8 = LoadFileInMem(uVar17, (undefined4 *)0x0, CONCAT71(uVar10, uVar11),
-					    CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7,
-					    param_8, in_stack_ffffffa8);
-					*(int *)puVar3 = (int)lVar8;
+					uVar4 = 0;
+					_DAT_1013b348 = LoadFileInMem(*(char **)(iVar2 + -0x642c), (DWORD *)0x0);
+					cVar3 = LockMemFile(
+					    ZEXT48(_DAT_1013b348), uVar4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffab);
+					_DAT_1013b344 = (int)cVar3;
+					_DAT_1013b350 = LoadFileInMem(*(char **)(iVar2 + -0x6430), (DWORD *)0x0);
+					_DAT_1013b34c = LoadFileInMem(*(char **)(iVar2 + -0x6434), (DWORD *)0x0);
+					_DAT_1013b354 = LoadFileInMem("Levels\\L1Data\\L1S.CEL", (DWORD *)0x0);
 				} else {
-					app_fatal((int)ppuVar7[-0x1911], param_2, CONCAT71(uVar10, uVar11), CONCAT71(uVar12, uVar13), CONCAT71(uVar14, uVar15), param_6, param_7, param_8, in_stack_ffffffa8,
-					    in_stack_ffffffaf, in_stack_ffffffb8, in_stack_ffffffbc, in_stack_ffffffc0,
-					    in_stack_ffffffc4, in_stack_ffffffc8, in_stack_ffffffcc, in_stack_ffffffd0,
-					    in_stack_ffffffd4);
+					app_fatal(*(char **)(iVar2 + -0x6444));
 				}
 			}
 		}
@@ -2293,130 +1833,60 @@ void LoadLvlGFX(undefined8 param_1, longlong param_2, undefined8 param_3, undefi
 	return;
 }
 
-void LoadAllGFX(undefined8 param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
+void LoadAllGFX(void)
 
 {
-	undefined4 *puVar1;
-	undefined **ppuVar2;
-	undefined4 uVar4;
-	ulonglong uVar3;
-	undefined uVar5;
-	ulonglong uVar6;
-	undefined uVar7;
-	undefined7 uVar8;
-	undefined uVar9;
-	undefined7 uVar10;
-	undefined uVar11;
-	undefined7 uVar12;
-	undefined uVar13;
-	undefined uVar14;
-	undefined uVar15;
-	undefined uVar16;
-	undefined4 in_stack_ffffffc8;
+	int iVar1;
+	BYTE *pBVar2;
 
-	uVar12 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar13 = (undefined)param_5;
-	uVar10 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar11 = (undefined)param_4;
-	uVar8 = (undefined7)((ulonglong)param_3 >> 8);
-	uVar9 = (undefined)param_3;
-	ppuVar2 = &toc;
-	uVar4 = DiabloAllocPtr(0x100000);
-	puVar1 = (undefined4 *)ppuVar2[-0x1d5e];
-	uVar6 = ZEXT48(puVar1);
-	*puVar1 = uVar4;
-	uVar3 = IncProgress((char)uVar4, (char)puVar1, uVar9, uVar11, uVar13, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffffc8);
-	IncProgress((char)uVar3, (char)uVar6, uVar9, uVar11, uVar13, (char)param_6, (char)param_7, (char)param_8, in_stack_ffffffc8);
-	uVar5 = InitObjectGFX();
-	uVar3 = IncProgress(uVar5, (char)uVar6, uVar9, uVar11, uVar13, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffffc8);
-	uVar16 = (undefined)param_8;
-	uVar15 = (undefined)param_7;
-	uVar14 = (undefined)param_6;
-	uVar7 = (undefined)uVar6;
-	uVar5 = InitMissileGFX(uVar3, uVar6, CONCAT71(uVar8, uVar9), CONCAT71(uVar10, uVar11),
-	    CONCAT71(uVar12, uVar13), param_6, param_7, param_8, in_stack_ffffffc8);
-	IncProgress(uVar5, uVar7, uVar9, uVar11, uVar13, uVar14, uVar15, uVar16, in_stack_ffffffc8);
+	iVar1 = 0x100f8fd0;
+	pBVar2 = DiabloAllocPtr(0x100000);
+	**(BYTE ***)(iVar1 + -0x7578) = pBVar2;
+	IncProgress();
+	IncProgress();
+	InitObjectGFX();
+	IncProgress();
+	InitMissileGFX();
+	IncProgress();
 	return;
 }
 
 // WARNING: Removing unreachable block (ram,0x100269f8)
 
-void CreateLevel(undefined8 uParm1)
+void CreateLevel(int lvldir)
 
 {
-	byte bVar1;
-	ulonglong uVar2;
-	int iVar3;
-	ulonglong uVar4;
-	ulonglong uVar5;
-	longlong in_r7;
-	undefined8 in_r8;
-	undefined4 uVar6;
-	undefined8 in_r9;
-	undefined4 uVar7;
-	undefined8 in_r10;
-	undefined4 uVar8;
-	undefined4 in_stack_ffffffc8;
-	undefined in_stack_ffffffcf;
-	undefined4 in_stack_ffffffd8;
-	undefined4 in_stack_ffffffdc;
-	undefined4 in_stack_ffffffe0;
-	undefined4 in_stack_ffffffe4;
-	undefined4 in_stack_ffffffe8;
-	undefined4 in_stack_ffffffec;
-	undefined4 in_stack_fffffff0;
-	undefined4 in_stack_fffffff4;
-
-	uVar8 = (undefined4)in_r10;
-	uVar7 = (undefined4)in_r9;
-	uVar6 = (undefined4)in_r8;
-	uVar2 = ZEXT48(PTR_DAT_100f183c);
-	uVar5 = ZEXT48(PTR_DAT_100f17ec);
-	uVar4 = ZEXT48(PTR_DAT_100f19e4);
-	bVar1 = *PTR_DAT_100f183c;
-	iVar3 = (int)uParm1;
-	if (bVar1 == 2) {
-		CreateL2Dungeon(*(undefined4 *)(PTR_DAT_100f19e4 + (uint)(byte)*PTR_DAT_100f17ec * 4), iVar3, uVar4,
-		    uVar5, in_r7, in_r8, in_r9, uVar8, in_stack_ffffffc8);
+	if (leveltype == 2) {
+		CreateL2Dungeon(*(DWORD *)(&DAT_101291a4 + (uint)currlevel * 4), lvldir);
 		InitL2Triggers();
 		Freeupstairs();
-		LoadRndLvlPal(2, uParm1, uVar4, uVar5, in_r7, uVar6, uVar7, uVar8, in_stack_ffffffc8);
+		LoadRndLvlPal(2);
 	} else {
-		if (bVar1 < 2) {
-			if (bVar1 == 0) {
-				CreateTown();
+		if (leveltype < 2) {
+			if (leveltype == 0) {
+				CreateTown(lvldir);
 				InitTownTriggers();
-				LoadRndLvlPal(0, uVar2, uVar4, uVar5, in_r7, uVar6, uVar7, uVar8, in_stack_ffffffc8);
+				LoadRndLvlPal(0);
 			} else {
-				CreateL5Dungeon(*(undefined4 *)(PTR_DAT_100f19e4 + (uint)(byte)*PTR_DAT_100f17ec * 4), iVar3,
-				    uVar4, uVar5, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffc8);
+				CreateL5Dungeon(*(DWORD *)(&DAT_101291a4 + (uint)currlevel * 4), lvldir);
 				InitL1Triggers();
 				Freeupstairs();
-				LoadRndLvlPal(1, uParm1, uVar4, uVar5, in_r7, uVar6, uVar7, uVar8, in_stack_ffffffc8);
+				LoadRndLvlPal(1);
 			}
 		} else {
-			if (bVar1 == 4) {
-				CreateL4Dungeon(*(undefined4 *)(PTR_DAT_100f19e4 + (uint)(byte)*PTR_DAT_100f17ec * 4), iVar3,
-				    uVar4, uVar5, in_r7, in_r8, in_r9, uVar8, in_stack_ffffffc8);
+			if (leveltype == 4) {
+				CreateL4Dungeon(*(DWORD *)(&DAT_101291a4 + (uint)currlevel * 4), lvldir);
 				InitL4Triggers();
 				Freeupstairs();
-				LoadRndLvlPal(4, uParm1, uVar4, uVar5, in_r7, uVar6, uVar7, uVar8, in_stack_ffffffc8);
+				LoadRndLvlPal(4);
 			} else {
-				if (bVar1 < 4) {
-					CreateL3Dungeon(*(undefined4 *)(PTR_DAT_100f19e4 + (uint)(byte)*PTR_DAT_100f17ec * 4), iVar3,
-					    uVar4, uVar5, in_r7, uVar6, uVar7, uVar8, in_stack_ffffffc8);
+				if (leveltype < 4) {
+					CreateL3Dungeon(*(DWORD *)(&DAT_101291a4 + (uint)currlevel * 4), lvldir);
 					InitL3Triggers();
 					Freeupstairs();
-					LoadRndLvlPal(3, uParm1, uVar4, uVar5, in_r7, uVar6, uVar7, uVar8, in_stack_ffffffc8);
+					LoadRndLvlPal(3);
 				} else {
-					app_fatal((int)PTR_s_CreateLevel_100f2b88, uVar2, uVar4, uVar5, in_r7, uVar6, uVar7, uVar8,
-					    in_stack_ffffffc8, in_stack_ffffffcf, in_stack_ffffffd8, in_stack_ffffffdc,
-					    in_stack_ffffffe0, in_stack_ffffffe4, in_stack_ffffffe8, in_stack_ffffffec,
-					    in_stack_fffffff0, in_stack_fffffff4);
+					app_fatal("CreateLevel");
 				}
 			}
 		}
@@ -2424,701 +1894,413 @@ void CreateLevel(undefined8 uParm1)
 	return;
 }
 
-void LoadGameLevel(ulonglong param_1, ulonglong param_2, undefined8 param_3, ulonglong param_4,
-    ulonglong param_5, ulonglong param_6, ulonglong param_7, ulonglong param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void LoadGameLevel(BOOL firstflag, int lvldir)
 
 {
-	undefined4 *puVar1;
-	uint uVar2;
-	int iVar3;
-	int iVar4;
-	bool bVar5;
-	bool bVar6;
-	int iVar7;
-	undefined *puVar8;
-	undefined *puVar9;
-	undefined *puVar10;
-	undefined *puVar11;
-	undefined *puVar12;
-	undefined *puVar13;
-	undefined *puVar14;
-	undefined *puVar15;
-	undefined *puVar16;
-	undefined *puVar17;
-	ulonglong uVar18;
-	undefined uVar22;
-	ulonglong uVar19;
-	undefined8 extraout_r3;
-	undefined8 uVar20;
-	undefined8 extraout_r3_00;
-	undefined8 extraout_r3_01;
-	ulonglong extraout_r3_02;
-	ulonglong extraout_r3_03;
-	undefined8 extraout_r3_04;
-	undefined8 extraout_r3_05;
-	undefined4 uVar21;
-	undefined8 extraout_r3_06;
-	ulonglong extraout_r3_07;
-	ulonglong extraout_r3_08;
-	ulonglong extraout_r3_09;
-	undefined uVar24;
-	ulonglong uVar23;
-	ulonglong uVar25;
-	undefined uVar27;
-	longlong lVar26;
-	undefined uVar28;
-	undefined7 uVar29;
-	undefined uVar30;
-	undefined4 uVar31;
-	undefined4 uVar32;
-	ulonglong uVar33;
-	ulonglong uVar34;
-	int iVar35;
-	int iVar36;
-	ulonglong uVar37;
-	longlong lVar38;
-	longlong lVar39;
-	undefined4 in_stack_ffffff88;
+	bool bVar1;
+	bool bVar2;
+	ulonglong uVar3;
+	undefined8 uVar4;
+	int pnum;
+	BYTE *pBVar5;
+	BOOL BVar6;
+	PlayerStruct *pPVar7;
+	int iVar8;
+	longlong lVar9;
+	int iVar10;
+	int iVar11;
+	int iVar12;
+	PlayerStruct *pPVar13;
 
-	puVar17 = PTR_DAT_100f19e4;
-	puVar16 = PTR_DAT_100f19e0;
-	puVar15 = PTR_DAT_100f1950;
-	puVar14 = PTR_DAT_100f183c;
-	puVar13 = PTR_DAT_100f1834;
-	puVar12 = PTR_DAT_100f1824;
-	puVar11 = PTR_DAT_100f17f8;
-	puVar10 = PTR_DAT_100f17f0;
-	puVar9 = PTR_DAT_100f17ec;
-	puVar8 = PTR_DAT_100f17e0;
-	uVar29 = (undefined7)(param_5 >> 8);
-	uVar30 = (undefined)param_5;
-	uVar18 = ZEXT48(&toc);
-	uVar25 = ZEXT48(PTR_DAT_100f19e0);
-	uVar37 = ZEXT48(PTR_DAT_100f1828);
-	iVar35 = *(int *)PTR_DAT_100f19e0;
-	if (iVar35 != 0) {
-		*(int *)(PTR_DAT_100f19e4 + (uint)(byte)*PTR_DAT_100f17ec * 4) = iVar35;
+	uVar4 = 0x100f8fd0;
+	pPVar13 = plr;
+	if (_DAT_10129134 != 0) {
+		*(int *)(&DAT_101291a4 + (uint)currlevel * 4) = _DAT_10129134;
 	}
-	uVar23 = param_2;
-	music_stop((char)iVar35, (char)param_2, (char)puVar16, (char)param_4, uVar30, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffff88);
-	SetCursor_(1, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffff88);
-	uVar22 = SetRndSeed(*(undefined4 *)(puVar17 + (uint)(byte)*puVar9 * 4));
-	uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffff88);
-	MakeLightTable(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), param_6, (uint)param_7,
-	    (uint)param_8, in_stack_ffffff88);
-	uVar22 = LoadLvlGFX(extraout_r3, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-	    (int)param_7, (int)param_8, in_stack_ffffff88);
-	uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffff88);
-	iVar35 = (int)param_1;
-	if (iVar35 != 0) {
-		InitInv(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-		    (int)param_8, in_stack_ffffff88);
-		uVar20 = InitItemGFX();
-		InitQuestText(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-		    (int)param_8, in_stack_ffffff88);
-		uVar19 = 0;
-		uVar20 = extraout_r3_00;
-		while (true) {
-			if ((int)(uint)(byte)*puVar8 <= (int)uVar19)
-				break;
-			InitPlrGFXMem(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-			    (int)param_8, in_stack_ffffff88);
-			uVar19 = uVar19 + 1;
-			uVar20 = extraout_r3_01;
+	music_stop();
+	SetCursor_(1);
+	SetRndSeed(*(int *)(&DAT_101291a4 + (uint)currlevel * 4));
+	IncProgress();
+	MakeLightTable();
+	LoadLvlGFX();
+	IncProgress();
+	if (firstflag != 0) {
+		InitInv();
+		InitItemGFX();
+		InitQuestText();
+		pnum = 0;
+		while (pnum < (int)(uint)(byte)gbMaxPlayers) {
+			InitPlrGFXMem(pnum);
+			pnum = pnum + 1;
 		}
-		InitStores(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-		    (int)param_8, in_stack_ffffff88);
+		InitStores();
 		InitAutomapOnce();
 		InitHelp();
 	}
-	uVar22 = SetRndSeed(*(undefined4 *)(puVar17 + (uint)(byte)*puVar9 * 4));
-	if (*puVar14 == '\0') {
-		uVar22 = SetupTownStores(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
+	SetRndSeed(*(int *)(&DAT_101291a4 + (uint)currlevel * 4));
+	if (leveltype == 0) {
+		SetupTownStores();
 	}
-	IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffff88);
-	uVar22 = InitAutomap();
-	iVar36 = (int)param_2;
-	if ((*puVar14 != '\0') && (iVar36 != 4)) {
+	IncProgress();
+	InitAutomap();
+	if ((leveltype != 0) && (lvldir != 4)) {
 		InitLighting();
-		uVar22 = InitVision();
+		InitVision();
 	}
-	uVar22 = InitLevelMonsters(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffff88);
-	IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6, (char)param_7,
-	    (char)param_8, in_stack_ffffff88);
-	if (*puVar11 != '\0') {
-		uVar21 = DiabloAllocPtr(0x100000);
-		puVar1 = *(undefined4 **)((int)uVar18 + -0x7578);
-		uVar23 = ZEXT48(puVar1);
-		*puVar1 = uVar21;
-		uVar22 = LoadSetMap();
-		uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar19 = GetLevelMTypes((char)uVar19, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		InitMonsters(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-		    (int)param_8, in_stack_ffffff88);
-		InitMissileGFX(extraout_r3_06, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffff88);
-		uVar20 = InitDead();
-		uVar22 = FillSolidBlockTbls(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffff88);
-		uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		if (iVar36 == 5) {
-			uVar19 = GetPortalLvlPos();
-		}
-		uVar33 = 0;
-		uVar34 = uVar37;
-		do {
-			if ((*(char *)((int)uVar34 + 0x1d) != '\0') && (uVar19 = (ulonglong)(byte)*puVar9, (uint)(byte)*puVar9 == *(uint *)((int)uVar34 + 0x34))) {
-				InitPlayerGFX(uVar33, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-				    (int)param_8, in_stack_ffffff88);
-				uVar19 = extraout_r3_07;
-				if (iVar36 != 4) {
-					uVar23 = param_1;
-					InitPlayer(uVar33, iVar35, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-					    (int)param_7, (int)param_8, in_stack_ffffff88);
-					uVar19 = extraout_r3_08;
-				}
-			}
-			uVar33 = uVar33 + 1;
-			uVar34 = uVar34 + 0x55ec;
-		} while ((int)uVar33 < 4);
-		uVar22 = InitMultiView(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffff88);
-		uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar22 = (undefined)uVar19;
-		if (((iVar35 == 0) && (iVar36 != 4)) && (lVar38 = uVar37 + (ulonglong) * (uint *)puVar12 * 0x55ec + (ulonglong)(byte)*puVar10, uVar22 = (undefined)lVar38, *(char *)((int)lVar38 + 0x201) != '\0')) {
-			uVar20 = LoadLevel();
+	InitLevelMonsters();
+	IncProgress();
+	if (DAT_1012f316 == '\0') {
+		CreateLevel(lvldir);
+		IncProgress();
+		FillSolidBlockTbls();
+		SetRndSeed(*(int *)(&DAT_101291a4 + (uint)currlevel * 4));
+		if (leveltype == 0) {
+			InitMissileGFX();
 		} else {
-			uVar22 = InitItems(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-			    (char)param_7, (char)param_8, in_stack_ffffff88);
-			uVar20 = SavePreLighting(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-			    (char)param_7, (char)param_8, in_stack_ffffff88);
+			GetLevelMTypes();
+			InitThemes();
+			LoadAllGFX();
 		}
-		uVar32 = (undefined4)param_8;
-		uVar31 = (undefined4)param_7;
-		uVar21 = (undefined4)param_6;
-		uVar22 = InitMissiles(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), param_6, param_7,
-		    param_8, in_stack_ffffff88);
-		uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-		uVar22 = (undefined)uVar19;
-		goto LAB_1002710c;
-	}
-	uVar22 = CreateLevel(param_2);
-	uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffff88);
-	FillSolidBlockTbls(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-	    (int)param_8, in_stack_ffffff88);
-	uVar20 = SetRndSeed(*(undefined4 *)(puVar17 + (uint)(byte)*puVar9 * 4));
-	if (*puVar14 == '\0') {
-		uVar22 = InitMissileGFX(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffff88);
-	} else {
-		uVar22 = GetLevelMTypes((char)uVar20, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar20 = InitThemes(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar22 = LoadAllGFX(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffff88);
-	}
-	uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffff88);
-	uVar22 = (undefined)uVar19;
-	if (iVar36 == 3) {
-		uVar22 = GetReturnLvlPos();
-	}
-	if (iVar36 == 5) {
-		uVar22 = GetPortalLvlPos();
-	}
-	uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-	    (char)param_7, (char)param_8, in_stack_ffffff88);
-	uVar33 = 0;
-	uVar34 = uVar37;
-	do {
-		if ((*(char *)((int)uVar34 + 0x1d) != '\0') && (uVar19 = (ulonglong)(byte)*puVar9, (uint)(byte)*puVar9 == *(uint *)((int)uVar34 + 0x34))) {
-			InitPlayerGFX(uVar33, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-			    (int)param_8, in_stack_ffffff88);
-			uVar19 = extraout_r3_02;
-			if (iVar36 != 4) {
-				uVar23 = param_1;
-				InitPlayer(uVar33, iVar35, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-				    (int)param_8, in_stack_ffffff88);
-				uVar19 = extraout_r3_03;
-			}
+		IncProgress();
+		if (lvldir == 3) {
+			GetReturnLvlPos();
 		}
-		uVar33 = uVar33 + 1;
-		uVar34 = uVar34 + 0x55ec;
-	} while ((int)uVar33 < 4);
-	PlayDungMsgs(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-	    (int)param_8, in_stack_ffffff88);
-	uVar28 = (undefined)param_4;
-	uVar27 = (undefined)uVar25;
-	uVar24 = (undefined)uVar23;
-	uVar22 = InitMultiView(extraout_r3_04, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-	    (int)param_7, (int)param_8, in_stack_ffffff88);
-	IncProgress(uVar22, uVar24, uVar27, uVar28, uVar30, (char)param_6, (char)param_7, (char)param_8,
-	    in_stack_ffffff88);
-	uVar19 = (ulonglong)(byte)*puVar8;
-	param_4 = (ulonglong)(byte)*puVar9;
-	bVar5 = false;
-	uVar25 = uVar37 + param_4;
-	uVar23 = uVar37;
-	if (*puVar8 != 0) {
+		if (lvldir == 5) {
+			GetPortalLvlPos();
+		}
+		IncProgress();
+		pnum = 0;
+		pPVar7 = pPVar13;
 		do {
-			if (((*(char *)((int)uVar23 + 0x1d) != '\0') && (bVar6 = !bVar5, bVar5 = true, bVar6)) && (bVar5 = true, *(char *)((int)uVar25 + 0x1f0) == '\0')) {
-				bVar5 = false;
+			if (((pPVar7->plractive != false) && ((uint)currlevel == pPVar7->plrlevel)) && (InitPlayerGFX(pnum), lvldir != 4)) {
+				InitPlayer(pnum, firstflag);
 			}
-			uVar23 = uVar23 + 0x55ec;
-			uVar25 = uVar25 + 0x55ec;
-			uVar19 = uVar19 - 1;
-		} while (uVar19 != 0);
-	}
-	uVar22 = SetRndSeed(*(undefined4 *)(puVar17 + (uint)(byte)*puVar9 * 4));
-	uVar24 = (undefined)uVar23;
-	if (*puVar14 == '\0') {
-		uVar23 = 0;
-		lVar38 = 0;
-		do {
-			lVar39 = 7;
-			uVar25 = 0;
+			pnum = pnum + 1;
+			pPVar7 = (PlayerStruct *)&pPVar7[1]._pSpellFlags;
+		} while (pnum < 4);
+		PlayDungMsgs();
+		InitMultiView();
+		IncProgress();
+		uVar3 = (ulonglong)(byte)gbMaxPlayers;
+		bVar1 = false;
+		lVar9 = ZEXT48(plr) + (ulonglong)currlevel;
+		pPVar7 = pPVar13;
+		if (gbMaxPlayers != '\0') {
 			do {
-				iVar7 = (int)uVar25;
-				iVar3 = (int)lVar38;
-				*(byte *)(iVar3 + *(int *)puVar13 + iVar7) = *(byte *)(iVar3 + *(int *)puVar13 + iVar7) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 1;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 2;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 3;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 4;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 5;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 6;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				lVar26 = uVar25 + 8;
-				iVar4 = *(int *)puVar13 + iVar7 + 7;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar7 = (int)lVar26;
-				*(byte *)(iVar3 + *(int *)puVar13 + iVar7) = *(byte *)(iVar3 + *(int *)puVar13 + iVar7) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 1;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 2;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 3;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 4;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 5;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				iVar4 = *(int *)puVar13 + iVar7 + 6;
-				*(byte *)(iVar3 + iVar4) = *(byte *)(iVar3 + iVar4) | 0x40;
-				uVar25 = uVar25 + 0x10;
-				param_4 = (ulonglong) * (uint *)puVar13 + lVar26 + 7;
-				*(byte *)(iVar3 + (int)param_4) = *(byte *)(iVar3 + (int)param_4) | 0x40;
-				lVar39 = lVar39 + -1;
-			} while (lVar39 != 0);
-			uVar23 = uVar23 + 1;
-			lVar38 = lVar38 + 0x70;
-		} while ((int)uVar23 < 0x70);
-		uVar22 = InitTowners(lVar38, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6,
-		    (int)param_7, (int)param_8, in_stack_ffffff88);
-		uVar20 = InitItems(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar22 = InitMissiles(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), param_6, param_7,
-		    param_8, in_stack_ffffff88);
-		uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		if (((iVar35 == 0) && (iVar36 != 4)) && ((uVar19 = uVar37 + (ulonglong) * (uint *)puVar12 * 0x55ec + (ulonglong)(byte)*puVar9, *(char *)((int)uVar19 + 0x1f0) != '\0' && (*puVar8 == '\x01')))) {
-			uVar19 = LoadLevel();
+				if (((pPVar7->plractive != false) && (bVar2 = !bVar1, bVar1 = true, bVar2)) && (bVar1 = true, *(char *)((int)lVar9 + 0x1f0) == '\0')) {
+					bVar1 = false;
+				}
+				pPVar7 = (PlayerStruct *)&pPVar7[1]._pSpellFlags;
+				lVar9 = lVar9 + 0x55ec;
+				uVar3 = uVar3 - 1;
+			} while (uVar3 != 0);
 		}
-		uVar32 = (undefined4)param_8;
-		uVar31 = (undefined4)param_7;
-		uVar21 = (undefined4)param_6;
-		uVar22 = (undefined)uVar19;
-		if (*puVar8 != '\x01') {
-			uVar22 = DeltaLoadLevel(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), param_6, param_7,
-			    param_8, in_stack_ffffff88);
-		}
-		uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-	} else {
-		if ((iVar35 == 0) && (iVar36 != 4)) {
-			uVar19 = uVar37 + (ulonglong) * (uint *)puVar12 * 0x55ec + (ulonglong)(byte)*puVar9;
-			uVar22 = (undefined)uVar19;
-			if ((*(char *)((int)uVar19 + 0x1f0) != '\0') && (*puVar8 == '\x01')) {
-				InitMonsters(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), (int)param_6, (int)param_7,
-				    (int)param_8, in_stack_ffffff88);
-				uVar32 = (undefined4)param_8;
-				uVar31 = (undefined4)param_7;
-				uVar21 = (undefined4)param_6;
-				InitMissiles(extraout_r3_05, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), param_6, param_7,
-				    param_8, in_stack_ffffff88);
-				uVar22 = InitDead();
-				IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21, (char)uVar31, (char)uVar32, in_stack_ffffff88);
-				uVar22 = LoadLevel();
-				uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-				    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-				goto LAB_10027014;
+		SetRndSeed(*(int *)(&DAT_101291a4 + (uint)currlevel * 4));
+		if (leveltype == 0) {
+			iVar8 = 0;
+			pnum = 0;
+			do {
+				lVar9 = 7;
+				iVar10 = 0;
+				do {
+					*(byte *)(pnum + _DAT_1012f1bc + iVar10) = *(byte *)(pnum + _DAT_1012f1bc + iVar10) | 0x40;
+					iVar11 = _DAT_1012f1bc + iVar10 + 1;
+					*(byte *)(pnum + iVar11) = *(byte *)(pnum + iVar11) | 0x40;
+					iVar11 = _DAT_1012f1bc + iVar10 + 2;
+					*(byte *)(pnum + iVar11) = *(byte *)(pnum + iVar11) | 0x40;
+					iVar11 = _DAT_1012f1bc + iVar10 + 3;
+					*(byte *)(pnum + iVar11) = *(byte *)(pnum + iVar11) | 0x40;
+					iVar11 = _DAT_1012f1bc + iVar10 + 4;
+					*(byte *)(pnum + iVar11) = *(byte *)(pnum + iVar11) | 0x40;
+					iVar11 = _DAT_1012f1bc + iVar10 + 5;
+					*(byte *)(pnum + iVar11) = *(byte *)(pnum + iVar11) | 0x40;
+					iVar11 = _DAT_1012f1bc + iVar10 + 6;
+					*(byte *)(pnum + iVar11) = *(byte *)(pnum + iVar11) | 0x40;
+					iVar11 = iVar10 + 8;
+					iVar12 = _DAT_1012f1bc + iVar10 + 7;
+					*(byte *)(pnum + iVar12) = *(byte *)(pnum + iVar12) | 0x40;
+					*(byte *)(pnum + _DAT_1012f1bc + iVar11) = *(byte *)(pnum + _DAT_1012f1bc + iVar11) | 0x40;
+					iVar12 = _DAT_1012f1bc + iVar11 + 1;
+					*(byte *)(pnum + iVar12) = *(byte *)(pnum + iVar12) | 0x40;
+					iVar12 = _DAT_1012f1bc + iVar11 + 2;
+					*(byte *)(pnum + iVar12) = *(byte *)(pnum + iVar12) | 0x40;
+					iVar12 = _DAT_1012f1bc + iVar11 + 3;
+					*(byte *)(pnum + iVar12) = *(byte *)(pnum + iVar12) | 0x40;
+					iVar12 = _DAT_1012f1bc + iVar11 + 4;
+					*(byte *)(pnum + iVar12) = *(byte *)(pnum + iVar12) | 0x40;
+					iVar12 = _DAT_1012f1bc + iVar11 + 5;
+					*(byte *)(pnum + iVar12) = *(byte *)(pnum + iVar12) | 0x40;
+					iVar12 = _DAT_1012f1bc + iVar11 + 6;
+					*(byte *)(pnum + iVar12) = *(byte *)(pnum + iVar12) | 0x40;
+					iVar10 = iVar10 + 0x10;
+					iVar11 = _DAT_1012f1bc + iVar11 + 7;
+					*(byte *)(pnum + iVar11) = *(byte *)(pnum + iVar11) | 0x40;
+					lVar9 = lVar9 + -1;
+				} while (lVar9 != 0);
+				iVar8 = iVar8 + 1;
+				pnum = pnum + 0x70;
+			} while (iVar8 < 0x70);
+			InitTowners();
+			InitItems();
+			InitMissiles();
+			IncProgress();
+			if (((firstflag == 0) && (lvldir != 4)) && ((*(char *)((int)plr + myplr * 0x55ec + (uint)currlevel + 0x1f0) != '\0' && (gbMaxPlayers == '\x01')))) {
+				LoadLevel();
+			}
+			if (gbMaxPlayers != '\x01') {
+				DeltaLoadLevel();
+			}
+			IncProgress();
+		} else {
+			if (((firstflag == 0) && (lvldir != 4)) && ((*(char *)((int)plr + myplr * 0x55ec + (uint)currlevel + 0x1f0) != '\0' && (gbMaxPlayers == '\x01')))) {
+				InitMonsters();
+				InitMissiles();
+				InitDead();
+				IncProgress();
+				LoadLevel();
+				IncProgress();
+			} else {
+				HoldThemeRooms();
+				pnum = GetRndSeed();
+				*(int *)(*(int *)((int)uVar4 + -0x75f4) + (uint)currlevel * 4) = pnum;
+				InitMonsters();
+				pnum = GetRndSeed();
+				*(int *)(*(int *)((int)uVar4 + -0x75f8) + (uint)currlevel * 4) = pnum;
+				InitObjects();
+				InitItems();
+				CreateThemeRooms();
+				pnum = GetRndSeed();
+				*(int *)(*(int *)((int)uVar4 + -0x75fc) + (uint)currlevel * 4) = pnum;
+				InitMissiles();
+				InitDead();
+				pnum = GetRndSeed();
+				*(int *)(*(int *)((int)uVar4 + -0x7600) + (uint)currlevel * 4) = pnum;
+				if (gbMaxPlayers != '\x01') {
+					DeltaLoadLevel();
+				}
+				IncProgress();
+				SavePreLighting();
 			}
 		}
-		uVar22 = HoldThemeRooms(uVar22, uVar24, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar23 = GetRndSeed(uVar22, uVar24, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar2 = *(uint *)((int)uVar18 + -0x75f4);
-		uVar24 = (undefined)uVar2;
-		*(undefined4 *)(uVar2 + (uint)(byte)*puVar9 * 4) = (int)uVar23;
-		uVar22 = InitMonsters(uVar23, (ulonglong)uVar2, uVar25, param_4, CONCAT71(uVar29, uVar30),
-		    (int)param_6, (int)param_7, (int)param_8, in_stack_ffffff88);
-		uVar20 = GetRndSeed(uVar22, uVar24, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar2 = *(uint *)((int)uVar18 + -0x75f8);
-		uVar24 = (undefined)uVar2;
-		*(undefined4 *)(uVar2 + (uint)(byte)*puVar9 * 4) = (int)uVar20;
-		uVar22 = InitObjects(uVar20, (ulonglong)uVar2, uVar25, param_4, CONCAT71(uVar29, uVar30),
-		    (int)param_6, (int)param_7, (int)param_8, in_stack_ffffff88);
-		uVar22 = InitItems(uVar22, uVar24, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar22 = CreateThemeRooms(uVar22, uVar24, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar20 = GetRndSeed(uVar22, uVar24, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar2 = *(uint *)((int)uVar18 + -0x75fc);
-		uVar24 = (undefined)uVar2;
-		*(undefined4 *)(uVar2 + (uint)(byte)*puVar9 * 4) = (int)uVar20;
-		InitMissiles(uVar20, (ulonglong)uVar2, uVar25, param_4, CONCAT71(uVar29, uVar30), param_6, param_7,
-		    param_8, in_stack_ffffff88);
-		uVar22 = InitDead();
-		uVar20 = GetRndSeed(uVar22, uVar24, (char)uVar25, (char)param_4, uVar30, (char)param_6,
-		    (char)param_7, (char)param_8, in_stack_ffffff88);
-		uVar32 = (undefined4)param_8;
-		uVar31 = (undefined4)param_7;
-		uVar21 = (undefined4)param_6;
-		uVar22 = (undefined)uVar20;
-		uVar2 = *(uint *)((int)uVar18 + -0x7600);
-		uVar23 = (ulonglong)uVar2;
-		*(undefined4 *)(uVar2 + (uint)(byte)*puVar9 * 4) = (int)uVar20;
-		if (*puVar8 != '\x01') {
-			uVar22 = DeltaLoadLevel(uVar20, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), param_6, param_7,
-			    param_8, in_stack_ffffff88);
+		if (gbMaxPlayers == '\x01') {
+			ResyncQuests();
+		} else {
+			ResyncMPQuests();
 		}
-		uVar19 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-		uVar19 = SavePreLighting((char)uVar19, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-	}
-LAB_10027014:
-	if (*puVar8 == '\x01') {
-		uVar22 = ResyncQuests(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), uVar21, uVar31, uVar32,
-		    in_stack_ffffff88);
 	} else {
-		uVar22 = ResyncMPQuests((char)uVar19, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
+		pBVar5 = DiabloAllocPtr(0x100000);
+		**(BYTE ***)((int)uVar4 + -0x7578) = pBVar5;
+		LoadSetMap();
+		IncProgress();
+		GetLevelMTypes();
+		InitMonsters();
+		InitMissileGFX();
+		InitDead();
+		FillSolidBlockTbls();
+		IncProgress();
+		if (lvldir == 5) {
+			GetPortalLvlPos();
+		}
+		pnum = 0;
+		pPVar7 = pPVar13;
+		do {
+			if (((pPVar7->plractive != false) && ((uint)currlevel == pPVar7->plrlevel)) && (InitPlayerGFX(pnum), lvldir != 4)) {
+				InitPlayer(pnum, firstflag);
+			}
+			pnum = pnum + 1;
+			pPVar7 = (PlayerStruct *)&pPVar7[1]._pSpellFlags;
+		} while (pnum < 4);
+		InitMultiView();
+		IncProgress();
+		if (((firstflag == 0) && (lvldir != 4)) && (*(char *)((int)plr + myplr * 0x55ec + (uint)DAT_1012f315 + 0x201) != '\0')) {
+			LoadLevel();
+		} else {
+			InitItems();
+			SavePreLighting();
+		}
+		InitMissiles();
+		IncProgress();
 	}
-LAB_1002710c:
-	uVar19 = SyncPortals(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-	    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-	lVar38 = 0;
+	SyncPortals();
+	lVar9 = 0;
 	do {
-		iVar36 = (int)uVar37;
-		if (((*(char *)(iVar36 + 0x1d) != '\0') && (uVar19 = (ulonglong)(byte)*puVar9, (uint)(byte)*puVar9 == *(uint *)(iVar36 + 0x34))) && ((*(char *)(iVar36 + 0x13b) == '\0' || ((int)lVar38 == *(int *)puVar12)))) {
-			if (*(int *)(iVar36 + 0x194) < 1) {
-				uVar2 = *(uint *)puVar13;
-				uVar23 = (ulonglong)uVar2;
-				uVar19 = (ulonglong) * (uint *)(iVar36 + 0x38) * 0x70 + (ulonglong) * (uint *)(iVar36 + 0x3c);
-				*(byte *)(uVar2 + (int)uVar19) = *(byte *)(uVar2 + (int)uVar19) | 4;
+		if (((pPVar13->plractive != false) && ((uint)currlevel == pPVar13->plrlevel)) && ((pPVar13->_pLvlChanging == false || ((int)lVar9 == myplr)))) {
+			if (pPVar13->_pHitPoints < 1) {
+				pnum = pPVar13->WorldX * 0x70 + pPVar13->WorldY;
+				*(byte *)(_DAT_1012f1bc + pnum) = *(byte *)(_DAT_1012f1bc + pnum) | 4;
 			} else {
-				if (*puVar8 == '\x01') {
-					uVar25 = lVar38 + 1;
-					uVar19 = (ulonglong) * (uint *)(iVar36 + 0x38) * 0x70;
-					uVar23 = (ulonglong) * (uint *)puVar15;
-					*(undefined *)(*(uint *)puVar15 + (int)uVar19 + *(int *)(iVar36 + 0x3c)) = (char)uVar25;
+				if (gbMaxPlayers == '\x01') {
+					*(char *)(_DAT_1012f1b8 + pPVar13->WorldX * 0x70 + pPVar13->WorldY) = (char)lVar9 + '\x01';
 				} else {
-					uVar19 = SyncInitPlrPos(lVar38, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-					    (char)uVar31, (char)uVar32, in_stack_ffffff88);
+					SyncInitPlrPos((int)lVar9);
 				}
 			}
 		}
-		lVar38 = lVar38 + 1;
-		uVar37 = uVar37 + 0x55ec;
-	} while ((int)lVar38 < 4);
-	if (*puVar14 != '\0') {
-		SetDungeonMicros(uVar19, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), uVar21, uVar31, uVar32,
-		    in_stack_ffffff88);
+		lVar9 = lVar9 + 1;
+		pPVar13 = (PlayerStruct *)&pPVar13[1]._pSpellFlags;
+	} while ((int)lVar9 < 4);
+	if (leveltype != 0) {
+		SetDungeonMicros();
 	}
-	uVar22 = InitLightMax();
-	uVar37 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-	    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-	uVar37 = IncProgress((char)uVar37, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-	    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-	uVar22 = (undefined)uVar37;
-	if (iVar35 != 0) {
-		uVar22 = InitControlPan(uVar37, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), uVar21, uVar31, uVar32,
-		    in_stack_ffffff88);
-		uVar37 = IncProgress(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-		uVar22 = (undefined)uVar37;
+	InitLightMax();
+	IncProgress();
+	IncProgress();
+	if (firstflag != 0) {
+		InitControlPan();
+		IncProgress();
 	}
-	if (*puVar14 != '\0') {
-		uVar22 = ProcessLightList(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-		ProcessVisionList(uVar22, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21, (char)uVar31,
-		    (char)uVar32, in_stack_ffffff88);
+	if (leveltype != 0) {
+		ProcessLightList();
+		ProcessVisionList();
 	}
-	music_start((uint)(byte)*puVar14, uVar23, uVar25, param_4, CONCAT71(uVar29, uVar30), uVar21, uVar31,
-	    uVar32, in_stack_ffffff88);
-	uVar37 = extraout_r3_09;
+	music_start((uint)leveltype);
 	do {
-		uVar37 = IncProgress((char)uVar37, (char)uVar23, (char)uVar25, (char)param_4, uVar30, (char)uVar21,
-		    (char)uVar31, (char)uVar32, in_stack_ffffff88);
-	} while ((int)uVar37 == 0);
-	if (((*puVar11 != '\0') && (*puVar10 == '\x01')) && (*(char *)(*(int *)((int)uVar18 + -0x7604) + 0x122) == '\x02')) {
+		BVar6 = IncProgress();
+	} while (BVar6 == 0);
+	if (((DAT_1012f316 != '\0') && (DAT_1012f315 == 1)) && (*(char *)(*(int *)((int)uVar4 + -0x7604) + 0x122) == '\x02')) {
 		PlaySFX(0x351);
 	}
 	return;
 }
 
-void game_logic(undefined8 param_1, longlong param_2, ulonglong param_3, undefined8 param_4,
-    ulonglong param_5, undefined8 param_6, undefined8 param_7, undefined8 param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void game_logic(void)
 
 {
-	char *pcVar1;
-	undefined *puVar2;
-	undefined **ppuVar3;
-	ulonglong uVar4;
-	undefined uVar5;
-	undefined7 uVar6;
-	undefined uVar7;
-	undefined7 uVar8;
-	undefined uVar9;
-	undefined4 uVar10;
-	undefined4 uVar11;
-	undefined4 uVar12;
-	undefined4 uVar13;
-	undefined4 uVar14;
-	undefined4 in_stack_ffffffc8;
+	int iVar1;
+	BOOL BVar2;
 
-	puVar2 = PTR_DAT_100f1914;
-	uVar8 = (undefined7)(param_3 >> 8);
-	uVar9 = (undefined)param_3;
-	uVar6 = (undefined7)((ulonglong)param_2 >> 8);
-	uVar7 = (undefined)param_2;
-	ppuVar3 = &toc;
-	if (*(int *)PTR_DAT_100f1a00 != 2) {
-		if (*(int *)PTR_DAT_100f1a00 == 1) {
-			*(undefined4 *)PTR_DAT_100f1a00 = 2;
+	iVar1 = 0x100f8fd0;
+	if (_DAT_10129104 != 2) {
+		if (_DAT_10129104 == 1) {
+			_DAT_10129104 = 2;
 		}
-		if ((*PTR_DAT_100f17e0 == '\x01') && (ppuVar3 = &toc, uVar4 = gmenu_exception(), (int)uVar4 != 0)) {
-			*(uint *)puVar2 = *(uint *)puVar2 | 1;
+		if ((gbMaxPlayers == '\x01') && (iVar1 = 0x100f8fd0, BVar2 = gmenu_exception(), BVar2 != 0)) {
+			_drawpanflag = _drawpanflag | 1;
 		} else {
-			uVar4 = gmenu_exception();
-			if (((int)uVar4 == 0) && (ppuVar3[-0x13d5] == (undefined *)0x0)) {
-				CheckCursMove((char)uVar4, uVar7, uVar9, (char)param_4, (char)param_5, (char)param_6, (char)param_7, (char)param_8, in_stack_ffffffc8);
+			BVar2 = gmenu_exception();
+			if ((BVar2 == 0) && (*(int *)(iVar1 + -0x4f54) == 0)) {
+				CheckCursMove();
 				track_process();
 			}
-			uVar14 = (undefined4)param_8;
-			uVar13 = (undefined4)param_7;
-			uVar12 = (undefined4)param_6;
-			if (*(int *)ppuVar3[-0x1d6a] != 0) {
-				ProcessPlayers(ZEXT48(ppuVar3[-0x1d6a]), CONCAT71(uVar6, uVar7), CONCAT71(uVar8, uVar9), param_4,
-				    param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+			if (**(int **)(iVar1 + -0x75a8) != 0) {
+				ProcessPlayers();
 			}
-			uVar11 = (undefined4)param_5;
-			uVar10 = (undefined4)param_4;
-			pcVar1 = ppuVar3[-0x1de5];
-			if (*pcVar1 == '\0') {
-				ProcessTowners((char)pcVar1, uVar7, uVar9, (char)param_4, (char)param_5, (char)uVar12, (char)uVar13,
-				    (char)uVar14, in_stack_ffffffc8);
+			if (**(char **)(iVar1 + -0x7794) == '\0') {
+				ProcessTowners();
 				ProcessItems();
-				uVar5 = ProcessMissiles();
-			} else {
-				uVar5 = ProcessMonsters(ZEXT48(pcVar1), CONCAT71(uVar6, uVar7), CONCAT71(uVar8, uVar9), param_4,
-				    param_5, uVar12, uVar13, uVar14, in_stack_ffffffc8);
-				ProcessObjects(uVar5, uVar7, uVar9, (char)uVar10, (char)uVar11, (char)uVar12, (char)uVar13,
-				    (char)uVar14, in_stack_ffffffc8);
 				ProcessMissiles();
-				uVar5 = ProcessItems();
-				uVar5 = ProcessLightList(uVar5, uVar7, uVar9, (char)uVar10, (char)uVar11, (char)uVar12, (char)uVar13,
-				    (char)uVar14, in_stack_ffffffc8);
-				uVar5 = ProcessVisionList(uVar5, uVar7, uVar9, (char)uVar10, (char)uVar11, (char)uVar12, (char)uVar13,
-				    (char)uVar14, in_stack_ffffffc8);
+			} else {
+				ProcessMonsters();
+				ProcessObjects();
+				ProcessMissiles();
+				ProcessItems();
+				ProcessLightList();
+				ProcessVisionList();
 			}
-			uVar5 = sound_update(uVar5, uVar7, uVar9, (char)uVar10, (char)uVar11, (char)uVar12, (char)uVar13,
-			    (char)uVar14, in_stack_ffffffc8);
-			ClearPlrMsg(uVar5, uVar7, uVar9, (char)uVar10, (char)uVar11, (char)uVar12, (char)uVar13,
-			    (char)uVar14, in_stack_ffffffc8);
+			sound_update();
+			ClearPlrMsg();
 			CheckTriggers();
 			CheckQuests();
-			*(uint *)puVar2 = *(uint *)puVar2 | 1;
-			pfile_update(0, CONCAT71(uVar6, uVar7), CONCAT71(uVar8, uVar9), uVar10, uVar11, uVar12, uVar13, uVar14,
-			    in_stack_ffffffc8);
+			_drawpanflag = _drawpanflag | 1;
+			pfile_update(0);
 		}
 	}
 	return;
 }
 
-void timeout_cursor(int param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined8 param_7, undefined4 param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
-{
-	undefined *puVar1;
-	undefined **ppuVar2;
-	undefined **ppuVar3;
-	undefined7 uVar4;
-	undefined uVar5;
-	undefined7 uVar6;
-	undefined uVar7;
-	undefined7 uVar8;
-	undefined uVar9;
-	undefined7 uVar10;
-	undefined uVar11;
-	undefined4 in_stack_ffffffc8;
-
-	puVar1 = PTR_DAT_100f1914;
-	uVar10 = (undefined7)((ulonglong)param_7 >> 8);
-	uVar11 = (undefined)param_7;
-	uVar8 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar9 = (undefined)param_5;
-	uVar6 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar7 = (undefined)param_4;
-	uVar4 = (undefined7)((ulonglong)param_3 >> 8);
-	uVar5 = (undefined)param_3;
-	ppuVar2 = &toc;
-	ppuVar3 = &toc;
-	if (param_1 == 0) {
-		if (_DAT_100f407c != 0) {
-			SetCursor_(_DAT_100f407c, (char)param_2, uVar5, uVar7, uVar9, (char)param_6, uVar11, (char)param_8,
-			    in_stack_ffffffc8);
-			ppuVar3[-0x13d5] = (undefined *)0x0;
-			ClearPanel();
-			*(undefined4 *)puVar1 = 0xff;
-		}
-	} else {
-		if ((_DAT_100f407c == 0) && (*_DAT_100f1a70 == '\0')) {
-			_DAT_100f407c = *(int *)PTR_DAT_100f188c;
-			multi_net_ping((char)PTR_DAT_100f188c, (char)param_2, uVar5, uVar7, uVar9, (char)param_6, uVar11,
-			    (char)param_8, in_stack_ffffffc8);
-			ClearPanel();
-			AddPanelString((int)ppuVar2[-0x1913], 1, uVar5, uVar7, uVar9, (char)param_6, uVar11, (char)param_8,
-			    in_stack_ffffffc8);
-			param_2 = 1;
-			AddPanelString((int)ppuVar2[-0x1914], 1, uVar5, uVar7, uVar9, (char)param_6, uVar11, (char)param_8,
-			    in_stack_ffffffc8);
-			SetCursor_(0xb, (char)param_2, uVar5, uVar7, uVar9, (char)param_6, uVar11, (char)param_8,
-			    in_stack_ffffffc8);
-			*(undefined4 *)puVar1 = 0xff;
-		}
-		scrollrt_draw_game_screen(1, param_2, CONCAT71(uVar4, uVar5), CONCAT71(uVar6, uVar7), CONCAT71(uVar8, uVar9), param_6, CONCAT71(uVar10, uVar11), param_8, in_stack_ffffffc8);
-	}
-	return;
-}
-
-void game_loop(ulonglong param_1, longlong param_2, ulonglong param_3, undefined8 param_4,
-    undefined8 param_5, undefined8 param_6, undefined8 param_7, undefined8 param_8,
-    undefined4 param_9)
-
-{
-	bool bVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined8 uVar4;
-	undefined8 extraout_r3;
-	undefined7 uVar5;
-	undefined uVar6;
-	undefined7 uVar7;
-	undefined uVar8;
-	undefined7 uVar9;
-	undefined uVar10;
-	undefined7 uVar11;
-	undefined uVar12;
-	int iVar13;
-	undefined4 in_stack_ffffffb8;
-	undefined in_stack_ffffffbf;
-	undefined4 in_stack_ffffffc8;
-
-	puVar3 = PTR_DAT_100f1a2c;
-	puVar2 = PTR_DAT_100f17e0;
-	uVar11 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar12 = (undefined)param_5;
-	uVar9 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar10 = (undefined)param_4;
-	uVar7 = (undefined7)(param_3 >> 8);
-	uVar8 = (undefined)param_3;
-	uVar5 = (undefined7)((ulonglong)param_2 >> 8);
-	uVar6 = (undefined)param_2;
-	if ((int)param_1 == 0) {
-		iVar13 = 3;
-	} else {
-		iVar13 = 0x3c;
-	}
-	while (true) {
-		bVar1 = iVar13 == 0;
-		iVar13 = iVar13 + -1;
-		if (bVar1) {
-			return;
-		}
-		uVar4 = multi_handle_delta(param_1, CONCAT71(uVar5, uVar6), CONCAT71(uVar7, uVar8), CONCAT71(uVar9, uVar10),
-		    CONCAT71(uVar11, uVar12), (int)param_6, (int)param_7, (int)param_8,
-		    in_stack_ffffffb8);
-		if ((int)uVar4 == 0) {
-			timeout_cursor(1, CONCAT71(uVar5, uVar6), CONCAT71(uVar7, uVar8), CONCAT71(uVar9, uVar10),
-			    CONCAT71(uVar11, uVar12), (int)param_6, param_7, (int)param_8, in_stack_ffffffb8);
-			return;
-		}
-		timeout_cursor(0, CONCAT71(uVar5, uVar6), CONCAT71(uVar7, uVar8), CONCAT71(uVar9, uVar10),
-		    CONCAT71(uVar11, uVar12), (int)param_6, param_7, (int)param_8, in_stack_ffffffb8);
-		game_logic(extraout_r3, CONCAT71(uVar5, uVar6), CONCAT71(uVar7, uVar8), CONCAT71(uVar9, uVar10),
-		    CONCAT71(uVar11, uVar12), param_6, param_7, param_8, in_stack_ffffffb8);
-		if (*(int *)puVar3 == 0) {
-			return;
-		}
-		if (*puVar2 == '\x01')
-			break;
-		param_1 = nthread_has_500ms_passed(1, uVar6, uVar8, uVar10, uVar12, (char)param_6, (char)param_7, (char)param_8,
-		    in_stack_ffffffb8, in_stack_ffffffbf, in_stack_ffffffc8);
-		if ((int)param_1 == 0) {
-			return;
-		}
-	}
-	return;
-}
-
-void diablo_color_cyc_logic(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void timeout_cursor(BOOL bTimeout)
 
 {
 	int iVar1;
 	int iVar2;
-	longlong lVar3;
-	undefined4 in_stack_ffffffc8;
-	undefined in_stack_ffffffcf;
+
+	iVar2 = 0x100f8fd0;
+	iVar1 = 0x100f8fd0;
+	if (bTimeout == 0) {
+		if (_DAT_100f407c != 0) {
+			SetCursor_(_DAT_100f407c);
+			*(undefined4 *)(iVar1 + -0x4f54) = 0;
+			ClearPanel();
+			_drawpanflag = 0xff;
+		}
+	} else {
+		if ((_DAT_100f407c == 0) && (DAT_10128fdc == '\0')) {
+			_DAT_100f407c = _DAT_1012861c;
+			multi_net_ping();
+			ClearPanel();
+			AddPanelString(*(char **)(iVar2 + -0x644c), 1);
+			AddPanelString(*(char **)(iVar2 + -0x6450), 1);
+			NewCursor(0xb);
+			_drawpanflag = 0xff;
+		}
+		scrollrt_draw_game_screen(1);
+	}
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void game_loop(BOOL bStartup)
+
+{
+	bool bVar1;
+	int iVar2;
+	BOOL BVar3;
+	int iVar4;
+
+	if (bStartup == 0) {
+		iVar4 = 3;
+	} else {
+		iVar4 = 0x3c;
+	}
+	while (true) {
+		bVar1 = iVar4 == 0;
+		iVar4 = iVar4 + -1;
+		if (bVar1) {
+			return;
+		}
+		iVar2 = multi_handle_delta();
+		if (iVar2 == 0) {
+			timeout_cursor(1);
+			return;
+		}
+		timeout_cursor(0);
+		game_logic();
+		if (_gbRunGame == 0) {
+			return;
+		}
+		if (gbMaxPlayers == '\x01')
+			break;
+		BVar3 = nthread_has_500ms_passed(1);
+		if (BVar3 == 0) {
+			return;
+		}
+	}
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void diablo_color_cyc_logic(void)
+
+{
+	int iVar1;
+	DWORD tc;
 	int local_2c;
 
 	if (DAT_100f4070 == '\0') {
-		param_1 = 0;
 		_DAT_100f4074 = 0;
 		DAT_100f4070 = '\x01';
 	}
-	lVar3 = GetTickCount(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    (char)in_stack_ffffffc8, in_stack_ffffffcf, local_2c);
-	if (0x31 < (lVar3 - (ulonglong) * (uint *)(local_2c + -0x4f5c) & 0xffffffff)) {
-		*(undefined4 *)(local_2c + -0x4f5c) = (int)lVar3;
+	tc = GetTickCount();
+	if (0x31 < tc - *(int *)(local_2c + -0x4f5c)) {
+		*(DWORD *)(local_2c + -0x4f5c) = tc;
 		if (**(char **)(local_2c + -0x7794) == '\x04') {
 			lighting_color_cycling();
 		} else {
@@ -3127,13 +2309,11 @@ void diablo_color_cyc_logic(undefined param_1, undefined param_2, undefined para
 					*(undefined4 *)(local_2c + -0x4f64) = 0;
 					*(undefined *)(local_2c + -0x4f68) = 1;
 				}
-				iVar1 = *(int *)(local_2c + -0x4f64);
-				iVar2 = iVar1 + 1;
-				*(int *)(local_2c + -0x4f64) = iVar2;
-				if (2 < iVar2) {
+				iVar1 = *(int *)(local_2c + -0x4f64) + 1;
+				*(int *)(local_2c + -0x4f64) = iVar1;
+				if (2 < iVar1) {
 					*(undefined4 *)(local_2c + -0x4f64) = 0;
-					palette_update_caves((char)iVar1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-					    in_stack_ffffffc8);
+					palette_update_caves();
 				}
 			}
 		}

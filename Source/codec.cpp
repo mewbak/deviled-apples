@@ -1,6 +1,12 @@
 
-void codec_init_key(undefined4 param_1, int param_2, char param_3, char param_4, char param_5, char param_6, char param_7, char param_8, undefined4 param_9, undefined param_10,
-    undefined4 param_11)
+void thunk_SHA1Clear(void)
+
+{
+	SHA1Clear();
+	return;
+}
+
+void codec_init_key(int unused, char *pszPassword)
 
 {
 	bool bVar1;
@@ -8,235 +14,205 @@ void codec_init_key(undefined4 param_1, int param_2, char param_3, char param_4,
 	uint uVar3;
 	uint uVar4;
 	uint uVar5;
-	int iVar6;
-	ulonglong uVar7;
-	undefined8 uVar8;
-	longlong lVar9;
-	undefined *puVar10;
-	undefined uVar12;
-	byte *pbVar11;
-	longlong lVar13;
-	longlong lVar14;
-	undefined uVar15;
-	char cVar16;
-	undefined uVar17;
-	undefined uVar19;
-	longlong lVar18;
-	undefined uVar21;
-	ulonglong uVar20;
-	undefined uVar22;
-	longlong lVar23;
-	undefined uVar25;
-	ulonglong uVar24;
-	longlong lVar26;
-	undefined uVar31;
-	int iVar27;
-	int iVar28;
-	int iVar29;
-	int iVar30;
-	longlong lVar32;
-	longlong lVar33;
+	undefined *puVar6;
+	char cVar7;
+	ulonglong uVar8;
+	undefined8 uVar9;
+	longlong lVar10;
+	char *pcVar11;
+	byte *pbVar12;
+	undefined8 in_r5;
+	char cVar13;
+	undefined uVar14;
+	undefined8 in_r6;
+	longlong lVar15;
+	undefined8 in_r7;
+	ulonglong uVar16;
+	undefined8 in_r8;
+	undefined8 in_r9;
+	ulonglong uVar17;
+	undefined8 in_r10;
+	int n;
+	int iVar18;
+	int iVar19;
+	int iVar20;
+	longlong lVar21;
+	longlong lVar22;
 	byte local_f8[84];
 	undefined local_a4;
 	undefined uStack163;
+	char acStack92[92];
 
-	lVar26 = (longlong)param_8;
-	lVar23 = (longlong)param_7;
-	lVar18 = (longlong)param_6;
-	lVar14 = (longlong)param_5;
-	lVar33 = (longlong)param_4;
-	lVar13 = (longlong)param_3;
-	lVar9 = (longlong)param_2;
-	uVar7 = ZEXT48(register0x0000000c);
-	iVar6 = (int)(uVar7 - 0x130);
-	*(BADSPACEBASE **)iVar6 = register0x0000000c;
-	*(undefined4 *)(iVar6 + 0x148) = param_1;
-	uVar8 = vc_srand(0x58, (char)param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
-	    *(undefined4 *)(iVar6 + 0x14));
-	lVar32 = uVar7 - 0xa4;
-	iVar27 = 0x87;
+	lVar10 = (longlong)(int)pszPassword;
+	uVar8 = ZEXT48(register0x0000000c);
+	puVar6 = (undefined *)(uVar8 - 0x130);
+	*(BADSPACEBASE **)puVar6 = register0x0000000c;
+	*(int *)(puVar6 + 0x148) = unused;
+	uVar9 = vc_srand(0x58, (char)pszPassword, (char)in_r5, (char)in_r6, (char)in_r7, (char)in_r8, (char)in_r9,
+	    (char)in_r10, puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+	lVar21 = uVar8 - 0xa4;
+	n = 0x87;
 	do {
-		uVar8 = vc_rand((char)uVar8, (char)lVar9, (char)lVar13, (char)lVar33, (char)lVar14, (char)lVar18,
-		    (char)lVar23, (char)lVar26, *(undefined *)(iVar6 + 0xb),
-		    *(undefined *)(iVar6 + 0xf), *(undefined4 *)(iVar6 + 0x14));
-		uVar31 = (undefined)lVar26;
-		uVar25 = (undefined)lVar23;
-		uVar22 = (undefined)lVar18;
-		uVar21 = (undefined)lVar14;
-		uVar19 = (undefined)lVar33;
-		bVar1 = iVar27 != 0;
-		*(undefined *)lVar32 = (char)uVar8;
-		lVar32 = lVar32 + 1;
-		iVar27 = iVar27 + -1;
+		uVar9 = vc_rand((char)uVar9, (char)lVar10, (char)in_r5, (char)in_r6, (char)in_r7, (char)in_r8, (char)in_r9,
+		    (char)in_r10, puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+		bVar1 = n != 0;
+		*(undefined *)lVar21 = (char)uVar9;
+		lVar21 = lVar21 + 1;
+		n = n + -1;
 	} while (bVar1);
-	*(undefined2 *)(iVar6 + 0x8c) = CONCAT11(uStack163, local_a4);
-	lVar9 = uVar7 - 0xe4;
-	lVar33 = 8;
-	lVar13 = 0;
-	cVar16 = '\0';
+	*(ushort *)(puVar6 + 0x8c) = CONCAT11(uStack163, local_a4);
+	lVar10 = uVar8 - 0xe4;
+	lVar21 = 8;
+	n = 0;
 	do {
-		if (*(char *)(param_2 + (int)lVar13) == '\0') {
-			lVar13 = 0;
+		if (pszPassword[n] == '\0') {
+			n = 0;
 		}
-		lVar14 = lVar13 + 1;
-		puVar10 = (undefined *)lVar9;
-		*puVar10 = *(undefined *)(param_2 + (int)lVar13);
-		if (*(char *)(param_2 + (int)lVar14) == '\0') {
-			lVar14 = 0;
+		iVar18 = n + 1;
+		pcVar11 = (char *)lVar10;
+		*pcVar11 = pszPassword[n];
+		if (pszPassword[iVar18] == '\0') {
+			iVar18 = 0;
 		}
-		lVar13 = lVar14 + 1;
-		puVar10[1] = *(undefined *)(param_2 + (int)lVar14);
-		if (*(char *)(param_2 + (int)lVar13) == '\0') {
-			lVar13 = 0;
+		n = iVar18 + 1;
+		pcVar11[1] = pszPassword[iVar18];
+		if (pszPassword[n] == '\0') {
+			n = 0;
 		}
-		lVar14 = lVar13 + 1;
-		puVar10[2] = *(undefined *)(param_2 + (int)lVar13);
-		if (*(char *)(param_2 + (int)lVar14) == '\0') {
-			lVar14 = 0;
+		iVar18 = n + 1;
+		pcVar11[2] = pszPassword[n];
+		if (pszPassword[iVar18] == '\0') {
+			iVar18 = 0;
 		}
-		lVar13 = lVar14 + 1;
-		puVar10[3] = *(undefined *)(param_2 + (int)lVar14);
-		if (*(char *)(param_2 + (int)lVar13) == '\0') {
-			lVar13 = 0;
+		n = iVar18 + 1;
+		pcVar11[3] = pszPassword[iVar18];
+		if (pszPassword[n] == '\0') {
+			n = 0;
 		}
-		lVar14 = lVar13 + 1;
-		puVar10[4] = *(undefined *)(param_2 + (int)lVar13);
-		if (*(char *)(param_2 + (int)lVar14) == '\0') {
-			lVar14 = 0;
+		iVar18 = n + 1;
+		pcVar11[4] = pszPassword[n];
+		if (pszPassword[iVar18] == '\0') {
+			iVar18 = 0;
 		}
-		lVar13 = lVar14 + 1;
-		puVar10[5] = *(undefined *)(param_2 + (int)lVar14);
-		if (*(char *)(param_2 + (int)lVar13) == '\0') {
-			lVar13 = 0;
+		n = iVar18 + 1;
+		pcVar11[5] = pszPassword[iVar18];
+		if (pszPassword[n] == '\0') {
+			n = 0;
 		}
-		lVar14 = lVar13 + 1;
-		puVar10[6] = *(undefined *)(param_2 + (int)lVar13);
-		if (*(char *)(param_2 + (int)lVar14) == '\0') {
-			lVar14 = 0;
+		iVar18 = n + 1;
+		pcVar11[6] = pszPassword[n];
+		if (pszPassword[iVar18] == '\0') {
+			iVar18 = 0;
 		}
-		lVar13 = lVar14 + 1;
-		cVar16 = cVar16 + '\a';
-		puVar10[7] = *(undefined *)(param_2 + (int)lVar14);
-		lVar9 = lVar9 + 8;
-		lVar33 = lVar33 + -1;
-	} while (lVar33 != 0);
-	SHA1Reset(0, (char)lVar13, cVar16, uVar19, uVar21, uVar22, uVar25, uVar31, *(undefined4 *)(iVar6 + 8));
-	uVar15 = (undefined)(uVar7 - 0xe4);
-	uVar17 = (undefined)(uVar7 - 0xf8);
-	uVar12 = SHA1Calculate(0, uVar7 - 0xe4, (uint *)(uVar7 - 0xf8), uVar19, uVar21, uVar22, uVar25, uVar31,
-	    *(undefined4 *)(iVar6 + 8));
-	FUN_100a42a0(uVar12, uVar15, uVar17, uVar19, uVar21, uVar22, uVar25, uVar31, *(undefined4 *)(iVar6 + 8));
-	lVar33 = 0x11;
-	uVar8 = 0x66666667;
-	lVar9 = uVar7 - 0xa4;
-	lVar13 = 0;
+		n = iVar18 + 1;
+		pcVar11[7] = pszPassword[iVar18];
+		lVar10 = lVar10 + 8;
+		lVar21 = lVar21 + -1;
+	} while (lVar21 != 0);
+	SHA1Reset(0, *puVar6);
+	// WARNING: Load size is inaccurate
+	SHA1Calculate(0, puVar6 + 0x4c, *(char *)(puVar6 + 8));
+	SHA1Clear(*puVar6);
+	lVar22 = 0x11;
+	uVar9 = 0x66666667;
+	lVar10 = uVar8 - 0xa4;
+	lVar21 = 0;
 	do {
-		iVar30 = (int)lVar13;
-		pbVar11 = (byte *)lVar9;
-		uVar3 = iVar30 / 0x14 + (iVar30 >> 0x1f);
-		iVar27 = iVar30 + 1;
-		uVar4 = iVar27 / 0x14 + (iVar27 >> 0x1f);
-		iVar28 = iVar30 + 2;
-		uVar5 = iVar28 / 0x14 + (iVar28 >> 0x1f);
-		*pbVar11 = *pbVar11 ^ local_f8[iVar30 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
-		iVar29 = iVar30 + 3;
-		uVar3 = iVar29 / 0x14 + (iVar29 >> 0x1f);
-		pbVar11[1] = pbVar11[1] ^ local_f8[iVar27 + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
-		iVar27 = iVar30 + 4;
-		uVar4 = iVar27 / 0x14 + (iVar27 >> 0x1f);
-		pbVar11[2] = pbVar11[2] ^ local_f8[iVar28 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
-		iVar28 = iVar30 + 5;
-		uVar5 = iVar28 / 0x14 + (iVar28 >> 0x1f);
-		pbVar11[3] = pbVar11[3] ^ local_f8[iVar29 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
-		iVar30 = iVar30 + 6;
-		uVar3 = iVar30 / 0x14 + (iVar30 >> 0x1f);
-		pbVar11[4] = pbVar11[4] ^ local_f8[iVar27 + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
-		iVar27 = (int)(lVar13 + 7);
-		pbVar11[5] = pbVar11[5] ^ local_f8[iVar28 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
-		uVar4 = iVar27 / 0x14 + (iVar27 >> 0x1f);
-		uVar20 = (ulonglong)(uVar4 >> 0x1f);
-		lVar14 = ((ulonglong)uVar4 + uVar20) * 0x14;
-		pbVar11[6] = pbVar11[6] ^ local_f8[iVar30 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
-		lVar18 = lVar13 + 7 + ((ulonglong)uVar4 + uVar20) * -0x14;
-		lVar13 = lVar13 + 8;
-		bVar2 = pbVar11[7];
-		uVar24 = (ulonglong)bVar2;
-		pbVar11[7] = bVar2 ^ local_f8[(int)lVar18];
-		lVar9 = lVar9 + 8;
-		lVar33 = lVar33 + -1;
-	} while (lVar33 != 0);
-	*(undefined2 *)(iVar6 + 0x8c) = CONCAT11(uStack163, local_a4);
-	cVar16 = (char)(uVar7 - 0x130);
-	memset(cVar16 + 'L', 0x40, (char)lVar14, (char)lVar18, (byte)(uVar4 >> 0x1f), 0x67, bVar2,
-	    (char)lVar13, *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
-	    *(undefined4 *)(iVar6 + 0x14));
-	lVar9 = 0x14;
-	memset(cVar16 + '8', 0x14, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
-	    (char)lVar13, *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
-	    *(undefined4 *)(iVar6 + 0x14));
-	iVar27 = 0;
+		iVar20 = (int)lVar21;
+		pbVar12 = (byte *)lVar10;
+		uVar3 = iVar20 / 0x14 + (iVar20 >> 0x1f);
+		n = iVar20 + 1;
+		uVar4 = n / 0x14 + (n >> 0x1f);
+		iVar18 = iVar20 + 2;
+		uVar5 = iVar18 / 0x14 + (iVar18 >> 0x1f);
+		*pbVar12 = *pbVar12 ^ local_f8[iVar20 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
+		iVar19 = iVar20 + 3;
+		uVar3 = iVar19 / 0x14 + (iVar19 >> 0x1f);
+		pbVar12[1] = pbVar12[1] ^ local_f8[n + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
+		n = iVar20 + 4;
+		uVar4 = n / 0x14 + (n >> 0x1f);
+		pbVar12[2] = pbVar12[2] ^ local_f8[iVar18 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
+		iVar18 = iVar20 + 5;
+		uVar5 = iVar18 / 0x14 + (iVar18 >> 0x1f);
+		pbVar12[3] = pbVar12[3] ^ local_f8[iVar19 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
+		iVar20 = iVar20 + 6;
+		uVar3 = iVar20 / 0x14 + (iVar20 >> 0x1f);
+		pbVar12[4] = pbVar12[4] ^ local_f8[n + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
+		n = (int)(lVar21 + 7);
+		pbVar12[5] = pbVar12[5] ^ local_f8[iVar18 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
+		uVar4 = n / 0x14 + (n >> 0x1f);
+		uVar16 = (ulonglong)(uVar4 >> 0x1f);
+		cVar13 = (char)((ulonglong)uVar4 + uVar16) * '\x14';
+		pbVar12[6] = pbVar12[6] ^ local_f8[iVar20 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
+		lVar15 = lVar21 + 7 + ((ulonglong)uVar4 + uVar16) * -0x14;
+		lVar21 = lVar21 + 8;
+		bVar2 = pbVar12[7];
+		uVar17 = (ulonglong)bVar2;
+		pbVar12[7] = bVar2 ^ local_f8[(int)lVar15];
+		lVar10 = lVar10 + 8;
+		lVar22 = lVar22 + -1;
+	} while (lVar22 != 0);
+	*(ushort *)(puVar6 + 0x8c) = CONCAT11(uStack163, local_a4);
+	cVar7 = (char)(uVar8 - 0x130);
+	ZeroMemory(cVar7 + 'L', 0x40, cVar13, (char)lVar15, (byte)(uVar4 >> 0x1f), 0x67, bVar2, (char)lVar21, puVar6[0xb],
+	    puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+	ZeroMemory(cVar7 + '8', 0x14, cVar13, (char)lVar15, (char)uVar16, (char)uVar9, (char)uVar17, (char)lVar21,
+	    puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+	n = 0;
 	do {
-		SHA1Reset(iVar27, (char)lVar9, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
-		    (char)lVar13, *(undefined4 *)(iVar6 + 8));
-		lVar14 = 0;
-		lVar9 = uVar7 - 0x5c;
-		SHA1Calculate(iVar27, uVar7 - 0x5c, (uint *)0x0, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
-		    (char)lVar13, *(undefined4 *)(iVar6 + 8));
-		iVar27 = iVar27 + 1;
-	} while (iVar27 < 3);
-	memset(cVar16 + -0x74, 0x88, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
-	    (char)lVar13, *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
-	    *(undefined4 *)(iVar6 + 0x14));
+		SHA1Reset(n, *puVar6);
+		uVar14 = 0;
+		// WARNING: Load size is inaccurate
+		SHA1Calculate(n, acStack92, *(char *)(puVar6 + 8));
+		n = n + 1;
+	} while (n < 3);
+	ZeroMemory(cVar7 + -0x74, 0x88, uVar14, (char)lVar15, (char)uVar16, (char)uVar9, (char)uVar17, (char)lVar21,
+	    puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
 	return;
 }
 
-longlong codec_decode(uint *param_1, ulonglong param_2, int param_3, char param_4, char param_5,
-    char param_6, char param_7, char param_8, undefined4 param_9)
+int codec_decode(BYTE *pbSrcDst, DWORD size, char *pszPassword)
 
 {
-	byte bVar1;
+	longlong lVar1;
 	byte bVar2;
-	byte bVar3;
+	uint uVar3;
 	uint uVar4;
-	uint uVar5;
-	undefined *puVar6;
-	char cVar7;
-	int *piVar8;
-	ulonglong uVar9;
+	undefined *puVar5;
+	char cVar6;
+	int *piVar7;
+	longlong lVar8;
+	byte *pbVar9;
 	longlong lVar10;
-	byte *pbVar11;
+	int iVar11;
 	undefined uVar12;
-	longlong lVar13;
-	int iVar14;
+	longlong in_r6;
+	undefined uVar13;
+	ulonglong in_r7;
+	undefined uVar14;
+	longlong in_r8;
 	undefined uVar15;
+	ulonglong in_r9;
 	undefined uVar16;
-	longlong lVar17;
+	ulonglong in_r10;
+	int iVar17;
 	undefined uVar18;
-	ulonglong uVar19;
-	undefined uVar20;
-	longlong lVar21;
-	undefined uVar22;
-	ulonglong uVar23;
-	undefined uVar24;
-	int iVar26;
-	ulonglong uVar25;
-	undefined uVar27;
-	int iVar28;
-	int iVar29;
+	int iVar19;
+	int iVar20;
 	undefined8 unaff_r24;
 	undefined8 unaff_r25;
-	int iVar30;
+	int iVar21;
 	undefined8 unaff_r26;
-	int iVar31;
+	int iVar22;
 	undefined8 unaff_r27;
-	longlong lVar32;
+	longlong lVar23;
 	undefined8 unaff_r28;
+	uint uVar24;
 	undefined8 unaff_r29;
-	ulonglong uVar33;
+	uint uVar25;
 	undefined8 unaff_r30;
 	undefined8 unaff_r31;
-	longlong lVar34;
+	longlong lVar26;
 	byte local_b4[148];
 	undefined4 local_20;
 	undefined4 uStack28;
@@ -247,14 +223,8 @@ longlong codec_decode(uint *param_1, ulonglong param_2, int param_3, char param_
 	undefined4 uStack8;
 	undefined4 uStack4;
 
-	uVar25 = SEXT18(param_8);
-	uVar23 = SEXT18(param_7);
-	lVar21 = (longlong)param_6;
-	uVar19 = SEXT18(param_5);
-	lVar17 = (longlong)param_4;
-	lVar10 = (longlong)param_3;
-	lVar32 = (longlong)(int)param_1;
-	uVar9 = ZEXT48(register0x0000000c);
+	lVar8 = (longlong)(int)pszPassword;
+	lVar23 = (longlong)(int)pbSrcDst;
 	local_20 = (undefined4)((ulonglong)unaff_r24 >> 0x20);
 	uStack28 = (undefined4)((ulonglong)unaff_r25 >> 0x20);
 	uStack24 = (undefined4)((ulonglong)unaff_r26 >> 0x20);
@@ -263,158 +233,152 @@ longlong codec_decode(uint *param_1, ulonglong param_2, int param_3, char param_
 	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
 	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
 	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
-	puVar6 = (undefined *)(uVar9 - 0x110);
-	*(BADSPACEBASE **)puVar6 = register0x0000000c;
-	codec_init_key(0, param_3, (char)param_3, param_4, param_5, param_6, param_7, param_8,
-	    *(undefined4 *)(puVar6 + 8), puVar6[0xf], *(undefined4 *)(puVar6 + 0x18));
-	if ((8 < (param_2 & 0xffffffff)) && (param_2 = param_2 - 8, (param_2 & 0x3f) == 0)) {
-		uVar33 = param_2;
+	lVar1 = ZEXT48(register0x0000000c) - 0x110;
+	puVar5 = (undefined *)lVar1;
+	*(BADSPACEBASE **)puVar5 = register0x0000000c;
+	codec_init_key(0, pszPassword, *puVar5);
+	if ((8 < size) && (uVar24 = size - 8, (uVar24 & 0x3f) == 0)) {
+		uVar25 = uVar24;
 		while (true) {
-			uVar16 = (undefined)lVar10;
-			uVar18 = (undefined)lVar17;
-			uVar20 = (undefined)uVar19;
-			uVar22 = (undefined)lVar21;
-			uVar24 = (undefined)uVar23;
-			uVar27 = (undefined)uVar25;
-			cVar7 = (char)(uVar9 - 0x110);
-			if ((uVar33 & 0xffffffff) == 0)
+			uVar12 = (undefined)lVar8;
+			uVar13 = (undefined)in_r6;
+			uVar14 = (undefined)in_r7;
+			uVar15 = (undefined)in_r8;
+			uVar16 = (undefined)in_r9;
+			uVar18 = (undefined)in_r10;
+			cVar6 = (char)lVar1;
+			if (uVar25 == 0)
 				break;
-			memcpy(cVar7 + 'p', (char)lVar32, 0x40, uVar18, uVar20, uVar22, uVar24, uVar27, puVar6[0xb],
-			    puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
-			SHA1Result(0, puVar6 + 0x5c, *puVar6);
-			lVar10 = uVar9 - 0xa0;
-			lVar34 = 8;
-			lVar13 = 0;
+			CopyMemory(cVar6 + 'p', (char)lVar23, 0x40, uVar13, uVar14, uVar15, uVar16, uVar18, puVar5[0xb],
+			    puVar5[0xf], *(undefined4 *)(puVar5 + 0x14));
+			// WARNING: Load size is inaccurate
+			SHA1Result(0, *(char *)(puVar5 + 8));
+			lVar8 = ZEXT48(register0x0000000c) - 0xa0;
+			lVar26 = 8;
+			lVar10 = 0;
 			do {
-				iVar14 = (int)lVar13;
-				iVar30 = iVar14 + 1;
-				iVar31 = iVar14 + 2;
-				pbVar11 = (byte *)lVar10;
-				iVar29 = iVar14 + 3;
-				uVar4 = iVar14 / 0x14 + (iVar14 >> 0x1f);
-				iVar28 = iVar14 + 4;
-				iVar26 = iVar14 + 5;
-				lVar21 = lVar13 + 6;
-				lVar17 = lVar13 + 7;
-				lVar13 = lVar13 + 8;
-				uVar5 = iVar30 / 0x14 + (iVar30 >> 0x1f);
-				*pbVar11 = local_b4[iVar14 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ *pbVar11;
-				uVar4 = iVar31 / 0x14 + (iVar31 >> 0x1f);
-				pbVar11[1] = local_b4[iVar30 + (uVar5 + (uVar5 >> 0x1f)) * -0x14] ^ pbVar11[1];
-				uVar5 = iVar29 / 0x14 + (iVar29 >> 0x1f);
-				pbVar11[2] = local_b4[iVar31 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ pbVar11[2];
-				uVar4 = iVar28 / 0x14 + (iVar28 >> 0x1f);
-				pbVar11[3] = local_b4[iVar29 + (uVar5 + (uVar5 >> 0x1f)) * -0x14] ^ pbVar11[3];
-				uVar5 = iVar26 / 0x14 + (iVar26 >> 0x1f);
-				pbVar11[4] = local_b4[iVar28 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ pbVar11[4];
-				iVar28 = (int)lVar21;
-				bVar1 = pbVar11[5];
-				uVar23 = (ulonglong)bVar1;
-				uVar4 = iVar28 / 0x14 + (iVar28 >> 0x1f);
-				iVar14 = (int)lVar17;
-				bVar2 = local_b4[iVar26 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
-				uVar25 = (ulonglong)bVar2;
-				pbVar11[5] = bVar2 ^ bVar1;
-				uVar5 = iVar14 / 0x14 + (iVar14 >> 0x1f);
-				bVar3 = local_b4[iVar28 + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
-				uVar19 = (ulonglong)bVar3;
-				pbVar11[6] = bVar3 ^ pbVar11[6];
-				pbVar11[7] = local_b4[iVar14 + (uVar5 + (uVar5 >> 0x1f)) * -0x14] ^ pbVar11[7];
+				iVar11 = (int)lVar10;
+				iVar21 = iVar11 + 1;
+				iVar22 = iVar11 + 2;
+				pbVar9 = (byte *)lVar8;
+				iVar20 = iVar11 + 3;
+				uVar3 = iVar11 / 0x14 + (iVar11 >> 0x1f);
+				iVar19 = iVar11 + 4;
+				iVar17 = iVar11 + 5;
+				in_r8 = lVar10 + 6;
+				in_r6 = lVar10 + 7;
 				lVar10 = lVar10 + 8;
-				lVar34 = lVar34 + -1;
-			} while (lVar34 != 0);
-			uVar16 = 0;
-			SHA1Calculate(0, uVar9 - 0xa0, (uint *)0x0, (char)lVar17, bVar3, (char)lVar21, bVar1, bVar2,
-			    *(undefined4 *)(puVar6 + 8));
-			memset(cVar7 + '\\', 0x14, uVar16, (char)lVar17, (char)uVar19, (char)lVar21, (char)uVar23,
-			    (char)uVar25, puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
-			lVar10 = 0x40;
-			memcpy((char)lVar32, cVar7 + 'p', 0x40, (char)lVar17, (char)uVar19, (char)lVar21, (char)uVar23,
-			    (char)uVar25, puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
-			lVar32 = lVar32 + 0x40;
-			uVar33 = uVar33 - 0x40;
+				uVar4 = iVar21 / 0x14 + (iVar21 >> 0x1f);
+				*pbVar9 = local_b4[iVar11 + (uVar3 + (uVar3 >> 0x1f)) * -0x14] ^ *pbVar9;
+				uVar3 = iVar22 / 0x14 + (iVar22 >> 0x1f);
+				pbVar9[1] = local_b4[iVar21 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ pbVar9[1];
+				uVar4 = iVar20 / 0x14 + (iVar20 >> 0x1f);
+				pbVar9[2] = local_b4[iVar22 + (uVar3 + (uVar3 >> 0x1f)) * -0x14] ^ pbVar9[2];
+				uVar3 = iVar19 / 0x14 + (iVar19 >> 0x1f);
+				pbVar9[3] = local_b4[iVar20 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ pbVar9[3];
+				uVar4 = iVar17 / 0x14 + (iVar17 >> 0x1f);
+				pbVar9[4] = local_b4[iVar19 + (uVar3 + (uVar3 >> 0x1f)) * -0x14] ^ pbVar9[4];
+				iVar19 = (int)in_r8;
+				in_r9 = (ulonglong)pbVar9[5];
+				uVar3 = iVar19 / 0x14 + (iVar19 >> 0x1f);
+				iVar11 = (int)in_r6;
+				bVar2 = local_b4[iVar17 + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
+				in_r10 = (ulonglong)bVar2;
+				pbVar9[5] = bVar2 ^ pbVar9[5];
+				uVar4 = iVar11 / 0x14 + (iVar11 >> 0x1f);
+				bVar2 = local_b4[iVar19 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
+				in_r7 = (ulonglong)bVar2;
+				pbVar9[6] = bVar2 ^ pbVar9[6];
+				pbVar9[7] = local_b4[iVar11 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ pbVar9[7];
+				lVar8 = lVar8 + 8;
+				lVar26 = lVar26 + -1;
+			} while (lVar26 != 0);
+			uVar12 = 0;
+			// WARNING: Load size is inaccurate
+			SHA1Calculate(0, puVar5 + 0x70, *(char *)(puVar5 + 8));
+			ZeroMemory(cVar6 + '\\', 0x14, uVar12, (char)in_r6, (char)in_r7, (char)in_r8, (char)in_r9, (char)in_r10,
+			    puVar5[0xb], puVar5[0xf], *(undefined4 *)(puVar5 + 0x14));
+			lVar8 = 0x40;
+			CopyMemory((char)lVar23, cVar6 + 'p', 0x40, (char)in_r6, (char)in_r7, (char)in_r8, (char)in_r9,
+			    (char)in_r10, puVar5[0xb], puVar5[0xf], *(undefined4 *)(puVar5 + 0x14));
+			lVar23 = lVar23 + 0x40;
+			uVar25 = uVar25 - 0x40;
 		}
-		uVar15 = 0x80;
-		uVar12 = memset(cVar7 + 'p', 0x80, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27, puVar6[0xb],
-		    puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
-		piVar8 = (int *)lVar32;
-		if (*(char *)(piVar8 + 1) == '\0') {
-			uVar12 = (undefined)(uVar9 - 200);
-			SHA1Result(0, (int)(uVar9 - 200), *puVar6);
-			if (*piVar8 == *(int *)(puVar6 + 0x48)) {
-				bVar1 = *(byte *)((int)piVar8 + 5);
-				SHA1Clear((char)*piVar8, uVar12, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27,
-				    *(undefined4 *)(puVar6 + 8));
-				return param_2 - (0x40 - (ulonglong)bVar1);
+		ZeroMemory(cVar6 + 'p', 0x80, uVar12, uVar13, uVar14, uVar15, uVar16, uVar18, puVar5[0xb], puVar5[0xf],
+		    *(undefined4 *)(puVar5 + 0x14));
+		piVar7 = (int *)lVar23;
+		if (*(char *)(piVar7 + 1) == '\0') {
+			// WARNING: Load size is inaccurate
+			SHA1Result(0, *(char *)(puVar5 + 8));
+			if (*piVar7 == *(int *)(puVar5 + 0x48)) {
+				bVar2 = *(byte *)((int)piVar7 + 5);
+				thunk_SHA1Clear(*puVar5);
+				return uVar24 - (0x40 - (uint)bVar2);
 			}
-			uVar15 = 0x14;
-			uVar12 = memset(cVar7 + 'H', 0x14, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27, puVar6[0xb],
-			    puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+			ZeroMemory(cVar6 + 'H', 0x14, uVar12, uVar13, uVar14, uVar15, uVar16, uVar18, puVar5[0xb], puVar5[0xf],
+			    *(undefined4 *)(puVar5 + 0x14));
 		}
-		SHA1Clear(uVar12, uVar15, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27, *(undefined4 *)(puVar6 + 8));
+		thunk_SHA1Clear(*puVar5);
 	}
 	return 0;
 }
 
-longlong codec_get_encoded_len(ulonglong param_1)
+DWORD codec_get_encoded_len(DWORD dwSrcBytes)
 
 {
-	if ((param_1 & 0x3f) != 0) {
-		param_1 = param_1 + (0x40 - (ulonglong)((uint)param_1 & 0x3f));
+	if ((dwSrcBytes & 0x3f) != 0) {
+		dwSrcBytes = dwSrcBytes + (0x40 - (dwSrcBytes & 0x3f));
 	}
-	return param_1 + 8;
+	return dwSrcBytes + 8;
 }
 
-void codec_encode(uint *param_1, ulonglong param_2, ulonglong param_3, longlong param_4,
-    ulonglong param_5, int param_6, int param_7, int param_8, undefined4 param_9)
+void codec_encode(BYTE *pbSrcDst, DWORD size, int size_64, char *pszPassword)
 
 {
-	byte bVar1;
+	longlong lVar1;
 	byte bVar2;
 	byte bVar3;
 	byte bVar4;
-	undefined4 uVar5;
+	byte bVar5;
 	uint uVar6;
 	uint uVar7;
 	undefined *puVar8;
 	char cVar9;
-	ulonglong uVar10;
-	undefined **ppuVar11;
-	ulonglong uVar12;
+	DWORD DVar11;
+	longlong lVar10;
+	byte *pbVar12;
 	longlong lVar13;
-	byte *pbVar14;
-	longlong lVar15;
-	int iVar16;
-	undefined uVar17;
-	char cVar19;
-	ulonglong uVar18;
+	int iVar14;
+	char cVar16;
+	ulonglong uVar15;
+	longlong lVar17;
+	undefined uVar18;
+	ulonglong in_r7;
+	undefined uVar19;
+	longlong in_r8;
 	undefined uVar20;
-	longlong lVar21;
-	undefined uVar22;
+	ulonglong in_r9;
+	undefined uVar21;
+	ulonglong in_r10;
+	int iVar22;
 	undefined uVar23;
-	longlong lVar24;
-	undefined uVar25;
-	ulonglong uVar26;
-	undefined uVar27;
-	int iVar29;
-	ulonglong uVar28;
-	undefined uVar30;
-	int iVar31;
-	int iVar32;
+	int iVar24;
+	int iVar25;
 	undefined8 unaff_r24;
-	ulonglong uVar33;
+	ulonglong uVar26;
 	undefined8 unaff_r25;
-	int iVar34;
+	int iVar27;
 	undefined8 unaff_r26;
-	int iVar35;
+	int iVar28;
 	undefined8 unaff_r27;
-	longlong lVar36;
-	undefined4 *puVar37;
+	longlong lVar29;
+	undefined4 *puVar30;
 	undefined8 unaff_r28;
+	ulonglong uVar31;
 	undefined8 unaff_r29;
 	undefined8 unaff_r30;
 	undefined8 unaff_r31;
-	longlong lVar38;
+	longlong lVar32;
 	byte local_b4[148];
 	undefined4 local_20;
 	undefined4 uStack28;
@@ -425,12 +389,10 @@ void codec_encode(uint *param_1, ulonglong param_2, ulonglong param_3, longlong 
 	undefined4 uStack8;
 	undefined4 uStack4;
 
-	uVar28 = SEXT48(param_8);
-	uVar26 = SEXT48(param_7);
-	lVar24 = (longlong)param_6;
-	lVar36 = (longlong)(int)param_1;
-	uVar10 = ZEXT48(register0x0000000c);
-	ppuVar11 = &toc;
+	lVar17 = (longlong)(int)pszPassword;
+	uVar31 = SEXT48((int)size);
+	lVar29 = (longlong)(int)pbSrcDst;
+	iVar14 = 0x100f8fd0;
 	local_20 = (undefined4)((ulonglong)unaff_r24 >> 0x20);
 	uStack28 = (undefined4)((ulonglong)unaff_r25 >> 0x20);
 	uStack24 = (undefined4)((ulonglong)unaff_r26 >> 0x20);
@@ -439,109 +401,100 @@ void codec_encode(uint *param_1, ulonglong param_2, ulonglong param_3, longlong 
 	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
 	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
 	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
-	puVar8 = (undefined *)(uVar10 - 0x110);
+	lVar1 = ZEXT48(register0x0000000c) - 0x110;
+	puVar8 = (undefined *)lVar1;
 	*(BADSPACEBASE **)puVar8 = register0x0000000c;
-	uVar33 = param_2;
-	uVar18 = param_3;
-	lVar21 = param_4;
-	uVar12 = codec_get_encoded_len(param_2, *puVar8);
-	if ((param_3 & 0xffffffff) != (uVar12 & 0xffffffff)) {
-		app_fatal((int)ppuVar11[-0x195e], uVar33, uVar18, lVar21, param_5, (int)lVar24, (int)uVar26,
-		    (int)uVar28, *(undefined4 *)(puVar8 + 8), puVar8[0xf], *(undefined4 *)(puVar8 + 0x18),
-		    *(undefined4 *)(puVar8 + 0x1c), *(undefined4 *)(puVar8 + 0x20),
-		    *(undefined4 *)(puVar8 + 0x24), *(undefined4 *)(puVar8 + 0x28),
-		    *(undefined4 *)(puVar8 + 0x2c), *(undefined4 *)(puVar8 + 0x30),
-		    *(undefined4 *)(puVar8 + 0x34));
+	uVar15 = (longlong)size_64;
+	DVar11 = codec_get_encoded_len(size, *puVar8);
+	if (((longlong)size_64 & 0xffffffffU) != (ulonglong)DVar11) {
+		app_fatal(*(char **)(iVar14 + -0x6578));
 	}
-	codec_init_key(1, (int)param_4, (char)uVar18, (char)lVar21, (char)param_5, (char)lVar24, (char)uVar26,
-	    (char)uVar28, *(undefined4 *)(puVar8 + 8), puVar8[0xf], *(undefined4 *)(puVar8 + 0x18));
-	uVar33 = 0;
+	codec_init_key(1, pszPassword, *puVar8);
+	uVar26 = 0;
 	while (true) {
-		uVar20 = (undefined)uVar18;
-		uVar22 = (undefined)lVar21;
-		uVar23 = (undefined)param_5;
-		uVar25 = (undefined)lVar24;
-		uVar27 = (undefined)uVar26;
-		uVar30 = (undefined)uVar28;
-		cVar9 = (char)(uVar10 - 0x110);
-		if ((param_2 & 0xffffffff) == 0)
+		uVar18 = (undefined)lVar17;
+		uVar19 = (undefined)in_r7;
+		uVar20 = (undefined)in_r8;
+		uVar21 = (undefined)in_r9;
+		uVar23 = (undefined)in_r10;
+		cVar9 = (char)lVar1;
+		if ((uVar31 & 0xffffffff) == 0)
 			break;
-		uVar33 = param_2;
-		if (0x3f < (param_2 & 0xffffffff)) {
-			uVar33 = 0x40;
+		uVar26 = uVar31;
+		if (0x3f < (uVar31 & 0xffffffff)) {
+			uVar26 = 0x40;
 		}
-		cVar19 = (char)uVar33;
-		cVar19 = cVar19;
-		memcpy(cVar9 + 'p', (char)lVar36, cVar19, uVar22, uVar23, uVar25, uVar27, uVar30, puVar8[0xb],
-		    puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
-		if ((uVar33 & 0xffffffff) < 0x40) {
-			memset(cVar9 + 'p' + cVar19, '@' - cVar19, cVar19, uVar22, uVar23, uVar25, uVar27, uVar30,
-			    puVar8[0xb], puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
+		cVar16 = (char)uVar26;
+		cVar16 = cVar16;
+		CopyMemory(cVar9 + 'p', (char)lVar29, cVar16, uVar18, uVar19, uVar20, uVar21, uVar23, puVar8[0xb], puVar8[0xf],
+		    *(undefined4 *)(puVar8 + 0x14));
+		if ((uVar26 & 0xffffffff) < 0x40) {
+			ZeroMemory(cVar9 + 'p' + cVar16, '@' - cVar16, cVar16, uVar18, uVar19, uVar20, uVar21, uVar23, puVar8[0xb],
+			    puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
 		}
-		SHA1Result(0, puVar8 + 0x5c, *puVar8);
-		SHA1Calculate(0, uVar10 - 0xa0, (uint *)0x0, uVar22, uVar23, uVar25, uVar27, uVar30,
-		    *(undefined4 *)(puVar8 + 8));
-		lVar13 = uVar10 - 0xa0;
-		lVar38 = 8;
-		lVar15 = 0;
+		// WARNING: Load size is inaccurate
+		SHA1Result(0, *(char *)(puVar8 + 8));
+		// WARNING: Load size is inaccurate
+		SHA1Calculate(0, puVar8 + 0x70, *(char *)(puVar8 + 8));
+		lVar10 = ZEXT48(register0x0000000c) - 0xa0;
+		lVar32 = 8;
+		lVar13 = 0;
 		do {
-			iVar16 = (int)lVar15;
-			iVar34 = iVar16 + 1;
-			iVar35 = iVar16 + 2;
-			pbVar14 = (byte *)lVar13;
-			iVar32 = iVar16 + 3;
-			uVar6 = iVar16 / 0x14 + (iVar16 >> 0x1f);
-			iVar31 = iVar16 + 4;
-			iVar29 = iVar16 + 5;
-			lVar24 = lVar15 + 6;
-			lVar21 = lVar15 + 7;
-			lVar15 = lVar15 + 8;
-			uVar7 = iVar34 / 0x14 + (iVar34 >> 0x1f);
-			*pbVar14 = local_b4[iVar16 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ *pbVar14;
-			uVar6 = iVar35 / 0x14 + (iVar35 >> 0x1f);
-			pbVar14[1] = local_b4[iVar34 + (uVar7 + (uVar7 >> 0x1f)) * -0x14] ^ pbVar14[1];
-			uVar7 = iVar32 / 0x14 + (iVar32 >> 0x1f);
-			pbVar14[2] = local_b4[iVar35 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ pbVar14[2];
-			uVar6 = iVar31 / 0x14 + (iVar31 >> 0x1f);
-			pbVar14[3] = local_b4[iVar32 + (uVar7 + (uVar7 >> 0x1f)) * -0x14] ^ pbVar14[3];
-			uVar7 = iVar29 / 0x14 + (iVar29 >> 0x1f);
-			pbVar14[4] = local_b4[iVar31 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ pbVar14[4];
-			iVar31 = (int)lVar24;
-			bVar1 = pbVar14[5];
-			uVar26 = (ulonglong)bVar1;
-			uVar6 = iVar31 / 0x14 + (iVar31 >> 0x1f);
-			iVar16 = (int)lVar21;
-			bVar2 = local_b4[iVar29 + (uVar7 + (uVar7 >> 0x1f)) * -0x14];
-			uVar28 = (ulonglong)bVar2;
-			pbVar14[5] = bVar2 ^ bVar1;
-			uVar7 = iVar16 / 0x14 + (iVar16 >> 0x1f);
-			bVar3 = local_b4[iVar31 + (uVar6 + (uVar6 >> 0x1f)) * -0x14];
-			param_5 = (ulonglong)bVar3;
-			pbVar14[6] = bVar3 ^ pbVar14[6];
-			bVar4 = local_b4[iVar16 + (uVar7 + (uVar7 >> 0x1f)) * -0x14];
-			pbVar14[7] = bVar4 ^ pbVar14[7];
+			iVar14 = (int)lVar13;
+			iVar27 = iVar14 + 1;
+			iVar28 = iVar14 + 2;
+			pbVar12 = (byte *)lVar10;
+			iVar25 = iVar14 + 3;
+			uVar6 = iVar14 / 0x14 + (iVar14 >> 0x1f);
+			iVar24 = iVar14 + 4;
+			iVar22 = iVar14 + 5;
+			in_r8 = lVar13 + 6;
+			lVar17 = lVar13 + 7;
 			lVar13 = lVar13 + 8;
-			lVar38 = lVar38 + -1;
-		} while (lVar38 != 0);
-		memset(cVar9 + '\\', 0x14, bVar4, (char)lVar21, bVar3, (char)lVar24, bVar1, bVar2, puVar8[0xb],
-		    puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
-		uVar18 = 0x40;
-		memcpy((char)lVar36, cVar9 + 'p', 0x40, (char)lVar21, (char)param_5, (char)lVar24, (char)uVar26,
-		    (char)uVar28, puVar8[0xb], puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
-		lVar36 = lVar36 + 0x40;
-		param_2 = param_2 - uVar33;
+			uVar7 = iVar27 / 0x14 + (iVar27 >> 0x1f);
+			*pbVar12 = local_b4[iVar14 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ *pbVar12;
+			uVar6 = iVar28 / 0x14 + (iVar28 >> 0x1f);
+			pbVar12[1] = local_b4[iVar27 + (uVar7 + (uVar7 >> 0x1f)) * -0x14] ^ pbVar12[1];
+			uVar7 = iVar25 / 0x14 + (iVar25 >> 0x1f);
+			pbVar12[2] = local_b4[iVar28 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ pbVar12[2];
+			uVar6 = iVar24 / 0x14 + (iVar24 >> 0x1f);
+			pbVar12[3] = local_b4[iVar25 + (uVar7 + (uVar7 >> 0x1f)) * -0x14] ^ pbVar12[3];
+			uVar7 = iVar22 / 0x14 + (iVar22 >> 0x1f);
+			pbVar12[4] = local_b4[iVar24 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ pbVar12[4];
+			iVar24 = (int)in_r8;
+			bVar2 = pbVar12[5];
+			in_r9 = (ulonglong)bVar2;
+			uVar6 = iVar24 / 0x14 + (iVar24 >> 0x1f);
+			iVar14 = (int)lVar17;
+			bVar3 = local_b4[iVar22 + (uVar7 + (uVar7 >> 0x1f)) * -0x14];
+			in_r10 = (ulonglong)bVar3;
+			pbVar12[5] = bVar3 ^ bVar2;
+			uVar7 = iVar14 / 0x14 + (iVar14 >> 0x1f);
+			bVar4 = local_b4[iVar24 + (uVar6 + (uVar6 >> 0x1f)) * -0x14];
+			in_r7 = (ulonglong)bVar4;
+			pbVar12[6] = bVar4 ^ pbVar12[6];
+			bVar5 = local_b4[iVar14 + (uVar7 + (uVar7 >> 0x1f)) * -0x14];
+			pbVar12[7] = bVar5 ^ pbVar12[7];
+			lVar10 = lVar10 + 8;
+			lVar32 = lVar32 + -1;
+		} while (lVar32 != 0);
+		ZeroMemory(cVar9 + '\\', 0x14, bVar5, (char)lVar17, bVar4, (char)in_r8, bVar2, bVar3, puVar8[0xb], puVar8[0xf],
+		    *(undefined4 *)(puVar8 + 0x14));
+		uVar15 = 0x40;
+		CopyMemory((char)lVar29, cVar9 + 'p', 0x40, (char)lVar17, (char)in_r7, (char)in_r8, (char)in_r9, (char)in_r10,
+		    puVar8[0xb], puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
+		lVar29 = lVar29 + 0x40;
+		uVar31 = uVar31 - uVar26;
 	}
-	memset(cVar9 + 'p', 0x80, uVar20, uVar22, uVar23, uVar25, uVar27, uVar30, puVar8[0xb], puVar8[0xf],
+	ZeroMemory(cVar9 + 'p', 0x80, (char)uVar15, uVar18, uVar19, uVar20, uVar21, uVar23, puVar8[0xb], puVar8[0xf],
 	    *(undefined4 *)(puVar8 + 0x14));
-	uVar17 = (undefined)(uVar10 - 200);
-	SHA1Result(0, (int)(uVar10 - 200), *puVar8);
-	uVar5 = *(undefined4 *)(puVar8 + 0x48);
-	puVar37 = (undefined4 *)lVar36;
-	*puVar37 = uVar5;
-	*(undefined *)(puVar37 + 1) = 0;
-	*(undefined *)((int)puVar37 + 5) = (char)uVar33;
-	*(undefined2 *)((int)puVar37 + 6) = 0;
-	SHA1Clear((char)uVar5, uVar17, uVar20, uVar22, uVar23, uVar25, uVar27, uVar30,
-	    *(undefined4 *)(puVar8 + 8));
+	// WARNING: Load size is inaccurate
+	SHA1Result(0, *(char *)(puVar8 + 8));
+	puVar30 = (undefined4 *)lVar29;
+	*puVar30 = *(undefined4 *)(puVar8 + 0x48);
+	*(undefined *)(puVar30 + 1) = 0;
+	*(undefined *)((int)puVar30 + 5) = (char)uVar26;
+	*(undefined2 *)((int)puVar30 + 6) = 0;
+	thunk_SHA1Clear(*puVar8);
 	return;
 }

@@ -1,67 +1,49 @@
 
-longlong doom_get_frame_from_time(void)
+int doom_get_frame_from_time(void)
 
 {
-	int iVar1;
-	uint uVar2;
+	uint uVar1;
 
-	iVar1 = *(int *)PTR_DAT_100f1a74;
-	if (iVar1 == 0x8ca1) {
+	if (_DAT_101291ec == 0x8ca1) {
 		return 0x1f;
 	}
-	uVar2 = iVar1 / 0x4b0 + (iVar1 >> 0x1f);
-	return ((longlong)(int)((ulonglong)((longlong)iVar1 * 0x1b4e81b5) >> 0x20) & 0xffffffff00000000U | (ulonglong)uVar2) + (ulonglong)(uVar2 >> 0x1f);
+	uVar1 = _DAT_101291ec / 0x4b0 + (_DAT_101291ec >> 0x1f);
+	return (int)(uVar1 + (uVar1 >> 0x1f));
 }
+
+// WARNING: Unknown calling convention yet parameter storage is locked
 
 void doom_alloc_cel(void)
 
 {
-	undefined **ppuVar1;
-	undefined *puVar2;
-	undefined8 in_r6;
-	undefined8 in_r7;
-	undefined4 in_r8;
-	undefined4 in_r9;
-	undefined4 in_r10;
-	undefined4 in_stack_ffffffc8;
-	undefined in_stack_ffffffcf;
-	undefined4 in_stack_ffffffe0;
+	int iVar1;
+	void *pvVar2;
 
-	ppuVar1 = &toc;
-	puVar2 = (undefined *)
-	    DiabloAllocPtr(0, 0x38000, 0x444f4f4d, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffc8,
-	        in_stack_ffffffcf, in_stack_ffffffe0);
-	ppuVar1[-0x13d0] = puVar2;
+	iVar1 = 0x100f8fd0;
+	pvVar2 = AllocateMemFile(0, (MEMFILE *)0x38000, 0x444f4f4d);
+	*(void **)(iVar1 + -0x4f40) = pvVar2;
 	return;
 }
 
-void doom_cleanup(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void doom_cleanup(void)
 
 {
-	undefined4 in_stack_ffffffc8;
-
-	mem_free_dbg((int **)&DAT_100f4090, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
+	MemFreeDbg((int **)&DAT_100f4090);
 	return;
 }
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+// WARNING: Unknown calling convention yet parameter storage is locked
 
 void doom_load_graphics(void)
 
 {
-	undefined **ppuVar1;
-	ulonglong uVar2;
-	undefined4 uVar3;
-	undefined8 in_r6;
-	undefined4 uVar4;
-	undefined4 uVar5;
-	undefined8 in_r7;
-	undefined4 uVar6;
+	int iVar1;
+	undefined4 in_r6;
+	undefined4 in_r7;
 	undefined4 in_r8;
 	undefined4 in_r9;
 	undefined4 in_r10;
-	ulonglong uVar7;
 	undefined4 in_stack_ffffffc8;
 	undefined in_stack_ffffffcf;
 	undefined4 in_stack_ffffffdc;
@@ -72,97 +54,80 @@ void doom_load_graphics(void)
 	undefined4 in_stack_fffffff0;
 	undefined4 in_stack_fffffff4;
 
-	uVar6 = (undefined4)in_r7;
-	uVar5 = (undefined4)((ulonglong)in_r7 >> 0x20);
-	uVar4 = (undefined4)in_r6;
-	uVar3 = (undefined4)((ulonglong)in_r6 >> 0x20);
-	ppuVar1 = &toc;
-	uVar7 = ZEXT48(PTR_DAT_100f191c);
-	uVar2 = (ulonglong)_DAT_100f408c;
+	iVar1 = 0x100f8fd0;
 	if (_DAT_100f408c == 0x1f) {
-		strcpy((int)PTR_DAT_100f191c, (int)PTR_s_Items_Map_MapZDoom_CEL_100f2bfc);
+		strcpy(&DAT_101282d4, "Items\\Map\\MapZDoom.CEL");
 	} else {
-		if ((int)_DAT_100f408c < 10) {
-			sprintf((int)PTR_DAT_100f191c, _DAT_100f2bf8, _DAT_100f408c, uVar4, uVar6, in_r8, in_r9, in_r10,
-			    in_stack_ffffffc8, in_stack_ffffffcf, in_stack_ffffffdc, in_stack_ffffffe0,
-			    in_stack_ffffffe4, in_stack_ffffffe8, in_stack_ffffffec, in_stack_fffffff0,
-			    in_stack_fffffff4);
+		if (_DAT_100f408c < 10) {
+			wsprintf((int)&DAT_101282d4, "Items\\Map\\MapZ000%i.CEL", _DAT_100f408c, in_r6, in_r7, in_r8, in_r9, in_r10,
+			    in_stack_ffffffc8, in_stack_ffffffcf, in_stack_ffffffdc, in_stack_ffffffe0, in_stack_ffffffe4,
+			    in_stack_ffffffe8, in_stack_ffffffec, in_stack_fffffff0, in_stack_fffffff4);
 		} else {
-			sprintf((int)PTR_DAT_100f191c, _DAT_100f2bf4, _DAT_100f408c, uVar4, uVar6, in_r8, in_r9, in_r10,
-			    in_stack_ffffffc8, in_stack_ffffffcf, in_stack_ffffffdc, in_stack_ffffffe0,
-			    in_stack_ffffffe4, in_stack_ffffffe8, in_stack_ffffffec, in_stack_fffffff0,
-			    in_stack_fffffff4);
+			wsprintf((int)&DAT_101282d4, "Items\\Map\\MapZ00%i.CEL", _DAT_100f408c, in_r6, in_r7, in_r8, in_r9, in_r10,
+			    in_stack_ffffffc8, in_stack_ffffffcf, in_stack_ffffffdc, in_stack_ffffffe0, in_stack_ffffffe4,
+			    in_stack_ffffffe8, in_stack_ffffffec, in_stack_fffffff0, in_stack_fffffff4);
 		}
 	}
-	LoadFileWithMem(uVar7, ZEXT48(ppuVar1[-0x13d0]), uVar2, CONCAT44(uVar3, uVar4), CONCAT44(uVar5, uVar6),
-	    in_r8, in_r9, in_r10, in_stack_ffffffc8);
-	FUN_100b8f64((int)ppuVar1[-0x13d0]);
+	LoadFileWithMemLock(&DAT_101282d4, *(void **)(iVar1 + -0x4f40));
+	FUN_100b8f64(*(int *)(iVar1 + -0x4f40));
 	return;
 }
 
-void doom_init(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void doom_init(void)
 
 {
-	undefined *puVar1;
-	undefined **ppuVar2;
-	longlong lVar3;
+	int iVar1;
+	int iVar2;
 
-	puVar1 = PTR_DAT_100f1958;
-	ppuVar2 = &toc;
-	*(undefined4 *)PTR_DAT_100f1958 = 1;
-	doom_alloc_cel(puVar1, param_2, param_3, param_4, param_5, param_6, param_7, param_8);
-	lVar3 = doom_get_frame_from_time();
-	if ((int)lVar3 == 0x1f) {
-		ppuVar2[-0x13d1] = (undefined *)0x1f;
+	iVar1 = 0x100f8fd0;
+	_DAT_101291f0 = 1;
+	doom_alloc_cel();
+	iVar2 = doom_get_frame_from_time();
+	if (iVar2 == 0x1f) {
+		*(undefined4 *)(iVar1 + -0x4f44) = 0x1f;
 	} else {
-		ppuVar2[-0x13d1] = (undefined *)0x0;
+		*(undefined4 *)(iVar1 + -0x4f44) = 0;
 	}
 	doom_load_graphics();
 	return;
 }
 
-void doom_close(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void doom_close(void)
 
 {
-	undefined *puVar1;
-	undefined4 in_stack_ffffffc8;
-
-	puVar1 = PTR_DAT_100f1958;
-	if (*(int *)PTR_DAT_100f1958 != 0) {
-		*(undefined4 *)PTR_DAT_100f1958 = 0;
-		doom_cleanup((char)puVar1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_ffffffc8);
+	if (_DAT_101291f0 != 0) {
+		_DAT_101291f0 = 0;
+		doom_cleanup();
 	}
 	return;
 }
 
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+// WARNING: Unknown calling convention yet parameter storage is locked
+
 void doom_draw(void)
 
 {
-	undefined **ppuVar1;
-	longlong lVar2;
-	undefined4 in_r8;
-	undefined4 in_r9;
-	undefined4 in_r10;
-	undefined4 in_stack_ffffffc8;
+	int iVar1;
+	int iVar2;
 
-	ppuVar1 = &toc;
-	if (*(int *)PTR_DAT_100f1958 != 0) {
+	iVar1 = 0x100f8fd0;
+	if (_DAT_101291f0 != 0) {
 		if ((_DAT_100f408c != 0x1f) && (_DAT_100f4088 = _DAT_100f4088 + 1, 4 < _DAT_100f4088)) {
 			_DAT_100f408c = _DAT_100f408c + 1;
 			_DAT_100f4088 = 0;
-			ppuVar1 = &toc;
-			lVar2 = doom_get_frame_from_time();
-			if ((int)lVar2 < (int)ppuVar1[-0x13d1]) {
-				ppuVar1[-0x13d1] = (undefined *)0x0;
+			iVar1 = 0x100f8fd0;
+			iVar2 = doom_get_frame_from_time();
+			if (iVar2 < *(int *)(iVar1 + -0x4f44)) {
+				*(undefined4 *)(iVar1 + -0x4f44) = 0;
 			}
 			doom_load_graphics();
 		}
-		CelDecodeOnly(0x40, 0x1ff, ZEXT48(ppuVar1[-0x13d0]), 1, 0x280, in_r8, in_r9, in_r10, in_stack_ffffffc8);
+		CelDecodeOnly(0x40, 0x1ff, *(BYTE **)(iVar1 + -0x4f40), 1, 0x280);
 	}
 	return;
 }

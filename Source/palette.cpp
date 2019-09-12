@@ -1,228 +1,200 @@
 
-void palette_update(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void palette_update(void)
 
 {
-	undefined **ppuVar1;
+	int iVar1;
 	ulonglong uVar2;
+	undefined in_r4;
+	undefined in_r5;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffc8;
 
-	ppuVar1 = &toc;
-	uVar2 = FUN_10016eb0();
+	iVar1 = 0x100f8fd0;
+	uVar2 = is_fullscreen();
 	if ((int)uVar2 != 0) {
-		SDrawUpdatePalette_wrapper2((char)ppuVar1[-0x16b9], param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_ffffffc8);
+		SDrawUpdatePalette(
+		    (char)*(undefined4 *)(iVar1 + -0x5ae4), in_r4, in_r5, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffc8);
 	}
 	return;
 }
 
-void ApplyGamma(undefined *param_1, byte *param_2, int param_3, undefined param_4, undefined param_5,
-    undefined param_6, undefined param_7, undefined param_8, undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void ApplyGamma(undefined *param_1,
+    byte *param_2,
+    int param_3,
+    undefined param_4,
+    undefined param_5,
+    undefined param_6,
+    undefined param_7,
+    undefined param_8,
+    undefined4 param_9)
 
 {
 	int iVar1;
 	double dVar2;
+	double _Y;
 	double dVar3;
 	double dVar4;
 	double dVar5;
-	double dVar6;
 
 	iVar1 = 0;
-	dVar3 = ((double)CONCAT44(0x43300000, _DAT_100f4318 ^ 0x80000000) - _DAT_100f4338) / _DAT_100f4350;
-	dVar4 = _DAT_100f4330;
-	dVar5 = _DAT_100f4340;
-	dVar6 = _DAT_100f4348;
+	_Y = ((double)CONCAT44(0x43300000, _DAT_100f4318 ^ 0x80000000) - _DAT_100f4338) / _DAT_100f4350;
+	dVar3 = _DAT_100f4330;
+	dVar4 = _DAT_100f4340;
+	dVar5 = _DAT_100f4348;
 	while (iVar1 < param_3) {
-		dVar2 = pow(((double)CONCAT44(0x43300000, (uint)*param_2) - dVar4) * dVar5, dVar3);
-		*param_1 = (char)(int)(dVar6 * dVar2);
-		dVar2 = pow(((double)CONCAT44(0x43300000, (uint)param_2[1]) - dVar4) * dVar5, dVar3);
-		param_1[1] = (char)(int)(dVar6 * dVar2);
-		dVar2 = pow(((double)CONCAT44(0x43300000, (uint)param_2[2]) - dVar4) * dVar5, dVar3);
+		dVar2 = pow(((double)CONCAT44(0x43300000, (uint)*param_2) - dVar3) * dVar4, _Y);
+		*param_1 = (char)(int)(dVar5 * dVar2);
+		dVar2 = pow(((double)CONCAT44(0x43300000, (uint)param_2[1]) - dVar3) * dVar4, _Y);
+		param_1[1] = (char)(int)(dVar5 * dVar2);
+		dVar2 = pow(((double)CONCAT44(0x43300000, (uint)param_2[2]) - dVar3) * dVar4, _Y);
 		iVar1 = iVar1 + 1;
 		param_2 = param_2 + 4;
-		param_1[2] = (char)(int)(dVar6 * dVar2);
+		param_1[2] = (char)(int)(dVar5 * dVar2);
 		param_1 = param_1 + 4;
 	}
 	return;
 }
 
-void SaveGamma(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void SaveGamma(void)
 
 {
-	undefined uVar1;
-	undefined in_stack_ffffffcb;
-	undefined in_stack_ffffffcf;
 	int local_2c;
 
-	uVar1 = SUB41(PTR_s_Diablo_100f1a08, 0);
-	SRegSaveValue(uVar1, (char)PTR_s_Gamma_Correction_100f34e8, 0, (char)_DAT_100f4318, param_5, param_6,
-	    param_7, param_8, in_stack_ffffffcb, in_stack_ffffffcf, local_2c);
-	SRegSaveValue(uVar1, (char)*(undefined4 *)(local_2c + -0x5aec), 0,
-	    (char)*(undefined4 *)(local_2c + -0x4cb4), param_5, param_6, param_7, param_8,
-	    in_stack_ffffffcb, in_stack_ffffffcf, local_2c);
+	SRegSaveValue(s_Diablo_1010ca40, s_Gamma_Correction_1010e8b8, '\0', _DAT_100f4318);
+	SRegSaveValue(s_Diablo_1010ca40, *(char **)(local_2c + -0x5aec), '\0', *(DWORD *)(local_2c + -0x4cb4));
 	return;
 }
 
-void LoadGamma(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void LoadGamma(void)
 
 {
 	uint uVar1;
-	int iVar2;
-	char cVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	int iVar6;
-	int iVar7;
+	BOOL BVar2;
+	int local_3c;
+	int local_18[6];
 
-	puVar5 = PTR_s_Gamma_Correction_100f34e8;
-	puVar4 = PTR_s_Diablo_100f1a08;
-	iVar2 = (int)(ZEXT48(register0x0000000c) - 0x50);
-	*(BADSPACEBASE **)iVar2 = register0x0000000c;
-	cVar3 = (char)(ZEXT48(register0x0000000c) - 0x50);
-	*(undefined4 *)(iVar2 + 0x38) = _DAT_100f4318;
-	iVar6 = SRegLoadValue((char)puVar4, (char)puVar5, 0, cVar3 + '8', param_5, param_6, param_7, param_8,
-	    *(undefined *)(iVar2 + 0xb), *(undefined *)(iVar2 + 0xf),
-	    *(undefined4 *)(iVar2 + 0x14));
-	iVar7 = *(int *)(iVar2 + 0x14);
-	if (iVar6 == 0) {
-		*(undefined4 *)(iVar2 + 0x38) = 100;
+	local_18[0] = _DAT_100f4318;
+	BVar2 = SRegLoadValue(s_Diablo_1010ca40, s_Gamma_Correction_1010e8b8, '\0', local_18);
+	if (BVar2 == 0) {
+		local_18[0] = 100;
 	}
-	*(undefined4 *)(iVar7 + -0x4cb8) = *(undefined4 *)(iVar2 + 0x38);
-	if (*(int *)(iVar7 + -0x4cb8) < 0x1e) {
-		*(undefined4 *)(iVar7 + -0x4cb8) = 0x1e;
+	*(int *)(local_3c + -0x4cb8) = local_18[0];
+	if (*(int *)(local_3c + -0x4cb8) < 0x1e) {
+		*(undefined4 *)(local_3c + -0x4cb8) = 0x1e;
 	} else {
-		if (100 < *(int *)(iVar7 + -0x4cb8)) {
-			*(undefined4 *)(iVar7 + -0x4cb8) = 100;
+		if (100 < *(int *)(local_3c + -0x4cb8)) {
+			*(undefined4 *)(local_3c + -0x4cb8) = 100;
 		}
 	}
-	uVar1 = *(int *)(iVar7 + -0x4cb8) / 5 + (*(int *)(iVar7 + -0x4cb8) >> 0x1f);
-	*(int *)(iVar7 + -0x4cb8) = (uVar1 + (uVar1 >> 0x1f)) * 5;
-	iVar7 = SRegLoadValue((char)puVar4, (char)*(undefined4 *)(iVar7 + -0x5aec), 0, cVar3 + '8', param_5,
-	    param_6, param_7, param_8, *(undefined *)(iVar2 + 0xb),
-	    *(undefined *)(iVar2 + 0xf), *(undefined4 *)(iVar2 + 0x14));
-	if (iVar7 == 0) {
-		*(undefined4 *)(iVar2 + 0x38) = 1;
+	uVar1 = *(int *)(local_3c + -0x4cb8) / 5 + (*(int *)(local_3c + -0x4cb8) >> 0x1f);
+	*(int *)(local_3c + -0x4cb8) = (uVar1 + (uVar1 >> 0x1f)) * 5;
+	BVar2 = SRegLoadValue(s_Diablo_1010ca40, *(char **)(local_3c + -0x5aec), '\0', local_18);
+	if (BVar2 == 0) {
+		local_18[0] = 1;
 	}
-	*(undefined4 *)(*(int *)(iVar2 + 0x14) + -0x4cb4) = *(undefined4 *)(iVar2 + 0x38);
+	*(int *)(local_3c + -0x4cb4) = local_18[0];
 	return;
 }
 
-ulonglong palette_init(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void palette_init(void)
 
 {
-	uint uVar1;
-	undefined **ppuVar2;
-	ulonglong uVar3;
-	undefined4 in_stack_ffffffc8;
-	undefined uVar4;
+	int iVar1;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
+	undefined in_stack_ffffffcb;
 	undefined in_stack_ffffffcf;
 	undefined4 local_2c;
 
-	uVar1 = _DAT_100f34ec;
-	uVar4 = (undefined)in_stack_ffffffc8;
-	ppuVar2 = &toc;
-	uVar3 = (ulonglong)_DAT_100f34ec;
-	LoadGamma(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
-	memcpy((char)uVar1, (char)ppuVar2[-0x16bc], 0, param_4, param_5, param_6, param_7, param_8, uVar4,
+	iVar1 = 0x100f8fd0;
+	LoadGamma();
+	CopyMemory(0x5c, (char)*(undefined4 *)(iVar1 + -0x5af0), 0, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffcb,
 	    in_stack_ffffffcf, local_2c);
-	return uVar3;
-}
-
-void LoadPalette(undefined8 param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
-
-{
-	undefined **ppuVar1;
-	undefined uVar4;
-	longlong lVar2;
-	undefined *puVar3;
-	undefined uVar6;
-	undefined *puVar5;
-	undefined uVar7;
-	undefined uVar8;
-	undefined uVar9;
-	undefined uVar10;
-	undefined uVar11;
-	longlong lVar12;
-	undefined4 in_stack_fffffcb8;
-	uint local_310;
-
-	uVar8 = (undefined)param_5;
-	uVar7 = (undefined)param_4;
-	uVar11 = (undefined)param_8;
-	uVar10 = (undefined)param_7;
-	uVar9 = (undefined)param_6;
-	ppuVar1 = &toc;
-	WOpenFile(param_1, ZEXT48(register0x0000000c) - 0x310, 0, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_fffffcb8);
-	uVar4 = 0xf4;
-	uVar6 = 0;
-	WReadFile((ulonglong)local_310);
-	WCloseFile((char)local_310, uVar4, uVar6, uVar7, uVar8, uVar9, uVar10, uVar11, in_stack_fffffcb8);
-	puVar5 = ppuVar1[-0x16bc];
-	lVar12 = 0x20;
-	lVar2 = ZEXT48(register0x0000000c) - 0x30c;
-	do {
-		puVar3 = (undefined *)lVar2;
-		*puVar5 = *puVar3;
-		puVar5[1] = puVar3[1];
-		puVar5[2] = puVar3[2];
-		puVar5[3] = 0;
-		puVar5[4] = puVar3[3];
-		puVar5[5] = puVar3[4];
-		puVar5[6] = puVar3[5];
-		puVar5[7] = 0;
-		puVar5[8] = puVar3[6];
-		puVar5[9] = puVar3[7];
-		puVar5[10] = puVar3[8];
-		puVar5[0xb] = 0;
-		puVar5[0xc] = puVar3[9];
-		puVar5[0xd] = puVar3[10];
-		puVar5[0xe] = puVar3[0xb];
-		puVar5[0xf] = 0;
-		puVar5[0x10] = puVar3[0xc];
-		puVar5[0x11] = puVar3[0xd];
-		puVar5[0x12] = puVar3[0xe];
-		puVar5[0x13] = 0;
-		puVar5[0x14] = puVar3[0xf];
-		puVar5[0x15] = puVar3[0x10];
-		puVar5[0x16] = puVar3[0x11];
-		puVar5[0x17] = 0;
-		puVar5[0x18] = puVar3[0x12];
-		puVar5[0x19] = puVar3[0x13];
-		puVar5[0x1a] = puVar3[0x14];
-		puVar5[0x1b] = 0;
-		puVar5[0x1c] = puVar3[0x15];
-		puVar5[0x1d] = puVar3[0x16];
-		lVar2 = lVar2 + 0x18;
-		puVar5[0x1e] = puVar3[0x17];
-		puVar5[0x1f] = 0;
-		puVar5 = puVar5 + 0x20;
-		lVar12 = lVar12 + -1;
-	} while (lVar12 != 0);
 	return;
 }
 
-void LoadRndLvlPal(longlong param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
+void LoadPalette(char *pszFileName)
 
 {
-	undefined **ppuVar1;
-	longlong lVar2;
-	ulonglong uVar3;
-	longlong lVar4;
+	undefined *puVar1;
+	int iVar2;
+	undefined *puVar3;
+	undefined *puVar4;
+	longlong lVar5;
+	ulong local_310;
+	undefined local_30c[780];
+
+	iVar2 = 0x100f8fd0;
+	WOpenFile(pszFileName, &local_310, 0);
+	WReadFile(local_310, local_30c, 0x300);
+	WCloseFile(local_310);
+	puVar4 = *(undefined **)(iVar2 + -0x5af0);
+	lVar5 = 0x20;
+	puVar3 = local_30c;
+	do {
+		*puVar4 = *puVar3;
+		puVar4[1] = puVar3[1];
+		puVar4[2] = puVar3[2];
+		puVar4[3] = 0;
+		puVar4[4] = puVar3[3];
+		puVar4[5] = puVar3[4];
+		puVar4[6] = puVar3[5];
+		puVar4[7] = 0;
+		puVar4[8] = puVar3[6];
+		puVar4[9] = puVar3[7];
+		puVar4[10] = puVar3[8];
+		puVar4[0xb] = 0;
+		puVar4[0xc] = puVar3[9];
+		puVar4[0xd] = puVar3[10];
+		puVar4[0xe] = puVar3[0xb];
+		puVar4[0xf] = 0;
+		puVar4[0x10] = puVar3[0xc];
+		puVar4[0x11] = puVar3[0xd];
+		puVar4[0x12] = puVar3[0xe];
+		puVar4[0x13] = 0;
+		puVar4[0x14] = puVar3[0xf];
+		puVar4[0x15] = puVar3[0x10];
+		puVar4[0x16] = puVar3[0x11];
+		puVar4[0x17] = 0;
+		puVar4[0x18] = puVar3[0x12];
+		puVar4[0x19] = puVar3[0x13];
+		puVar4[0x1a] = puVar3[0x14];
+		puVar4[0x1b] = 0;
+		puVar4[0x1c] = puVar3[0x15];
+		puVar4[0x1d] = puVar3[0x16];
+		puVar1 = puVar3 + 0x17;
+		puVar3 = puVar3 + 0x18;
+		puVar4[0x1e] = *puVar1;
+		puVar4[0x1f] = 0;
+		puVar4 = puVar4 + 0x20;
+		lVar5 = lVar5 + -1;
+	} while (lVar5 != 0);
+	return;
+}
+
+void LoadRndLvlPal(int l)
+
+{
+	int iVar1;
+	int iVar2;
+	undefined4 in_r8;
+	undefined4 in_r9;
+	undefined4 in_r10;
 	undefined4 in_stack_fffffeb8;
 	undefined in_stack_fffffebf;
-	undefined1 in_stack_fffffecb;
 	undefined4 in_stack_fffffecc;
 	undefined4 in_stack_fffffed0;
 	undefined4 in_stack_fffffed4;
@@ -230,58 +202,43 @@ void LoadRndLvlPal(longlong param_1, undefined8 param_2, undefined8 param_3, und
 	undefined4 in_stack_fffffedc;
 	undefined4 in_stack_fffffee0;
 	undefined4 in_stack_fffffee4;
-	undefined auStack280[280];
+	char acStack280[280];
 
-	ppuVar1 = &toc;
-	if (param_1 == 0) {
-		LoadPalette((ulonglong)_DAT_100f34dc, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_fffffeb8);
+	iVar1 = 0x100f8fd0;
+	if (l == 0) {
+		LoadPalette("Levels\\TownData\\Town.pal");
 	} else {
-		lVar2 = random(0, 4, (char)param_3, (char)param_4, (char)param_5, (char)param_6, (char)param_7,
-		    (char)param_8, in_stack_fffffeb8, in_stack_fffffebf, in_stack_fffffecb);
-		uVar3 = ZEXT48(ppuVar1[-0x16be]);
-		lVar2 = lVar2 + 1;
-		lVar4 = param_1;
-		sprintf((int)auStack280, ppuVar1[-0x16be], (int)param_1, (int)param_1, (int)lVar2, param_6,
-		    param_7, param_8, in_stack_fffffeb8, in_stack_fffffebf, in_stack_fffffecc,
-		    in_stack_fffffed0, in_stack_fffffed4, in_stack_fffffed8, in_stack_fffffedc,
-		    in_stack_fffffee0, in_stack_fffffee4);
-		LoadPalette(ZEXT48(register0x0000000c) - 0x118, uVar3, param_1, lVar4, lVar2, param_6, param_7,
-		    param_8, in_stack_fffffeb8);
+		iVar2 = random('\0', 4);
+		wsprintf((int)acStack280, *(undefined4 *)(iVar1 + -0x5af8), l, l, iVar2 + 1, in_r8, in_r9, in_r10,
+		    in_stack_fffffeb8, in_stack_fffffebf, in_stack_fffffecc, in_stack_fffffed0, in_stack_fffffed4,
+		    in_stack_fffffed8, in_stack_fffffedc, in_stack_fffffee0, in_stack_fffffee4);
+		LoadPalette(acStack280);
 	}
 	return;
 }
 
-void ResetPal(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void ResetPal(void)
 
 {
 	undefined8 uVar1;
-	undefined4 in_stack_ffffffc8;
 
-	uVar1 = FUN_10016ebc();
-	uVar1._7_1_ = (undefined)uVar1;
-	if ((int)uVar1 != 0) {
-		uVar1 = FUN_10016ec4();
-		uVar1._7_1_ = (undefined)uVar1;
-		if ((int)uVar1 == 0) {
-			return;
-		}
+	uVar1 = IsLost();
+	if (((int)uVar1 == 0) || (uVar1 = Restore(), (int)uVar1 != 0)) {
+		ResetPal();
 	}
-	SDrawUpdatePalette_wrapper((undefined)uVar1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
 	return;
 }
 
-void IncreaseGamma(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void IncreaseGamma(void)
 
 {
-	undefined uVar1;
-	undefined uVar2;
-	undefined uVar3;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffc8;
 
 	if (_DAT_100f4318 < 100) {
@@ -289,23 +246,22 @@ void IncreaseGamma(undefined param_1, undefined param_2, undefined param_3, unde
 		if (100 < _DAT_100f4318) {
 			_DAT_100f4318 = 100;
 		}
-		uVar3 = 0;
-		uVar2 = SUB41(_DAT_100f34d4, 0);
-		uVar1 = ApplyGamma(_DAT_100f34ec, _DAT_100f34d4, 0x100, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_ffffffc8);
-		palette_update(uVar1, uVar2, uVar3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+		ApplyGamma(&DAT_10181f5c, &DAT_1018235c, 0x100, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffc8);
+		palette_update();
 	}
 	return;
 }
 
-void UpdateGamma(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void DecreaseGamma(void)
 
 {
-	undefined uVar1;
-	undefined uVar2;
-	undefined uVar3;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffc8;
 
 	if (0x1e < _DAT_100f4318) {
@@ -313,356 +269,278 @@ void UpdateGamma(undefined param_1, undefined param_2, undefined param_3, undefi
 		if (_DAT_100f4318 < 0x1e) {
 			_DAT_100f4318 = 0x1e;
 		}
-		uVar3 = 0;
-		uVar2 = SUB41(_DAT_100f34d4, 0);
-		uVar1 = ApplyGamma(_DAT_100f34ec, _DAT_100f34d4, 0x100, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_ffffffc8);
-		palette_update(uVar1, uVar2, uVar3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+		ApplyGamma(&DAT_10181f5c, &DAT_1018235c, 0x100, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffc8);
+		palette_update();
 	}
 	return;
 }
 
-longlong UpdateGamma(int param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+int UpdateGamma(int gamma)
 
 {
-	undefined **ppuVar1;
-	undefined uVar2;
-	undefined uVar3;
-	undefined uVar4;
+	int iVar1;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffc8;
 
-	ppuVar1 = &toc;
-	if (param_1 != 0) {
-		_DAT_100f4318 = 0x82 - param_1;
-		uVar4 = 0;
-		uVar3 = SUB41(_DAT_100f34d4, 0);
-		ppuVar1 = &toc;
-		uVar2 = ApplyGamma(_DAT_100f34ec, _DAT_100f34d4, 0x100, param_4, param_5, param_6, param_7, param_8,
-		    in_stack_ffffffc8);
-		palette_update(uVar2, uVar3, uVar4, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+	iVar1 = 0x100f8fd0;
+	if (gamma != 0) {
+		_DAT_100f4318 = 0x82 - gamma;
+		iVar1 = 0x100f8fd0;
+		ApplyGamma(&DAT_10181f5c, &DAT_1018235c, 0x100, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffc8);
+		palette_update();
 	}
-	return 0x82 - ZEXT48(ppuVar1[-0x132e]);
+	return 0x82 - *(int *)(iVar1 + -0x4cb8);
 }
 
-void SetFadeLevel(int param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void SetFadeLevel(DWORD fadeval)
 
 {
 	byte *pbVar1;
-	undefined **ppuVar2;
+	int iVar2;
 	ulonglong uVar3;
 	byte *pbVar4;
-	undefined uVar5;
-	undefined *puVar6;
-	undefined uVar7;
-	longlong lVar8;
-	undefined4 in_stack_ffffffc8;
-	undefined in_stack_ffffffcf;
-	undefined4 local_2c;
+	undefined *puVar5;
+	longlong lVar6;
 
-	ppuVar2 = &toc;
-	uVar3 = FUN_10016eb0();
+	iVar2 = 0x100f8fd0;
+	uVar3 = is_fullscreen();
 	if ((int)uVar3 != 0) {
-		pbVar4 = ppuVar2[-0x16bf];
-		lVar8 = 0x33;
-		uVar3 = ZEXT48(ppuVar2[-0x16b9]);
+		pbVar4 = *(byte **)(iVar2 + -0x5afc);
+		lVar6 = 0x33;
+		puVar5 = *(undefined **)(iVar2 + -0x5ae4);
 		do {
-			puVar6 = (undefined *)uVar3;
-			*puVar6 = (char)(param_1 * (uint)*pbVar4 >> 8);
-			puVar6[1] = (char)(param_1 * (uint)pbVar4[1] >> 8);
-			puVar6[2] = (char)(param_1 * (uint)pbVar4[2] >> 8);
-			puVar6[4] = (char)(param_1 * (uint)pbVar4[4] >> 8);
-			puVar6[5] = (char)(param_1 * (uint)pbVar4[5] >> 8);
-			puVar6[6] = (char)(param_1 * (uint)pbVar4[6] >> 8);
-			puVar6[8] = (char)(param_1 * (uint)pbVar4[8] >> 8);
-			puVar6[9] = (char)(param_1 * (uint)pbVar4[9] >> 8);
-			puVar6[10] = (char)(param_1 * (uint)pbVar4[10] >> 8);
-			puVar6[0xc] = (char)(param_1 * (uint)pbVar4[0xc] >> 8);
-			puVar6[0xd] = (char)(param_1 * (uint)pbVar4[0xd] >> 8);
-			puVar6[0xe] = (char)(param_1 * (uint)pbVar4[0xe] >> 8);
-			puVar6[0x10] = (char)(param_1 * (uint)pbVar4[0x10] >> 8);
-			puVar6[0x11] = (char)(param_1 * (uint)pbVar4[0x11] >> 8);
+			*puVar5 = (char)(fadeval * (uint)*pbVar4 >> 8);
+			puVar5[1] = (char)(fadeval * (uint)pbVar4[1] >> 8);
+			puVar5[2] = (char)(fadeval * (uint)pbVar4[2] >> 8);
+			puVar5[4] = (char)(fadeval * (uint)pbVar4[4] >> 8);
+			puVar5[5] = (char)(fadeval * (uint)pbVar4[5] >> 8);
+			puVar5[6] = (char)(fadeval * (uint)pbVar4[6] >> 8);
+			puVar5[8] = (char)(fadeval * (uint)pbVar4[8] >> 8);
+			puVar5[9] = (char)(fadeval * (uint)pbVar4[9] >> 8);
+			puVar5[10] = (char)(fadeval * (uint)pbVar4[10] >> 8);
+			puVar5[0xc] = (char)(fadeval * (uint)pbVar4[0xc] >> 8);
+			puVar5[0xd] = (char)(fadeval * (uint)pbVar4[0xd] >> 8);
+			puVar5[0xe] = (char)(fadeval * (uint)pbVar4[0xe] >> 8);
+			puVar5[0x10] = (char)(fadeval * (uint)pbVar4[0x10] >> 8);
+			puVar5[0x11] = (char)(fadeval * (uint)pbVar4[0x11] >> 8);
 			pbVar1 = pbVar4 + 0x12;
 			pbVar4 = pbVar4 + 0x14;
-			puVar6[0x12] = (char)(param_1 * (uint)*pbVar1 >> 8);
-			uVar3 = uVar3 + 0x14;
-			uVar7 = (undefined)uVar3;
-			lVar8 = lVar8 + -1;
-		} while (lVar8 != 0);
-		Sleep(3, uVar7, param_3, param_4, param_5, param_6, param_7, param_8, (char)in_stack_ffffffc8,
-		    in_stack_ffffffcf, local_2c);
-		uVar5 = FUN_10016eac();
-		palette_update(uVar5, uVar7, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+			puVar5[0x12] = (char)(fadeval * (uint)*pbVar1 >> 8);
+			puVar5 = puVar5 + 0x14;
+			lVar6 = lVar6 + -1;
+		} while (lVar6 != 0);
+		Sleep(3);
+		WaitForVerticalBlank();
+		palette_update();
 	}
 	return;
 }
 
-void BlackPalette(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void BlackPalette(void)
 
 {
-	undefined4 in_stack_ffffffc8;
-
-	SetFadeLevel(0, param_2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+	SetFadeLevel(0);
 	return;
 }
 
-void PaletteFadeIn(int param_1, undefined param_2, undefined param_3, char param_4, char param_5,
-    char param_6, char param_7, char param_8, undefined4 param_9)
+void PaletteFadeIn(int fr)
 
 {
-	undefined *puVar1;
-	undefined *puVar2;
-	undefined8 uVar3;
-	longlong lVar4;
-	undefined uVar5;
-	longlong lVar6;
-	undefined uVar7;
-	longlong lVar8;
-	undefined uVar9;
-	longlong lVar10;
-	undefined uVar11;
-	longlong lVar12;
-	undefined uVar13;
-	int iVar14;
-	ulonglong uVar15;
+	undefined in_r6;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
+	DWORD fadeval;
 	undefined4 in_stack_ffffffb8;
-	undefined uVar16;
+	undefined uVar1;
 	undefined in_stack_ffffffbf;
 	int local_3c;
 
-	puVar2 = PTR_DAT_100f34e0;
-	puVar1 = _DAT_100f34d4;
-	lVar12 = (longlong)param_8;
-	lVar10 = (longlong)param_7;
-	lVar8 = (longlong)param_6;
-	lVar6 = (longlong)param_5;
-	lVar4 = (longlong)param_4;
-	uVar15 = ZEXT48(PTR_DAT_100f34e0);
-	uVar3 = 0;
-	ApplyGamma(_DAT_100f34d4, PTR_DAT_100f34e0, 0x100, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffb8);
-	iVar14 = 0;
-	while (true) {
-		uVar16 = (undefined)in_stack_ffffffb8;
-		uVar5 = (undefined)lVar4;
-		uVar7 = (undefined)lVar6;
-		uVar9 = (undefined)lVar8;
-		uVar11 = (undefined)lVar10;
-		uVar13 = (undefined)lVar12;
-		if (0xff < iVar14)
-			break;
-		SetFadeLevel(iVar14, (char)uVar15, (char)uVar3, uVar5, uVar7, uVar9, uVar11, uVar13, in_stack_ffffffb8);
-		iVar14 = iVar14 + param_1;
+	ApplyGamma(&DAT_1018235c, &DAT_1018275c, 0x100, in_r6, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffb8);
+	fadeval = 0;
+	while (uVar1 = (undefined)in_stack_ffffffb8, (int)fadeval < 0x100) {
+		SetFadeLevel(fadeval);
+		fadeval = fadeval + fr;
 	}
-	SetFadeLevel(0x100, (char)uVar15, (char)uVar3, uVar5, uVar7, uVar9, uVar11, uVar13, in_stack_ffffffb8);
-	memcpy((char)puVar1, (char)puVar2, 0, uVar5, uVar7, uVar9, uVar11, uVar13, uVar16, in_stack_ffffffbf,
-	    local_3c);
+	SetFadeLevel(0x100);
+	CopyMemory(0x5c, 0x5c, 0, in_r6, in_r7, in_r8, in_r9, in_r10, uVar1, in_stack_ffffffbf, local_3c);
 	*(undefined *)(local_3c + -0x4cb0) = 1;
 	return;
 }
 
-void PaletteFadeOut(int param_1, char param_2, char param_3, char param_4, char param_5, char param_6,
-    char param_7, char param_8, undefined4 param_9)
+void PaletteFadeOut(int fr)
 
 {
-	ulonglong uVar1;
+	undefined8 uVar1;
 	int iVar2;
-	longlong lVar3;
-	longlong lVar4;
-	longlong lVar5;
-	longlong lVar6;
-	longlong lVar7;
-	longlong lVar8;
-	longlong lVar9;
-	int iVar10;
-	undefined4 in_stack_ffffffc8;
+	DWORD fadeval;
 
-	lVar9 = (longlong)param_8;
-	lVar8 = (longlong)param_7;
-	lVar7 = (longlong)param_6;
-	lVar6 = (longlong)param_5;
-	lVar5 = (longlong)param_4;
-	lVar4 = (longlong)param_3;
-	lVar3 = (longlong)param_2;
-	uVar1 = ZEXT48(&toc);
+	uVar1 = 0x100f8fd0;
 	if (DAT_100f4320 != '\0') {
-		iVar10 = 0x100;
+		fadeval = 0x100;
 		while (true) {
 			iVar2 = (int)uVar1;
-			if (iVar10 < 1)
+			if ((int)fadeval < 1)
 				break;
-			SetFadeLevel(iVar10, (char)lVar3, (char)lVar4, (char)lVar5, (char)lVar6, (char)lVar7, (char)lVar8,
-			    (char)lVar9, in_stack_ffffffc8);
-			iVar10 = iVar10 - param_1;
+			SetFadeLevel(fadeval);
+			fadeval = fadeval - fr;
 		}
-		SetFadeLevel(0, (char)lVar3, (char)lVar4, (char)lVar5, (char)lVar6, (char)lVar7, (char)lVar8,
-		    (char)lVar9, in_stack_ffffffc8);
+		SetFadeLevel(0);
 		*(undefined *)(iVar2 + -0x4cb0) = 0;
 	}
 	return;
 }
 
-void palette_update_caves(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void palette_update_caves(void)
 
 {
 	undefined4 uVar1;
-	uint uVar2;
-	undefined *puVar3;
-	uint uVar4;
-	ulonglong uVar5;
-	longlong lVar6;
-	longlong lVar7;
-	int iVar8;
-	longlong lVar9;
-	undefined4 in_stack_ffffffc8;
+	undefined *puVar2;
+	longlong lVar3;
+	int iVar4;
+	longlong lVar5;
 	undefined local_4;
 	undefined uStack3;
 	undefined uStack2;
 
-	uVar4 = _DAT_100f34ec;
-	uVar5 = (ulonglong)_DAT_100f34ec;
-	if (_DAT_100f431c != 0) {
-		uVar1 = *(undefined4 *)(_DAT_100f34ec + 4);
-		lVar9 = 3;
-		lVar6 = uVar5 + 4;
-		lVar7 = 1;
+	uVar1 = uRam10181f60;
+	if (color_cycling_enabled != 0) {
+		lVar5 = 3;
+		puVar2 = (undefined *)0x10181f60;
+		lVar3 = 1;
 		do {
-			puVar3 = (undefined *)lVar6;
-			lVar7 = lVar7 + 8;
-			iVar8 = (int)lVar7;
-			*puVar3 = puVar3[4];
-			puVar3[1] = puVar3[5];
-			puVar3[2] = puVar3[6];
-			puVar3[4] = puVar3[8];
-			puVar3[5] = puVar3[9];
-			puVar3[6] = puVar3[10];
-			puVar3[8] = puVar3[0xc];
-			puVar3[9] = puVar3[0xd];
-			puVar3[10] = puVar3[0xe];
-			puVar3[0xc] = puVar3[0x10];
-			puVar3[0xd] = puVar3[0x11];
-			puVar3[0xe] = puVar3[0x12];
-			puVar3[0x10] = puVar3[0x14];
-			puVar3[0x11] = puVar3[0x15];
-			puVar3[0x12] = puVar3[0x16];
-			puVar3[0x14] = puVar3[0x18];
-			puVar3[0x15] = puVar3[0x19];
-			puVar3[0x16] = puVar3[0x1a];
-			puVar3[0x18] = puVar3[0x1c];
-			puVar3[0x19] = puVar3[0x1d];
-			puVar3[0x1a] = puVar3[0x1e];
-			puVar3[0x1c] = puVar3[0x20];
-			puVar3[0x1d] = puVar3[0x21];
-			puVar3[0x1e] = puVar3[0x22];
-			lVar6 = lVar6 + 0x20;
-			lVar9 = lVar9 + -1;
-		} while (lVar9 != 0);
-		lVar9 = uVar5 + (ulonglong)(uint)(iVar8 << 2);
-		lVar6 = 0x1f - lVar7;
-		if (iVar8 < 0x1f) {
+			lVar3 = lVar3 + 8;
+			iVar4 = (int)lVar3;
+			*puVar2 = puVar2[4];
+			puVar2[1] = puVar2[5];
+			puVar2[2] = puVar2[6];
+			puVar2[4] = puVar2[8];
+			puVar2[5] = puVar2[9];
+			puVar2[6] = puVar2[10];
+			puVar2[8] = puVar2[0xc];
+			puVar2[9] = puVar2[0xd];
+			puVar2[10] = puVar2[0xe];
+			puVar2[0xc] = puVar2[0x10];
+			puVar2[0xd] = puVar2[0x11];
+			puVar2[0xe] = puVar2[0x12];
+			puVar2[0x10] = puVar2[0x14];
+			puVar2[0x11] = puVar2[0x15];
+			puVar2[0x12] = puVar2[0x16];
+			puVar2[0x14] = puVar2[0x18];
+			puVar2[0x15] = puVar2[0x19];
+			puVar2[0x16] = puVar2[0x1a];
+			puVar2[0x18] = puVar2[0x1c];
+			puVar2[0x19] = puVar2[0x1d];
+			puVar2[0x1a] = puVar2[0x1e];
+			puVar2[0x1c] = puVar2[0x20];
+			puVar2[0x1d] = puVar2[0x21];
+			puVar2[0x1e] = puVar2[0x22];
+			puVar2 = puVar2 + 0x20;
+			lVar5 = lVar5 + -1;
+		} while (lVar5 != 0);
+		puVar2 = &DAT_10181f5c + iVar4 * 4;
+		lVar5 = 0x1f - lVar3;
+		if (iVar4 < 0x1f) {
 			do {
-				puVar3 = (undefined *)lVar9;
-				lVar7 = lVar7 + 1;
-				iVar8 = (int)lVar7;
-				*puVar3 = puVar3[4];
-				puVar3[1] = puVar3[5];
-				puVar3[2] = puVar3[6];
-				lVar9 = lVar9 + 4;
-				lVar6 = lVar6 + -1;
-			} while (lVar6 != 0);
+				lVar3 = lVar3 + 1;
+				iVar4 = (int)lVar3;
+				*puVar2 = puVar2[4];
+				puVar2[1] = puVar2[5];
+				puVar2[2] = puVar2[6];
+				puVar2 = puVar2 + 4;
+				lVar5 = lVar5 + -1;
+			} while (lVar5 != 0);
 		}
 		local_4 = (undefined)((uint)uVar1 >> 0x18);
-		uVar2 = iVar8 * 4;
-		*(undefined *)(uVar4 + uVar2) = local_4;
+		iVar4 = iVar4 * 4;
+		(&DAT_10181f5c)[iVar4] = local_4;
 		uStack3 = (undefined)((uint)uVar1 >> 0x10);
-		iVar8 = (int)(uVar5 + (ulonglong)uVar2);
-		*(undefined *)(iVar8 + 1) = uStack3;
+		*(undefined *)(iVar4 + 0x10181f5d) = uStack3;
 		uStack2 = (undefined)((uint)uVar1 >> 8);
-		*(undefined *)(iVar8 + 2) = uStack2;
-		palette_update((char)uVar4, (char)(uVar5 + (ulonglong)uVar2), (char)uVar2, param_4, param_5, param_6,
-		    param_7, param_8, in_stack_ffffffc8);
+		*(undefined *)(iVar4 + 0x10181f5e) = uStack2;
+		palette_update();
 	}
 	return;
 }
 
-void palette_update_quest_palette(longlong param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void palette_update_quest_palette(int n)
 
 {
 	uint uVar1;
-	byte *pbVar2;
-	int iVar4;
-	ulonglong uVar3;
-	undefined uVar5;
-	undefined uVar6;
+	int iVar3;
+	ulonglong uVar2;
+	longlong lVar4;
+	undefined4 *puVar5;
+	ulonglong uVar6;
 	longlong lVar7;
 	undefined4 *puVar8;
-	undefined uVar9;
-	ulonglong uVar10;
-	longlong lVar11;
-	undefined4 *puVar12;
-	undefined uVar13;
+	undefined in_r7;
+	undefined in_r8;
+	undefined in_r9;
+	undefined in_r10;
 	undefined4 in_stack_ffffffc8;
 
-	pbVar2 = _DAT_100f34d4;
-	iVar4 = (int)-param_1 + 0x20;
-	uVar6 = SUB41(_DAT_100f34d4, 0);
-	uVar10 = (ulonglong)(uint)(iVar4 * 4);
-	uVar3 = -param_1 + 0x21;
-	lVar7 = ZEXT48(PTR_DAT_100f34e0) + uVar10;
-	lVar11 = ZEXT48(_DAT_100f34d4) + uVar10;
-	uVar13 = (undefined)lVar11;
-	if (-1 < iVar4) {
-		uVar1 = (uint)uVar3 >> 3;
-		uVar10 = (ulonglong)uVar1;
+	iVar3 = (int)-(longlong)n + 0x20;
+	uVar6 = (ulonglong)(uint)(iVar3 * 4);
+	uVar2 = -(longlong)n + 0x21;
+	lVar4 = ZEXT48(&DAT_1018275c) + uVar6;
+	lVar7 = ZEXT48(&DAT_1018235c) + uVar6;
+	lVar7._7_1_ = (undefined)lVar7;
+	if (-1 < iVar3) {
+		uVar1 = (uint)uVar2 >> 3;
+		uVar6 = (ulonglong)uVar1;
 		if (uVar1 != 0) {
 			do {
+				puVar5 = (undefined4 *)lVar4;
 				puVar8 = (undefined4 *)lVar7;
-				puVar12 = (undefined4 *)lVar11;
-				*puVar12 = *puVar8;
-				puVar12[-1] = puVar8[-1];
-				puVar12[-2] = puVar8[-2];
-				puVar12[-3] = puVar8[-3];
-				puVar12[-4] = puVar8[-4];
-				puVar12[-5] = puVar8[-5];
-				puVar12[-6] = puVar8[-6];
+				*puVar8 = *puVar5;
+				puVar8[-1] = puVar5[-1];
+				puVar8[-2] = puVar5[-2];
+				puVar8[-3] = puVar5[-3];
+				puVar8[-4] = puVar5[-4];
+				puVar8[-5] = puVar5[-5];
+				puVar8[-6] = puVar5[-6];
+				lVar4 = lVar4 + -0x20;
+				puVar8[-7] = puVar5[-7];
 				lVar7 = lVar7 + -0x20;
-				puVar12[-7] = puVar8[-7];
-				lVar11 = lVar11 + -0x20;
-				uVar13 = (undefined)lVar11;
-				uVar10 = uVar10 - 1;
-			} while (uVar10 != 0);
-			uVar3 = uVar3 & 7;
-			if (uVar3 == 0)
+				lVar7._7_1_ = (undefined)lVar7;
+				uVar6 = uVar6 - 1;
+			} while (uVar6 != 0);
+			uVar2 = uVar2 & 7;
+			if (uVar2 == 0)
 				goto LAB_1008e71c;
 		}
 		do {
-			puVar8 = (undefined4 *)lVar7;
+			puVar5 = (undefined4 *)lVar4;
+			lVar4 = lVar4 + -4;
+			*(undefined4 *)lVar7 = *puVar5;
 			lVar7 = lVar7 + -4;
-			*(undefined4 *)lVar11 = *puVar8;
-			lVar11 = lVar11 + -4;
-			uVar13 = (undefined)lVar11;
-			uVar3 = uVar3 - 1;
-		} while (uVar3 != 0);
+			lVar7._7_1_ = (undefined)lVar7;
+			uVar2 = uVar2 - 1;
+		} while (uVar2 != 0);
 	}
 LAB_1008e71c:
-	uVar9 = 0x20;
-	uVar5 = ApplyGamma(_DAT_100f34ec, pbVar2, 0x20, uVar13, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	palette_update(uVar5, uVar6, uVar9, uVar13, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+	ApplyGamma(&DAT_10181f5c, &DAT_1018235c, 0x20, (undefined)lVar7, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffc8);
+	palette_update();
 	return;
 }
 
-ulonglong palette_get_colour_cycling(void)
+BOOL palette_get_colour_cycling(void)
 
 {
-	return (ulonglong)_DAT_100f431c;
+	return color_cycling_enabled;
+}
+
+BOOL palette_set_color_cycling(BOOL enabled)
+
+{
+	color_cycling_enabled = enabled;
+	return enabled;
 }

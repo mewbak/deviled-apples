@@ -2,201 +2,177 @@
 void InitHelp(void)
 
 {
-	undefined *puVar1;
-	undefined *puVar2;
-
-	puVar2 = PTR_DAT_100f1dbc;
-	*(undefined4 *)PTR_DAT_100f19fc = 0;
-	puVar1 = PTR_DAT_100f1db8;
-	*(undefined4 *)puVar2 = 0;
-	*(undefined4 *)puVar1 = 0;
+	_DAT_1013c638 = 0;
+	_DAT_1013c63c = 0;
+	_DAT_1013c640 = 0;
 	return;
 }
 
-void DrawHelpLine(longlong param_1, int param_2, byte *param_3, undefined8 param_4, undefined8 param_5,
-    int param_6, int param_7, int param_8, undefined4 param_9)
+void DrawHelpLine(int always_0, int help_line_nr, char *text, char color)
 
 {
 	byte bVar1;
-	undefined8 uVar2;
-	ulonglong uVar3;
-	longlong lVar4;
-	longlong lVar5;
-	longlong lVar6;
-	longlong lVar7;
-	undefined4 in_stack_ffffffa8;
+	longlong lVar2;
+	longlong lVar3;
 
-	lVar6 = (longlong)param_8;
-	lVar5 = (longlong)param_7;
-	lVar4 = (longlong)param_6;
-	uVar3 = ZEXT48(PTR_DAT_100f1db4);
-	lVar7 = 0;
-	param_1 = param_1 + (ulonglong) * (uint *)(PTR_DAT_100f1938 + *(int *)(PTR_DAT_100f1db4 + param_2 * 4) * 4 + 0x330) + 0x60;
-	uVar2 = param_4;
-	while (*param_3 != 0) {
-		bVar1 = *param_3;
-		param_3 = param_3 + 1;
+	lVar2 = 0;
+	lVar3 = (longlong)always_0 + (ulonglong) * (uint *)(*(int *)(&DAT_1010f7b8 + help_line_nr * 4) * 4 + 0x1019f0b0) + 0x60;
+	while (*text != 0) {
+		bVar1 = *text;
+		text = (char *)((byte *)text + 1);
 		bVar1 = (&DAT_100f61b0)[(uint)(byte)(&DAT_100f64e8)[(uint)bVar1]];
-		lVar7 = (ulonglong)(byte)(&DAT_100f6230)[(uint)bVar1] + lVar7 + 1;
+		lVar2 = (ulonglong)(byte)(&DAT_100f6230)[(uint)bVar1] + lVar2 + 1;
 		if (bVar1 != 0) {
-			if ((int)lVar7 < 0x242) {
-				CPrintString(param_1, (ulonglong)bVar1, param_4, uVar2, uVar3, (int)lVar4, (int)lVar5, (int)lVar6,
-				    in_stack_ffffffa8);
+			if ((int)lVar2 < 0x242) {
+				CPrintString((int)lVar3, (uint)bVar1, color);
 			}
 		}
-		param_1 = (ulonglong)(byte)(&DAT_100f6230)[(uint)bVar1] + param_1 + 1;
+		lVar3 = (ulonglong)(byte)(&DAT_100f6230)[(uint)bVar1] + lVar3 + 1;
 	}
 	return;
 }
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+// WARNING: Unknown calling convention yet parameter storage is locked
 
 void DrawHelp(void)
 
 {
-	undefined *puVar1;
-	int *piVar2;
-	int *piVar3;
-	ulonglong uVar4;
-	int iVar5;
-	byte *pbVar6;
-	char *pcVar7;
-	int iVar8;
-	undefined8 uVar9;
-	longlong lVar10;
-	undefined8 uVar11;
-	undefined4 in_r9;
-	undefined4 in_r10;
-	longlong lVar12;
-	undefined4 in_stack_ffffffa8;
+	longlong lVar1;
+	int help_line_nr;
+	byte *pbVar2;
+	char *pcVar3;
+	int iVar4;
+	char color;
+	longlong lVar5;
+	longlong lVar6;
 
-	piVar3 = _DAT_100f1db0;
-	piVar2 = _DAT_100f1dac;
-	puVar1 = PTR_DAT_100f191c;
-	uVar4 = ZEXT48(&toc);
+	lVar1 = 0x100f8fd0;
 	DrawSTextHelp();
 	DrawQTextBack();
-	uVar11 = 0;
-	PrintSString(0, 2, 1, (ulonglong) * (uint *)((int)uVar4 + -0x6208), 3);
+	PrintSString(0, 2, 1, *(char **)((int)lVar1 + -0x6208), '\x03', 0);
 	DrawSLine(5);
-	lVar12 = uVar4 + 0x2980;
-	iVar5 = 0;
-	while (iVar5 < *piVar3) {
-		iVar8 = 0;
-		lVar10 = 0;
-		while (*(char *)lVar12 == '\0') {
-			lVar12 = lVar12 + 1;
+	lVar6 = lVar1 + 0x2980;
+	help_line_nr = 0;
+	while (help_line_nr < _DAT_1013c634) {
+		iVar4 = 0;
+		lVar5 = 0;
+		while (*(char *)lVar6 == '\0') {
+			lVar6 = lVar6 + 1;
 		}
-		if (*(char *)lVar12 == '$') {
-			lVar12 = lVar12 + 1;
+		if (*(char *)lVar6 == '$') {
+			lVar6 = lVar6 + 1;
 		}
-		pbVar6 = puVar1;
-		if (*(char *)lVar12 != '&') {
-			while ((*(char *)lVar12 != '|' && ((int)lVar10 < 0x241))) {
-				while (*(byte *)lVar12 == 0) {
-					lVar12 = lVar12 + 1;
+		pbVar2 = &DAT_101282d4;
+		if (*(char *)lVar6 != '&') {
+			while ((*(char *)lVar6 != '|' && ((int)lVar5 < 0x241))) {
+				while (*(byte *)lVar6 == 0) {
+					lVar6 = lVar6 + 1;
 				}
-				*pbVar6 = *(byte *)lVar12;
-				iVar8 = iVar8 + 1;
-				lVar12 = lVar12 + 1;
-				lVar10 = (ulonglong)(byte)(&DAT_100f6230)
-				             [(uint)(byte)(&DAT_100f61b0)[(uint)(byte)(&DAT_100f64e8)[(uint)*pbVar6]]]
-				    + lVar10 + 1;
-				pbVar6 = pbVar6 + 1;
+				*pbVar2 = *(byte *)lVar6;
+				iVar4 = iVar4 + 1;
+				lVar6 = lVar6 + 1;
+				lVar5 = (ulonglong)(byte)(
+				            &DAT_100f6230)[(uint)(byte)(&DAT_100f61b0)[(uint)(byte)(&DAT_100f64e8)[(uint)*pbVar2]]]
+				    + lVar5 + 1;
+				pbVar2 = pbVar2 + 1;
 			}
-			if (0x240 < (int)lVar10) {
-				pcVar7 = puVar1 + iVar8;
-				while (pcVar7 = pcVar7 + -1, *pcVar7 != ' ') {
-					lVar12 = lVar12 + -1;
+			if (0x240 < (int)lVar5) {
+				pcVar3 = &DAT_101282d4 + iVar4;
+				while (pcVar3 = pcVar3 + -1, *pcVar3 != ' ') {
+					lVar6 = lVar6 + -1;
 				}
 			}
-			if (*(char *)lVar12 == '|') {
-				lVar12 = lVar12 + 1;
+			if (*(char *)lVar6 == '|') {
+				lVar6 = lVar6 + 1;
 			}
 		}
-		iVar5 = iVar5 + 1;
+		help_line_nr = help_line_nr + 1;
 	}
-	iVar5 = 7;
+	help_line_nr = 7;
 	do {
-		iVar8 = 0;
-		lVar10 = 0;
-		while (*(char *)lVar12 == '\0') {
-			lVar12 = lVar12 + 1;
+		iVar4 = 0;
+		lVar5 = 0;
+		while (*(char *)lVar6 == '\0') {
+			lVar6 = lVar6 + 1;
 		}
-		if (*(char *)lVar12 == '$') {
-			uVar9 = 2;
-			lVar12 = lVar12 + 1;
+		if (*(char *)lVar6 == '$') {
+			color = '\x02';
+			lVar6 = lVar6 + 1;
 		} else {
-			uVar9 = 0;
+			color = '\0';
 		}
-		pbVar6 = puVar1;
-		if (*(char *)lVar12 == '&') {
-			*piVar2 = *piVar3;
+		pbVar2 = &DAT_101282d4;
+		if (*(char *)lVar6 == '&') {
+			_DAT_1013c630 = _DAT_1013c634;
 		} else {
-			while ((*(char *)lVar12 != '|' && ((int)lVar10 < 0x241))) {
-				while (*(byte *)lVar12 == 0) {
-					lVar12 = lVar12 + 1;
+			while ((*(char *)lVar6 != '|' && ((int)lVar5 < 0x241))) {
+				while (*(byte *)lVar6 == 0) {
+					lVar6 = lVar6 + 1;
 				}
-				*pbVar6 = *(byte *)lVar12;
-				iVar8 = iVar8 + 1;
-				lVar12 = lVar12 + 1;
-				lVar10 = (ulonglong)(byte)(&DAT_100f6230)
-				             [(uint)(byte)(&DAT_100f61b0)[(uint)(byte)(&DAT_100f64e8)[(uint)*pbVar6]]]
-				    + lVar10 + 1;
-				pbVar6 = pbVar6 + 1;
+				*pbVar2 = *(byte *)lVar6;
+				iVar4 = iVar4 + 1;
+				lVar6 = lVar6 + 1;
+				lVar5 = (ulonglong)(byte)(
+				            &DAT_100f6230)[(uint)(byte)(&DAT_100f61b0)[(uint)(byte)(&DAT_100f64e8)[(uint)*pbVar2]]]
+				    + lVar5 + 1;
+				pbVar2 = pbVar2 + 1;
 			}
-			if (0x240 < (int)lVar10) {
-				pcVar7 = puVar1 + iVar8;
+			if (0x240 < (int)lVar5) {
+				pcVar3 = &DAT_101282d4 + iVar4;
 				while (true) {
-					pcVar7 = pcVar7 + -1;
-					iVar8 = iVar8 + -1;
-					if (*pcVar7 == ' ')
+					pcVar3 = pcVar3 + -1;
+					iVar4 = iVar4 + -1;
+					if (*pcVar3 == ' ')
 						break;
-					lVar12 = lVar12 + -1;
+					lVar6 = lVar6 + -1;
 				}
 			}
-			if (iVar8 != 0) {
-				puVar1[iVar8] = 0;
-				DrawHelpLine(0, iVar5, puVar1, uVar9, lVar10, (int)uVar11, in_r9, in_r10, in_stack_ffffffa8);
+			if (iVar4 != 0) {
+				(&DAT_101282d4)[iVar4] = 0;
+				DrawHelpLine(0, help_line_nr, &DAT_101282d4, color);
 			}
-			if (*(char *)lVar12 == '|') {
-				lVar12 = lVar12 + 1;
+			if (*(char *)lVar6 == '|') {
+				lVar6 = lVar6 + 1;
 			}
 		}
-		iVar5 = iVar5 + 1;
-	} while (iVar5 < 0x16);
-	PrintSString(0, 0x17, 1, (ulonglong) * (uint *)((int)uVar4 + -0x6210), 3, 0);
+		help_line_nr = help_line_nr + 1;
+	} while (help_line_nr < 0x16);
+	PrintSString(0, 0x17, 1, *(char **)((int)lVar1 + -0x6210), '\x03', 0);
 	return;
 }
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
 void DisplayHelp(void)
 
 {
-	undefined4 *puVar1;
-	undefined4 *puVar2;
-
-	puVar2 = _DAT_100f1db0;
-	*(undefined4 *)PTR_DAT_100f19fc = 1;
-	puVar1 = _DAT_100f1dac;
-	*puVar2 = 0;
-	*puVar1 = 5000;
+	_DAT_1013c630 = 5000;
+	_DAT_1013c634 = 0;
+	_DAT_1013c640 = 1;
 	return;
 }
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
 void HelpScrollUp(void)
 
 {
-	if (*_DAT_100f1db0 < 1) {
+	if (_DAT_1013c634 < 1) {
 		return;
 	}
-	*_DAT_100f1db0 = *_DAT_100f1db0 + -1;
+	_DAT_1013c634 = _DAT_1013c634 + -1;
 	return;
 }
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
 void HelpScrollDown(void)
 
 {
-	if (*_DAT_100f1dac <= *_DAT_100f1db0) {
+	if (_DAT_1013c630 <= _DAT_1013c634) {
 		return;
 	}
-	*_DAT_100f1db0 = *_DAT_100f1db0 + 1;
+	_DAT_1013c634 = _DAT_1013c634 + 1;
 	return;
 }

@@ -1,392 +1,276 @@
 
-void InitPortals(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void InitPortals(void)
 
 {
-	undefined8 uVar1;
-	int iVar2;
-	undefined4 *puVar3;
+	BOOL BVar1;
+	int i;
+	undefined4 *puVar2;
 
-	iVar2 = 0;
-	puVar3 = _DAT_100f1e88;
+	puVar2 = (undefined4 *)&DAT_1019cb34;
+	i = 0;
 	do {
-		uVar1 = delta_portal_inited(iVar2);
-		if ((int)uVar1 != 0) {
-			*puVar3 = 0;
+		BVar1 = delta_portal_inited(i);
+		if (BVar1 != 0) {
+			*puVar2 = 0;
 		}
-		iVar2 = iVar2 + 1;
-		puVar3 = puVar3 + 6;
-	} while (iVar2 < 4);
+		i = i + 1;
+		puVar2 = puVar2 + 6;
+	} while (i < 4);
 	return;
 }
 
-void SetPortalStats(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4,
-    undefined4 param_5, undefined4 param_6)
+void SetPortalStats(int i, BOOL o, int x, int y, int lvl, int lvltype)
 
 {
+	i = i * 0x18;
+	*(BOOL *)(&DAT_1019cb34 + i) = o;
+	*(int *)(i + 0x1019cb38) = x;
+	*(int *)(i + 0x1019cb3c) = y;
+	*(int *)(i + 0x1019cb40) = lvl;
+	*(int *)(i + 0x1019cb44) = lvltype;
+	*(undefined4 *)(i + 0x1019cb48) = 0;
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void AddWarpMissile(int i, int x, int y)
+
+{
+	int mi;
 	int iVar1;
+	int midam;
+	int spllvl;
 
-	iVar1 = _DAT_100f1e88;
-	*(undefined4 *)(_DAT_100f1e88 + param_1 * 0x18) = param_2;
-	iVar1 = iVar1 + param_1 * 0x18;
-	*(undefined4 *)(iVar1 + 4) = param_3;
-	*(undefined4 *)(iVar1 + 8) = param_4;
-	*(undefined4 *)(iVar1 + 0xc) = param_5;
-	*(undefined4 *)(iVar1 + 0x10) = param_6;
-	*(undefined4 *)(iVar1 + 0x14) = 0;
-	return;
-}
-
-void AddWarpMissile(undefined8 param_1, undefined8 param_2, undefined8 param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined *puVar1;
-	undefined *puVar2;
-	undefined **ppuVar3;
-	undefined uVar5;
-	ulonglong uVar4;
-	undefined uVar6;
-	undefined uVar7;
-	undefined uVar8;
-	undefined uVar9;
-	undefined uVar10;
-	int iVar11;
-	undefined4 *puVar12;
-	undefined4 in_stack_ffffffb8;
-	undefined in_stack_ffffffbf;
-
-	puVar2 = PTR_DAT_100f1a3c;
-	puVar1 = PTR_DAT_100f196c;
-	uVar5 = (undefined)param_1;
-	uVar7 = (undefined)param_3;
-	uVar6 = (undefined)param_2;
-	ppuVar3 = &toc;
-	uVar9 = 10;
-	puVar12 = (undefined4 *)(PTR_DAT_100f1ee8 + 300);
-	uVar10 = 0;
-	*(undefined4 *)(PTR_DAT_100f1ee8 + 300) = 0xffffffff;
-	*(undefined *)(*(int *)puVar2 + (int)param_2 * 0x70 + (int)param_3) = 0;
-	uVar8 = 0;
-	uVar4 = AddMissile(0, 0, param_2, param_3, 0, 10, 0, param_1, in_stack_ffffffb8, in_stack_ffffffbf, 0, 0);
-	iVar11 = (int)uVar4;
-	if (iVar11 != -1) {
-		SetMissDir(iVar11, 1, uVar6, uVar7, uVar8, uVar9, uVar10, uVar5, in_stack_ffffffb8);
-		if (*ppuVar3[-0x1df9] != '\0') {
-			puVar1 = puVar1 + iVar11 * 0xb4;
-			uVar4 = AddLight(*(undefined4 *)(puVar1 + 4), *(undefined4 *)(puVar1 + 8), 0xf);
-			*(int *)(puVar1 + 0x8c) = (int)uVar4;
+	iVar1 = 0x100f8fd0;
+	missiledata[10].mlSFX = -1;
+	*(undefined *)(_DAT_1012f1a4 + x * 0x70 + y) = 0;
+	mi = AddMissile(0, 0, x, y, 0, 10, '\0', i, midam, spllvl);
+	if (mi != -1) {
+		SetMissDir(mi, 1);
+		if (**(char **)(iVar1 + -0x77e4) != '\0') {
+			mi = mi * 0xb4;
+			iVar1 = AddLight(*(int *)(mi + 0x10149b78), *(int *)(mi + 0x10149b7c), 0xf);
+			*(int *)(mi + 0x10149c00) = iVar1;
 		}
-		*puVar12 = 0x81;
+		missiledata[10].mlSFX = 0x81;
 	}
 	return;
 }
 
-void SyncPortals(undefined param_1, undefined param_2, undefined param_3, char param_4, char param_5,
-    char param_6, char param_7, char param_8, undefined4 param_9)
+void SyncPortals(void)
 
 {
-	undefined *puVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	longlong lVar4;
-	undefined uVar5;
-	longlong lVar6;
-	undefined uVar7;
-	longlong lVar8;
-	undefined uVar9;
-	longlong lVar10;
-	undefined uVar11;
-	longlong lVar12;
-	undefined uVar13;
-	longlong lVar14;
-	uint *puVar15;
-	uint *puVar16;
-	int *piVar17;
-	undefined4 in_stack_ffffffa8;
+	int i;
+	int *piVar1;
+	int *piVar2;
+	int *piVar3;
 
-	puVar3 = PTR_DAT_100f17f8;
-	puVar2 = PTR_DAT_100f17f0;
-	puVar1 = PTR_DAT_100f17ec;
-	lVar12 = (longlong)param_8;
-	lVar10 = (longlong)param_7;
-	lVar8 = (longlong)param_6;
-	lVar6 = (longlong)param_5;
-	lVar4 = (longlong)param_4;
-	lVar14 = 0;
-	puVar16 = (uint *)PTR_DAT_100f2058;
-	puVar15 = (uint *)PTR_DAT_100f2054;
-	piVar17 = _DAT_100f1e88;
+	i = 0;
+	piVar2 = (int *)&DAT_1010ecbc;
+	piVar3 = (int *)&DAT_1019cb34;
+	piVar1 = (int *)&DAT_1010ecac;
 	do {
-		if (*piVar17 != 0) {
-			uVar5 = (undefined)lVar4;
-			uVar7 = (undefined)lVar6;
-			uVar9 = (undefined)lVar8;
-			uVar11 = (undefined)lVar10;
-			uVar13 = (undefined)lVar12;
-			if (*puVar1 == 0) {
-				AddWarpMissile(lVar14, (ulonglong)*puVar15, (ulonglong)*puVar16, uVar5, uVar7, uVar9, uVar11, uVar13,
-				    in_stack_ffffffa8);
+		if (*piVar3 != 0) {
+			if (currlevel == 0) {
+				AddWarpMissile(i, *piVar1, *piVar2);
 			} else {
-				if (*puVar3 == '\0') {
-					if ((uint)(byte)*puVar1 == piVar17[3]) {
-						AddWarpMissile(lVar14, (ulonglong)(uint)piVar17[1], (ulonglong)(uint)piVar17[2], uVar5, uVar7,
-						    uVar9, uVar11, uVar13, in_stack_ffffffa8);
+				if (DAT_1012f316 == '\0') {
+					if ((uint)currlevel == piVar3[3]) {
+						AddWarpMissile(i, piVar3[1], piVar3[2]);
 					}
 				} else {
-					if ((uint)(byte)*puVar2 == piVar17[3]) {
-						AddWarpMissile(lVar14, (ulonglong)(uint)piVar17[1], (ulonglong)(uint)piVar17[2], uVar5, uVar7,
-						    uVar9, uVar11, uVar13, in_stack_ffffffa8);
+					if ((uint)DAT_1012f315 == piVar3[3]) {
+						AddWarpMissile(i, piVar3[1], piVar3[2]);
 					}
 				}
 			}
 		}
-		lVar14 = lVar14 + 1;
-		puVar16 = puVar16 + 1;
-		puVar15 = puVar15 + 1;
-		piVar17 = piVar17 + 6;
-	} while ((int)lVar14 < 4);
+		i = i + 1;
+		piVar2 = piVar2 + 1;
+		piVar1 = piVar1 + 1;
+		piVar3 = piVar3 + 6;
+	} while (i < 4);
 	return;
 }
 
-void AddInTownPortal(undefined8 param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void AddInTownPortal(int i)
 
 {
-	int iVar1;
-	undefined4 in_stack_ffffffc8;
-
-	iVar1 = (int)param_1 * 4;
-	AddWarpMissile(param_1, (ulonglong) * (uint *)(PTR_DAT_100f2054 + iVar1),
-	    (ulonglong) * (uint *)(PTR_DAT_100f2058 + iVar1), param_4, param_5, param_6, param_7,
-	    param_8, in_stack_ffffffc8);
+	AddWarpMissile(i, *(int *)(&DAT_1010ecac + i * 4), *(int *)(&DAT_1010ecbc + i * 4));
 	return;
 }
 
-void ActivatePortal(int param_1, undefined4 param_2, undefined4 param_3, int param_4, undefined4 param_5,
-    undefined4 param_6)
+void ActivatePortal(int i, int x, int y, int lvl, int lvltype, BOOL sp)
 
 {
-	int iVar1;
-
-	iVar1 = _DAT_100f1e88;
-	*(undefined4 *)(_DAT_100f1e88 + param_1 * 0x18) = 1;
-	if (param_4 == 0) {
+	i = i * 0x18;
+	*(undefined4 *)(&DAT_1019cb34 + i) = 1;
+	if (lvl == 0) {
 		return;
 	}
-	iVar1 = iVar1 + param_1 * 0x18;
-	*(undefined4 *)(iVar1 + 4) = param_2;
-	*(undefined4 *)(iVar1 + 8) = param_3;
-	*(int *)(iVar1 + 0xc) = param_4;
-	*(undefined4 *)(iVar1 + 0x10) = param_5;
-	*(undefined4 *)(iVar1 + 0x14) = param_6;
+	*(int *)(i + 0x1019cb38) = x;
+	*(int *)(i + 0x1019cb3c) = y;
+	*(int *)(i + 0x1019cb40) = lvl;
+	*(int *)(i + 0x1019cb44) = lvltype;
+	*(BOOL *)(i + 0x1019cb48) = sp;
 	return;
 }
 
-void DeactivatePortal(int param_1)
+void DeactivatePortal(int i)
 
 {
-	*(undefined4 *)(_DAT_100f1e88 + param_1 * 0x18) = 0;
+	*(undefined4 *)(&DAT_1019cb34 + i * 0x18) = 0;
 	return;
 }
 
-undefined8 PortalOnLevel(int param_1)
+BOOL PortalOnLevel(int i)
 
 {
-	if ((uint)(byte)*PTR_DAT_100f17ec == *(uint *)(_DAT_100f1e88 + param_1 * 0x18 + 0xc)) {
+	if ((uint)currlevel == *(uint *)(i * 0x18 + 0x1019cb40)) {
 		return 1;
 	}
-	if (*PTR_DAT_100f17ec == 0) {
+	if (currlevel == 0) {
 		return 1;
 	}
 	return 0;
 }
 
-void RemovePortalMissile(int iParm1)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void RemovePortalMissile(int id)
 
 {
-	uint uVar1;
+	int mi;
+	int iVar1;
 	int iVar2;
-	int iVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	longlong lVar8;
-	int iVar9;
-	undefined8 uVar10;
-	undefined8 in_r7;
-	undefined4 in_r8;
-	undefined4 in_r9;
-	undefined4 in_r10;
-	int iVar11;
-	uint *puVar12;
-	ulonglong uVar13;
-	undefined4 in_stack_ffffffa8;
+	int i;
+	int *piVar3;
 
-	puVar7 = PTR_DAT_100f1a3c;
-	puVar6 = PTR_DAT_100f196c;
-	puVar5 = PTR_DAT_100f1968;
-	puVar4 = PTR_DAT_100f1834;
-	iVar11 = 0;
-	uVar13 = ZEXT48(PTR_DAT_100f196c);
-	iVar3 = _DAT_100f1e88 + iParm1 * 0x18;
-	puVar12 = (uint *)PTR_DAT_100f1970;
-	while (iVar11 < *(int *)puVar5) {
-		uVar1 = *puVar12;
-		lVar8 = (ulonglong)uVar1 * 0xb4;
-		if ((*(int *)(puVar6 + (int)lVar8) == 10) && (lVar8 = uVar13 + lVar8, iVar2 = (int)lVar8, iParm1 == *(int *)(iVar2 + 0x78))) {
-			uVar10 = 0;
-			iVar9 = *(int *)(iVar2 + 4) * 0x70 + *(int *)(iVar2 + 8);
-			*(byte *)(*(int *)puVar4 + iVar9) = *(byte *)(*(int *)puVar4 + iVar9) & 0xfe;
-			*(undefined *)(*(int *)puVar7 + *(int *)(iVar2 + 4) * 0x70 + *(int *)(iVar2 + 8)) = 0;
-			if (*(int *)(iVar3 + 0xc) != 0) {
-				AddUnLight(*(int *)(iVar2 + 0x8c));
+	i = 0;
+	piVar3 = (int *)&DAT_1014939c;
+	while (i < _DAT_10149b70) {
+		mi = *piVar3;
+		iVar1 = mi * 0xb4;
+		if ((*(int *)(&DAT_10149b74 + iVar1) == 10) && (id == *(int *)(iVar1 + 0x10149bec))) {
+			iVar2 = *(int *)(iVar1 + 0x10149b78) * 0x70 + *(int *)(iVar1 + 0x10149b7c);
+			*(byte *)(_DAT_1012f1bc + iVar2) = *(byte *)(_DAT_1012f1bc + iVar2) & 0xfe;
+			*(undefined *)(_DAT_1012f1a4 + *(int *)(iVar1 + 0x10149b78) * 0x70 + *(int *)(iVar1 + 0x10149b7c)) = 0;
+			if (*(int *)(id * 0x18 + 0x1019cb40) != 0) {
+				AddUnLight(*(int *)(iVar1 + 0x10149c00));
 			}
-			DeleteMissile((ulonglong)uVar1, iVar11, uVar10, lVar8, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffa8);
+			DeleteMissile(mi, i);
 		}
-		puVar12 = puVar12 + 1;
-		iVar11 = iVar11 + 1;
+		piVar3 = piVar3 + 1;
+		i = i + 1;
 	}
 	return;
 }
 
-void SetCurrentPortal(undefined4 param_1)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void SetCurrentPortal(int p)
 
 {
-	*(undefined4 *)PTR_DAT_100f2050 = param_1;
+	_DAT_1019cb30 = p;
 	return;
 }
 
-void GetPortalLevel(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void GetPortalLevel(void)
 
 {
-	uint uVar1;
+	int iVar1;
 	int iVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	undefined *puVar6;
-	undefined *puVar7;
-	undefined *puVar8;
-	undefined uVar9;
-	longlong lVar10;
-	ulonglong uVar11;
-	ulonglong uVar12;
-	undefined4 in_stack_ffffffc8;
 
-	puVar8 = PTR_DAT_100f2050;
-	puVar7 = PTR_DAT_100f183c;
-	puVar6 = PTR_DAT_100f1828;
-	puVar5 = PTR_DAT_100f1824;
-	puVar4 = PTR_DAT_100f17f0;
-	puVar3 = PTR_DAT_100f17ec;
-	uVar12 = ZEXT48(PTR_DAT_100f1828);
-	uVar11 = ZEXT48(PTR_DAT_100f17f8);
-	if (*PTR_DAT_100f17ec == '\0') {
-		uVar1 = *(uint *)PTR_DAT_100f2050;
-		lVar10 = (ulonglong)_DAT_100f1e88 + (ulonglong)uVar1 * 0x18;
-		iVar2 = (int)lVar10;
-		if (*(int *)(iVar2 + 0x14) == 0) {
-			*PTR_DAT_100f17f8 = 0;
-			*puVar3 = (char)*(undefined4 *)(iVar2 + 0xc);
-			*(uint *)(puVar6 + *(int *)puVar5 * 0x55ec + 0x34) = (uint)(byte)*puVar3;
-			*puVar7 = (char)*(undefined4 *)(iVar2 + 0x10);
+	iVar1 = _DAT_1019cb30;
+	if (currlevel == 0) {
+		iVar2 = _DAT_1019cb30 * 0x18;
+		if (*(int *)(iVar2 + 0x1019cb48) == 0) {
+			DAT_1012f316 = 0;
+			currlevel = (byte) * (uint *)(iVar2 + 0x1019cb40);
+			*(uint *)((int)plr + myplr * 0x55ec + 0x34) = *(uint *)(iVar2 + 0x1019cb40) & 0xff;
+			leveltype = (undefined) * (undefined4 *)(iVar2 + 0x1019cb44);
 		} else {
-			*PTR_DAT_100f17f8 = 1;
-			uVar9 = (undefined) * (undefined4 *)(iVar2 + 0xc);
-			*puVar4 = uVar9;
-			*puVar3 = uVar9;
-			*(uint *)(puVar6 + *(int *)puVar5 * 0x55ec + 0x34) = (uint)(byte)*puVar4;
-			*puVar7 = (char)*(undefined4 *)(iVar2 + 0x10);
+			DAT_1012f316 = 1;
+			DAT_1012f315 = (byte) * (uint *)(iVar2 + 0x1019cb40);
+			currlevel = DAT_1012f315;
+			*(uint *)((int)plr + myplr * 0x55ec + 0x34) = *(uint *)(iVar2 + 0x1019cb40) & 0xff;
+			leveltype = (undefined) * (undefined4 *)(iVar2 + 0x1019cb44);
 		}
-		if (uVar1 == *(uint *)puVar5) {
-			NetSendCmd(1, 0x39, lVar10, uVar11, uVar12, puVar5, puVar7, uVar1, in_stack_ffffffc8);
-			DeactivatePortal(*(int *)puVar8);
+		if (iVar1 == myplr) {
+			NetSendCmd(1, '9');
+			DeactivatePortal(_DAT_1019cb30);
 		}
 	} else {
-		*PTR_DAT_100f17f8 = 0;
-		*puVar3 = 0;
-		*(undefined4 *)(puVar6 + *(int *)puVar5 * 0x55ec + 0x34) = 0;
-		*puVar7 = 0;
+		DAT_1012f316 = 0;
+		currlevel = 0;
+		*(undefined4 *)((int)plr + myplr * 0x55ec + 0x34) = 0;
+		leveltype = 0;
 	}
 	return;
 }
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
 void GetPortalLvlPos(void)
 
 {
-	int iVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined *puVar5;
-	int iVar6;
-
-	puVar5 = PTR_DAT_100f2058;
-	puVar4 = PTR_DAT_100f1824;
-	puVar3 = PTR_DAT_100f1820;
-	puVar2 = PTR_DAT_100f181c;
-	if (*PTR_DAT_100f17ec == '\0') {
-		iVar1 = *(int *)PTR_DAT_100f2050;
-		*(int *)PTR_DAT_100f1820 = *(int *)(PTR_DAT_100f2054 + iVar1 * 4) + 1;
-		*(int *)puVar2 = *(int *)(puVar5 + iVar1 * 4) + 1;
+	if (currlevel == 0) {
+		_DAT_1012f30c = *(int *)(&DAT_1010ecbc + _DAT_1019cb30 * 4) + 1;
+		_DAT_1012f310 = *(int *)(&DAT_1010ecac + _DAT_1019cb30 * 4) + 1;
 		return;
 	}
-	iVar1 = *(int *)PTR_DAT_100f2050;
-	iVar6 = _DAT_100f1e88 + iVar1 * 0x18;
-	*(undefined4 *)PTR_DAT_100f1820 = *(undefined4 *)(iVar6 + 4);
-	*(undefined4 *)puVar2 = *(undefined4 *)(iVar6 + 8);
-	if (iVar1 == *(int *)puVar4) {
+	_DAT_1012f310 = *(int *)(_DAT_1019cb30 * 0x18 + 0x1019cb38);
+	_DAT_1012f30c = *(int *)(_DAT_1019cb30 * 0x18 + 0x1019cb3c);
+	if (_DAT_1019cb30 == myplr) {
 		return;
 	}
-	*(int *)puVar3 = *(int *)puVar3 + 1;
-	*(int *)puVar2 = *(int *)puVar2 + 1;
+	_DAT_1012f30c = _DAT_1012f30c + 1;
+	_DAT_1012f310 = _DAT_1012f310 + 1;
 	return;
 }
 
-undefined8 PosOkPortal(int param_1, int param_2, int param_3)
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+BOOL PosOkPortal(int lvl, int x, int y)
 
 {
 	int iVar1;
 	int iVar2;
 
-	iVar2 = param_2 + -1;
-	iVar1 = param_3 + -1;
-	if ((*_DAT_100f1e88 != 0) && (param_1 == _DAT_100f1e88[3])) {
-		if ((param_2 == _DAT_100f1e88[1]) && (param_3 == _DAT_100f1e88[2])) {
+	iVar2 = x + -1;
+	iVar1 = y + -1;
+	if ((_DAT_1019cb34 != 0) && (lvl == iRam1019cb40)) {
+		if ((x == iRam1019cb38) && (y == iRam1019cb3c)) {
 			return 1;
 		}
-		if ((iVar2 == _DAT_100f1e88[1]) && (iVar1 == _DAT_100f1e88[2])) {
-			return 1;
-		}
-	}
-	if ((_DAT_100f1e88[6] != 0) && (param_1 == _DAT_100f1e88[9])) {
-		if ((param_2 == _DAT_100f1e88[7]) && (param_3 == _DAT_100f1e88[8])) {
-			return 1;
-		}
-		if ((iVar2 == _DAT_100f1e88[7]) && (iVar1 == _DAT_100f1e88[8])) {
+		if ((iVar2 == iRam1019cb38) && (iVar1 == iRam1019cb3c)) {
 			return 1;
 		}
 	}
-	if ((_DAT_100f1e88[0xc] != 0) && (param_1 == _DAT_100f1e88[0xf])) {
-		if ((param_2 == _DAT_100f1e88[0xd]) && (param_3 == _DAT_100f1e88[0xe])) {
+	if ((iRam1019cb4c != 0) && (lvl == iRam1019cb58)) {
+		if ((x == iRam1019cb50) && (y == iRam1019cb54)) {
 			return 1;
 		}
-		if ((iVar2 == _DAT_100f1e88[0xd]) && (iVar1 == _DAT_100f1e88[0xe])) {
+		if ((iVar2 == iRam1019cb50) && (iVar1 == iRam1019cb54)) {
 			return 1;
 		}
 	}
-	if ((_DAT_100f1e88[0x12] != 0) && (param_1 == _DAT_100f1e88[0x15])) {
-		if ((param_2 == _DAT_100f1e88[0x13]) && (param_3 == _DAT_100f1e88[0x14])) {
+	if ((iRam1019cb64 != 0) && (lvl == iRam1019cb70)) {
+		if ((x == iRam1019cb68) && (y == iRam1019cb6c)) {
 			return 1;
 		}
-		if ((iVar2 == _DAT_100f1e88[0x13]) && (iVar1 == _DAT_100f1e88[0x14])) {
+		if ((iVar2 == iRam1019cb68) && (iVar1 == iRam1019cb6c)) {
+			return 1;
+		}
+	}
+	if ((iRam1019cb7c != 0) && (lvl == iRam1019cb88)) {
+		if ((x == iRam1019cb80) && (y == iRam1019cb84)) {
+			return 1;
+		}
+		if ((iVar2 == iRam1019cb80) && (iVar1 == iRam1019cb84)) {
 			return 1;
 		}
 	}

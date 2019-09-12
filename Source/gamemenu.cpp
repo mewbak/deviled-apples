@@ -1,270 +1,374 @@
 
-undefined8
-gamemenu_previous(int param_1, undefined8 param_2, ulonglong param_3, undefined8 param_4, undefined8 param_5,
-    undefined4 param_6, undefined4 param_7, undefined4 param_8, undefined4 param_9)
+void gamemenu_enable_single(TMenuItem *pMenuItems)
 
 {
-	undefined *puVar1;
-	undefined8 uVar2;
-	ulonglong uVar3;
-	undefined7 uVar4;
-	undefined uVar5;
-	undefined7 uVar6;
-	undefined uVar7;
-	undefined8 uVar8;
-	undefined4 in_stack_ffffffc8;
+	int iVar1;
+	BOOL enable;
 
-	uVar6 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar7 = (undefined)param_5;
-	uVar4 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar5 = (undefined)param_4;
-	uVar8 = 1;
-	if (*PTR_DAT_100f17e0 != '\x01') {
-		puVar1 = &DAT_100fb788;
-		uVar3 = (ulonglong)_DAT_100f2d6c;
-		if (param_1 == 3) {
-			param_3 = 1;
-			goto LAB_100408b4;
+	iVar1 = 0x100f8fd0;
+	gmenu_enable(sgSingleMenu + 3, _DAT_10186eb0);
+	enable = 0;
+	if ((*(int *)(*(int *)(iVar1 + -0x77a8) + **(int **)(iVar1 + -0x77ac) * 0x55ec) != 8) && (**(int **)(iVar1 + -0x75cc) == 0)) {
+		enable = 1;
+	}
+	gmenu_enable(sgSingleMenu, enable);
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void gamemenu_enable_multi(TMenuItem *pMenuItems)
+
+{
+	gmenu_enable(sgMultiMenu + 2, _DAT_10186eb4);
+	return;
+}
+
+void gamemenu_previous(void)
+
+{
+	bool bVar1;
+	TMenuItem *pItem;
+	int in_r3;
+	undefined **gmFunc;
+
+	bVar1 = true;
+	if (gbMaxPlayers == '\x01') {
+		pItem = sgSingleMenu;
+		gmFunc = &PTR_gamemenu_enable_single_100f4920;
+	} else {
+		pItem = sgMultiMenu;
+		gmFunc = &PTR_gamemenu_enable_multi_100f4918;
+		if (((in_r3 != 3) && (in_r3 < 3)) && (in_r3 == 1)) {
+			bVar1 = false;
 		}
-		if (param_1 < 3) {
-			if (param_1 == 1) {
-				uVar8 = 0;
-				goto LAB_100408b4;
+	}
+	if (bVar1) {
+		gmenu_call_proc(pItem, (gmFunc *)gmFunc);
+		PressEscKey();
+	}
+	return;
+}
+
+void gamemenu_off(void)
+
+{
+	gmenu_call_proc((TMenuItem *)0x0, (gmFunc *)0x0);
+	return;
+}
+
+void gamemenu_handle_previous(void)
+
+{
+	BOOL BVar1;
+
+	BVar1 = gmenu_exception();
+	if (BVar1 == 0) {
+		gamemenu_previous();
+	} else {
+		gamemenu_off();
+	}
+	return;
+}
+
+void j_gamemenu_previous(BOOL bActivate)
+
+{
+	gamemenu_previous();
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void gamemenu_new_game(BOOL bActivate)
+
+{
+	int iVar1;
+
+	iVar1 = 0x100f8fd0;
+	plr[0]._pmode = 0xb;
+	plr[0]._pInvincible = true;
+	plr[1]._284_4_ = 0xb;
+	plr[1]._pWAnim[5]._1_1_ = 1;
+	plr[2]._pNFrames = 0xb;
+	plr[2]._pBFrames._1_1_ = 1;
+	plr[3]._pBAnim[1] = &DAT_0000000b;
+	plr[3].InvBody[0]._iPLLR._1_1_ = 1;
+	_DAT_10186eb4 = 0;
+	_drawpanflag = 0xff;
+	scrollrt_draw_game_screen(1);
+	**(undefined4 **)(iVar1 + -0x75a4) = 0;
+	gamemenu_off();
+	return;
+}
+
+void gamemenu_quit_game(BOOL bActivate)
+
+{
+	int iVar1;
+
+	iVar1 = 0x100f8fd0;
+	gamemenu_new_game(bActivate);
+	**(undefined4 **)(iVar1 + -0x75ac) = 0;
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void gamemenu_load_game(BOOL bActivate)
+
+{
+	int iVar1;
+	WNDPROC *pWVar2;
+
+	iVar1 = 0x100f8fd0;
+	pWVar2 = SetWindowProc((WNDPROC *)&PTR_DisableInputWndProc_100f48e8);
+	gamemenu_off();
+	SetCursor_(0);
+	InitDiabloMsg('\n');
+	_drawpanflag = 0xff;
+	DrawAndBlit();
+	LoadGame(0);
+	ClrDiabloMsg();
+	PaletteFadeOut(8);
+	**(undefined4 **)(iVar1 + -0x75cc) = 0;
+	_drawpanflag = 0xff;
+	DrawAndBlit();
+	PaletteFadeIn(8);
+	SetCursor_(1);
+	interface_msg_pump();
+	SetWindowProc(pWVar2);
+	return;
+}
+
+// WARNING: Globals starting with '_' overlap smaller symbols at the same address
+
+void gamemenu_save_game(BOOL bActivate)
+
+{
+	WNDPROC *pWVar1;
+
+	if (_DAT_1012861c == 1) {
+		if ((((PlayerStruct *)((int)plr + myplr * 0x55ec))->_pmode == 8) || (_DAT_10186eb4 != 0)) {
+			gamemenu_off();
+		} else {
+			pWVar1 = SetWindowProc((WNDPROC *)&PTR_DisableInputWndProc_100f48e8);
+			SetCursor_(0);
+			gamemenu_off();
+			InitDiabloMsg('\v');
+			_drawpanflag = 0xff;
+			DrawAndBlit();
+			SaveGame();
+			ClrDiabloMsg();
+			_drawpanflag = 0xff;
+			SetCursor_(1);
+			interface_msg_pump();
+			SetWindowProc(pWVar1);
+		}
+	}
+	return;
+}
+
+void gamemenu_restart_town(BOOL bActivate)
+
+{
+	NetSendCmd(1, 'S');
+	return;
+}
+
+void gamemenu_sound_music_toggle(char **names, TMenuItem *menu_item, int gamma)
+
+{
+	if (DAT_1019fed0 == '\0') {
+		menu_item->dwFlags = menu_item->dwFlags & 0x3fffffff;
+		menu_item->pszStr = names[1];
+	} else {
+		menu_item->dwFlags = menu_item->dwFlags | 0xc0000000;
+		menu_item->pszStr = *names;
+		gmenu_slider_steps(menu_item, 0x11);
+		gmenu_slider_set(menu_item, -0x640, 0, gamma);
+	}
+	return;
+}
+
+int gamemenu_slider_music_sound(TMenuItem *menu_item)
+
+{
+	int iVar1;
+
+	iVar1 = gmenu_slider_get(menu_item, -0x640, 0);
+	return iVar1;
+}
+
+void gamemenu_get_music(void)
+
+{
+	int iVar1;
+	int gamma;
+
+	iVar1 = 0x100f8fd0;
+	gamma = sound_get_or_set_music_volume(1);
+	gamemenu_sound_music_toggle((char **)(iVar1 + 0x283c), (TMenuItem *)(iVar1 + 0x27f4), gamma);
+	return;
+}
+
+void gamemenu_get_sound(void)
+
+{
+	int iVar1;
+	int gamma;
+
+	iVar1 = 0x100f8fd0;
+	gamma = sound_get_or_set_sound_volume(1);
+	gamemenu_sound_music_toggle((char **)(iVar1 + 0x2844), (TMenuItem *)(iVar1 + 0x2800), gamma);
+	return;
+}
+
+void gamemenu_get_color_cycling(void)
+
+{
+	int iVar1;
+	uint uVar2;
+
+	iVar1 = 0x100f8fd0;
+	uVar2 = palette_get_colour_cycling();
+	*(undefined4 *)(iVar1 + 0x281c) = *(undefined4 *)(iVar1 + 0x284c + (uVar2 & 1) * 4);
+	return;
+}
+
+void gamemenu_get_gamma(void)
+
+{
+	int gamma;
+
+	gmenu_slider_steps(sgOptionsMenu + 2, 0xf);
+	gamma = UpdateGamma(0);
+	gmenu_slider_set(sgOptionsMenu + 2, 0x1e, 100, gamma);
+	return;
+}
+
+int gamemenu_slider_gamma(void)
+
+{
+	int iVar1;
+
+	iVar1 = gmenu_slider_get(sgOptionsMenu + 2, 0x1e, 100);
+	return iVar1;
+}
+
+void gamemenu_options(BOOL bActivate)
+
+{
+	int iVar1;
+
+	iVar1 = 0x100f8fd0;
+	gamemenu_get_music();
+	gamemenu_get_sound();
+	gamemenu_get_gamma();
+	gamemenu_get_color_cycling();
+	gmenu_call_proc((TMenuItem *)(iVar1 + 0x27f4), (gmFunc *)0x0);
+	return;
+}
+
+void gamemenu_music_volume(BOOL bActivate)
+
+{
+	int volume;
+
+	if (bActivate == 0) {
+		volume = gamemenu_slider_music_sound(sgOptionsMenu);
+		sound_get_or_set_music_volume(volume);
+		if (volume == -0x640) {
+			if (DAT_1010ef60 != '\0') {
+				DAT_1010ef60 = '\0';
+				music_stop();
 			}
 		} else {
-			if (param_1 == 5) {
-				param_3 = 3;
-				goto LAB_100408b4;
-			}
-			if (param_1 < 5) {
-				param_3 = 2;
-				goto LAB_100408b4;
+			if (DAT_1010ef60 == '\0') {
+				DAT_1010ef60 = '\x01';
+				music_start((uint)leveltype);
 			}
 		}
-		param_3 = 0;
-		goto LAB_100408b4;
-	}
-	puVar1 = &DAT_100fb740;
-	uVar3 = ZEXT48(PTR_PTR_LAB_100f2d70);
-	if (param_1 == 3) {
-		param_3 = 2;
-		goto LAB_100408b4;
-	}
-	if (param_1 < 3) {
-		if (param_1 == 1) {
-			param_3 = 0;
-			goto LAB_100408b4;
-		}
 	} else {
-		if (param_1 == 5) {
-			param_3 = 4;
-			goto LAB_100408b4;
-		}
-		if (param_1 < 5) {
-			param_3 = 3;
-			goto LAB_100408b4;
+		if (DAT_1010ef60 == '\0') {
+			DAT_1010ef60 = '\x01';
+			sound_get_or_set_music_volume(0);
+			music_start((uint)leveltype);
+		} else {
+			DAT_1010ef60 = '\0';
+			music_stop();
+			sound_get_or_set_music_volume(-0x640);
 		}
 	}
-	param_3 = 0;
-LAB_100408b4:
-	if ((int)uVar8 != 0) {
-		uVar2 = gmenu_call_proc((int)puVar1, (int)uVar3, (int)param_3, uVar5, uVar7, (char)param_6, (char)param_7, (char)param_8, in_stack_ffffffc8);
-		PressEscKey(uVar2, uVar3, param_3, CONCAT71(uVar4, uVar5), CONCAT71(uVar6, uVar7), param_6, param_7,
-		    param_8, in_stack_ffffffc8);
-	}
-	return uVar8;
-}
-
-void gamemenu_off(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined4 in_stack_ffffffc8;
-
-	gmenu_call_proc(0, 0, 0, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+	gamemenu_get_music();
 	return;
 }
 
-void gamemenu_handle_previous(int param_1, undefined8 param_2, ulonglong param_3, undefined8 param_4,
-    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
-    undefined4 param_9)
+void gamemenu_sound_volume(BOOL bActivate)
 
 {
-	ulonglong uVar1;
-	undefined7 uVar2;
-	undefined uVar3;
-	undefined7 uVar4;
-	undefined uVar5;
-	undefined7 uVar6;
-	undefined uVar7;
-	undefined7 uVar8;
-	undefined uVar9;
-	undefined4 in_stack_ffffffc8;
+	int volume;
 
-	uVar8 = (undefined7)((ulonglong)param_5 >> 8);
-	uVar9 = (undefined)param_5;
-	uVar6 = (undefined7)((ulonglong)param_4 >> 8);
-	uVar7 = (undefined)param_4;
-	uVar4 = (undefined7)(param_3 >> 8);
-	uVar5 = (undefined)param_3;
-	uVar2 = (undefined7)((ulonglong)param_2 >> 8);
-	uVar3 = (undefined)param_2;
-	uVar1 = gmenu_exception();
-	if ((int)uVar1 == 0) {
-		gamemenu_previous(param_1, CONCAT71(uVar2, uVar3), CONCAT71(uVar4, uVar5), CONCAT71(uVar6, uVar7),
-		    CONCAT71(uVar8, uVar9), param_6, param_7, param_8, in_stack_ffffffc8);
+	if (bActivate == 0) {
+		volume = gamemenu_slider_music_sound(sgOptionsMenu + 1);
+		sound_get_or_set_sound_volume(volume);
+		if (volume == -0x640) {
+			if (DAT_1010ef61 != '\0') {
+				DAT_1010ef61 = '\0';
+				FreeMonsterSnd();
+			}
+		} else {
+			if (DAT_1010ef61 == '\0') {
+				DAT_1010ef61 = '\x01';
+			}
+		}
 	} else {
-		gamemenu_off((char)uVar1, uVar3, uVar5, uVar7, uVar9, (char)param_6, (char)param_7, (char)param_8,
-		    in_stack_ffffffc8);
+		if (DAT_1010ef61 == '\0') {
+			DAT_1010ef61 = '\x01';
+			sound_get_or_set_sound_volume(0);
+		} else {
+			DAT_1010ef61 = '\0';
+			FreeMonsterSnd();
+			sound_get_or_set_sound_volume(-0x640);
+		}
 	}
+	PlaySFX(0x45);
+	gamemenu_get_sound();
 	return;
 }
 
-void gamemenu_new_game(void)
+void gamemenu_gamma(BOOL bActivate)
 
 {
-	undefined4 *puVar1;
-	undefined *puVar2;
-	undefined *puVar3;
-	undefined *puVar4;
-	undefined **ppuVar5;
-	ulonglong uVar6;
-	ulonglong uVar7;
-	longlong lVar8;
-	undefined uVar9;
-	undefined uVar10;
-	ulonglong uVar11;
-	undefined4 in_r10;
-	undefined uVar12;
-	undefined4 in_stack_ffffffb8;
+	int gamma;
 
-	puVar4 = PTR_DAT_100f1a04;
-	puVar2 = PTR_DAT_100f1828;
-	uVar12 = (undefined)in_r10;
-	ppuVar5 = &toc;
-	uVar11 = ZEXT48(PTR_DAT_100f1828);
-	uVar11._7_1_ = SUB41(PTR_DAT_100f1828, 0);
-	uVar10 = 0xb;
-	uVar9 = 1;
-	lVar8 = uVar11 + 0x10000;
-	lVar8._7_1_ = (undefined)lVar8;
-	uVar7 = ZEXT48(PTR_DAT_100f1a04);
-	uVar7._7_1_ = SUB41(PTR_DAT_100f1a04, 0);
-	*(undefined4 *)PTR_DAT_100f1828 = 0xb;
-	puVar3 = PTR_DAT_100f1914;
-	uVar6 = ZEXT48(PTR_DAT_100f1914);
-	uVar6._7_1_ = SUB41(PTR_DAT_100f1914, 0);
-	puVar2[0x139] = 1;
-	*(undefined4 *)(puVar2 + 0x55ec) = 0xb;
-	puVar2[0x5725] = 1;
-	*(undefined4 *)(puVar2 + 0xabd8) = 0xb;
-	puVar2[0xad11] = 1;
-	*(undefined4 *)(puVar2 + 0x101c4) = 0xb;
-	puVar2[0x102fd] = 1;
-	*(undefined4 *)puVar4 = 0;
-	*(undefined4 *)puVar3 = 0xff;
-	scrollrt_draw_game_screen(1, uVar6, uVar7, lVar8, 1, 0xb, uVar11, in_r10, in_stack_ffffffb8);
-	puVar1 = (undefined4 *)ppuVar5[-0x1d69];
-	*puVar1 = 0;
-	gamemenu_off((char)puVar1, (undefined)uVar6, (undefined)uVar7, (undefined)lVar8, uVar9, uVar10,
-	    (undefined)uVar11, uVar12, in_stack_ffffffb8);
-	return;
-}
-
-void gamemenu_sound_music_toggle(uint *param_1, uint *param_2, int param_3, undefined param_4, undefined param_5,
-    undefined param_6, undefined param_7, undefined param_8, undefined4 param_9)
-
-{
-	if (*_DAT_100f1d20 == '\0') {
-		*param_2 = *param_2 & 0x3fffffff;
-		param_2[1] = param_1[1];
+	if (bActivate == 0) {
+		gamma = gamemenu_slider_gamma();
 	} else {
-		*param_2 = *param_2 | 0xc0000000;
-		param_2[1] = *param_1;
-		gmenu_slider_steps(param_2, 0x11);
-		gmenu_slider_set(param_2, -0x640, 0, param_3);
+		gamma = UpdateGamma(0);
+		if (gamma == 0x1e) {
+			gamma = 100;
+		} else {
+			gamma = 0x1e;
+		}
 	}
+	UpdateGamma(gamma);
+	gamemenu_get_gamma();
 	return;
 }
 
-void gamemenu_slider_music_sound(uint *param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
+void gamemenu_color_cycling(BOOL bActivate)
 
 {
-	gmenu_slider_get(param_1, -0x640, 0);
-	return;
-}
+	undefined8 uVar1;
+	int iVar2;
+	BOOL BVar3;
+	uint uVar4;
 
-void gamemenu_get_music(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined **ppuVar1;
-	ulonglong uVar2;
-	undefined4 in_stack_ffffffc8;
-
-	ppuVar1 = &toc;
-	uVar2 = sound_get_or_set_music_volume(&DAT_00000001, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
-	    in_stack_ffffffc8);
-	gamemenu_sound_music_toggle((uint *)(ppuVar1 + 0xa0f), (uint *)(ppuVar1 + 0x9fd), (int)uVar2, param_4, param_5,
-	    param_6, param_7, param_8, in_stack_ffffffc8);
-	return;
-}
-
-void gamemenu_get_sound(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined **ppuVar1;
-	ulonglong uVar2;
-	undefined4 in_stack_ffffffc8;
-
-	ppuVar1 = &toc;
-	uVar2 = sound_get_or_set_sound_volume(1);
-	gamemenu_sound_music_toggle((uint *)(ppuVar1 + 0xa11), (uint *)(ppuVar1 + 0xa00), (int)uVar2, param_4, param_5,
-	    param_6, param_7, param_8, in_stack_ffffffc8);
-	return;
-}
-
-void gamemenu_get_color_cycling(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	undefined **ppuVar1;
-	ulonglong uVar2;
-
-	ppuVar1 = &toc;
-	uVar2 = palette_get_colour_cycling();
-	ppuVar1[0xa07] = ppuVar1[((uint)uVar2 & 1) + 0xa13];
-	return;
-}
-
-void gamemenu_get_gamma(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	longlong lVar1;
-	undefined uVar2;
-	undefined4 in_stack_ffffffc8;
-
-	uVar2 = 0xf;
-	gmenu_slider_steps((uint *)0x100fb7dc, 0xf);
-	lVar1 = UpdateGamma(0, uVar2, param_3, param_4, param_5, param_6, param_7, param_8, in_stack_ffffffc8);
-	gmenu_slider_set((uint *)0x100fb7dc, 0x1e, 100, (int)lVar1);
-	return;
-}
-
-void gamemenu_slider_gamma(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
-    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
-    undefined4 param_9)
-
-{
-	gmenu_slider_get((uint *)0x100fb7dc, 0x1e, 100);
+	iVar2 = 0x100f8fd0;
+	BVar3 = palette_get_colour_cycling();
+	uVar1 = countLeadingZeros(BVar3);
+	uVar4 = palette_set_color_cycling((uint)uVar1 >> 5 & 0xff);
+	*(undefined4 *)(iVar2 + 0x281c) = *(undefined4 *)(iVar2 + 0x284c + (uVar4 & 1) * 4);
 	return;
 }
