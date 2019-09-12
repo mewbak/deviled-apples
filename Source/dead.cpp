@@ -1,517 +1,279 @@
 
-// Address range: 0x33dc4 - 0x34250
-int32_t InitDead(int32_t a1)
+void InitDead(void)
+
 {
-	int32_t v1 = 5;                          // ctr
-	int32_t v2 = *(int32_t *)(g23 - 0x7754); // 0x33dd0
-	int32_t v3 = *(int32_t *)(g23 - 0x761c); // r6
-	int32_t v4 = *(int32_t *)(g23 - 0x7614); // r5
-	int32_t v5 = 0;                          // r0
-	int32_t v6;                              // bp-856
-	int32_t v7 = &v6;                        // 0x33de4
-	int32_t v8 = v7;                         // r3
-	int32_t v9 = v7;                         // 0x33de8
-	int32_t v10 = 0;                         // 0x33de8
-	// branch -> 0x33de8
-	while (true) {
-		// 0x33de8
-		*(int32_t *)v9 = v10;
-		*(int32_t *)(v8 + 4) = v5;
-		*(int32_t *)(v8 + 8) = v5;
-		*(int32_t *)(v8 + 12) = v5;
-		*(int32_t *)(v8 + 16) = v5;
-		*(int32_t *)(v8 + 20) = v5;
-		*(int32_t *)(v8 + 24) = v5;
-		*(int32_t *)(v8 + 28) = v5;
-		*(int32_t *)(v8 + 32) = v5;
-		*(int32_t *)(v8 + 36) = v5;
-		*(int32_t *)(v8 + 40) = v5;
-		*(int32_t *)(v8 + 44) = v5;
-		*(int32_t *)(v8 + 48) = v5;
-		*(int32_t *)(v8 + 52) = v5;
-		*(int32_t *)(v8 + 56) = v5;
-		*(int32_t *)(v8 + 60) = v5;
-		*(int32_t *)(v8 + 64) = v5;
-		*(int32_t *)(v8 + 68) = v5;
-		*(int32_t *)(v8 + 72) = v5;
-		*(int32_t *)(v8 + 76) = v5;
-		*(int32_t *)(v8 + 80) = v5;
-		*(int32_t *)(v8 + 84) = v5;
-		*(int32_t *)(v8 + 88) = v5;
-		*(int32_t *)(v8 + 92) = v5;
-		*(int32_t *)(v8 + 96) = v5;
-		*(int32_t *)(v8 + 100) = v5;
-		*(int32_t *)(v8 + 104) = v5;
-		*(int32_t *)(v8 + 108) = v5;
-		*(int32_t *)(v8 + 112) = v5;
-		*(int32_t *)(v8 + 116) = v5;
-		*(int32_t *)(v8 + 120) = v5;
-		*(int32_t *)(v8 + 124) = v5;
-		*(int32_t *)(v8 + 128) = v5;
-		*(int32_t *)(v8 + 132) = v5;
-		*(int32_t *)(v8 + 136) = v5;
-		*(int32_t *)(v8 + 140) = v5;
-		*(int32_t *)(v8 + 144) = v5;
-		*(int32_t *)(v8 + 148) = v5;
-		*(int32_t *)(v8 + 152) = v5;
-		*(int32_t *)(v8 + 156) = v5;
-		int32_t v11 = v8 + 160; // 0x33e88
-		v8 = v11;
-		int32_t v12 = v1 - 1; // 0x33e8c
-		v1 = v12;
-		if (v12 == 0) {
-			int32_t v13 = v4;                         // 0x33e94
-			int32_t v14 = *(int32_t *)(g23 - 0x7610); // 0x33e98
-			v8 = v7;
-			int32_t v15 = *(int32_t *)*(int32_t *)(g23 - 0x7618); // 0x33ea0
-			int32_t v16 = 0;                                      // r28
-			v1 = v15;
-			int32_t v17 = 0; // 0x33f98
-			int32_t v18;     // r10
-			int32_t v19;     // r11
-			int32_t v20;     // r12
-			int32_t v21;     // r9
-			int32_t v22;     // bp-912
-			int32_t v23;     // 0x33f8c
-			int32_t v24;     // 0x34074
-			int32_t v25;     // 0x34118
-			int32_t v26;     // 0x3413c
-			int32_t v27;     // 0x34148
-			int32_t v28;     // 0x3423c
-			int32_t v29;     // 0x34240
-			int32_t v30;     // 0x33f90
-			int32_t v31;     // 0x33f98
-			int32_t v32;     // 0x3411c
-			int32_t v33;     // 0x34140
-			int32_t v34;     // 0x33fa8
-			int32_t v35;     // 0x34128
-			int32_t v36;     // 0x33f8c
-			int32_t v37;     // 0x33f94
-			int32_t v38;     // 0x34074
-			int32_t v39;     // 0x34078
-			int32_t result;  // 0x34124
-			if (v15 >= 1) {
-				while (true) {
-					int32_t v40 = v15; // 0x33f88
-					if (*(int32_t *)(4 * (int32_t) * (char *)v14 + v7) == 0) {
-						int32_t v41 = v16 + 1; // 0x33ecc
-						v21 = v41;
-						v16 = v41;
-						*(int32_t *)v13 = *(int32_t *)(v14 + 312);
-						*(int32_t *)(v13 + 4) = *(int32_t *)(v14 + 316);
-						int32_t v42 = v14; // 0x33ee4
-						*(int32_t *)(v13 + 8) = *(int32_t *)(v42 + 320);
-						*(int32_t *)(v13 + 12) = *(int32_t *)(v42 + 324);
-						int32_t v43 = v14; // 0x33ef4
-						*(int32_t *)(v13 + 16) = *(int32_t *)(v43 + 328);
-						*(int32_t *)(v13 + 20) = *(int32_t *)(v43 + 332);
-						int32_t v44 = v14; // 0x33f04
-						*(int32_t *)(v13 + 24) = *(int32_t *)(v44 + 336);
-						*(int32_t *)(v13 + 28) = *(int32_t *)(v44 + 340);
-						int32_t v45 = v14; // 0x33f14
-						*(int32_t *)(v13 + 32) = *(int32_t *)(v45 + 344);
-						*(int32_t *)(v13 + 36) = *(int32_t *)(v45 + 348);
-						int32_t v46 = v14; // 0x33f24
-						*(int32_t *)(v13 + 40) = *(int32_t *)(v46 + 352);
-						*(int32_t *)(v13 + 44) = *(int32_t *)(v46 + 356);
-						int32_t v47 = v14; // 0x33f34
-						*(int32_t *)(v13 + 48) = *(int32_t *)(v47 + 360);
-						*(int32_t *)(v13 + 52) = *(int32_t *)(v47 + 364);
-						int32_t v48 = v14; // 0x33f44
-						*(int32_t *)(v13 + 56) = *(int32_t *)(v48 + 368);
-						*(int32_t *)(v13 + 60) = *(int32_t *)(v48 + 372);
-						*(int32_t *)(v13 + 64) = *(int32_t *)(v14 + 376);
-						*(int32_t *)(v13 + 68) = *(int32_t *)(v14 + 492);
-						*(int32_t *)(v13 + 72) = *(int32_t *)(v14 + 496);
-						*(char *)(v13 + 76) = (char)0;
-						v13 += 80;
-						*(char *)(v14 + 509) = (char)v21;
-						unsigned char v49 = *(char *)v14; // 0x33f78
-						*(int32_t *)(v8 + 4 * (int32_t)v49) = v21;
-						v40 = v1;
-						// branch -> 0x33f84
-					}
-					int32_t v50 = v14 + 520; // 0x33f84
-					int32_t v51 = v40 - 1;   // 0x33f88
-					v1 = v51;
-					if (v51 == 0) {
-						// 0x33f8c
-						v13 = v4;
-						v17 = v16;
-						// branch -> 0x33f8c
-						// 0x33f8c
-						v23 = v3;
-						v36 = *(int32_t *)(v23 + 0x12cc);
-						v30 = 80 * v17;
-						v21 = v30;
-						v37 = *(int32_t *)(v23 + 0x12d0);
-						v31 = v17 + 1;
-						g27 = v31;
-						v20 = v13 + 64;
-						v19 = 80 * v31;
-						v34 = v30 + v13;
-						v13 = v34;
-						g36 = v13 + 68;
-						g35 = v13 + 72;
-						g26 = 8;
-						v14 = 128;
-						v8 = 32;
-						*(int32_t *)v34 = v36;
-						g33 = v4 + 76;
-						v5 = 0;
-						g28 = *(int32_t *)(g23 - 0x7620);
-						*(int32_t *)(v13 + 4) = v37;
-						v18 = v19 + v4;
-						g31 = *(int32_t *)(g23 - 0x7624);
-						g29 = 12;
-						*(int32_t *)(v13 + 8) = v36;
-						*(int32_t *)(v13 + 12) = v37;
-						*(int32_t *)(v13 + 16) = v36;
-						*(int32_t *)(v13 + 20) = v37;
-						*(int32_t *)(v13 + 24) = v36;
-						*(int32_t *)(v13 + 28) = v37;
-						*(int32_t *)(v13 + 32) = v36;
-						*(int32_t *)(v13 + 36) = v37;
-						*(int32_t *)(v13 + 40) = v36;
-						*(int32_t *)(v13 + 44) = v37;
-						*(int32_t *)(v13 + 48) = v36;
-						*(int32_t *)(v13 + 52) = v37;
-						g24 = v36;
-						g25 = v37;
-						*(int32_t *)(v13 + 56) = v36;
-						*(int32_t *)(v13 + 60) = g25;
-						*(int32_t *)(v21 + v20) = g26;
-						*(int32_t *)(v21 + g36) = v14;
-						*(int32_t *)(v21 + g35) = v8;
-						*(char *)(v21 + g33) = (char)v5;
-						*(int32_t *)g28 = g27;
-						v24 = v3;
-						v38 = *(int32_t *)(v24 + 0x1524);
-						v39 = *(int32_t *)(v24 + 0x1528);
-						v22 = v38;
-						*(int32_t *)v18 = v38;
-						*(int32_t *)(v18 + 4) = v39;
-						*(int32_t *)(v18 + 8) = v22;
-						*(int32_t *)(v18 + 12) = v39;
-						*(int32_t *)(v18 + 16) = v22;
-						*(int32_t *)(v18 + 20) = v39;
-						*(int32_t *)(v18 + 24) = v22;
-						*(int32_t *)(v18 + 28) = v39;
-						*(int32_t *)(v18 + 32) = v22;
-						*(int32_t *)(v18 + 36) = v39;
-						*(int32_t *)(v18 + 40) = v22;
-						*(int32_t *)(v18 + 44) = v39;
-						*(int32_t *)(v18 + 48) = v22;
-						*(int32_t *)(v18 + 52) = v39;
-						*(int32_t *)(v18 + 56) = v22;
-						*(int32_t *)(v18 + 60) = v39;
-						*(int32_t *)(v19 + v20) = g29;
-						*(int32_t *)(v19 + g36) = v14;
-						*(int32_t *)(v19 + g35) = v8;
-						*(char *)(v19 + g33) = (char)v5;
-						*(int32_t *)g31 = v16 + 2;
-						v25 = g23;
-						v32 = v16 + 2;
-						g32 = v32;
-						result = *(int32_t *)(v25 - 0x7628);
-						v8 = result;
-						v35 = *(int32_t *)*(int32_t *)(v25 - 0x762c);
-						v1 = v35;
-						v14 = v4 + 80 * v32;
-						if (v35 < 1) {
-							// 0x34244
-							return result;
-						}
-						int32_t v52 = v35; // 0x3424012
-						v26 = result;
-						int32_t result2; // 0x3423c
-						while (true) {
-							// 0x3413c
-							v33 = 232 * *(int32_t *)v26;
-							v27 = v2;
-							v29 = v52;
-							v28 = v26;
-							if (*(char *)(v27 + v33 + 192) != 0) {
-							lab_0x34154:;
-								int32_t v53 = v27 + v33; // 0x34154
-								v3 = v53;
-								int32_t v54 = g32 + 1;         // 0x34158
-								int32_t v55 = v53 + 224;       // 0x3415c
-								int32_t v56 = *(int32_t *)v55; // 0x3415c
-								g32 = v54;
-								*(int32_t *)v14 = *(int32_t *)(v56 + 312);
-								*(int32_t *)(v14 + 4) = *(int32_t *)(v56 + 316);
-								int32_t v57 = *(int32_t *)(v3 + 224); // 0x34178
-								*(int32_t *)(v14 + 8) = *(int32_t *)(v57 + 320);
-								*(int32_t *)(v14 + 12) = *(int32_t *)(v57 + 324);
-								int32_t v58 = *(int32_t *)(v3 + 224); // 0x3418c
-								*(int32_t *)(v14 + 16) = *(int32_t *)(v58 + 328);
-								*(int32_t *)(v14 + 20) = *(int32_t *)(v58 + 332);
-								int32_t v59 = *(int32_t *)(v3 + 224); // 0x341a0
-								*(int32_t *)(v14 + 24) = *(int32_t *)(v59 + 336);
-								*(int32_t *)(v14 + 28) = *(int32_t *)(v59 + 340);
-								int32_t v60 = *(int32_t *)(v3 + 224); // 0x341b4
-								*(int32_t *)(v14 + 32) = *(int32_t *)(v60 + 344);
-								*(int32_t *)(v14 + 36) = *(int32_t *)(v60 + 348);
-								int32_t v61 = *(int32_t *)(v3 + 224); // 0x341c8
-								*(int32_t *)(v14 + 40) = *(int32_t *)(v61 + 352);
-								*(int32_t *)(v14 + 44) = *(int32_t *)(v61 + 356);
-								int32_t v62 = *(int32_t *)(v3 + 224); // 0x341dc
-								*(int32_t *)(v14 + 48) = *(int32_t *)(v62 + 360);
-								*(int32_t *)(v14 + 52) = *(int32_t *)(v62 + 364);
-								int32_t v63 = *(int32_t *)(v3 + 224); // 0x341f0
-								*(int32_t *)(v14 + 56) = *(int32_t *)(v63 + 368);
-								*(int32_t *)(v14 + 60) = *(int32_t *)(v63 + 372);
-								int32_t v64 = *(int32_t *)(*(int32_t *)(v3 + 224) + 376); // 0x34208
-								*(int32_t *)(v14 + 64) = v64;
-								int32_t v65 = *(int32_t *)(*(int32_t *)(v3 + 224) + 492); // 0x34214
-								*(int32_t *)(v14 + 68) = v65;
-								*(int32_t *)(v14 + 72) = *(int32_t *)(*(int32_t *)v55 + 496);
-								unsigned char v66 = *(char *)(v3 + 193); // 0x34228
-								*(char *)(v14 + 76) = (char)((int32_t)v66 + 4);
-								v14 += 80;
-								*(char *)(v3 + 194) = (char)v54;
-								v29 = v1;
-								v28 = v8;
-								// branch -> 0x3423c
-							}
-						lab_0x3423c:
-							// 0x3423c
-							result2 = v28 + 4;
-							v8 = result2;
-							int32_t v67 = v29 - 1; // 0x34240
-							v1 = v67;
-							if (v67 == 0) {
-								// break -> 0x34244
-								break;
-							}
-							v52 = v67;
-							v26 = result2;
-							// continue -> 0x3413c
-						}
-						// 0x34244
-						return result2;
-					}
-					// 0x33f84
-					v15 = v51;
-					v7 = v8;
-					v14 = v50;
-					// branch -> 0x33eb4
-				}
+	undefined4 uVar1;
+	undefined4 uVar2;
+	char cVar3;
+	int iVar4;
+	int iVar5;
+	int iVar6;
+	undefined *puVar7;
+	undefined *puVar8;
+	undefined *puVar9;
+	undefined *puVar10;
+	ulonglong uVar11;
+	int *piVar12;
+	byte *pbVar13;
+	ulonglong uVar14;
+	undefined *puVar15;
+	undefined4 *puVar17;
+	ulonglong uVar16;
+	longlong lVar18;
+	undefined4 *puVar19;
+	longlong lVar20;
+	int local_358[214];
+
+	puVar10 = PTR_DAT_100f19bc;
+	puVar15 = PTR_DAT_100f19b4;
+	puVar7 = PTR_DAT_100f187c;
+	lVar20 = 5;
+	uVar14 = ZEXT48(PTR_DAT_100f19bc);
+	piVar12 = local_358;
+	do {
+		*piVar12 = 0;
+		piVar12[1] = 0;
+		piVar12[2] = 0;
+		piVar12[3] = 0;
+		piVar12[4] = 0;
+		piVar12[5] = 0;
+		piVar12[6] = 0;
+		piVar12[7] = 0;
+		piVar12[8] = 0;
+		piVar12[9] = 0;
+		piVar12[10] = 0;
+		piVar12[0xb] = 0;
+		piVar12[0xc] = 0;
+		piVar12[0xd] = 0;
+		piVar12[0xe] = 0;
+		piVar12[0xf] = 0;
+		piVar12[0x10] = 0;
+		piVar12[0x11] = 0;
+		piVar12[0x12] = 0;
+		piVar12[0x13] = 0;
+		piVar12[0x14] = 0;
+		piVar12[0x15] = 0;
+		piVar12[0x16] = 0;
+		piVar12[0x17] = 0;
+		piVar12[0x18] = 0;
+		piVar12[0x19] = 0;
+		piVar12[0x1a] = 0;
+		piVar12[0x1b] = 0;
+		piVar12[0x1c] = 0;
+		piVar12[0x1d] = 0;
+		piVar12[0x1e] = 0;
+		piVar12[0x1f] = 0;
+		piVar12[0x20] = 0;
+		piVar12[0x21] = 0;
+		piVar12[0x22] = 0;
+		piVar12[0x23] = 0;
+		piVar12[0x24] = 0;
+		piVar12[0x25] = 0;
+		piVar12[0x26] = 0;
+		piVar12[0x27] = 0;
+		piVar12 = piVar12 + 0x28;
+		lVar20 = lVar20 + -1;
+	} while (lVar20 != 0);
+	uVar11 = (ulonglong) * (uint *)PTR_DAT_100f19b8;
+	lVar20 = 0;
+	uVar16 = uVar14;
+	pbVar13 = PTR_DAT_100f19c0;
+	if (0 < (int)*(uint *)PTR_DAT_100f19b8) {
+		do {
+			if (local_358[(uint)*pbVar13] == 0) {
+				lVar18 = lVar20 + 1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x13c);
+				lVar20 = lVar20 + 1;
+				puVar17 = (undefined4 *)uVar16;
+				*puVar17 = *(undefined4 *)(pbVar13 + 0x138);
+				puVar17[1] = uVar1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x144);
+				puVar17[2] = *(undefined4 *)(pbVar13 + 0x140);
+				puVar17[3] = uVar1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x14c);
+				puVar17[4] = *(undefined4 *)(pbVar13 + 0x148);
+				puVar17[5] = uVar1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x154);
+				puVar17[6] = *(undefined4 *)(pbVar13 + 0x150);
+				puVar17[7] = uVar1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x15c);
+				puVar17[8] = *(undefined4 *)(pbVar13 + 0x158);
+				puVar17[9] = uVar1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x164);
+				puVar17[10] = *(undefined4 *)(pbVar13 + 0x160);
+				puVar17[0xb] = uVar1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x16c);
+				puVar17[0xc] = *(undefined4 *)(pbVar13 + 0x168);
+				puVar17[0xd] = uVar1;
+				uVar1 = *(undefined4 *)(pbVar13 + 0x174);
+				puVar17[0xe] = *(undefined4 *)(pbVar13 + 0x170);
+				puVar17[0xf] = uVar1;
+				puVar17[0x10] = *(undefined4 *)(pbVar13 + 0x178);
+				puVar17[0x11] = *(undefined4 *)(pbVar13 + 0x1ec);
+				puVar17[0x12] = *(undefined4 *)(pbVar13 + 0x1f0);
+				*(undefined *)(puVar17 + 0x13) = 0;
+				uVar16 = uVar16 + 0x50;
+				pbVar13[0x1fd] = (byte)lVar18;
+				local_358[(uint)*pbVar13] = (int)lVar18;
 			}
-			// 0x33f8c
-			v23 = v3;
-			v36 = *(int32_t *)(v23 + 0x12cc);
-			v30 = 80 * v17;
-			v21 = v30;
-			v37 = *(int32_t *)(v23 + 0x12d0);
-			v31 = v17 + 1;
-			g27 = v31;
-			v20 = v13 + 64;
-			v19 = 80 * v31;
-			v34 = v30 + v13;
-			v13 = v34;
-			g36 = v13 + 68;
-			g35 = v13 + 72;
-			g26 = 8;
-			v14 = 128;
-			v8 = 32;
-			*(int32_t *)v34 = v36;
-			g33 = v4 + 76;
-			v5 = 0;
-			g28 = *(int32_t *)(g23 - 0x7620);
-			*(int32_t *)(v13 + 4) = v37;
-			v18 = v19 + v4;
-			g31 = *(int32_t *)(g23 - 0x7624);
-			g29 = 12;
-			*(int32_t *)(v13 + 8) = v36;
-			*(int32_t *)(v13 + 12) = v37;
-			*(int32_t *)(v13 + 16) = v36;
-			*(int32_t *)(v13 + 20) = v37;
-			*(int32_t *)(v13 + 24) = v36;
-			*(int32_t *)(v13 + 28) = v37;
-			*(int32_t *)(v13 + 32) = v36;
-			*(int32_t *)(v13 + 36) = v37;
-			*(int32_t *)(v13 + 40) = v36;
-			*(int32_t *)(v13 + 44) = v37;
-			*(int32_t *)(v13 + 48) = v36;
-			*(int32_t *)(v13 + 52) = v37;
-			g24 = v36;
-			g25 = v37;
-			*(int32_t *)(v13 + 56) = v36;
-			*(int32_t *)(v13 + 60) = g25;
-			*(int32_t *)(v21 + v20) = g26;
-			*(int32_t *)(v21 + g36) = v14;
-			*(int32_t *)(v21 + g35) = v8;
-			*(char *)(v21 + g33) = (char)v5;
-			*(int32_t *)g28 = g27;
-			v24 = v3;
-			v38 = *(int32_t *)(v24 + 0x1524);
-			v39 = *(int32_t *)(v24 + 0x1528);
-			v22 = v38;
-			*(int32_t *)v18 = v38;
-			*(int32_t *)(v18 + 4) = v39;
-			*(int32_t *)(v18 + 8) = v22;
-			*(int32_t *)(v18 + 12) = v39;
-			*(int32_t *)(v18 + 16) = v22;
-			*(int32_t *)(v18 + 20) = v39;
-			*(int32_t *)(v18 + 24) = v22;
-			*(int32_t *)(v18 + 28) = v39;
-			*(int32_t *)(v18 + 32) = v22;
-			*(int32_t *)(v18 + 36) = v39;
-			*(int32_t *)(v18 + 40) = v22;
-			*(int32_t *)(v18 + 44) = v39;
-			*(int32_t *)(v18 + 48) = v22;
-			*(int32_t *)(v18 + 52) = v39;
-			*(int32_t *)(v18 + 56) = v22;
-			*(int32_t *)(v18 + 60) = v39;
-			*(int32_t *)(v19 + v20) = g29;
-			*(int32_t *)(v19 + g36) = v14;
-			*(int32_t *)(v19 + g35) = v8;
-			*(char *)(v19 + g33) = (char)v5;
-			*(int32_t *)g31 = v16 + 2;
-			v25 = g23;
-			v32 = v16 + 2;
-			g32 = v32;
-			result = *(int32_t *)(v25 - 0x7628);
-			v8 = result;
-			v35 = *(int32_t *)*(int32_t *)(v25 - 0x762c);
-			v1 = v35;
-			v14 = v4 + 80 * v32;
-			if (v35 < 1) {
-				// 0x34244
-				return result;
-			}
-			v26 = result;
-			while (true) {
-				// 0x3413c
-				v33 = 232 * *(int32_t *)v26;
-				v27 = v2;
-				if (*(char *)(v27 + v33 + 192) == 0) {
-					v29 = v35;
-					v28 = v26;
-					goto lab_0x3423c;
-				}
-				goto lab_0x34154;
-			}
-		} else {
-			// 0x33de8
-			v9 = v11;
-			v10 = v5;
-			// branch -> 0x33de8
-			continue;
-		}
+			pbVar13 = pbVar13 + 0x208;
+			uVar11 = uVar11 - 1;
+		} while (uVar11 != 0);
 	}
+	uVar1 = *(undefined4 *)(puVar15 + 0x12cc);
+	iVar6 = (int)lVar20;
+	iVar4 = iVar6 * 0x50;
+	uVar2 = *(undefined4 *)(puVar15 + 0x12d0);
+	iVar5 = (iVar6 + 1) * 0x50;
+	puVar17 = (undefined4 *)(puVar10 + iVar4);
+	*puVar17 = uVar1;
+	puVar9 = PTR_DAT_100f19b0;
+	puVar17[1] = uVar2;
+	puVar8 = PTR_DAT_100f19ac;
+	puVar19 = (undefined4 *)(puVar10 + iVar5);
+	puVar17[2] = uVar1;
+	puVar17[3] = uVar2;
+	puVar17[4] = uVar1;
+	puVar17[5] = uVar2;
+	puVar17[6] = uVar1;
+	puVar17[7] = uVar2;
+	puVar17[8] = uVar1;
+	puVar17[9] = uVar2;
+	puVar17[10] = uVar1;
+	puVar17[0xb] = uVar2;
+	puVar17[0xc] = uVar1;
+	puVar17[0xd] = uVar2;
+	puVar17[0xe] = uVar1;
+	puVar17[0xf] = uVar2;
+	*(undefined4 *)(puVar10 + 0x40 + iVar4) = 8;
+	*(undefined4 *)(puVar10 + 0x44 + iVar4) = 0x80;
+	*(undefined4 *)(puVar10 + 0x48 + iVar4) = 0x20;
+	(puVar10 + 0x4c)[iVar4] = 0;
+	*(int *)puVar9 = iVar6 + 1;
+	uVar1 = *(undefined4 *)(puVar15 + 0x1524);
+	uVar2 = *(undefined4 *)(puVar15 + 0x1528);
+	*puVar19 = uVar1;
+	puVar19[1] = uVar2;
+	puVar19[2] = uVar1;
+	puVar19[3] = uVar2;
+	puVar19[4] = uVar1;
+	puVar19[5] = uVar2;
+	puVar19[6] = uVar1;
+	puVar19[7] = uVar2;
+	puVar19[8] = uVar1;
+	puVar19[9] = uVar2;
+	puVar19[10] = uVar1;
+	puVar19[0xb] = uVar2;
+	puVar19[0xc] = uVar1;
+	puVar19[0xd] = uVar2;
+	puVar19[0xe] = uVar1;
+	puVar19[0xf] = uVar2;
+	*(undefined4 *)(puVar10 + 0x40 + iVar5) = 0xc;
+	*(undefined4 *)(puVar10 + 0x44 + iVar5) = 0x80;
+	*(undefined4 *)(puVar10 + 0x48 + iVar5) = 0x20;
+	(puVar10 + 0x4c)[iVar5] = 0;
+	*(int *)puVar8 = iVar6 + 2;
+	lVar20 = lVar20 + 2;
+	uVar16 = (ulonglong) * (uint *)PTR_DAT_100f19a4;
+	lVar18 = uVar14 + lVar20 * 0x50;
+	piVar12 = (int *)PTR_DAT_100f19a8;
+	if (0 < (int)*(uint *)PTR_DAT_100f19a4) {
+		do {
+			if (puVar7[*piVar12 * 0xe8 + 0xc0] != '\0') {
+				puVar15 = puVar7 + *piVar12 * 0xe8;
+				cVar3 = (char)lVar20;
+				lVar20 = lVar20 + 1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x13c);
+				puVar17 = (undefined4 *)lVar18;
+				*puVar17 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x138);
+				puVar17[1] = uVar1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x144);
+				puVar17[2] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x140);
+				puVar17[3] = uVar1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x14c);
+				puVar17[4] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x148);
+				puVar17[5] = uVar1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x154);
+				puVar17[6] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x150);
+				puVar17[7] = uVar1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x15c);
+				puVar17[8] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x158);
+				puVar17[9] = uVar1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x164);
+				puVar17[10] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x160);
+				puVar17[0xb] = uVar1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x16c);
+				puVar17[0xc] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x168);
+				puVar17[0xd] = uVar1;
+				uVar1 = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x174);
+				puVar17[0xe] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x170);
+				puVar17[0xf] = uVar1;
+				puVar17[0x10] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x178);
+				puVar17[0x11] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x1ec);
+				puVar17[0x12] = *(undefined4 *)(*(int *)(puVar15 + 0xe0) + 0x1f0);
+				*(char *)(puVar17 + 0x13) = puVar15[0xc1] + '\x04';
+				lVar18 = lVar18 + 0x50;
+				puVar15[0xc2] = cVar3 + '\x01';
+			}
+			piVar12 = piVar12 + 1;
+			uVar16 = uVar16 - 1;
+		} while (uVar16 != 0);
+	}
+	return;
 }
 
-// Address range: 0x34250 - 0x34274
-int32_t AddDead(int32_t a1, int32_t a2, uint32_t a3, int32_t a4)
+void AddDead(int param_1, int param_2, undefined4 param_3, int param_4)
+
 {
-	int32_t result = *(int32_t *)*(int32_t *)(g23 - 0x7630); // 0x34258
-	int32_t v1 = __asm_rlwinm(a4, 5, 24, 26);                // 0x34264
-	*(char *)(112 * a1 + a2 + result) = (char)(a3 % 32 + v1);
-	return result;
+	*(char *)(*(int *)PTR_DAT_100f19a0 + param_1 * 0x70 + param_2) = ((byte)param_3 & 0x1f) + (char)(param_4 << 5);
+	return;
 }
 
-// Address range: 0x34274 - 0x34338
-int32_t SetDead(int32_t a1)
+ulonglong SetDead(char param_1, undefined param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
 {
-	int32_t v1 = g10; // 0x34278
-	g36 = 0;
-	int32_t v2 = *(int32_t *)(g23 - 0x7754); // 0x34284
-	g33 = v2;
-	int32_t v3 = *(int32_t *)(g23 - 0x762c); // 0x34288
-	g35 = v3;
-	int32_t v4 = *(int32_t *)(g23 - 0x7628); // 0x3428c
-	g29 = v4;
-	if (*(int32_t *)v3 > 0) {
-		while (true) {
-			int32_t v5 = 232 * *(int32_t *)v4; // 0x342a0
-			int32_t result2 = v5;              // 0x3433415
-			int32_t v6;                        // 0x34314
-			if (*(char *)(v5 + 192 + v2) != 0) {
-				// 0x342b4
-				g30 = v5 + v2;
-				g28 = 0;
-				int32_t v7 = 0; // r27
-				int32_t v8 = 0; // 0x342d011
-				                // branch -> 0x342c0
-			lab_0x342c0:
-				while (true) {
-					// 0x342c0
-					g27 = 0;
-					int32_t v9 = v8; // 0x342d0
-					int32_t v10 = 0; // 0x342ec
-					// branch -> 0x342c4
-					while (true) {
-						int32_t v11 = *(int32_t *)*(int32_t *)(g23 - 0x7630);    // 0x342c4
-						int32_t v12 = g30;                                       // 0x342c8
-						int32_t v13 = (int32_t)(*(char *)(v11 + v10 + v9) % 32); // 0x342d8
-						int32_t v14 = v13;                                       // 0x3433416
-						int32_t v15 = v10;                                       // 0x342f4
-						if (v13 == (int32_t) * (char *)(v12 + 194)) {
-							// 0x342e4
-							v14 = function_cb984((int32_t) * (char *)(v12 + 219), g28, v10);
-							v15 = g27;
-							// branch -> 0x342f4
-						}
-						int32_t v16 = v15 + 1; // 0x342f4
-						g27 = v16;
-						if (v16 < 112) {
-							// 0x342f4
-							v9 = v7;
-							v10 = v16;
-							// branch -> 0x342c4
-							continue;
-						} else {
-							int32_t v17 = g28 + 1; // 0x34300
-							g28 = v17;
-							int32_t v18 = v7 + 112; // 0x34304
-							v7 = v18;
-							if (v17 >= 112) {
-								result2 = v14;
-								// break (via goto) -> 0x34310
-								goto lab_0x34310_2;
-							}
-							v8 = v18;
-							// continue (via goto) -> 0x342c0
-							goto lab_0x342c0;
-						}
+	uint uVar1;
+	undefined *puVar2;
+	undefined *puVar3;
+	undefined *puVar4;
+	undefined *puVar5;
+	ulonglong uVar6;
+	int iVar7;
+	int iVar8;
+	uint *puVar9;
+	int iVar10;
+	int iVar11;
+
+	puVar5 = PTR_DAT_100f19a4;
+	puVar4 = PTR_DAT_100f19a0;
+	puVar3 = PTR_DAT_100f187c;
+	uVar6 = SEXT18(param_1);
+	iVar11 = 0;
+	puVar9 = (uint *)PTR_DAT_100f19a8;
+	while (iVar11 < *(int *)puVar5) {
+		uVar6 = (ulonglong)*puVar9 * 0xe8;
+		if (puVar3[(int)uVar6 + 0xc0] != '\0') {
+			puVar2 = puVar3 + (int)uVar6;
+			iVar8 = 0;
+			iVar10 = 0;
+			do {
+				iVar7 = 0;
+				do {
+					uVar1 = (uint) * (byte *)(iVar10 + *(int *)puVar4 + iVar7) & 0x1f;
+					uVar6 = (ulonglong)uVar1;
+					if (uVar1 == (int)(char)puVar2[0xc2]) {
+						uVar6 = ChangeLightXY((uint)(byte)puVar2[0xdb], iVar8, iVar7);
 					}
-					int32_t v19 = g29;     // 0x34310
-					int32_t v20 = v19 + 4; // 0x34310
-					g29 = v20;
-					int32_t v21 = g36; // 0x34314
-					v6 = v21 + 1;
-					g36 = v6;
-					int32_t v22 = g35;             // 0x34318
-					int32_t v23 = *(int32_t *)v22; // 0x34318
-					int32_t result = result2;      // 0x34334
-					if (v6 < v23) {
-					lab_0x34310:
-						// 0x34310
-						// branch -> 0x3429c
-						break;
-					}
-					// 0x34324
-					g10 = v1;
-					return result;
-				}
-			}
-		lab_0x34310_2:
-			// 0x34310
-			g29 += 4;
-			v6 = g36 + 1;
-			g36 = v6;
-			if (v6 < *(int32_t *)g35) {
-				goto lab_0x34310;
-			}
-			// 0x34324
-			g10 = v1;
-			return result2;
+					iVar7 = iVar7 + 1;
+				} while (iVar7 < 0x70);
+				iVar8 = iVar8 + 1;
+				iVar10 = iVar10 + 0x70;
+			} while (iVar8 < 0x70);
 		}
+		puVar9 = puVar9 + 1;
+		iVar11 = iVar11 + 1;
 	}
-	// 0x34324
-	g10 = v1;
-	return g34;
+	return uVar6;
 }

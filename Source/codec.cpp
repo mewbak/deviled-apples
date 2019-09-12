@@ -1,600 +1,547 @@
 
-// Address range: 0x2bea0 - 0x2c27c
-int32_t codec_init_key(int32_t a1, int32_t a2)
+void codec_init_key(undefined4 param_1, int param_2, char param_3, char param_4, char param_5, char param_6, char param_7, char param_8, undefined4 param_9, undefined param_10,
+    undefined4 param_11)
+
 {
-	int32_t v1 = g36; // 0x2bea0
-	int32_t v2 = g35; // 0x2bea8
-	int32_t v3 = g33; // 0x2beac
-	g33 = a2;
-	g34 = 0x7058;
-	g34 = srand(0x7058);
-	int32_t v4;       // bp-164
-	int32_t v5 = &v4; // 0x2becc
-	g36 = v5;
-	g35 = 135;
-	int32_t v6 = rand(); // 0x2bed4
-	g34 = v6;
-	*(char *)g36 = (char)v6;
-	g36++;
-	g35--;
-	// branch -> 0x2bed4
-	while (g35 != 0) {
-		// 0x2bed4
-		v6 = rand();
-		g34 = v6;
-		*(char *)g36 = (char)v6;
-		g36++;
-		g35--;
-		// continue -> 0x2bed4
-	}
-	// 0x2bef0
-	int16_t v7;
-	int16_t v8;
-	int32_t v9 = v8 | 256 * v7; // 0x2bef8
-	v4 = v9;
-	int32_t v10;        // bp-228
-	int32_t v11 = &v10; // 0x2bf04
-	int32_t v12 = v11;  // r3
-	int32_t v13 = 8;    // ctr
-	int32_t v14 = 0;    // r5
-	int32_t v15 = v11;  // 0x2bf30
-	int32_t v16 = 0;    // 0x2bf14
-	// branch -> 0x2bf14
-	while (true) {
-		int32_t v17 = g33; // 0x2bf14
-		int32_t v18 = v16; // 0x2bf24
-		if (*(char *)(v17 + v16) == 0) {
-			// 0x2bf20
-			v18 = 0;
-			// branch -> 0x2bf24
+	bool bVar1;
+	byte bVar2;
+	uint uVar3;
+	uint uVar4;
+	uint uVar5;
+	int iVar6;
+	ulonglong uVar7;
+	undefined8 uVar8;
+	longlong lVar9;
+	undefined *puVar10;
+	undefined uVar12;
+	byte *pbVar11;
+	longlong lVar13;
+	longlong lVar14;
+	undefined uVar15;
+	char cVar16;
+	undefined uVar17;
+	undefined uVar19;
+	longlong lVar18;
+	undefined uVar21;
+	ulonglong uVar20;
+	undefined uVar22;
+	longlong lVar23;
+	undefined uVar25;
+	ulonglong uVar24;
+	longlong lVar26;
+	undefined uVar31;
+	int iVar27;
+	int iVar28;
+	int iVar29;
+	int iVar30;
+	longlong lVar32;
+	longlong lVar33;
+	byte local_f8[84];
+	undefined local_a4;
+	undefined uStack163;
+
+	lVar26 = (longlong)param_8;
+	lVar23 = (longlong)param_7;
+	lVar18 = (longlong)param_6;
+	lVar14 = (longlong)param_5;
+	lVar33 = (longlong)param_4;
+	lVar13 = (longlong)param_3;
+	lVar9 = (longlong)param_2;
+	uVar7 = ZEXT48(register0x0000000c);
+	iVar6 = (int)(uVar7 - 0x130);
+	*(BADSPACEBASE **)iVar6 = register0x0000000c;
+	*(undefined4 *)(iVar6 + 0x148) = param_1;
+	uVar8 = vc_srand(0x58, (char)param_2, param_3, param_4, param_5, param_6, param_7, param_8,
+	    *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
+	    *(undefined4 *)(iVar6 + 0x14));
+	lVar32 = uVar7 - 0xa4;
+	iVar27 = 0x87;
+	do {
+		uVar8 = vc_rand((char)uVar8, (char)lVar9, (char)lVar13, (char)lVar33, (char)lVar14, (char)lVar18,
+		    (char)lVar23, (char)lVar26, *(undefined *)(iVar6 + 0xb),
+		    *(undefined *)(iVar6 + 0xf), *(undefined4 *)(iVar6 + 0x14));
+		uVar31 = (undefined)lVar26;
+		uVar25 = (undefined)lVar23;
+		uVar22 = (undefined)lVar18;
+		uVar21 = (undefined)lVar14;
+		uVar19 = (undefined)lVar33;
+		bVar1 = iVar27 != 0;
+		*(undefined *)lVar32 = (char)uVar8;
+		lVar32 = lVar32 + 1;
+		iVar27 = iVar27 + -1;
+	} while (bVar1);
+	*(undefined2 *)(iVar6 + 0x8c) = CONCAT11(uStack163, local_a4);
+	lVar9 = uVar7 - 0xe4;
+	lVar33 = 8;
+	lVar13 = 0;
+	cVar16 = '\0';
+	do {
+		if (*(char *)(param_2 + (int)lVar13) == '\0') {
+			lVar13 = 0;
 		}
-		// 0x2bf24
-		*(char *)v15 = *(char *)(v18 + v17);
-		int32_t v19 = v12 + 1; // 0x2bf34
-		int32_t v20 = g33;     // 0x2bf38
-		int32_t v21 = v18 + 1; // 0x2bf38
-		int32_t v22 = v21;     // 0x2bf48
-		if (*(char *)(v21 + v20) == 0) {
-			// 0x2bf44
-			v22 = 0;
-			// branch -> 0x2bf48
+		lVar14 = lVar13 + 1;
+		puVar10 = (undefined *)lVar9;
+		*puVar10 = *(undefined *)(param_2 + (int)lVar13);
+		if (*(char *)(param_2 + (int)lVar14) == '\0') {
+			lVar14 = 0;
 		}
-		// 0x2bf48
-		*(char *)v19 = *(char *)(v22 + v20);
-		int32_t v23 = v19 + 1; // 0x2bf5c
-		int32_t v24 = g33;     // 0x2bf60
-		int32_t v25 = v22 + 1; // 0x2bf60
-		int32_t v26 = v25;     // 0x2bf70
-		if (*(char *)(v25 + v24) == 0) {
-			// 0x2bf6c
-			v26 = 0;
-			// branch -> 0x2bf70
+		lVar13 = lVar14 + 1;
+		puVar10[1] = *(undefined *)(param_2 + (int)lVar14);
+		if (*(char *)(param_2 + (int)lVar13) == '\0') {
+			lVar13 = 0;
 		}
-		// 0x2bf70
-		*(char *)v23 = *(char *)(v26 + v24);
-		int32_t v27 = v23 + 1; // 0x2bf84
-		int32_t v28 = g33;     // 0x2bf88
-		int32_t v29 = v26 + 1; // 0x2bf88
-		int32_t v30 = v29;     // 0x2bf98
-		if (*(char *)(v29 + v28) == 0) {
-			// 0x2bf94
-			v30 = 0;
-			// branch -> 0x2bf98
+		lVar14 = lVar13 + 1;
+		puVar10[2] = *(undefined *)(param_2 + (int)lVar13);
+		if (*(char *)(param_2 + (int)lVar14) == '\0') {
+			lVar14 = 0;
 		}
-		// 0x2bf98
-		*(char *)v27 = *(char *)(v30 + v28);
-		int32_t v31 = v27 + 1; // 0x2bfac
-		int32_t v32 = g33;     // 0x2bfb0
-		int32_t v33 = v30 + 1; // 0x2bfb0
-		int32_t v34 = v33;     // 0x2bfc0
-		if (*(char *)(v33 + v32) == 0) {
-			// 0x2bfbc
-			v34 = 0;
-			// branch -> 0x2bfc0
+		lVar13 = lVar14 + 1;
+		puVar10[3] = *(undefined *)(param_2 + (int)lVar14);
+		if (*(char *)(param_2 + (int)lVar13) == '\0') {
+			lVar13 = 0;
 		}
-		// 0x2bfc0
-		*(char *)v31 = *(char *)(v34 + v32);
-		int32_t v35 = v31 + 1; // 0x2bfd4
-		int32_t v36 = g33;     // 0x2bfd8
-		int32_t v37 = v34 + 1; // 0x2bfd8
-		int32_t v38 = v37;     // 0x2bfe8
-		if (*(char *)(v37 + v36) == 0) {
-			// 0x2bfe4
-			v38 = 0;
-			// branch -> 0x2bfe8
+		lVar14 = lVar13 + 1;
+		puVar10[4] = *(undefined *)(param_2 + (int)lVar13);
+		if (*(char *)(param_2 + (int)lVar14) == '\0') {
+			lVar14 = 0;
 		}
-		// 0x2bfe8
-		*(char *)v35 = *(char *)(v38 + v36);
-		int32_t v39 = v35 + 1; // 0x2bffc
-		int32_t v40 = g33;     // 0x2c000
-		int32_t v41 = v38 + 1; // 0x2c000
-		int32_t v42 = v41;     // 0x2c010
-		if (*(char *)(v41 + v40) == 0) {
-			// 0x2c00c
-			v42 = 0;
-			// branch -> 0x2c010
+		lVar13 = lVar14 + 1;
+		puVar10[5] = *(undefined *)(param_2 + (int)lVar14);
+		if (*(char *)(param_2 + (int)lVar13) == '\0') {
+			lVar13 = 0;
 		}
-		// 0x2c010
-		*(char *)v39 = *(char *)(v42 + v40);
-		int32_t v43 = v39 + 1; // 0x2c024
-		int32_t v44 = g33;     // 0x2c028
-		int32_t v45 = v42 + 1; // 0x2c028
-		int32_t v46 = v45;     // 0x2c038
-		if (*(char *)(v45 + v44) == 0) {
-			// 0x2c034
-			v46 = 0;
-			// branch -> 0x2c038
+		lVar14 = lVar13 + 1;
+		puVar10[6] = *(undefined *)(param_2 + (int)lVar13);
+		if (*(char *)(param_2 + (int)lVar14) == '\0') {
+			lVar14 = 0;
 		}
-		// 0x2c038
-		v14 += 7;
-		*(char *)v43 = *(char *)(v46 + v44);
-		int32_t v47 = v43 + 1; // 0x2c04c
-		v12 = v47;
-		int32_t v48 = v13 - 1; // 0x2c050
-		v13 = v48;
-		if (v48 == 0) {
-			// 0x2c054
-			SHA1Reset(0);
-			int32_t v49;        // bp-248
-			int32_t v50 = &v49; // 0x2c060
-			SHA1Calculate(0, v11, v50);
-			SHA1Clear();
-			v13 = 17;
-			int32_t v51 = 0x66666667; // r8
-			v12 = v5;
-			int32_t v52 = v5;         // 0x2c0e0
-			int32_t v53 = 0;          // 0x2c0a4
-			int32_t v54 = 0x66666667; // 0x2c0cc
-			// branch -> 0x2c08c
-			while (true) {
-				int64_t v55 = v54;                                                                                   // 0x2c08c
-				uint64_t v56 = v55 * (int64_t)v53;                                                                   // 0x2c08c
-				char *v57 = (char *)v52;                                                                             // 0x2c090
-				int32_t v58 = (int32_t)(v56 / 0x100000000) >> 31;                                                    // 0x2c094
-				int32_t v59 = -20 * ((v58 & -0x20000000 | (int32_t)(v56 / 0x800000000)) + (int32_t)(v58 < 0)) + v53; // 0x2c0a4
-				int32_t v60 = v53 + 1;                                                                               // 0x2c0a8
-				uint64_t v61 = v55 * (int64_t)v60;                                                                   // 0x2c0ac
-				int32_t v62 = (int32_t)(v61 / 0x100000000) >> 31;                                                    // 0x2c0b4
-				int32_t v63 = -20 * ((v62 & -0x20000000 | (int32_t)(v61 / 0x800000000)) + (int32_t)(v62 < 0)) + v60; // r6
-				int32_t v64 = v53 + 2;                                                                               // 0x2c0c8
-				uint64_t v65 = v55 * (int64_t)v64;                                                                   // 0x2c0cc
-				int32_t v66 = (int32_t)(v65 / 0x100000000) >> 31;                                                    // 0x2c0d0
-				v14 = (v66 & -0x20000000 | (int32_t)(v65 / 0x800000000)) + (int32_t)(v66 < 0);
-				*v57 = *(char *)(v59 + v50) ^ *v57;
-				int32_t v67 = 20 * v14;                           // 0x2c0e4
-				int32_t v68 = v64 + 1;                            // 0x2c0f0
-				uint64_t v69 = (int64_t)v51 * (int64_t)v68;       // 0x2c0f4
-				char *v70 = (char *)(v12 + 1);                    // 0x2c0f8
-				int32_t v71 = (int32_t)(v69 / 0x100000000) >> 31; // 0x2c0fc
-				v14 = (v71 & -0x20000000 | (int32_t)(v69 / 0x800000000)) + (int32_t)(v71 < 0);
-				*v70 = *v70 ^ *(char *)(v63 + v50);
-				int32_t v72 = 20 * v14;                           // 0x2c110
-				int32_t v73 = v68 + 1;                            // 0x2c11c
-				uint64_t v74 = (int64_t)v51 * (int64_t)v73;       // 0x2c120
-				char *v75 = (char *)(v12 + 2);                    // 0x2c124
-				int32_t v76 = (int32_t)(v74 / 0x100000000) >> 31; // 0x2c128
-				v14 = (v76 & -0x20000000 | (int32_t)(v74 / 0x800000000)) + (int32_t)(v76 < 0);
-				*v75 = *v75 ^ *(char *)(v64 - v67 + v50);
-				int32_t v77 = 20 * v14;                           // 0x2c13c
-				int32_t v78 = v73 + 1;                            // 0x2c148
-				uint64_t v79 = (int64_t)v51 * (int64_t)v78;       // 0x2c14c
-				char *v80 = (char *)(v12 + 3);                    // 0x2c150
-				int32_t v81 = (int32_t)(v79 / 0x100000000) >> 31; // 0x2c154
-				v14 = (v81 & -0x20000000 | (int32_t)(v79 / 0x800000000)) + (int32_t)(v81 < 0);
-				*v80 = *v80 ^ *(char *)(v68 - v72 + v50);
-				int32_t v82 = 20 * v14;                           // 0x2c168
-				int32_t v83 = v78 + 1;                            // 0x2c174
-				uint64_t v84 = (int64_t)v51 * (int64_t)v83;       // 0x2c178
-				char *v85 = (char *)(v12 + 4);                    // 0x2c17c
-				int32_t v86 = (int32_t)(v84 / 0x100000000) >> 31; // 0x2c180
-				v14 = (v86 & -0x20000000 | (int32_t)(v84 / 0x800000000)) + (int32_t)(v86 < 0);
-				*v85 = *v85 ^ *(char *)(v73 - v77 + v50);
-				int32_t v87 = 20 * v14; // 0x2c194
-				int32_t v88 = v83 + 1;  // 0x2c1a0
-				v14 = (int64_t)v51 * (int64_t)v88 / 0x100000000;
-				char *v89 = (char *)(v12 + 5); // 0x2c1a8
-				*v89 = *v89 ^ *(char *)(v78 - v82 + v50);
-				char *v90 = (char *)(v12 + 6); // 0x2c1c0
-				*v90 = *(char *)(v83 - v87 + v50) ^ *v90;
-				char *v91 = (char *)(v12 + 7); // 0x2c1dc
-				*v91 = *(char *)(v50 + v88 - 20 * v14 / 8) ^ *v91;
-				int32_t v92 = v12 + 8; // 0x2c1ec
-				v12 = v92;
-				int32_t v93 = v13 - 1; // 0x2c1f0
-				v13 = v93;
-				if (v93 == 0) {
-					// 0x2c1f4
-					v4 = v9;
-					g34 = v11;
-					memset();
-					g34 = v50;
-					memset();
-					g35 = 0;
-					int32_t v94;        // bp-92
-					int32_t v95 = &v94; // 0x2c228
-					g36 = v95;
-					SHA1Reset(0);
-					SHA1Calculate(g35, v95, 0);
-					int32_t v96 = g35 + 1; // 0x2c244
-					g35 = v96;
-					// branch -> 0x2c22c
-					while (v96 < 3) {
-						// 0x2c22c
-						SHA1Reset(v96);
-						SHA1Calculate(g35, v95, 0);
-						v96 = g35 + 1;
-						g35 = v96;
-						// continue -> 0x2c22c
-					}
-					// 0x2c250
-					g34 = v5;
-					g37 = 136;
-					g36 = v1;
-					g35 = v2;
-					g33 = v3;
-					return memset();
-				}
-				// 0x2c08c
-				v52 = v92;
-				v53 = v88 + 1;
-				v54 = v51;
-				// branch -> 0x2c08c
-			}
-		} else {
-			// 0x2c038
-			v15 = v47;
-			v16 = v46 + 1;
-			// branch -> 0x2bf14
-			continue;
-		}
-	}
+		lVar13 = lVar14 + 1;
+		cVar16 = cVar16 + '\a';
+		puVar10[7] = *(undefined *)(param_2 + (int)lVar14);
+		lVar9 = lVar9 + 8;
+		lVar33 = lVar33 + -1;
+	} while (lVar33 != 0);
+	SHA1Reset(0, (char)lVar13, cVar16, uVar19, uVar21, uVar22, uVar25, uVar31, *(undefined4 *)(iVar6 + 8));
+	uVar15 = (undefined)(uVar7 - 0xe4);
+	uVar17 = (undefined)(uVar7 - 0xf8);
+	uVar12 = SHA1Calculate(0, uVar7 - 0xe4, (uint *)(uVar7 - 0xf8), uVar19, uVar21, uVar22, uVar25, uVar31,
+	    *(undefined4 *)(iVar6 + 8));
+	FUN_100a42a0(uVar12, uVar15, uVar17, uVar19, uVar21, uVar22, uVar25, uVar31, *(undefined4 *)(iVar6 + 8));
+	lVar33 = 0x11;
+	uVar8 = 0x66666667;
+	lVar9 = uVar7 - 0xa4;
+	lVar13 = 0;
+	do {
+		iVar30 = (int)lVar13;
+		pbVar11 = (byte *)lVar9;
+		uVar3 = iVar30 / 0x14 + (iVar30 >> 0x1f);
+		iVar27 = iVar30 + 1;
+		uVar4 = iVar27 / 0x14 + (iVar27 >> 0x1f);
+		iVar28 = iVar30 + 2;
+		uVar5 = iVar28 / 0x14 + (iVar28 >> 0x1f);
+		*pbVar11 = *pbVar11 ^ local_f8[iVar30 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
+		iVar29 = iVar30 + 3;
+		uVar3 = iVar29 / 0x14 + (iVar29 >> 0x1f);
+		pbVar11[1] = pbVar11[1] ^ local_f8[iVar27 + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
+		iVar27 = iVar30 + 4;
+		uVar4 = iVar27 / 0x14 + (iVar27 >> 0x1f);
+		pbVar11[2] = pbVar11[2] ^ local_f8[iVar28 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
+		iVar28 = iVar30 + 5;
+		uVar5 = iVar28 / 0x14 + (iVar28 >> 0x1f);
+		pbVar11[3] = pbVar11[3] ^ local_f8[iVar29 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
+		iVar30 = iVar30 + 6;
+		uVar3 = iVar30 / 0x14 + (iVar30 >> 0x1f);
+		pbVar11[4] = pbVar11[4] ^ local_f8[iVar27 + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
+		iVar27 = (int)(lVar13 + 7);
+		pbVar11[5] = pbVar11[5] ^ local_f8[iVar28 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
+		uVar4 = iVar27 / 0x14 + (iVar27 >> 0x1f);
+		uVar20 = (ulonglong)(uVar4 >> 0x1f);
+		lVar14 = ((ulonglong)uVar4 + uVar20) * 0x14;
+		pbVar11[6] = pbVar11[6] ^ local_f8[iVar30 + (uVar3 + (uVar3 >> 0x1f)) * -0x14];
+		lVar18 = lVar13 + 7 + ((ulonglong)uVar4 + uVar20) * -0x14;
+		lVar13 = lVar13 + 8;
+		bVar2 = pbVar11[7];
+		uVar24 = (ulonglong)bVar2;
+		pbVar11[7] = bVar2 ^ local_f8[(int)lVar18];
+		lVar9 = lVar9 + 8;
+		lVar33 = lVar33 + -1;
+	} while (lVar33 != 0);
+	*(undefined2 *)(iVar6 + 0x8c) = CONCAT11(uStack163, local_a4);
+	cVar16 = (char)(uVar7 - 0x130);
+	memset(cVar16 + 'L', 0x40, (char)lVar14, (char)lVar18, (byte)(uVar4 >> 0x1f), 0x67, bVar2,
+	    (char)lVar13, *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
+	    *(undefined4 *)(iVar6 + 0x14));
+	lVar9 = 0x14;
+	memset(cVar16 + '8', 0x14, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
+	    (char)lVar13, *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
+	    *(undefined4 *)(iVar6 + 0x14));
+	iVar27 = 0;
+	do {
+		SHA1Reset(iVar27, (char)lVar9, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
+		    (char)lVar13, *(undefined4 *)(iVar6 + 8));
+		lVar14 = 0;
+		lVar9 = uVar7 - 0x5c;
+		SHA1Calculate(iVar27, uVar7 - 0x5c, (uint *)0x0, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
+		    (char)lVar13, *(undefined4 *)(iVar6 + 8));
+		iVar27 = iVar27 + 1;
+	} while (iVar27 < 3);
+	memset(cVar16 + -0x74, 0x88, (char)lVar14, (char)lVar18, (char)uVar20, (char)uVar8, (char)uVar24,
+	    (char)lVar13, *(undefined *)(iVar6 + 0xb), *(undefined *)(iVar6 + 0xf),
+	    *(undefined4 *)(iVar6 + 0x14));
+	return;
 }
 
-// Address range: 0x2c27c - 0x2c534
-int32_t codec_decode(int32_t *a1, int32_t a2, int32_t a3)
+longlong codec_decode(uint *param_1, ulonglong param_2, int param_3, char param_4, char param_5,
+    char param_6, char param_7, char param_8, undefined4 param_9)
+
 {
-	int32_t v1 = g10; // 0x2c280
-	g31 = (int32_t)a1;
-	g32 = a2;
-	codec_init_key(0, a3);
-	uint32_t v2 = g32; // 0x2c2a0
-	if (v2 <= 8) {
-		// 0x2c2a8
-		// branch -> 0x2c520
-		// 0x2c520
-		g10 = v1;
-		return 0;
-	}
-	int32_t v3 = v2 - 8; // 0x2c2b0
-	g32 = v3;
-	if (v3 % 64 == 0) {
-		// 0x2c2d8
-		int32_t v4;       // bp-180
-		int32_t v5 = &v4; // 0x2c2c8
-		g36 = v5;
-		g33 = v3;
-		g35 = 0x66666667;
-		int32_t v6;       // bp-160
-		int32_t v7 = &v6; // 0x2c2dc
-		                  // branch -> 0x2c2d8
-	lab_0x2c2d8:
+	byte bVar1;
+	byte bVar2;
+	byte bVar3;
+	uint uVar4;
+	uint uVar5;
+	undefined *puVar6;
+	char cVar7;
+	int *piVar8;
+	ulonglong uVar9;
+	longlong lVar10;
+	byte *pbVar11;
+	undefined uVar12;
+	longlong lVar13;
+	int iVar14;
+	undefined uVar15;
+	undefined uVar16;
+	longlong lVar17;
+	undefined uVar18;
+	ulonglong uVar19;
+	undefined uVar20;
+	longlong lVar21;
+	undefined uVar22;
+	ulonglong uVar23;
+	undefined uVar24;
+	int iVar26;
+	ulonglong uVar25;
+	undefined uVar27;
+	int iVar28;
+	int iVar29;
+	undefined8 unaff_r24;
+	undefined8 unaff_r25;
+	int iVar30;
+	undefined8 unaff_r26;
+	int iVar31;
+	undefined8 unaff_r27;
+	longlong lVar32;
+	undefined8 unaff_r28;
+	undefined8 unaff_r29;
+	ulonglong uVar33;
+	undefined8 unaff_r30;
+	undefined8 unaff_r31;
+	longlong lVar34;
+	byte local_b4[148];
+	undefined4 local_20;
+	undefined4 uStack28;
+	undefined4 uStack24;
+	undefined4 uStack20;
+	undefined4 uStack16;
+	undefined4 uStack12;
+	undefined4 uStack8;
+	undefined4 uStack4;
+
+	uVar25 = SEXT18(param_8);
+	uVar23 = SEXT18(param_7);
+	lVar21 = (longlong)param_6;
+	uVar19 = SEXT18(param_5);
+	lVar17 = (longlong)param_4;
+	lVar10 = (longlong)param_3;
+	lVar32 = (longlong)(int)param_1;
+	uVar9 = ZEXT48(register0x0000000c);
+	local_20 = (undefined4)((ulonglong)unaff_r24 >> 0x20);
+	uStack28 = (undefined4)((ulonglong)unaff_r25 >> 0x20);
+	uStack24 = (undefined4)((ulonglong)unaff_r26 >> 0x20);
+	uStack20 = (undefined4)((ulonglong)unaff_r27 >> 0x20);
+	uStack16 = (undefined4)((ulonglong)unaff_r28 >> 0x20);
+	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
+	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
+	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
+	puVar6 = (undefined *)(uVar9 - 0x110);
+	*(BADSPACEBASE **)puVar6 = register0x0000000c;
+	codec_init_key(0, param_3, (char)param_3, param_4, param_5, param_6, param_7, param_8,
+	    *(undefined4 *)(puVar6 + 8), puVar6[0xf], *(undefined4 *)(puVar6 + 0x18));
+	if ((8 < (param_2 & 0xffffffff)) && (param_2 = param_2 - 8, (param_2 & 0x3f) == 0)) {
+		uVar33 = param_2;
 		while (true) {
-			// 0x2c2d8
-			g34 = v7;
-			memcpy();
-			SHA1Result(0, v5);
-			int32_t v8 = v7;  // r3
-			int32_t v9 = 8;   // ctr
-			int32_t v10 = v7; // 0x2c360
-			int32_t v11 = 0;  // 0x2c33c
-			// branch -> 0x2c308
-			while (true) {
-				int64_t v12 = g35;                                                                            // 0x2c308
-				uint64_t v13 = v12 * (int64_t)v11;                                                            // 0x2c308
-				int32_t v14 = v11 + 1;                                                                        // 0x2c30c
-				int32_t v15 = v11 + 2;                                                                        // r26
-				char *v16 = (char *)v10;                                                                      // 0x2c314
-				int32_t v17 = v11 + 3;                                                                        // r12
-				int32_t v18 = (int32_t)(v13 / 0x100000000) >> 31;                                             // 0x2c31c
-				int32_t v19 = v11 + 4;                                                                        // r11
-				int32_t v20 = v11 + 5;                                                                        // r10
-				int32_t v21 = v11 + 6;                                                                        // r8
-				int32_t v22 = 20 * ((v18 & -0x20000000 | (int32_t)(v13 / 0x800000000)) + (int32_t)(v18 < 0)); // 0x2c334
-				int32_t v23 = v11 + 7;                                                                        // r6
-				int32_t v24 = v11 + 8;                                                                        // r4
-				uint64_t v25 = (int64_t)v14 * v12;                                                            // 0x2c344
-				unsigned char v26 = *(char *)(g36 + v11 - v22);                                               // 0x2c348
-				g28 = v26;
-				int32_t v27 = (int32_t)(v25 / 0x100000000) >> 31;                                             // 0x2c34c
-				int32_t v28 = 20 * ((v27 & -0x20000000 | (int32_t)(v25 / 0x800000000)) + (int32_t)(v27 < 0)); // r7
-				*v16 = v26 ^ *v16;
-				uint64_t v29 = (int64_t)v15 * (int64_t)g35;                     // 0x2c364
-				char *v30 = (char *)(v8 + 1);                                   // 0x2c368
-				int32_t v31 = (int32_t)(v29 / 0x100000000) >> 31;               // 0x2c36c
-				int32_t v32 = v31 & -0x20000000 | (int32_t)(v29 / 0x800000000); // 0x2c36c
-				unsigned char v33 = *(char *)(g36 + v14 - v28);                 // 0x2c378
-				g29 = v33;
-				*v30 = v33 ^ *v30;
-				uint64_t v34 = (int64_t)v17 * (int64_t)g35;                     // 0x2c38c
-				char *v35 = (char *)(v8 + 2);                                   // 0x2c390
-				int32_t v36 = (int32_t)(v34 / 0x100000000) >> 31;               // 0x2c394
-				int32_t v37 = v36 & -0x20000000 | (int32_t)(v34 / 0x800000000); // 0x2c394
-				int32_t v38 = v15 - 20 * (v32 + (int32_t)(v31 < 0));            // 0x2c398
-				unsigned char v39 = *(char *)(g36 + v38);                       // 0x2c3a0
-				g30 = v39;
-				*v35 = v39 ^ *v35;
-				uint64_t v40 = (int64_t)v19 * (int64_t)g35;                     // 0x2c3b4
-				char *v41 = (char *)(v8 + 3);                                   // 0x2c3b8
-				int32_t v42 = (int32_t)(v40 / 0x100000000) >> 31;               // 0x2c3bc
-				int32_t v43 = v42 & -0x20000000 | (int32_t)(v40 / 0x800000000); // 0x2c3bc
-				int32_t v44 = v17 - 20 * (v37 + (int32_t)(v36 < 0));            // 0x2c3c0
-				*v41 = *(char *)(g36 + v44) ^ *v41;
-				uint64_t v45 = (int64_t)v20 * (int64_t)g35;                     // 0x2c3dc
-				char *v46 = (char *)(v8 + 4);                                   // 0x2c3e0
-				int32_t v47 = (int32_t)(v45 / 0x100000000) >> 31;               // 0x2c3e4
-				int32_t v48 = v47 & -0x20000000 | (int32_t)(v45 / 0x800000000); // 0x2c3e4
-				int32_t v49 = v19 - 20 * (v43 + (int32_t)(v42 < 0));            // 0x2c3e8
-				*v46 = *(char *)(g36 + v49) ^ *v46;
-				int64_t v50 = g35;                                              // 0x2c404
-				uint64_t v51 = (int64_t)v21 * v50;                              // 0x2c404
-				char *v52 = (char *)(v8 + 5);                                   // 0x2c408
-				int32_t v53 = (int32_t)(v51 / 0x100000000) >> 31;               // 0x2c40c
-				int32_t v54 = v53 & -0x20000000 | (int32_t)(v51 / 0x800000000); // 0x2c40c
-				int32_t v55 = v20 - 20 * (v48 + (int32_t)(v47 < 0));            // 0x2c410
-				*v52 = *(char *)(g36 + v55) ^ *v52;
-				int32_t v56 = v21 - 20 * (v54 + (int32_t)(v53 < 0));           // 0x2c430
-				int32_t v57 = (int32_t)((int64_t)v23 * v50 / 0x100000000) / 8; // 0x2c434
-				char *v58 = (char *)(v8 + 6);                                  // 0x2c444
-				*v58 = *v58 ^ *(char *)(g36 + v56);
-				char *v59 = (char *)(v8 + 7); // 0x2c45c
-				*v59 = *v59 ^ *(char *)(g36 + v23 - 20 * v57);
-				int32_t v60 = v8 + 8; // 0x2c468
-				v8 = v60;
-				int32_t v61 = v9 - 1; // 0x2c46c
-				v9 = v61;
-				if (v61 == 0) {
-					// 0x2c470
-					SHA1Calculate(0, v7, 0);
-					g34 = v5;
-					memset();
-					g34 = g31;
-					memcpy();
-					g31 += 64;
-					int32_t v62 = g33 - 64; // 0x2c4a8
-					g33 = v62;
-					if (v62 == 0) {
-						// break (via goto) -> 0x2c4b4
-						goto lab_0x2c4b4;
-					}
-					// continue (via goto) -> 0x2c2d8
-					goto lab_0x2c2d8;
-				} else {
-					// 0x2c308
-					v10 = v60;
-					v11 = v24;
-					// branch -> 0x2c308
-					continue;
-				}
-			}
-		lab_0x2c4b4:
-			// 0x2c4b4
-			g34 = v7;
-			int32_t v63 = memset(); // 0x2c4bc
-			if (*(char *)(g31 + 4) != 0) {
-				// 0x2c518
-				SHA1Clear(v63);
-				// branch -> 0x2c520
-				// 0x2c520
-				g10 = v1;
-				return 0;
-			}
-			// 0x2c4d0
-			int32_t v64;        // bp-200
-			int32_t v65 = &v64; // 0x2c4d4
-			SHA1Result(0, v65);
-			int32_t v66 = *(int32_t *)g31; // 0x2c4dc
-			if (v66 == v64) {
-				// 0x2c500
-				g32 -= (64 - (int32_t) * (char *)(g31 + 5));
-				SHA1Clear(v66);
-				// branch -> 0x2c520
-				// 0x2c520
-				g10 = v1;
-				return g32;
-			}
-			// 0x2c4ec
-			g34 = v65;
-			// branch -> 0x2c518
-			// 0x2c518
-			SHA1Clear(memset());
-			// branch -> 0x2c520
-			// 0x2c520
-			g10 = v1;
-			return 0;
+			uVar16 = (undefined)lVar10;
+			uVar18 = (undefined)lVar17;
+			uVar20 = (undefined)uVar19;
+			uVar22 = (undefined)lVar21;
+			uVar24 = (undefined)uVar23;
+			uVar27 = (undefined)uVar25;
+			cVar7 = (char)(uVar9 - 0x110);
+			if ((uVar33 & 0xffffffff) == 0)
+				break;
+			memcpy(cVar7 + 'p', (char)lVar32, 0x40, uVar18, uVar20, uVar22, uVar24, uVar27, puVar6[0xb],
+			    puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+			SHA1Result(0, puVar6 + 0x5c, *puVar6);
+			lVar10 = uVar9 - 0xa0;
+			lVar34 = 8;
+			lVar13 = 0;
+			do {
+				iVar14 = (int)lVar13;
+				iVar30 = iVar14 + 1;
+				iVar31 = iVar14 + 2;
+				pbVar11 = (byte *)lVar10;
+				iVar29 = iVar14 + 3;
+				uVar4 = iVar14 / 0x14 + (iVar14 >> 0x1f);
+				iVar28 = iVar14 + 4;
+				iVar26 = iVar14 + 5;
+				lVar21 = lVar13 + 6;
+				lVar17 = lVar13 + 7;
+				lVar13 = lVar13 + 8;
+				uVar5 = iVar30 / 0x14 + (iVar30 >> 0x1f);
+				*pbVar11 = local_b4[iVar14 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ *pbVar11;
+				uVar4 = iVar31 / 0x14 + (iVar31 >> 0x1f);
+				pbVar11[1] = local_b4[iVar30 + (uVar5 + (uVar5 >> 0x1f)) * -0x14] ^ pbVar11[1];
+				uVar5 = iVar29 / 0x14 + (iVar29 >> 0x1f);
+				pbVar11[2] = local_b4[iVar31 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ pbVar11[2];
+				uVar4 = iVar28 / 0x14 + (iVar28 >> 0x1f);
+				pbVar11[3] = local_b4[iVar29 + (uVar5 + (uVar5 >> 0x1f)) * -0x14] ^ pbVar11[3];
+				uVar5 = iVar26 / 0x14 + (iVar26 >> 0x1f);
+				pbVar11[4] = local_b4[iVar28 + (uVar4 + (uVar4 >> 0x1f)) * -0x14] ^ pbVar11[4];
+				iVar28 = (int)lVar21;
+				bVar1 = pbVar11[5];
+				uVar23 = (ulonglong)bVar1;
+				uVar4 = iVar28 / 0x14 + (iVar28 >> 0x1f);
+				iVar14 = (int)lVar17;
+				bVar2 = local_b4[iVar26 + (uVar5 + (uVar5 >> 0x1f)) * -0x14];
+				uVar25 = (ulonglong)bVar2;
+				pbVar11[5] = bVar2 ^ bVar1;
+				uVar5 = iVar14 / 0x14 + (iVar14 >> 0x1f);
+				bVar3 = local_b4[iVar28 + (uVar4 + (uVar4 >> 0x1f)) * -0x14];
+				uVar19 = (ulonglong)bVar3;
+				pbVar11[6] = bVar3 ^ pbVar11[6];
+				pbVar11[7] = local_b4[iVar14 + (uVar5 + (uVar5 >> 0x1f)) * -0x14] ^ pbVar11[7];
+				lVar10 = lVar10 + 8;
+				lVar34 = lVar34 + -1;
+			} while (lVar34 != 0);
+			uVar16 = 0;
+			SHA1Calculate(0, uVar9 - 0xa0, (uint *)0x0, (char)lVar17, bVar3, (char)lVar21, bVar1, bVar2,
+			    *(undefined4 *)(puVar6 + 8));
+			memset(cVar7 + '\\', 0x14, uVar16, (char)lVar17, (char)uVar19, (char)lVar21, (char)uVar23,
+			    (char)uVar25, puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+			lVar10 = 0x40;
+			memcpy((char)lVar32, cVar7 + 'p', 0x40, (char)lVar17, (char)uVar19, (char)lVar21, (char)uVar23,
+			    (char)uVar25, puVar6[0xb], puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+			lVar32 = lVar32 + 0x40;
+			uVar33 = uVar33 - 0x40;
 		}
+		uVar15 = 0x80;
+		uVar12 = memset(cVar7 + 'p', 0x80, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27, puVar6[0xb],
+		    puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+		piVar8 = (int *)lVar32;
+		if (*(char *)(piVar8 + 1) == '\0') {
+			uVar12 = (undefined)(uVar9 - 200);
+			SHA1Result(0, (int)(uVar9 - 200), *puVar6);
+			if (*piVar8 == *(int *)(puVar6 + 0x48)) {
+				bVar1 = *(byte *)((int)piVar8 + 5);
+				SHA1Clear((char)*piVar8, uVar12, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27,
+				    *(undefined4 *)(puVar6 + 8));
+				return param_2 - (0x40 - (ulonglong)bVar1);
+			}
+			uVar15 = 0x14;
+			uVar12 = memset(cVar7 + 'H', 0x14, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27, puVar6[0xb],
+			    puVar6[0xf], *(undefined4 *)(puVar6 + 0x14));
+		}
+		SHA1Clear(uVar12, uVar15, uVar16, uVar18, uVar20, uVar22, uVar24, uVar27, *(undefined4 *)(puVar6 + 8));
 	}
-	// 0x2c520
-	g10 = v1;
 	return 0;
 }
 
-// Address range: 0x2c534 - 0x2c54c
-int32_t codec_get_encoded_len(uint32_t a1)
+longlong codec_get_encoded_len(ulonglong param_1)
+
 {
-	uint32_t v1 = a1 % 64; // 0x2c534
-	int32_t v2;            // 0x2c544
-	if (v1 != 0) {
-		// 0x2c53c
-		v2 = 64 - v1 + a1;
-		// branch -> 0x2c544
-	} else {
-		v2 = a1;
+	if ((param_1 & 0x3f) != 0) {
+		param_1 = param_1 + (0x40 - (ulonglong)((uint)param_1 & 0x3f));
 	}
-	// 0x2c544
-	return v2 + 8;
+	return param_1 + 8;
 }
 
-// Address range: 0x2c54c - 0x2c804
-int32_t codec_encode(int32_t *a1, int32_t a2, int32_t a3, int32_t a4)
+void codec_encode(uint *param_1, ulonglong param_2, ulonglong param_3, longlong param_4,
+    ulonglong param_5, int param_6, int param_7, int param_8, undefined4 param_9)
+
 {
-	// 0x2c54c
-	g37 = a2;
-	int32_t v1 = g10; // 0x2c550
-	int32_t v2 = g37; // 0x2c554
-	g32 = v2;
-	g31 = (int32_t)a1;
-	g28 = a4;
-	if (a3 != codec_get_encoded_len(0x1000000 * v2 / 0x1000000)) {
-		// 0x2c57c
-		app_fatal(*(int32_t *)(g23 - 0x6578));
-		// branch -> 0x2c584
+	byte bVar1;
+	byte bVar2;
+	byte bVar3;
+	byte bVar4;
+	undefined4 uVar5;
+	uint uVar6;
+	uint uVar7;
+	undefined *puVar8;
+	char cVar9;
+	ulonglong uVar10;
+	undefined **ppuVar11;
+	ulonglong uVar12;
+	longlong lVar13;
+	byte *pbVar14;
+	longlong lVar15;
+	int iVar16;
+	undefined uVar17;
+	char cVar19;
+	ulonglong uVar18;
+	undefined uVar20;
+	longlong lVar21;
+	undefined uVar22;
+	undefined uVar23;
+	longlong lVar24;
+	undefined uVar25;
+	ulonglong uVar26;
+	undefined uVar27;
+	int iVar29;
+	ulonglong uVar28;
+	undefined uVar30;
+	int iVar31;
+	int iVar32;
+	undefined8 unaff_r24;
+	ulonglong uVar33;
+	undefined8 unaff_r25;
+	int iVar34;
+	undefined8 unaff_r26;
+	int iVar35;
+	undefined8 unaff_r27;
+	longlong lVar36;
+	undefined4 *puVar37;
+	undefined8 unaff_r28;
+	undefined8 unaff_r29;
+	undefined8 unaff_r30;
+	undefined8 unaff_r31;
+	longlong lVar38;
+	byte local_b4[148];
+	undefined4 local_20;
+	undefined4 uStack28;
+	undefined4 uStack24;
+	undefined4 uStack20;
+	undefined4 uStack16;
+	undefined4 uStack12;
+	undefined4 uStack8;
+	undefined4 uStack4;
+
+	uVar28 = SEXT48(param_8);
+	uVar26 = SEXT48(param_7);
+	lVar24 = (longlong)param_6;
+	lVar36 = (longlong)(int)param_1;
+	uVar10 = ZEXT48(register0x0000000c);
+	ppuVar11 = &toc;
+	local_20 = (undefined4)((ulonglong)unaff_r24 >> 0x20);
+	uStack28 = (undefined4)((ulonglong)unaff_r25 >> 0x20);
+	uStack24 = (undefined4)((ulonglong)unaff_r26 >> 0x20);
+	uStack20 = (undefined4)((ulonglong)unaff_r27 >> 0x20);
+	uStack16 = (undefined4)((ulonglong)unaff_r28 >> 0x20);
+	uStack12 = (undefined4)((ulonglong)unaff_r29 >> 0x20);
+	uStack8 = (undefined4)((ulonglong)unaff_r30 >> 0x20);
+	uStack4 = (undefined4)((ulonglong)unaff_r31 >> 0x20);
+	puVar8 = (undefined *)(uVar10 - 0x110);
+	*(BADSPACEBASE **)puVar8 = register0x0000000c;
+	uVar33 = param_2;
+	uVar18 = param_3;
+	lVar21 = param_4;
+	uVar12 = codec_get_encoded_len(param_2, *puVar8);
+	if ((param_3 & 0xffffffff) != (uVar12 & 0xffffffff)) {
+		app_fatal((int)ppuVar11[-0x195e], uVar33, uVar18, lVar21, param_5, (int)lVar24, (int)uVar26,
+		    (int)uVar28, *(undefined4 *)(puVar8 + 8), puVar8[0xf], *(undefined4 *)(puVar8 + 0x18),
+		    *(undefined4 *)(puVar8 + 0x1c), *(undefined4 *)(puVar8 + 0x20),
+		    *(undefined4 *)(puVar8 + 0x24), *(undefined4 *)(puVar8 + 0x28),
+		    *(undefined4 *)(puVar8 + 0x2c), *(undefined4 *)(puVar8 + 0x30),
+		    *(undefined4 *)(puVar8 + 0x34));
 	}
-	// 0x2c584
-	codec_init_key(1, g28);
-	int32_t v3;       // bp-180
-	int32_t v4 = &v3; // 0x2c594
-	g36 = v4;
-	g35 = 0x66666667;
-	int32_t v5 = g32;
-	int32_t v6; // bp-160
-	int32_t v7 = &v6;
-	int32_t v8;     // r0
-	int32_t v9;     // bp-200
-	int32_t result; // 0x2c7ec
-	int32_t v10;    // 0x2c7d4
-	if (v5 == 0) {
-		// 0x2c7b8
-		g34 = v7;
-		memset();
-		SHA1Result(0, (int32_t)&v9);
-		v10 = v9;
-		v8 = 0;
-		*(int32_t *)g31 = v10;
-		*(char *)(g31 + 4) = (char)v8;
-		*(char *)(g31 + 5) = (char)0;
-		*(int16_t *)(g31 + 6) = (int16_t)v8;
-		result = SHA1Clear(v10);
-		g10 = v1;
-		return result;
-	}
-	// branch -> 0x2c5a4
-lab_0x2c5a4:
+	codec_init_key(1, (int)param_4, (char)uVar18, (char)lVar21, (char)param_5, (char)lVar24, (char)uVar26,
+	    (char)uVar28, *(undefined4 *)(puVar8 + 8), puVar8[0xf], *(undefined4 *)(puVar8 + 0x18));
+	uVar33 = 0;
 	while (true) {
-		int32_t v11 = v5 < 64 ? v5 : 64;
-		g33 = v11;
-		g34 = v7;
-		memcpy();
-		if (g33 <= 63) {
-			// 0x2c5d8
-			g34 = v11 + v7;
-			memset();
-			// branch -> 0x2c5ec
+		uVar20 = (undefined)uVar18;
+		uVar22 = (undefined)lVar21;
+		uVar23 = (undefined)param_5;
+		uVar25 = (undefined)lVar24;
+		uVar27 = (undefined)uVar26;
+		uVar30 = (undefined)uVar28;
+		cVar9 = (char)(uVar10 - 0x110);
+		if ((param_2 & 0xffffffff) == 0)
+			break;
+		uVar33 = param_2;
+		if (0x3f < (param_2 & 0xffffffff)) {
+			uVar33 = 0x40;
 		}
-		// 0x2c5ec
-		SHA1Result(0, v4);
-		SHA1Calculate(0, v7, 0);
-		int32_t v12 = v7; // r3
-		int32_t v13 = 8;  // ctr
-		int32_t v14 = v7; // 0x2c670
-		int32_t v15 = 0;  // 0x2c64c
-		// branch -> 0x2c618
-		while (true) {
-			int64_t v16 = g35;                                                                            // 0x2c618
-			uint64_t v17 = v16 * (int64_t)v15;                                                            // 0x2c618
-			int32_t v18 = v15 + 1;                                                                        // 0x2c61c
-			int32_t v19 = v15 + 2;                                                                        // r26
-			char *v20 = (char *)v14;                                                                      // 0x2c624
-			int32_t v21 = v15 + 3;                                                                        // r12
-			int32_t v22 = (int32_t)(v17 / 0x100000000) >> 31;                                             // 0x2c62c
-			int32_t v23 = v15 + 4;                                                                        // r11
-			int32_t v24 = v15 + 5;                                                                        // r10
-			int32_t v25 = v15 + 6;                                                                        // r8
-			int32_t v26 = 20 * ((v22 & -0x20000000 | (int32_t)(v17 / 0x800000000)) + (int32_t)(v22 < 0)); // 0x2c644
-			int32_t v27 = v15 + 7;                                                                        // r6
-			int32_t v28 = v15 + 8;                                                                        // r4
-			uint64_t v29 = (int64_t)v18 * v16;                                                            // 0x2c654
-			int32_t v30 = (int32_t)(v29 / 0x100000000) >> 31;                                             // 0x2c65c
-			int32_t v31 = 20 * ((v30 & -0x20000000 | (int32_t)(v29 / 0x800000000)) + (int32_t)(v30 < 0)); // r7
-			*v20 = *(char *)(g36 + v15 - v26) ^ *v20;
-			uint64_t v32 = (int64_t)v19 * (int64_t)g35;                     // 0x2c674
-			char *v33 = (char *)(v12 + 1);                                  // 0x2c678
-			int32_t v34 = (int32_t)(v32 / 0x100000000) >> 31;               // 0x2c67c
-			int32_t v35 = v34 & -0x20000000 | (int32_t)(v32 / 0x800000000); // 0x2c67c
-			*v33 = *(char *)(g36 + v18 - v31) ^ *v33;
-			uint64_t v36 = (int64_t)v21 * (int64_t)g35;                     // 0x2c69c
-			char *v37 = (char *)(v12 + 2);                                  // 0x2c6a0
-			int32_t v38 = (int32_t)(v36 / 0x100000000) >> 31;               // 0x2c6a4
-			int32_t v39 = v38 & -0x20000000 | (int32_t)(v36 / 0x800000000); // 0x2c6a4
-			int32_t v40 = v19 - 20 * (v35 + (int32_t)(v34 < 0));            // 0x2c6a8
-			*v37 = *(char *)(g36 + v40) ^ *v37;
-			uint64_t v41 = (int64_t)v23 * (int64_t)g35;                     // 0x2c6c4
-			char *v42 = (char *)(v12 + 3);                                  // 0x2c6c8
-			int32_t v43 = (int32_t)(v41 / 0x100000000) >> 31;               // 0x2c6cc
-			int32_t v44 = v43 & -0x20000000 | (int32_t)(v41 / 0x800000000); // 0x2c6cc
-			int32_t v45 = v21 - 20 * (v39 + (int32_t)(v38 < 0));            // 0x2c6d0
-			*v42 = *(char *)(g36 + v45) ^ *v42;
-			uint64_t v46 = (int64_t)v24 * (int64_t)g35;                     // 0x2c6ec
-			char *v47 = (char *)(v12 + 4);                                  // 0x2c6f0
-			int32_t v48 = (int32_t)(v46 / 0x100000000) >> 31;               // 0x2c6f4
-			int32_t v49 = v48 & -0x20000000 | (int32_t)(v46 / 0x800000000); // 0x2c6f4
-			int32_t v50 = v23 - 20 * (v44 + (int32_t)(v43 < 0));            // 0x2c6f8
-			*v47 = *(char *)(g36 + v50) ^ *v47;
-			int64_t v51 = g35;                                              // 0x2c714
-			uint64_t v52 = (int64_t)v25 * v51;                              // 0x2c714
-			char *v53 = (char *)(v12 + 5);                                  // 0x2c718
-			int32_t v54 = (int32_t)(v52 / 0x100000000) >> 31;               // 0x2c71c
-			int32_t v55 = v54 & -0x20000000 | (int32_t)(v52 / 0x800000000); // 0x2c71c
-			int32_t v56 = v24 - 20 * (v49 + (int32_t)(v48 < 0));            // 0x2c720
-			*v53 = *(char *)(g36 + v56) ^ *v53;
-			int32_t v57 = v25 - 20 * (v55 + (int32_t)(v54 < 0));           // 0x2c740
-			int32_t v58 = (int32_t)((int64_t)v27 * v51 / 0x100000000) / 8; // 0x2c744
-			char *v59 = (char *)(v12 + 6);                                 // 0x2c754
-			*v59 = *v59 ^ *(char *)(g36 + v57);
-			char *v60 = (char *)(v12 + 7); // 0x2c76c
-			*v60 = *v60 ^ *(char *)(g36 + v27 - 20 * v58);
-			int32_t v61 = v12 + 8; // 0x2c778
-			v12 = v61;
-			int32_t v62 = v13 - 1; // 0x2c77c
-			v13 = v62;
-			if (v62 == 0) {
-				// 0x2c780
-				g34 = v4;
-				memset();
-				g34 = g31;
-				memcpy();
-				int32_t v63 = g33; // 0x2c7a4
-				v11 = v63;
-				g31 += 64;
-				int32_t v64 = g32 - v63; // 0x2c7ac
-				g32 = v64;
-				if (v64 == 0) {
-					// break (via goto) -> 0x2c7b8
-					goto lab_0x2c7b8;
-				}
-				v5 = v64;
-				// continue (via goto) -> 0x2c5a4
-				goto lab_0x2c5a4;
-			} else {
-				// 0x2c618
-				v14 = v61;
-				v15 = v28;
-				// branch -> 0x2c618
-				continue;
-			}
+		cVar19 = (char)uVar33;
+		cVar19 = cVar19;
+		memcpy(cVar9 + 'p', (char)lVar36, cVar19, uVar22, uVar23, uVar25, uVar27, uVar30, puVar8[0xb],
+		    puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
+		if ((uVar33 & 0xffffffff) < 0x40) {
+			memset(cVar9 + 'p' + cVar19, '@' - cVar19, cVar19, uVar22, uVar23, uVar25, uVar27, uVar30,
+			    puVar8[0xb], puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
 		}
-	lab_0x2c7b8:
-		// 0x2c7b8
-		g34 = v7;
-		memset();
-		SHA1Result(0, (int32_t)&v9);
-		v10 = v9;
-		v8 = 0;
-		*(int32_t *)g31 = v10;
-		*(char *)(g31 + 4) = (char)v8;
-		*(char *)(g31 + 5) = (char)v11;
-		*(int16_t *)(g31 + 6) = (int16_t)v8;
-		result = SHA1Clear(v10);
-		g10 = v1;
-		return result;
+		SHA1Result(0, puVar8 + 0x5c, *puVar8);
+		SHA1Calculate(0, uVar10 - 0xa0, (uint *)0x0, uVar22, uVar23, uVar25, uVar27, uVar30,
+		    *(undefined4 *)(puVar8 + 8));
+		lVar13 = uVar10 - 0xa0;
+		lVar38 = 8;
+		lVar15 = 0;
+		do {
+			iVar16 = (int)lVar15;
+			iVar34 = iVar16 + 1;
+			iVar35 = iVar16 + 2;
+			pbVar14 = (byte *)lVar13;
+			iVar32 = iVar16 + 3;
+			uVar6 = iVar16 / 0x14 + (iVar16 >> 0x1f);
+			iVar31 = iVar16 + 4;
+			iVar29 = iVar16 + 5;
+			lVar24 = lVar15 + 6;
+			lVar21 = lVar15 + 7;
+			lVar15 = lVar15 + 8;
+			uVar7 = iVar34 / 0x14 + (iVar34 >> 0x1f);
+			*pbVar14 = local_b4[iVar16 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ *pbVar14;
+			uVar6 = iVar35 / 0x14 + (iVar35 >> 0x1f);
+			pbVar14[1] = local_b4[iVar34 + (uVar7 + (uVar7 >> 0x1f)) * -0x14] ^ pbVar14[1];
+			uVar7 = iVar32 / 0x14 + (iVar32 >> 0x1f);
+			pbVar14[2] = local_b4[iVar35 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ pbVar14[2];
+			uVar6 = iVar31 / 0x14 + (iVar31 >> 0x1f);
+			pbVar14[3] = local_b4[iVar32 + (uVar7 + (uVar7 >> 0x1f)) * -0x14] ^ pbVar14[3];
+			uVar7 = iVar29 / 0x14 + (iVar29 >> 0x1f);
+			pbVar14[4] = local_b4[iVar31 + (uVar6 + (uVar6 >> 0x1f)) * -0x14] ^ pbVar14[4];
+			iVar31 = (int)lVar24;
+			bVar1 = pbVar14[5];
+			uVar26 = (ulonglong)bVar1;
+			uVar6 = iVar31 / 0x14 + (iVar31 >> 0x1f);
+			iVar16 = (int)lVar21;
+			bVar2 = local_b4[iVar29 + (uVar7 + (uVar7 >> 0x1f)) * -0x14];
+			uVar28 = (ulonglong)bVar2;
+			pbVar14[5] = bVar2 ^ bVar1;
+			uVar7 = iVar16 / 0x14 + (iVar16 >> 0x1f);
+			bVar3 = local_b4[iVar31 + (uVar6 + (uVar6 >> 0x1f)) * -0x14];
+			param_5 = (ulonglong)bVar3;
+			pbVar14[6] = bVar3 ^ pbVar14[6];
+			bVar4 = local_b4[iVar16 + (uVar7 + (uVar7 >> 0x1f)) * -0x14];
+			pbVar14[7] = bVar4 ^ pbVar14[7];
+			lVar13 = lVar13 + 8;
+			lVar38 = lVar38 + -1;
+		} while (lVar38 != 0);
+		memset(cVar9 + '\\', 0x14, bVar4, (char)lVar21, bVar3, (char)lVar24, bVar1, bVar2, puVar8[0xb],
+		    puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
+		uVar18 = 0x40;
+		memcpy((char)lVar36, cVar9 + 'p', 0x40, (char)lVar21, (char)param_5, (char)lVar24, (char)uVar26,
+		    (char)uVar28, puVar8[0xb], puVar8[0xf], *(undefined4 *)(puVar8 + 0x14));
+		lVar36 = lVar36 + 0x40;
+		param_2 = param_2 - uVar33;
 	}
+	memset(cVar9 + 'p', 0x80, uVar20, uVar22, uVar23, uVar25, uVar27, uVar30, puVar8[0xb], puVar8[0xf],
+	    *(undefined4 *)(puVar8 + 0x14));
+	uVar17 = (undefined)(uVar10 - 200);
+	SHA1Result(0, (int)(uVar10 - 200), *puVar8);
+	uVar5 = *(undefined4 *)(puVar8 + 0x48);
+	puVar37 = (undefined4 *)lVar36;
+	*puVar37 = uVar5;
+	*(undefined *)(puVar37 + 1) = 0;
+	*(undefined *)((int)puVar37 + 5) = (char)uVar33;
+	*(undefined2 *)((int)puVar37 + 6) = 0;
+	SHA1Clear((char)uVar5, uVar17, uVar20, uVar22, uVar23, uVar25, uVar27, uVar30,
+	    *(undefined4 *)(puVar8 + 8));
+	return;
 }

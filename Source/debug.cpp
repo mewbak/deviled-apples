@@ -1,23 +1,30 @@
-// Address range: 0x34344 - 0x34384
-int32_t LoadDebugGFX(int32_t a1)
+
+void LoadDebugGFX(undefined8 param_1, undefined8 param_2, undefined8 param_3, undefined8 param_4,
+    undefined8 param_5, undefined4 param_6, undefined4 param_7, undefined4 param_8,
+    undefined4 param_9)
+
 {
-	int32_t v1 = *(int32_t *)(g23 - 0x7608); // 0x34348
-	int32_t result;                          // 0x34368
-	if (*(int32_t *)v1 != 0) {
-		// 0x34360
-		result = LoadFileInMem(*(int32_t *)(g23 - 0x6454), NULL);
-		*(int32_t *)*(int32_t *)(g23 - 0x760c) = result;
-		// branch -> 0x34374
-	} else {
-		result = v1;
+	undefined **ppuVar1;
+	longlong lVar2;
+	undefined4 in_stack_ffffffc8;
+
+	ppuVar1 = &toc;
+	if (*(int *)PTR_DAT_100f19c8 != 0) {
+		lVar2 = LoadFileInMem(ZEXT48(PTR_s_Data_Square_CEL_100f2b7c), (undefined4 *)0x0, param_3, param_4,
+		    param_5, param_6, param_7, param_8, in_stack_ffffffc8);
+		*(int *)ppuVar1[-0x1d83] = (int)lVar2;
 	}
-	// 0x34374
-	return result;
+	return;
 }
 
-// Address range: 0x34384 - 0x343a8
-int32_t FreeDebugGFX(int32_t a1)
+void FreeDebugGFX(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
 {
-	int32_t result = MemFreeDbg((int32_t *)*(int32_t *)(g23 - 0x760c)); // 0x34394
-	return result;
+	undefined4 in_stack_ffffffc8;
+
+	mem_free_dbg((int **)PTR_DAT_100f19c4, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
+	    in_stack_ffffffc8);
+	return;
 }

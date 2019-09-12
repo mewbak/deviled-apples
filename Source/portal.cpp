@@ -1,524 +1,394 @@
 
-// Address range: 0xabc28 - 0xabc8c
-int32_t InitPortals(int32_t a1)
+void InitPortals(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
 {
-	int32_t v1 = *(int32_t *)(g23 - 0x7148); // r30
-	int32_t v2 = 0;                          // r29
-	int32_t v3 = 0;                          // 0xabc4c
-	// branch -> 0xabc4c
-	int32_t result; // r3
-	while (true) {
-		int32_t v4 = function_8a9bc(v3); // 0xabc50
-		result = v4;
-		if (v4 != 0) {
-			// 0xabc5c
-			*(int32_t *)v1 = 0;
-			// branch -> 0xabc60
+	undefined8 uVar1;
+	int iVar2;
+	undefined4 *puVar3;
+
+	iVar2 = 0;
+	puVar3 = _DAT_100f1e88;
+	do {
+		uVar1 = delta_portal_inited(iVar2);
+		if ((int)uVar1 != 0) {
+			*puVar3 = 0;
 		}
-		int32_t v5 = v2 + 1; // 0xabc60
-		v2 = v5;
-		v1 += 24;
-		if (v5 >= 4) {
-			// break -> 0xabc70
-			break;
+		iVar2 = iVar2 + 1;
+		puVar3 = puVar3 + 6;
+	} while (iVar2 < 4);
+	return;
+}
+
+void SetPortalStats(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4,
+    undefined4 param_5, undefined4 param_6)
+
+{
+	int iVar1;
+
+	iVar1 = _DAT_100f1e88;
+	*(undefined4 *)(_DAT_100f1e88 + param_1 * 0x18) = param_2;
+	iVar1 = iVar1 + param_1 * 0x18;
+	*(undefined4 *)(iVar1 + 4) = param_3;
+	*(undefined4 *)(iVar1 + 8) = param_4;
+	*(undefined4 *)(iVar1 + 0xc) = param_5;
+	*(undefined4 *)(iVar1 + 0x10) = param_6;
+	*(undefined4 *)(iVar1 + 0x14) = 0;
+	return;
+}
+
+void AddWarpMissile(undefined8 param_1, undefined8 param_2, undefined8 param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
+{
+	undefined *puVar1;
+	undefined *puVar2;
+	undefined **ppuVar3;
+	undefined uVar5;
+	ulonglong uVar4;
+	undefined uVar6;
+	undefined uVar7;
+	undefined uVar8;
+	undefined uVar9;
+	undefined uVar10;
+	int iVar11;
+	undefined4 *puVar12;
+	undefined4 in_stack_ffffffb8;
+	undefined in_stack_ffffffbf;
+
+	puVar2 = PTR_DAT_100f1a3c;
+	puVar1 = PTR_DAT_100f196c;
+	uVar5 = (undefined)param_1;
+	uVar7 = (undefined)param_3;
+	uVar6 = (undefined)param_2;
+	ppuVar3 = &toc;
+	uVar9 = 10;
+	puVar12 = (undefined4 *)(PTR_DAT_100f1ee8 + 300);
+	uVar10 = 0;
+	*(undefined4 *)(PTR_DAT_100f1ee8 + 300) = 0xffffffff;
+	*(undefined *)(*(int *)puVar2 + (int)param_2 * 0x70 + (int)param_3) = 0;
+	uVar8 = 0;
+	uVar4 = AddMissile(0, 0, param_2, param_3, 0, 10, 0, param_1, in_stack_ffffffb8, in_stack_ffffffbf, 0, 0);
+	iVar11 = (int)uVar4;
+	if (iVar11 != -1) {
+		SetMissDir(iVar11, 1, uVar6, uVar7, uVar8, uVar9, uVar10, uVar5, in_stack_ffffffb8);
+		if (*ppuVar3[-0x1df9] != '\0') {
+			puVar1 = puVar1 + iVar11 * 0xb4;
+			uVar4 = AddLight(*(undefined4 *)(puVar1 + 4), *(undefined4 *)(puVar1 + 8), 0xf);
+			*(int *)(puVar1 + 0x8c) = (int)uVar4;
 		}
-		v3 = v5;
-		// continue -> 0xabc4c
+		*puVar12 = 0x81;
 	}
-	// 0xabc70
-	return result;
+	return;
 }
 
-// Address range: 0xabc8c - 0xabcb8
-int32_t function_abc8c(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6)
-{
-	int32_t v1 = 24 * a1;                    // 0xabc8c
-	int32_t v2 = *(int32_t *)(g23 - 0x7148); // 0xabc90
-	*(int32_t *)(v2 + v1) = a2;
-	int32_t result = v1 + v2; // 0xabc98
-	*(int32_t *)(result + 4) = a3;
-	*(int32_t *)(result + 8) = a4;
-	*(int32_t *)(result + 12) = a5;
-	*(int32_t *)(result + 16) = a6;
-	*(int32_t *)(result + 20) = 0;
-	return result;
-}
+void SyncPortals(undefined param_1, undefined param_2, undefined param_3, char param_4, char param_5,
+    char param_6, char param_7, char param_8, undefined4 param_9)
 
-// Address range: 0xabcb8 - 0xabd90
-int32_t function_abcb8(int32_t a1, int32_t a2, int32_t a3)
 {
-	int32_t v1 = g36; // 0xabcb8
-	g13 = a1;
-	int32_t v2 = g10; // 0xabcc4
-	int32_t v3 = g35; // 0xabcc8
-	g36 = *(int32_t *)(g23 - 0x7664);
-	int32_t v4;
-	int32_t v5 = &v4; // bp-80
-	*(int32_t *)(*(int32_t *)(g23 - 0x70e8) + 300) = -1;
-	*(char *)(*(int32_t *)*(int32_t *)(g23 - 0x7594) + 112 * a2 + a3) = 0;
-	int32_t *v6;
-	int32_t v7 = AddMissile(0, 0, a2, a3, 0, 10, 0, v5, (int32_t)&v6); // 0xabd24
-	if (v7 == -1) {
-		// 0xabd74
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return -1;
-	}
-	// 0xabd34
-	SetMissDir(v7, 1);
-	int32_t v8 = *(int32_t *)(g23 - 0x77e4); // 0xabd40
-	int32_t result = v8;                     // r3
-	if (*(char *)v8 != 0) {
-		int32_t v9 = g36 + 180 * v7;                                            // 0xabd54
-		int32_t v10 = AddLight(*(int32_t *)(v9 + 4), *(int32_t *)(v9 + 8), 15); // 0xabd64
-		result = v10;
-		*(int32_t *)(v9 + 140) = v10;
-		// branch -> 0xabd6c
-	}
-	// 0xabd6c
-	*(int32_t *)g35 = 129;
-	// branch -> 0xabd74
-	// 0xabd74
-	g36 = v1;
-	g10 = v2;
-	g35 = v3;
-	return result;
-}
+	undefined *puVar1;
+	undefined *puVar2;
+	undefined *puVar3;
+	longlong lVar4;
+	undefined uVar5;
+	longlong lVar6;
+	undefined uVar7;
+	longlong lVar8;
+	undefined uVar9;
+	longlong lVar10;
+	undefined uVar11;
+	longlong lVar12;
+	undefined uVar13;
+	longlong lVar14;
+	uint *puVar15;
+	uint *puVar16;
+	int *piVar17;
+	undefined4 in_stack_ffffffa8;
 
-// Address range: 0xabd90 - 0xabe6c
-int32_t function_abd90(void)
-{
-	// 0xabd90
-	g29 = 0;
-	int32_t v1 = *(int32_t *)(g23 - 0x6f78); // 0xabd9c
-	g33 = *(int32_t *)(g23 - 0x77e0);
-	g31 = v1;
-	g35 = *(int32_t *)(g23 - 0x77d8);
-	g36 = *(int32_t *)(g23 - 0x77e4);
-	int32_t v2 = *(int32_t *)(g23 - 0x7148); // 0xabdb4
-	g32 = v2;
-	int32_t v3 = *(int32_t *)(g23 - 0x6f7c); // 0xabdbc
-	g30 = v3;
-	int32_t v4 = 0; // 0xabde4
-	// branch -> 0xabdc8
-	int32_t result; // 0xabe68
-	while (true) {
-		// 0xabdc8
-		result = v1;
-		int32_t v5; // 0xabe40
-		int32_t v6; // 0xabe44
-		int32_t v7; // 0xabe4c
-		int32_t v8; // 0xabe50
-		if (*(int32_t *)v2 != 0) {
-			unsigned char v9 = *(char *)g36; // 0xabdd4
-			int32_t v10 = v9;                // 0xabdd4
-			if (v9 == 0) {
-				// 0xabde0
-				result = function_abcb8(v4, *(int32_t *)v3, *(int32_t *)v1);
-				// branch -> 0xabe40
+	puVar3 = PTR_DAT_100f17f8;
+	puVar2 = PTR_DAT_100f17f0;
+	puVar1 = PTR_DAT_100f17ec;
+	lVar12 = (longlong)param_8;
+	lVar10 = (longlong)param_7;
+	lVar8 = (longlong)param_6;
+	lVar6 = (longlong)param_5;
+	lVar4 = (longlong)param_4;
+	lVar14 = 0;
+	puVar16 = (uint *)PTR_DAT_100f2058;
+	puVar15 = (uint *)PTR_DAT_100f2054;
+	piVar17 = _DAT_100f1e88;
+	do {
+		if (*piVar17 != 0) {
+			uVar5 = (undefined)lVar4;
+			uVar7 = (undefined)lVar6;
+			uVar9 = (undefined)lVar8;
+			uVar11 = (undefined)lVar10;
+			uVar13 = (undefined)lVar12;
+			if (*puVar1 == 0) {
+				AddWarpMissile(lVar14, (ulonglong)*puVar15, (ulonglong)*puVar16, uVar5, uVar7, uVar9, uVar11, uVar13,
+				    in_stack_ffffffa8);
 			} else {
-				// 0xabdf4
-				if (*(char *)g35 == 0) {
-					// 0xabe00
-					if (v10 == *(int32_t *)(v2 + 12)) {
-						// 0xabe0c
-						result = function_abcb8(v4, *(int32_t *)(v2 + 4), *(int32_t *)(v2 + 8));
-						// branch -> 0xabe40
-					} else {
-						result = v10;
+				if (*puVar3 == '\0') {
+					if ((uint)(byte)*puVar1 == piVar17[3]) {
+						AddWarpMissile(lVar14, (ulonglong)(uint)piVar17[1], (ulonglong)(uint)piVar17[2], uVar5, uVar7,
+						    uVar9, uVar11, uVar13, in_stack_ffffffa8);
 					}
 				} else {
-					int32_t v11 = (int32_t) * (char *)g33; // 0xabe20
-					if (v11 == *(int32_t *)(v2 + 12)) {
-						// 0xabe30
-						result = function_abcb8(v4, *(int32_t *)(v2 + 4), *(int32_t *)(v2 + 8));
-						// branch -> 0xabe40
-					} else {
-						result = v11;
+					if ((uint)(byte)*puVar2 == piVar17[3]) {
+						AddWarpMissile(lVar14, (ulonglong)(uint)piVar17[1], (ulonglong)(uint)piVar17[2], uVar5, uVar7,
+						    uVar9, uVar11, uVar13, in_stack_ffffffa8);
 					}
 				}
-				// 0xabe40
-				v5 = g29 + 1;
-				g29 = v5;
-				v6 = g31 + 4;
-				g31 = v6;
-				v7 = g30 + 4;
-				g30 = v7;
-				v8 = g32 + 24;
-				g32 = v8;
-				if (v5 >= 4) {
-					// break -> 0xabe58
-					break;
-				}
-				v1 = v6;
-				v3 = v7;
-				v4 = v5;
-				v2 = v8;
-				// continue -> 0xabdc8
-				continue;
 			}
-			// 0xabe40
-			v5 = g29 + 1;
-			g29 = v5;
-			v6 = g31 + 4;
-			g31 = v6;
-			v7 = g30 + 4;
-			g30 = v7;
-			v8 = g32 + 24;
-			g32 = v8;
-			if (v5 >= 4) {
-				// break -> 0xabe58
-				break;
-			}
-			v1 = v6;
-			v3 = v7;
-			v4 = v5;
-			v2 = v8;
-			// continue -> 0xabdc8
-			continue;
 		}
-		// 0xabe40
-		v5 = g29 + 1;
-		g29 = v5;
-		v6 = g31 + 4;
-		g31 = v6;
-		v7 = g30 + 4;
-		g30 = v7;
-		v8 = g32 + 24;
-		g32 = v8;
-		if (v5 >= 4) {
-			// break -> 0xabe58
-			break;
-		}
-		v1 = v6;
-		v3 = v7;
-		v4 = v5;
-		v2 = v8;
-		// continue -> 0xabdc8
+		lVar14 = lVar14 + 1;
+		puVar16 = puVar16 + 1;
+		puVar15 = puVar15 + 1;
+		piVar17 = piVar17 + 6;
+	} while ((int)lVar14 < 4);
+	return;
+}
+
+void AddInTownPortal(undefined8 param_1, undefined param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
+{
+	int iVar1;
+	undefined4 in_stack_ffffffc8;
+
+	iVar1 = (int)param_1 * 4;
+	AddWarpMissile(param_1, (ulonglong) * (uint *)(PTR_DAT_100f2054 + iVar1),
+	    (ulonglong) * (uint *)(PTR_DAT_100f2058 + iVar1), param_4, param_5, param_6, param_7,
+	    param_8, in_stack_ffffffc8);
+	return;
+}
+
+void ActivatePortal(int param_1, undefined4 param_2, undefined4 param_3, int param_4, undefined4 param_5,
+    undefined4 param_6)
+
+{
+	int iVar1;
+
+	iVar1 = _DAT_100f1e88;
+	*(undefined4 *)(_DAT_100f1e88 + param_1 * 0x18) = 1;
+	if (param_4 == 0) {
+		return;
 	}
-	// 0xabe58
-	return result;
+	iVar1 = iVar1 + param_1 * 0x18;
+	*(undefined4 *)(iVar1 + 4) = param_2;
+	*(undefined4 *)(iVar1 + 8) = param_3;
+	*(int *)(iVar1 + 0xc) = param_4;
+	*(undefined4 *)(iVar1 + 0x10) = param_5;
+	*(undefined4 *)(iVar1 + 0x14) = param_6;
+	return;
 }
 
-// Address range: 0xabe6c - 0xabea0
-int32_t function_abe6c(int32_t a1, int32_t a2)
+void DeactivatePortal(int param_1)
+
 {
-	int32_t v1 = 4 * a1;                                        // 0xabe78
-	int32_t v2 = *(int32_t *)(*(int32_t *)(g23 - 0x6f78) + v1); // 0xabe88
-	return function_abcb8(*(int32_t *)(v1 + *(int32_t *)(g23 - 0x6f7c)), v2, v2);
+	*(undefined4 *)(_DAT_100f1e88 + param_1 * 0x18) = 0;
+	return;
 }
 
-// Address range: 0xabea0 - 0xabed4
-int32_t function_abea0(int32_t a1, int32_t a2, int32_t a3, int32_t a4, int32_t a5, int32_t a6)
-{
-	int32_t v1 = 24 * a1;                    // 0xabea0
-	int32_t v2 = *(int32_t *)(g23 - 0x7148); // 0xabea4
-	int32_t result = v2;                     // r3
-	*(int32_t *)(v2 + v1) = 1;
-	if (a4 == 0) {
-		// bb
-		return result;
-	}
-	int32_t v3 = v1 + result; // 0xabeb8
-	result = v3;
-	*(int32_t *)(v3 + 4) = a2;
-	*(int32_t *)(result + 8) = a3;
-	*(int32_t *)(result + 12) = a4;
-	*(int32_t *)(result + 16) = a5;
-	*(int32_t *)(result + 20) = a6;
-	return result;
-}
+undefined8 PortalOnLevel(int param_1)
 
-// Address range: 0xabed4 - 0xabee8
-int32_t DeactivatePortal(int32_t a1)
 {
-	int32_t result = *(int32_t *)(g23 - 0x7148); // 0xabed8
-	*(int32_t *)(result + 24 * a1) = 0;
-	return result;
-}
-
-// Address range: 0xabee8 - 0xabf28
-int32_t PortalOnLevel(int32_t a1, int32_t a2, int32_t a3)
-{
-	unsigned char v1 = *(char *)*(int32_t *)(g23 - 0x77e4);               // 0xabef8
-	int32_t v2 = *(int32_t *)(*(int32_t *)(g23 - 0x7148) + 24 * a1 + 12); // 0xabefc
-	if ((int32_t)v1 == v2 || v1 == 0) {
-		// 0xabf08
+	if ((uint)(byte)*PTR_DAT_100f17ec == *(uint *)(_DAT_100f1e88 + param_1 * 0x18 + 0xc)) {
 		return 1;
 	}
-	// 0xabf20
+	if (*PTR_DAT_100f17ec == 0) {
+		return 1;
+	}
 	return 0;
 }
 
-// Address range: 0xabf28 - 0xac010
-int32_t RemovePortalMissile(int32_t a1)
+void RemovePortalMissile(int iParm1)
+
 {
-	// 0xabf28
-	g27 = a1;
-	int32_t result = *(int32_t *)(g23 - 0x7148); // 0xabf34
-	int32_t v1 = *(int32_t *)(g23 - 0x7668);     // 0xabf38
-	g33 = *(int32_t *)(g23 - 0x779c);
-	g29 = 0;
-	int32_t v2 = *(int32_t *)(g23 - 0x7664); // 0xabf44
-	g35 = v2;
-	g36 = *(int32_t *)(g23 - 0x7594);
-	int32_t v3 = *(int32_t *)(g23 - 0x7660); // 0xabf4c
-	g31 = v3;
-	g30 = result + 24 * a1;
-	if (*(int32_t *)v1 > 0) {
-		int32_t v4 = 0; // 0xabfec11
-		while (true) {
-			int32_t v5 = *(int32_t *)v3; // 0xabf64
-			int32_t v6 = 180 * v5;       // 0xabf68
-			int32_t v7 = v6 + v2;        // 0xabf6c
-			g28 = v5;
-			int32_t v8 = v6;  // 0xac00c16
-			int32_t v9 = v1;  // 0xabff0
-			int32_t v10 = v4; // 0xabfec
-			int32_t v11 = v3; // 0xabfe8
-			if (*(int32_t *)v7 == 10) {
-				int32_t v12 = v7; // r6
-				if (g27 == *(int32_t *)(v7 + 120)) {
-					int32_t v13 = *(int32_t *)g33;                                          // 0xabf9c
-					int32_t v14 = *(int32_t *)(v7 + 8) + 112 * *(int32_t *)(v7 + 4);        // 0xabfa0
-					int32_t v15 = __asm_rlwinm((int32_t) * (char *)(v13 + v14), 0, 24, 30); // 0xabfa8
-					*(char *)(v14 + v13) = (char)v15;
-					int32_t v16 = v12;                         // 0xabfb0
-					int32_t v17 = *(int32_t *)(v16 + 8);       // 0xabfb4
-					int32_t v18 = 112 * *(int32_t *)(v16 + 4); // 0xabfb8
-					*(char *)(*(int32_t *)g36 + v17 + v18) = (char)0;
-					if (*(int32_t *)(g30 + 12) != 0) {
-						// 0xabfd4
-						AddUnLight(*(int32_t *)(v12 + 140));
-						// branch -> 0xabfdc
-					}
-					// 0xabfdc
-					g37 = g29;
-					v8 = DeleteMissile(g28);
-					v9 = g32;
-					v10 = g29;
-					v11 = g31;
-					// branch -> 0xabfe8
-				} else {
-					v8 = v6;
-					v9 = v1;
-					v10 = v4;
-					v11 = v3;
-				}
+	uint uVar1;
+	int iVar2;
+	int iVar3;
+	undefined *puVar4;
+	undefined *puVar5;
+	undefined *puVar6;
+	undefined *puVar7;
+	longlong lVar8;
+	int iVar9;
+	undefined8 uVar10;
+	undefined8 in_r7;
+	undefined4 in_r8;
+	undefined4 in_r9;
+	undefined4 in_r10;
+	int iVar11;
+	uint *puVar12;
+	ulonglong uVar13;
+	undefined4 in_stack_ffffffa8;
+
+	puVar7 = PTR_DAT_100f1a3c;
+	puVar6 = PTR_DAT_100f196c;
+	puVar5 = PTR_DAT_100f1968;
+	puVar4 = PTR_DAT_100f1834;
+	iVar11 = 0;
+	uVar13 = ZEXT48(PTR_DAT_100f196c);
+	iVar3 = _DAT_100f1e88 + iParm1 * 0x18;
+	puVar12 = (uint *)PTR_DAT_100f1970;
+	while (iVar11 < *(int *)puVar5) {
+		uVar1 = *puVar12;
+		lVar8 = (ulonglong)uVar1 * 0xb4;
+		if ((*(int *)(puVar6 + (int)lVar8) == 10) && (lVar8 = uVar13 + lVar8, iVar2 = (int)lVar8, iParm1 == *(int *)(iVar2 + 0x78))) {
+			uVar10 = 0;
+			iVar9 = *(int *)(iVar2 + 4) * 0x70 + *(int *)(iVar2 + 8);
+			*(byte *)(*(int *)puVar4 + iVar9) = *(byte *)(*(int *)puVar4 + iVar9) & 0xfe;
+			*(undefined *)(*(int *)puVar7 + *(int *)(iVar2 + 4) * 0x70 + *(int *)(iVar2 + 8)) = 0;
+			if (*(int *)(iVar3 + 0xc) != 0) {
+				AddUnLight(*(int *)(iVar2 + 0x8c));
 			}
-			int32_t v19 = v11 + 4; // 0xabfe8
-			g31 = v19;
-			int32_t v20 = v10 + 1; // 0xabfec
-			g29 = v20;
-			if (v20 < *(int32_t *)v9) {
-				// 0xabfe8
-				v1 = v9;
-				v4 = v20;
-				v2 = g35;
-				v3 = v19;
-				// branch -> 0xabf64
-				continue;
-			} else {
-				result = v8;
-			}
+			DeleteMissile((ulonglong)uVar1, iVar11, uVar10, lVar8, in_r7, in_r8, in_r9, in_r10, in_stack_ffffffa8);
 		}
+		puVar12 = puVar12 + 1;
+		iVar11 = iVar11 + 1;
 	}
-	// 0xabffc
-	return result;
+	return;
 }
 
-// Address range: 0xac010 - 0xac01c
-int32_t function_ac010(int32_t result)
+void SetCurrentPortal(undefined4 param_1)
+
 {
-	// 0xac010
-	*(int32_t *)*(int32_t *)(g23 - 0x6f80) = result;
-	return result;
+	*(undefined4 *)PTR_DAT_100f2050 = param_1;
+	return;
 }
 
-// Address range: 0xac01c - 0xac128
-int32_t GetPortalLevel(int32_t a1)
+void GetPortalLevel(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
 {
-	int32_t v1 = *(int32_t *)(g23 - 0x77e4); // 0xac024
-	int32_t result = v1;                     // r3
-	int32_t v2 = *(int32_t *)(g23 - 0x7794); // r9
-	int32_t v3 = *(int32_t *)(g23 - 0x77ac); // r8
-	int32_t v4 = *(int32_t *)(g23 - 0x77a8); // r7
-	int32_t v5 = *(int32_t *)(g23 - 0x6f80); // 0xac044
-	g36 = v5;
-	int32_t v6 = *(int32_t *)(g23 - 0x77e0); // r4
-	int32_t v7 = *(int32_t *)(g23 - 0x77d8); // 0xac04c
-	if (*(char *)v1 == 0) {
-		int32_t v8 = *(int32_t *)v5;                       // 0xac07c
-		int32_t v9 = 24 * v8 + *(int32_t *)(g23 - 0x7148); // 0xac084
-		if (*(int32_t *)(v9 + 20) == 0) {
-			// 0xac0c8
-			*(char *)v7 = 0;
-			*(char *)result = (char)*(int32_t *)(v9 + 12);
-			int32_t v10 = (int32_t) * (char *)result;   // 0xac0dc
-			int32_t v11 = v4 + 0x55ec * *(int32_t *)v3; // 0xac0e4
-			result = v11;
-			*(int32_t *)(v11 + 52) = v10;
-			*(char *)v2 = (char)*(int32_t *)(v9 + 16);
-			// branch -> 0xac0f4
+	uint uVar1;
+	int iVar2;
+	undefined *puVar3;
+	undefined *puVar4;
+	undefined *puVar5;
+	undefined *puVar6;
+	undefined *puVar7;
+	undefined *puVar8;
+	undefined uVar9;
+	longlong lVar10;
+	ulonglong uVar11;
+	ulonglong uVar12;
+	undefined4 in_stack_ffffffc8;
+
+	puVar8 = PTR_DAT_100f2050;
+	puVar7 = PTR_DAT_100f183c;
+	puVar6 = PTR_DAT_100f1828;
+	puVar5 = PTR_DAT_100f1824;
+	puVar4 = PTR_DAT_100f17f0;
+	puVar3 = PTR_DAT_100f17ec;
+	uVar12 = ZEXT48(PTR_DAT_100f1828);
+	uVar11 = ZEXT48(PTR_DAT_100f17f8);
+	if (*PTR_DAT_100f17ec == '\0') {
+		uVar1 = *(uint *)PTR_DAT_100f2050;
+		lVar10 = (ulonglong)_DAT_100f1e88 + (ulonglong)uVar1 * 0x18;
+		iVar2 = (int)lVar10;
+		if (*(int *)(iVar2 + 0x14) == 0) {
+			*PTR_DAT_100f17f8 = 0;
+			*puVar3 = (char)*(undefined4 *)(iVar2 + 0xc);
+			*(uint *)(puVar6 + *(int *)puVar5 * 0x55ec + 0x34) = (uint)(byte)*puVar3;
+			*puVar7 = (char)*(undefined4 *)(iVar2 + 0x10);
 		} else {
-			// 0xac094
-			*(char *)v7 = 1;
-			int32_t v12 = *(int32_t *)(v9 + 12); // 0xac09c
-			*(char *)v6 = (char)v12;
-			*(char *)result = (char)v12;
-			int32_t v13 = v4 + 0x55ec * *(int32_t *)v3; // 0xac0b4
-			result = v13;
-			*(int32_t *)(v13 + 52) = (int32_t) * (char *)v6;
-			*(char *)v2 = (char)*(int32_t *)(v9 + 16);
-			// branch -> 0xac0f4
+			*PTR_DAT_100f17f8 = 1;
+			uVar9 = (undefined) * (undefined4 *)(iVar2 + 0xc);
+			*puVar4 = uVar9;
+			*puVar3 = uVar9;
+			*(uint *)(puVar6 + *(int *)puVar5 * 0x55ec + 0x34) = (uint)(byte)*puVar4;
+			*puVar7 = (char)*(undefined4 *)(iVar2 + 0x10);
 		}
-		// 0xac0f4
-		if (v8 == *(int32_t *)v3) {
-			// 0xac100
-			NetSendCmd(1, 57);
-			result = DeactivatePortal(*(int32_t *)g36);
-			// branch -> 0xac114
+		if (uVar1 == *(uint *)puVar5) {
+			NetSendCmd(1, 0x39, lVar10, uVar11, uVar12, puVar5, puVar7, uVar1, in_stack_ffffffc8);
+			DeactivatePortal(*(int *)puVar8);
 		}
 	} else {
-		// 0xac058
-		v6 = 0;
-		*(char *)v7 = 0;
-		*(char *)result = (char)v6;
-		int32_t v14 = v4 + 0x55ec * *(int32_t *)v3; // 0xac06c
-		result = v14;
-		*(int32_t *)(v14 + 52) = v6;
-		*(char *)v2 = (char)v6;
-		// branch -> 0xac114
+		*PTR_DAT_100f17f8 = 0;
+		*puVar3 = 0;
+		*(undefined4 *)(puVar6 + *(int *)puVar5 * 0x55ec + 0x34) = 0;
+		*puVar7 = 0;
 	}
-	// 0xac114
-	return result;
+	return;
 }
 
-// Address range: 0xac128 - 0xac1bc
-int32_t GetPortalLvlPos(void)
+void GetPortalLvlPos(void)
+
 {
-	int32_t v1 = *(int32_t *)(g23 - 0x77b4);             // r6
-	int32_t v2 = *(int32_t *)(g23 - 0x77b0);             // 0xac134
-	int32_t v3 = *(int32_t *)*(int32_t *)(g23 - 0x6f80); // 0xac148
-	if (*(char *)*(int32_t *)(g23 - 0x77e4) == 0) {
-		int32_t v4 = 4 * v3; // 0xac150
-		*(int32_t *)v2 = *(int32_t *)(*(int32_t *)(g23 - 0x6f7c) + v4) + 1;
-		int32_t result = *(int32_t *)(v4 + *(int32_t *)(g23 - 0x6f78)); // 0xac164
-		*(int32_t *)v1 = result + 1;
-		return result;
+	int iVar1;
+	undefined *puVar2;
+	undefined *puVar3;
+	undefined *puVar4;
+	undefined *puVar5;
+	int iVar6;
+
+	puVar5 = PTR_DAT_100f2058;
+	puVar4 = PTR_DAT_100f1824;
+	puVar3 = PTR_DAT_100f1820;
+	puVar2 = PTR_DAT_100f181c;
+	if (*PTR_DAT_100f17ec == '\0') {
+		iVar1 = *(int *)PTR_DAT_100f2050;
+		*(int *)PTR_DAT_100f1820 = *(int *)(PTR_DAT_100f2054 + iVar1 * 4) + 1;
+		*(int *)puVar2 = *(int *)(puVar5 + iVar1 * 4) + 1;
+		return;
 	}
-	int32_t result2 = *(int32_t *)(g23 - 0x77ac);      // r3
-	int32_t v5 = 24 * v3 + *(int32_t *)(g23 - 0x7148); // 0xac180
-	*(int32_t *)v2 = *(int32_t *)(v5 + 4);
-	*(int32_t *)v1 = *(int32_t *)(v5 + 8);
-	if (v3 == *(int32_t *)result2) {
-		// bb
-		return result2;
+	iVar1 = *(int *)PTR_DAT_100f2050;
+	iVar6 = _DAT_100f1e88 + iVar1 * 0x18;
+	*(undefined4 *)PTR_DAT_100f1820 = *(undefined4 *)(iVar6 + 4);
+	*(undefined4 *)puVar2 = *(undefined4 *)(iVar6 + 8);
+	if (iVar1 == *(int *)puVar4) {
+		return;
 	}
-	int32_t *v6 = (int32_t *)v2; // 0xac1a0
-	*v6 = *v6 + 1;
-	int32_t *v7 = (int32_t *)v1; // 0xac1ac
-	int32_t result3 = *v7;       // 0xac1ac
-	*v7 = result3 + 1;
-	return result3;
+	*(int *)puVar3 = *(int *)puVar3 + 1;
+	*(int *)puVar2 = *(int *)puVar2 + 1;
+	return;
 }
 
-// Address range: 0xac1bc - 0xac320
-int32_t PosOkPortal(int32_t a1, int32_t a2, int32_t a3)
+undefined8 PosOkPortal(int param_1, int param_2, int param_3)
+
 {
-	int32_t v1 = *(int32_t *)(g23 - 0x7148); // 0xac1bc
-	int32_t v2 = a2 - 1;                     // 0xac1c0
-	int32_t v3 = a3 - 1;                     // 0xac1c4
-	if (*(int32_t *)v1 != 0) {
-		// 0xac1d4
-		if (*(int32_t *)(v1 + 12) == a1) {
-			int32_t v4 = *(int32_t *)(v1 + 4); // 0xac1e0
-			if (v4 == a2) {
-				// 0xac1ec
-				if (*(int32_t *)(v1 + 8) == a3) {
-					// 0xac1f8
-					return 1;
-				}
-			}
-			// 0xac200
-			if (v2 == v4) {
-				// 0xac208
-				if (v3 == *(int32_t *)(v1 + 8)) {
-					// 0xac214
-					return 1;
-				}
-			}
+	int iVar1;
+	int iVar2;
+
+	iVar2 = param_2 + -1;
+	iVar1 = param_3 + -1;
+	if ((*_DAT_100f1e88 != 0) && (param_1 == _DAT_100f1e88[3])) {
+		if ((param_2 == _DAT_100f1e88[1]) && (param_3 == _DAT_100f1e88[2])) {
+			return 1;
+		}
+		if ((iVar2 == _DAT_100f1e88[1]) && (iVar1 == _DAT_100f1e88[2])) {
+			return 1;
 		}
 	}
-	// 0xac21c
-	if (*(int32_t *)(v1 + 24) != 0) {
-		// 0xac228
-		if (*(int32_t *)(v1 + 36) == a1) {
-			int32_t v5 = *(int32_t *)(v1 + 28); // 0xac234
-			if (v5 == a2) {
-				// 0xac240
-				if (*(int32_t *)(v1 + 32) == a3) {
-					// 0xac24c
-					return 1;
-				}
-			}
-			// 0xac254
-			if (v2 == v5) {
-				// 0xac25c
-				if (v3 == *(int32_t *)(v1 + 32)) {
-					// 0xac268
-					return 1;
-				}
-			}
+	if ((_DAT_100f1e88[6] != 0) && (param_1 == _DAT_100f1e88[9])) {
+		if ((param_2 == _DAT_100f1e88[7]) && (param_3 == _DAT_100f1e88[8])) {
+			return 1;
+		}
+		if ((iVar2 == _DAT_100f1e88[7]) && (iVar1 == _DAT_100f1e88[8])) {
+			return 1;
 		}
 	}
-	// 0xac270
-	if (*(int32_t *)(v1 + 48) != 0) {
-		// 0xac27c
-		if (*(int32_t *)(v1 + 60) == a1) {
-			int32_t v6 = *(int32_t *)(v1 + 52); // 0xac288
-			if (v6 == a2) {
-				// 0xac294
-				if (*(int32_t *)(v1 + 56) == a3) {
-					// 0xac2a0
-					return 1;
-				}
-			}
-			// 0xac2a8
-			if (v2 == v6) {
-				// 0xac2b0
-				if (v3 == *(int32_t *)(v1 + 56)) {
-					// 0xac2bc
-					return 1;
-				}
-			}
+	if ((_DAT_100f1e88[0xc] != 0) && (param_1 == _DAT_100f1e88[0xf])) {
+		if ((param_2 == _DAT_100f1e88[0xd]) && (param_3 == _DAT_100f1e88[0xe])) {
+			return 1;
+		}
+		if ((iVar2 == _DAT_100f1e88[0xd]) && (iVar1 == _DAT_100f1e88[0xe])) {
+			return 1;
 		}
 	}
-	// 0xac2c4
-	if (*(int32_t *)(v1 + 72) == 0) {
-		// 0xac318
-		return 0;
-	}
-	// 0xac2d0
-	if (*(int32_t *)(v1 + 84) == a1) {
-		int32_t v7 = *(int32_t *)(v1 + 76); // 0xac2dc
-		if (v7 == a2) {
-			// 0xac2e8
-			if (*(int32_t *)(v1 + 80) == a3) {
-				// 0xac2f4
-				return 1;
-			}
+	if ((_DAT_100f1e88[0x12] != 0) && (param_1 == _DAT_100f1e88[0x15])) {
+		if ((param_2 == _DAT_100f1e88[0x13]) && (param_3 == _DAT_100f1e88[0x14])) {
+			return 1;
 		}
-		// 0xac2fc
-		if (v2 == v7) {
-			// 0xac304
-			if (v3 == *(int32_t *)(v1 + 80)) {
-				// 0xac310
-				return 1;
-			}
+		if ((iVar2 == _DAT_100f1e88[0x13]) && (iVar1 == _DAT_100f1e88[0x14])) {
+			return 1;
 		}
 	}
-	// 0xac318
 	return 0;
 }

@@ -1,119 +1,109 @@
 
-// Address range: 0xc0eac - 0xc0f40
-int32_t tmsg_get(int32_t a1, int32_t a2)
+ulonglong tmsg_get(undefined param_1, undefined param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
 {
-	// 0xc0eac
-	g34 = a1;
-	int32_t v1 = g36; // 0xc0eac
-	int32_t v2 = g10; // 0xc0eb0
-	int32_t v3 = g35; // 0xc0eb4
-	if (*(int32_t *)(g23 - 0x4ab0) == 0) {
-		// 0xc0ed0
-		// branch -> 0xc0f28
-		// 0xc0f28
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return 0;
-	}
-	int32_t v4 = GetTickCount(); // 0xc0ed8
-	int32_t v5;
-	int32_t *v6 = (int32_t *)(v5 - 0x4ab0); // 0xc0ee0
-	int32_t v7 = *v6;                       // 0xc0ee0
-	int32_t result;                         // 0xc0f3c
-	if (*(int32_t *)(v7 + 4) - v4 < 0) {
-		// 0xc0ef8
-		g36 = v7;
-		*v6 = *(int32_t *)v7;
-		g35 = (int32_t) * (char *)(g36 + 8);
-		memcpy();
-		g34 = g36;
-		mem_free_dbg();
-		result = g35;
-		// branch -> 0xc0f28
+	undefined4 *puVar1;
+	ulonglong uVar2;
+	longlong lVar3;
+	char cVar4;
+	byte bVar5;
+	undefined4 in_stack_ffffffc8;
+	undefined in_stack_ffffffcf;
+	int local_2c;
+
+	if (_DAT_100f4520 == 0) {
+		uVar2 = 0;
 	} else {
-		// 0xc0ef0
-		result = 0;
-		// branch -> 0xc0f28
+		lVar3 = GetTickCount(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8,
+		    (char)in_stack_ffffffc8, in_stack_ffffffcf, local_2c);
+		puVar1 = *(undefined4 **)(local_2c + -0x4ab0);
+		if ((longlong)((ulonglong)(uint)puVar1[1] - lVar3) < 0) {
+			cVar4 = (char)puVar1 + '\t';
+			*(undefined4 *)(local_2c + -0x4ab0) = *puVar1;
+			bVar5 = *(byte *)(puVar1 + 2);
+			uVar2 = (ulonglong)bVar5;
+			memcpy(param_1, cVar4, bVar5, param_4, param_5, param_6, param_7, param_8, (char)in_stack_ffffffc8, in_stack_ffffffcf, local_2c);
+			mem_free_dbg(ZEXT48(puVar1), cVar4, bVar5, param_4, param_5, param_6, param_7, param_8,
+			    in_stack_ffffffc8);
+		} else {
+			uVar2 = 0;
+		}
 	}
-	// 0xc0f28
-	g36 = v1;
-	g10 = v2;
-	g35 = v3;
-	return result;
+	return uVar2;
 }
 
-// Address range: 0xc0f40 - 0xc0fe0
-int32_t tmsg_add(void)
+void tmsg_add(undefined8 param_1, byte param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined param_6, undefined param_7, undefined param_8,
+    undefined4 param_9)
+
 {
-	int32_t v1 = g37;      // 0xc0f4c
-	int32_t v2 = v1 % 256; // 0xc0f4c
-	g35 = v2;
-	g33 = v1;
-	g32 = g34;
-	g34 = v2 + 12;
-	int32_t v3 = DiabloAllocPtr(); // 0xc0f6c
-	g34 = v3;
-	*(int32_t *)v3 = 0;
-	int32_t v4 = GetTickCount(); // 0xc0f7c
-	g34 = v3 + 9;
-	*(int32_t *)(v3 + 4) = v4 + 500;
-	*(char *)(v3 + 8) = (char)g33;
-	memcpy();
-	int32_t v5;
-	int32_t result = v5 - 0x4ab0;         // 0xc0fa4
-	int32_t result2 = *(int32_t *)result; // 0xc0fb02
-	if (result2 == 0) {
-		// 0xc0fbc
-		*(int32_t *)result = v3;
-		return result;
-	}
-	int32_t v6 = *(int32_t *)result2; // 0xc0fb0
-	while (v6 != 0) {
-		// 0xc0fac
-		result2 = v6;
-		v6 = *(int32_t *)result2;
-		// continue -> 0xc0fac
-	}
-	// 0xc0fb0
-	// branch -> 0xc0fbc
-	// 0xc0fbc
-	*(int32_t *)result2 = v3;
-	return result2;
+	undefined4 *puVar1;
+	undefined4 *puVar2;
+	int iVar3;
+	undefined4 *puVar4;
+	byte bVar5;
+	undefined in_stack_ffffffbb;
+	undefined in_stack_ffffffbf;
+	int local_3c;
+
+	bVar5 = param_2;
+	puVar2 = (undefined4 *)DiabloAllocPtr((ulonglong)((int)(char)param_2 & 0xffU) + 0xc);
+	*puVar2 = 0;
+	iVar3 = GetTickCount((char)puVar2, bVar5, param_3, param_4, param_5, param_6, param_7, param_8,
+	    in_stack_ffffffbb, in_stack_ffffffbf, local_3c);
+	puVar2[1] = iVar3 + 500;
+	*(byte *)(puVar2 + 2) = param_2;
+	memcpy((char)puVar2 + '\t', (undefined)param_1, (char)((int)(char)param_2 & 0xffU), param_4,
+	    param_5, param_6, param_7, param_8, in_stack_ffffffbb, in_stack_ffffffbf, local_3c);
+	puVar1 = (undefined4 *)(local_3c + -0x4ab0);
+	do {
+		puVar4 = puVar1;
+		puVar1 = (undefined4 *)*puVar4;
+	} while (puVar1 != (undefined4 *)0x0);
+	*(undefined4 **)puVar4 = puVar2;
+	return;
 }
 
-// Address range: 0xc0fe4 - 0xc1038
-int32_t tmsg_cleanup(int32_t a1)
+void tmsg_start(void)
+
 {
-	int32_t v1 = g10; // 0xc0fe8
-	g36 = 0;
-	if (*(int32_t *)(g23 - 0x4ab0) == 0) {
-		// 0xc1020
-		g10 = v1;
-		return g34;
+	return;
+}
+
+undefined tmsg_cleanup(undefined param_1, char param_2, char param_3, char param_4, char param_5,
+    char param_6, char param_7, char param_8, undefined4 param_9)
+
+{
+	undefined4 *puVar1;
+	undefined4 uVar2;
+	int iVar3;
+	ulonglong uVar4;
+	longlong lVar5;
+	longlong lVar6;
+	longlong lVar7;
+	longlong lVar8;
+	longlong lVar9;
+	longlong lVar10;
+	longlong lVar11;
+	undefined4 in_stack_ffffffc8;
+
+	lVar11 = (longlong)param_8;
+	lVar10 = (longlong)param_7;
+	lVar9 = (longlong)param_6;
+	lVar8 = (longlong)param_5;
+	lVar7 = (longlong)param_4;
+	lVar6 = (longlong)param_3;
+	lVar5 = (longlong)param_2;
+	uVar4 = ZEXT48(&toc);
+	while (iVar3 = (int)uVar4, *(int *)(iVar3 + -0x4ab0) != 0) {
+		puVar1 = *(undefined4 **)(iVar3 + -0x4ab0);
+		uVar2 = *puVar1;
+		*(undefined4 *)(iVar3 + -0x4ab0) = 0;
+		param_1 = mem_free_dbg(ZEXT48(puVar1), (char)lVar5, (char)lVar6, (char)lVar7, (char)lVar8,
+		    (char)lVar9, (char)lVar10, (char)lVar11, in_stack_ffffffc8);
+		*(undefined4 *)((int)uVar4 + -0x4ab0) = uVar2;
 	}
-	int32_t *v2 = (int32_t *)(g23 - 0x4ab0); // 0xc1000
-	int32_t v3 = *v2;                        // 0xc1000
-	g34 = v3;
-	g35 = *(int32_t *)v3;
-	*v2 = 0;
-	g34 = mem_free_dbg();
-	*(int32_t *)(g23 - 0x4ab0) = g35;
-	// 0xc1020
-	g10 = v1;
-	while (*(int32_t *)(g23 - 0x4ab0) != 0) {
-		// 0xc1000
-		// 0xc1000
-		v2 = (int32_t *)(g23 - 0x4ab0);
-		v3 = *v2;
-		g34 = v3;
-		g35 = *(int32_t *)v3;
-		*v2 = g36;
-		g34 = mem_free_dbg();
-		*(int32_t *)(g23 - 0x4ab0) = g35;
-		// 0xc1020
-		g10 = v1;
-		// branch -> 0xc1000
-	}
-	return g34;
+	return param_1;
 }

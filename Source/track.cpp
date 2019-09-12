@@ -1,196 +1,78 @@
 
-// Address range: 0xc6594 - 0xc6690
-int32_t function_c6594(int32_t a1)
+void track_process(void)
+
 {
-	int32_t v1 = g36;                        // 0xc6594
-	int32_t v2 = g10;                        // 0xc6598
-	int32_t v3 = g35;                        // 0xc65a0
-	int32_t v4 = *(int32_t *)(g23 - 0x765c); // 0xc65a4
-	g35 = v4;
-	int32_t v5 = *(int32_t *)(g23 - 0x7658); // 0xc65ac
-	g36 = v5;
-	if (*(int32_t *)(g23 - 0x4a78) == 0) {
-		// 0xc6678
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return g34;
-	}
-	int32_t v6 = *(int32_t *)v5; // 0xc65c0
-	if (v6 < 0 || v6 > 110) {
-		// 0xc6678
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return g34;
-	}
-	int32_t v7 = *(int32_t *)v4; // 0xc65d4
-	if (v7 < 0 || v7 > 110) {
-		// 0xc6678
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return g34;
-	}
-	int32_t v8 = *(int32_t *)(g23 - 0x77ac);                           // 0xc65e8
-	int32_t v9 = 0x55ec * *(int32_t *)v8 + *(int32_t *)(g23 - 0x77a8); // 0xc65f4
-	g34 = v9;
-	int32_t v10;
-	int32_t v11;  // 0xc662c
-	int32_t *v12; // 0xc6634
-	char *v13;    // 0xc6664
-	if (*(int32_t *)(v9 + 492) <= 6) {
-		// 0xc6604
-		if (*(int32_t *)v9 != 0) {
-			// 0xc6678
-			g36 = v1;
-			g10 = v2;
-			g35 = v3;
-			return g34;
+	int iVar1;
+	int iVar2;
+	undefined *puVar3;
+	undefined *puVar4;
+	int iVar5;
+	longlong lVar6;
+	undefined4 in_r8;
+	undefined4 in_r9;
+	undefined4 in_r10;
+	undefined4 in_stack_ffffffc8;
+	undefined in_stack_ffffffcf;
+	int local_2c;
+
+	puVar4 = PTR_DAT_100f1978;
+	puVar3 = PTR_DAT_100f1974;
+	if ((((((_DAT_100f4558 != 0) && (iVar5 = *(int *)PTR_DAT_100f1978, -1 < iVar5)) && (iVar5 < 0x6f))
+	         && ((iVar1 = *(int *)PTR_DAT_100f1974, -1 < iVar1 && (iVar1 < 0x6f))))
+	        && ((lVar6 = (ulonglong) * (uint *)PTR_DAT_100f1824 * 0x55ec,
+	            6 < *(int *)(PTR_DAT_100f1828 + (int)lVar6 + 0x1ec) || (*(int *)(PTR_DAT_100f1828 + (int)lVar6) == 0))))
+	    && ((iVar2 = (int)(ZEXT48(PTR_DAT_100f1828) + lVar6), iVar5 != *(int *)(iVar2 + 0x48) || (iVar1 != *(int *)(iVar2 + 0x4c))))) {
+		iVar5 = GetTickCount((char)(ZEXT48(PTR_DAT_100f1828) + lVar6), (char)PTR_DAT_100f1828, (char)iVar5, (char)iVar1, (char)lVar6, (char)in_r8, (char)in_r9, (char)in_r10,
+		    (char)in_stack_ffffffc8, in_stack_ffffffcf, local_2c);
+		if (299 < iVar5 - *(int *)(local_2c + -0x4a80)) {
+			*(int *)(local_2c + -0x4a80) = iVar5;
+			NetSendCmdLoc(1, 1, (ulonglong)(*(uint *)puVar4 & 0xff), (ulonglong)(*(uint *)puVar3 & 0xff), lVar6, in_r8, in_r9, in_r10, in_stack_ffffffc8);
+			if (*(char *)(local_2c + -0x4a7c) == '\0') {
+				*(undefined *)(local_2c + -0x4a7c) = 1;
+			}
 		}
-		// 0xc6610
-		g34 = v9;
-		if (v6 == *(int32_t *)(v9 + 72)) {
-			// 0xc6620
-			if (v7 != *(int32_t *)(v9 + 76)) {
-				// 0xc662c
-				v11 = GetTickCount();
-				g34 = v11;
-				v12 = (int32_t *)(v10 - 0x4a80);
-				if (v11 - *v12 >= 300) {
-					// 0xc6644
-					*v12 = v11;
-					g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
-					v13 = (char *)(g23 - 0x4a7c);
-					if (*v13 == 0) {
-						// 0xc6670
-						*v13 = 1;
-						// branch -> 0xc6678
-					}
-				}
+	}
+	return;
+}
+
+void track_repeat_walk(undefined8 uParm1, undefined param_2, undefined param_3, undefined param_4,
+    undefined param_5, undefined4 uParm6, undefined4 uParm7, undefined4 uParm8)
+
+{
+	uint uVar1;
+	int iVar2;
+	undefined4 uVar3;
+	undefined4 in_stack_ffffffc8;
+	undefined in_stack_ffffffcf;
+	int local_2c;
+
+	iVar2 = (int)uParm1;
+	if (_DAT_100f4558 != iVar2) {
+		if (iVar2 == 0) {
+			_DAT_100f4558 = iVar2;
+			if (DAT_100f4554 != '\0') {
+				DAT_100f4554 = '\0';
+				_DAT_100f4558 = iVar2;
 			}
 		} else {
-			// 0xc662c
-			v11 = GetTickCount();
-			g34 = v11;
-			v12 = (int32_t *)(v10 - 0x4a80);
-			if (v11 - *v12 >= 300) {
-				// 0xc6644
-				*v12 = v11;
-				g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
-				v13 = (char *)(g23 - 0x4a7c);
-				if (*v13 == 0) {
-					// 0xc6670
-					*v13 = 1;
-					// branch -> 0xc6678
-				}
-			}
-		}
-		// 0xc6678
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return g34;
-	}
-	// 0xc6610
-	g34 = v9;
-	if (v6 != *(int32_t *)(v9 + 72)) {
-		// 0xc662c
-		v11 = GetTickCount();
-		g34 = v11;
-		v12 = (int32_t *)(v10 - 0x4a80);
-		if (v11 - *v12 >= 300) {
-			// 0xc6644
-			*v12 = v11;
-			g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
-			v13 = (char *)(g23 - 0x4a7c);
-			if (*v13 == 0) {
-				// 0xc6670
-				*v13 = 1;
-				// branch -> 0xc6678
-			}
-		}
-		// 0xc6678
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return g34;
-	}
-	// 0xc6620
-	if (v7 == *(int32_t *)(v9 + 76)) {
-		// 0xc6678
-		g36 = v1;
-		g10 = v2;
-		g35 = v3;
-		return g34;
-	}
-	// 0xc662c
-	v11 = GetTickCount();
-	g34 = v11;
-	v12 = (int32_t *)(v10 - 0x4a80);
-	if (v11 - *v12 >= 300) {
-		// 0xc6644
-		*v12 = v11;
-		g34 = NetSendCmdLoc(1, 1, *(int32_t *)g36 % 256, *(int32_t *)g35 % 256);
-		v13 = (char *)(g23 - 0x4a7c);
-		if (*v13 == 0) {
-			// 0xc6670
-			*v13 = 1;
-			// branch -> 0xc6678
+			DAT_100f4554 = '\0';
+			_DAT_100f4558 = iVar2;
+			uVar3 = GetTickCount((char)uParm1, param_2, param_3, param_4, param_5, (char)uParm6, (char)uParm7,
+			    (char)uParm8, (char)in_stack_ffffffc8, in_stack_ffffffcf, local_2c);
+			*(undefined4 *)(local_2c + -0x4a80) = uVar3;
+			*(int *)(local_2c + -0x4a80) = *(int *)(local_2c + -0x4a80) + 0xfa;
+			uVar1 = *(uint *)(local_2c + -0x4a80);
+			*(int *)(local_2c + -0x4a80) = uVar1 - 300;
+			NetSendCmdLoc(1, 1, (ulonglong)(**(uint **)(local_2c + -0x7658) & 0xff),
+			    (ulonglong)(**(uint **)(local_2c + -0x765c) & 0xff), (ulonglong)uVar1, uParm6,
+			    uParm7, uParm8, in_stack_ffffffc8);
 		}
 	}
-	// 0xc6678
-	g36 = v1;
-	g10 = v2;
-	g35 = v3;
-	return g34;
+	return;
 }
 
-// Address range: 0xc6690 - 0xc6730
-int32_t track_repeat_walk(int32_t a1)
-{
-	// 0xc6690
-	g34 = a1;
-	int32_t v1 = g10;                        // 0xc6690
-	int32_t *v2 = (int32_t *)(g23 - 0x4a78); // 0xc669c
-	int32_t v3 = g34;                        // 0xc66a0
-	if (*v2 == v3) {
-		// 0xc6720
-		g10 = v1;
-		return g34;
-	}
-	// 0xc66a8
-	*v2 = v3;
-	if (*(int32_t *)(g23 - 0x4a78) == 0) {
-		char *v4 = (char *)(g23 - 0x4a7c); // 0xc670c
-		if (*v4 != 0) {
-			// 0xc6718
-			*v4 = 0;
-			// branch -> 0xc6720
-		}
-		// 0xc6720
-		g10 = v1;
-		return g34;
-	}
-	// 0xc66b8
-	*(char *)(g23 - 0x4a7c) = 0;
-	int32_t v5;
-	*(int32_t *)(v5 - 0x4a80) = GetTickCount();
-	int32_t *v6 = (int32_t *)(g23 - 0x4a80); // 0xc66d8
-	*v6 = *v6 + 250;
-	int32_t *v7 = (int32_t *)(g23 - 0x4a80); // 0xc66e8
-	*v7 = *v7 - 300;
-	uint32_t v8 = *(int32_t *)*(int32_t *)(g23 - 0x7658); // 0xc66f4
-	g34 = NetSendCmdLoc(1, 1, v8 % 256, *(int32_t *)*(int32_t *)(g23 - 0x765c) % 256);
-	// branch -> 0xc6720
-	// 0xc6720
-	g10 = v1;
-	return g34;
-}
+ulonglong track_isscrolling(void)
 
-// Address range: 0xc6730 - 0xc6738
-int32_t function_c6730(void)
 {
-	// 0xc6730
-	return (int32_t) * (char *)(g23 - 0x4a7c);
+	return (ulonglong)DAT_100f4554;
 }
